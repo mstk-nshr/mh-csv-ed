@@ -2,7 +2,7 @@ import os
 import sys
 import csv
 import toml
-from PySide6.QtCore import Qt, QDir, QTimer
+from PySide6.QtCore import Qt, QDir, QTimer, QByteArray
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QTreeView, QTableWidget, QTableWidgetItem, QToolBar,
@@ -417,6 +417,7 @@ class CsvDockWidget(QDockWidget):
     """CSVファイルを表示するドッキング可能なウィジェット"""
     def __init__(self, title, table_widget, main_window):
         super().__init__(title)
+        self.setObjectName(f"csv_dock_{title}")
         self.main_window = main_window
         self.csv_table = table_widget
         self.setWidget(table_widget)
@@ -431,6 +432,7 @@ class CsvDockWidget(QDockWidget):
             Qt.TopDockWidgetArea |
             Qt.BottomDockWidgetArea
         )
+        self.setMinimumSize(200, 200)
         # テーブルのシグナルをメインウィンドウに転送
         table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
         table_widget.customContextMenuRequested.connect(main_window.show_table_context_menu)
@@ -480,6 +482,11 @@ class CsvEdMainWindow(QMainWindow):
         w = win.get('width', 1000)
         h = win.get('height', 600)
         self.setGeometry(x, y, w, h)
+        # ドックレイアウト（サイズ・位置）を復元
+        dock_state_b64 = win.get('dock_state')
+        if dock_state_b64:
+            state = QByteArray.fromBase64(dock_state_b64.encode('utf-8'))
+            self.restoreState(state)
     
     def closeEvent(self, event):
         # 編集済みドックの確認
@@ -500,19 +507,22 @@ class CsvEdMainWindow(QMainWindow):
                 event.ignore()
                 return
 
-        # ウィンドウ終了時にジオメトリを保存
+        # ウィンドウ終了時にジオメトリとドックレイアウトを保存
         geo = self.geometry()
+        dock_state = self.saveState().toBase64().data().decode('utf-8')
         self.config_manager.set('app_window', {
             'x': geo.x(),
             'y': geo.y(),
             'width': geo.width(),
-            'height': geo.height()
+            'height': geo.height(),
+            'dock_state': dock_state
         })
         super().closeEvent(event)
 
     def init_ui(self):
         # ツールバーの構築
         self.toolbar = QToolBar("Main Toolbar", self)
+        self.toolbar.setObjectName("main_toolbar")
         self.toolbar.setMovable(False)
         self.addToolBar(self.toolbar)
 
@@ -574,6 +584,7 @@ class CsvEdMainWindow(QMainWindow):
 
         # 左ペイン: フォルダ・ファイルリスト（QDockWidget）
         self.left_dock = QDockWidget("ファイル一覧", self)
+        self.left_dock.setObjectName("file_list_dock")
         self.left_dock.setFeatures(
             QDockWidget.DockWidgetMovable |
             QDockWidget.DockWidgetFloatable |
@@ -585,6 +596,7 @@ class CsvEdMainWindow(QMainWindow):
             Qt.TopDockWidgetArea |
             Qt.BottomDockWidgetArea
         )
+        self.left_dock.setMinimumSize(200, 200)
         self.left_widget = QWidget(self)
         left_layout = QVBoxLayout(self.left_widget)
         left_layout.setContentsMargins(0, 0, 0, 0)
