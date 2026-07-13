@@ -2,13 +2,13 @@ import os
 import sys
 import csv
 import toml
-from PySide6.QtCore import Qt, QDir, QTimer, QByteArray
+from PySide6.QtCore import Qt, QDir, QTimer, QByteArray, QEvent
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QTreeView, QTableWidget, QTableWidgetItem, QToolBar,
     QToolButton, QMenu, QMessageBox, QFileDialog, QInputDialog,
     QDialog, QLabel, QLineEdit, QPushButton, QFormLayout, QHeaderView,
-    QDockWidget
+    QDockWidget, QTabBar
 )
 from PySide6.QtGui import QAction, QIcon, QFont
 
@@ -468,6 +468,9 @@ class CsvEdMainWindow(QMainWindow):
         
         # フォーカス変更を追跡してアクティブなドックを特定
         QApplication.instance().focusChanged.connect(self._on_focus_changed)
+
+        # マウスホイール（中ボタン）クリックでタブを閉じるためのイベントフィルター
+        QApplication.instance().installEventFilter(self)
         
         # 空の初期ドックを追加
         self._add_empty_dock()
@@ -1095,6 +1098,19 @@ class CsvEdMainWindow(QMainWindow):
             self.apply_theme('light')
         else:
             self.apply_theme('dark')
+
+    def eventFilter(self, obj, event):
+        """マウスホイール（中ボタン）クリックでタブを閉じる"""
+        if event.type() == QEvent.MouseButtonPress and event.button() == Qt.MiddleButton:
+            if isinstance(obj, QTabBar):
+                tab_index = obj.tabAt(event.pos())
+                if tab_index >= 0:
+                    tab_text = obj.tabText(tab_index).replace('&', '')
+                    for dock, tab_data in list(self.tab_data_map.items()):
+                        if dock.windowTitle() == tab_text:
+                            dock.close()
+                            return True
+        return super().eventFilter(obj, event)
 
 
 if __name__ == "__main__":
