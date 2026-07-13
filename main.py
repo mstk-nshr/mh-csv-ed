@@ -5,10 +5,10 @@ import toml
 from PySide6.QtCore import Qt, QDir, QTimer
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
-    QSplitter, QTreeView, QTableWidget, QTableWidgetItem, QToolBar,
+    QTreeView, QTableWidget, QTableWidgetItem, QToolBar,
     QToolButton, QMenu, QMessageBox, QFileDialog, QInputDialog,
     QDialog, QLabel, QLineEdit, QPushButton, QFormLayout, QHeaderView,
-    QTabWidget
+    QDockWidget
 )
 from PySide6.QtGui import QAction, QIcon, QFont
 
@@ -39,8 +39,25 @@ QToolButton:hover {
 QToolButton:pressed {
     background-color: #585b70;
 }
-QSplitter::handle {
+QDockWidget {
+    color: #cdd6f4;
+    titlebar-close-icon: url(none);
+}
+QDockWidget::title {
+    background-color: #252538;
+    color: #cdd6f4;
+    padding: 6px;
+    border-bottom: 1px solid #3f3f5f;
+    font-weight: bold;
+}
+QDockWidget::close-button, QDockWidget::float-button {
     background-color: #313244;
+    border: 1px solid #45475a;
+    border-radius: 3px;
+    padding: 2px;
+}
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+    background-color: #45475a;
 }
 QTreeView {
     background-color: #181825;
@@ -149,7 +166,24 @@ QToolButton:hover {
 QToolButton:pressed {
     background-color: #b8b8b8;
 }
-QSplitter::handle {
+QDockWidget {
+    color: #333333;
+    titlebar-close-icon: url(none);
+}
+QDockWidget::title {
+    background-color: #f0f0f0;
+    color: #333333;
+    padding: 6px;
+    border-bottom: 1px solid #d0d0d0;
+    font-weight: bold;
+}
+QDockWidget::close-button, QDockWidget::float-button {
+    background-color: #e8e8e8;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    padding: 2px;
+}
+QDockWidget::close-button:hover, QDockWidget::float-button:hover {
     background-color: #d0d0d0;
 }
 QTreeView {
@@ -231,6 +265,7 @@ QPushButton:hover {
     background-color: #d0d0d0;
 }
 """
+
 
 class ConfigManager:
     def __init__(self):
@@ -329,24 +364,55 @@ class SettingDialog(QDialog):
 
 
 class CsvTabData:
-    """タブごとのメタデータを保持する"""
-    def __init__(self, table_widget, file_path=None, encoding='utf-8'):
-        self.table_widget = table_widget
+    """ドックごとのメタデータを保持する"""
+    def __init__(self, dock_widget, file_path=None, encoding='utf-8'):
+        self.dock_widget = dock_widget
+        self.table_widget = dock_widget.csv_table
         self.file_path = file_path
         self.encoding = encoding
         self.is_edited = False
+
+
+class CsvDockWidget(QDockWidget):
+    """CSVファイルを表示するドッキング可能なウィジェット"""
+    def __init__(self, title, table_widget, main_window):
+        super().__init__(title)
+        self.main_window = main_window
+        self.csv_table = table_widget
+        self.setWidget(table_widget)
+        self.setFeatures(
+            QDockWidget.DockWidgetClosable |
+            QDockWidget.DockWidgetMovable |
+            QDockWidget.DockWidgetFloatable
+        )
+        self.setAllowedAreas(
+            Qt.LeftDockWidgetArea |
+            Qt.RightDockWidgetArea |
+            Qt.TopDockWidgetArea |
+            Qt.BottomDockWidgetArea
+        )
+        # テーブルのシグナルをメインウィンドウに転送
+        table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
+        table_widget.customContextMenuRequested.connect(main_window.show_table_context_menu)
+        table_widget.cellChanged.connect(main_window._on_cell_changed)
+
+    def closeEvent(self, event):
+        self.main_window._on_dock_close_request(self, event)
 
 
 class CsvEdMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("csv-ed")
+        self.setDockNestingEnabled(True)
         
         self.config_manager = ConfigManager()
         self.current_theme = self.config_manager.get('theme', 'dark')
         
-        # タブ管理
-        self.tab_data_map = {}  # QTableWidget -> CsvTabData
+        # ドック管理
+        self.tab_data_map = {}       # CsvDockWidget -> CsvTabData
+        self._active_dock = None     # 現在アクティブなCsvDockWidget
+        self._reference_dock = None  # タブ化の基準となるドック
         
         # シングルクリック / ダブルクリック 判別用タイマー
         self.click_timer = QTimer(self)
@@ -357,6 +423,12 @@ class CsvEdMainWindow(QMainWindow):
         self.init_ui()
         self.apply_theme(self.current_theme)
         self.load_directory(self.config_manager.get('last_directory'))
+        
+        # フォーカス変更を追跡してアクティブなドックを特定
+        QApplication.instance().focusChanged.connect(self._on_focus_changed)
+        
+        # 空の初期ドックを追加
+        self._add_empty_dock()
         
         # 保存済みウィンドウジオメトリを復元
         self.restore_window_geometry()
@@ -370,19 +442,17 @@ class CsvEdMainWindow(QMainWindow):
         self.setGeometry(x, y, w, h)
     
     def closeEvent(self, event):
-        # 編集済みタブの確認
-        edited_tabs = []
-        for table, tab_data in self.tab_data_map.items():
+        # 編集済みドックの確認
+        edited_docks = []
+        for dock, tab_data in self.tab_data_map.items():
             if tab_data.is_edited:
-                idx = self.tab_widget.indexOf(table)
-                if idx != -1:
-                    edited_tabs.append(self.tab_widget.tabText(idx))
+                edited_docks.append(dock.windowTitle())
 
-        if edited_tabs:
-            tab_list = "\n".join(f"  • {t}" for t in edited_tabs)
+        if edited_docks:
+            dock_list = "\n".join(f"  • {t}" for t in edited_docks)
             reply = QMessageBox.question(
                 self, "確認",
-                f"以下のタブが編集されています。保存せずに終了しますか？\n{tab_list}",
+                f"以下のファイルが編集されています。保存せずに終了しますか？\n{dock_list}",
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.No
             )
@@ -462,11 +532,19 @@ class CsvEdMainWindow(QMainWindow):
         self.config_btn.clicked.connect(self.open_settings)
         self.toolbar.addWidget(self.config_btn)
 
-        # メインエリア (QSplitter)
-        self.splitter = QSplitter(Qt.Horizontal, self)
-        self.setCentralWidget(self.splitter)
-
-        # 左ペイン: フォルダ・ファイルリスト
+        # 左ペイン: フォルダ・ファイルリスト（QDockWidget）
+        self.left_dock = QDockWidget("ファイル一覧", self)
+        self.left_dock.setFeatures(
+            QDockWidget.DockWidgetMovable |
+            QDockWidget.DockWidgetFloatable |
+            QDockWidget.DockWidgetClosable
+        )
+        self.left_dock.setAllowedAreas(
+            Qt.LeftDockWidgetArea |
+            Qt.RightDockWidgetArea |
+            Qt.TopDockWidgetArea |
+            Qt.BottomDockWidgetArea
+        )
         self.left_widget = QWidget(self)
         left_layout = QVBoxLayout(self.left_widget)
         left_layout.setContentsMargins(0, 0, 0, 0)
@@ -478,17 +556,8 @@ class CsvEdMainWindow(QMainWindow):
         self.tree_view.setHeaderHidden(True)
         left_layout.addWidget(self.tree_view)
         
-        self.splitter.addWidget(self.left_widget)
-
-        # 右ペイン: タブ付きCSV編集グリッド
-        self.tab_widget = QTabWidget(self)
-        self.tab_widget.setTabsClosable(True)
-        self.tab_widget.tabCloseRequested.connect(self.close_tab)
-        self.tab_widget.currentChanged.connect(self._on_current_tab_changed)
-        self.splitter.addWidget(self.tab_widget)
-
-        # ペイン幅の初期比率を設定
-        self.splitter.setSizes([300, 700])
+        self.left_dock.setWidget(self.left_widget)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.left_dock)
 
         # ファイルシステムのモデル設定
         from PySide6.QtWidgets import QFileSystemModel
@@ -524,7 +593,7 @@ class CsvEdMainWindow(QMainWindow):
             self.click_timer.start(250)  # 250ms以内にダブルクリックがなければシングルクリック処理
 
     def on_item_double_clicked(self, index):
-        """ダブルクリック: タイマーをキャンセルし、常に新規タブを追加"""
+        """ダブルクリック: タイマーをキャンセルし、常に新規ドックを追加"""
         self.click_timer.stop()
         self._pending_click_path = None
         path = self.file_model.filePath(index)
@@ -532,7 +601,7 @@ class CsvEdMainWindow(QMainWindow):
             self.load_directory(path)
         else:
             if path.lower().endswith('.csv'):
-                self._open_csv_in_new_tab(path)
+                self._open_csv_in_new_dock(path)
 
     def _process_single_click(self):
         """シングルクリックの実際の処理"""
@@ -543,11 +612,11 @@ class CsvEdMainWindow(QMainWindow):
 
         current_data = self._current_tab_data()
         if current_data is not None and current_data.is_edited:
-            # 現在のタブが編集済み → 閉じずに新規タブを追加
-            self._open_csv_in_new_tab(path)
+            # 現在のドックが編集済み → 閉じずに新規ドックを追加
+            self._open_csv_in_new_dock(path)
         else:
-            # 現在のタブが未編集 → 現在のタブを閉じて新しいファイルを表示
-            self._replace_current_tab(path)
+            # 現在のドックが未編集 → 現在のドックの内容を置き換え
+            self._replace_current_dock(path)
 
     def is_root_directory(self, path):
         """Check if the given path is a root directory (e.g., C:\\)"""
@@ -602,36 +671,43 @@ class CsvEdMainWindow(QMainWindow):
                 continue
         return None, None
 
-    def _open_csv_in_new_tab(self, path):
-        """CSVファイルを新しいタブで開く"""
+    def _open_csv_in_new_dock(self, path):
+        """CSVファイルを新しいドックで開く"""
         data, encoding = self._read_csv_data(path)
         if data is None:
             QMessageBox.critical(self, "エラー", "CSVファイルの読み込みに失敗しました。対応していない文字コードの可能性があります。")
             return
 
         table = QTableWidget()
-        table.setContextMenuPolicy(Qt.CustomContextMenu)
-        table.customContextMenuRequested.connect(self.show_table_context_menu)
-        table.cellChanged.connect(self._on_cell_changed)
-
         self.populate_table(table, data)
 
-        tab_data = CsvTabData(table, file_path=path, encoding=encoding)
-        self.tab_data_map[table] = tab_data
-
         tab_title = os.path.basename(path)
-        self.tab_widget.addTab(table, tab_title)
-        self.tab_widget.setCurrentWidget(table)
+        dock = CsvDockWidget(tab_title, table, self)
+        tab_data = CsvTabData(dock, file_path=path, encoding=encoding)
+        self.tab_data_map[dock] = tab_data
 
-        # 初回タブの場合、最初のタブとの差し替え判定
-        if self.tab_widget.count() == 1:
-            # 初回タブに空のデータがセットされていたら置き換え
-            pass
+        self._add_dock_to_area(dock)
+
+        # 編集済みの空ドックが存在する場合は削除
+        self._remove_empty_dock_if_needed()
 
         self._update_window_title()
 
-    def _replace_current_tab(self, path):
-        """現在のタブの内容を指定のCSVファイルで置き換える"""
+    def _add_dock_to_area(self, dock):
+        """ドックを右エリアに追加（2つ目以降はタブ化）"""
+        self.addDockWidget(Qt.RightDockWidgetArea, dock)
+        
+        if self._reference_dock is not None and self._reference_dock in self.tab_data_map:
+            self.tabifyDockWidget(self._reference_dock, dock)
+        else:
+            self._reference_dock = dock
+        
+        dock.raise_()
+        dock.csv_table.setFocus()
+        self._active_dock = dock
+
+    def _replace_current_dock(self, path):
+        """現在のアクティブなドックの内容を指定のCSVファイルで置き換える"""
         data, encoding = self._read_csv_data(path)
         if data is None:
             QMessageBox.critical(self, "エラー", "CSVファイルの読み込みに失敗しました。対応していない文字コードの可能性があります。")
@@ -648,12 +724,12 @@ class CsvEdMainWindow(QMainWindow):
             current_data.encoding = encoding
             current_data.is_edited = False
 
-            idx = self.tab_widget.indexOf(table)
+            dock = current_data.dock_widget
             tab_title = os.path.basename(path)
-            self.tab_widget.setTabText(idx, tab_title)
+            dock.setWindowTitle(tab_title)
         else:
-            # カレントタブがない場合は新規タブとして開く
-            self._open_csv_in_new_tab(path)
+            # アクティブなドックがない場合は新規ドックとして開く
+            self._open_csv_in_new_dock(path)
 
         self._update_window_title()
 
@@ -679,18 +755,19 @@ class CsvEdMainWindow(QMainWindow):
         table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
 
     def _current_table(self):
-        """現在アクティブなタブのQTableWidgetを返す"""
-        return self.tab_widget.currentWidget()
+        """現在アクティブなドックのQTableWidgetを返す"""
+        if self._active_dock is not None:
+            return self._active_dock.csv_table
+        return None
 
     def _current_tab_data(self):
-        """現在アクティブなタブのCsvTabDataを返す"""
-        table = self._current_table()
-        if table is not None:
-            return self.tab_data_map.get(table)
+        """現在アクティブなドックのCsvTabDataを返す"""
+        if self._active_dock is not None:
+            return self.tab_data_map.get(self._active_dock)
         return None
 
     def _update_window_title(self):
-        """ウィンドウタイトルを現在のタブに合わせて更新"""
+        """ウィンドウタイトルを現在のドックに合わせて更新"""
         data = self._current_tab_data()
         if data is not None and data.file_path:
             self.setWindowTitle(f"csv-ed - {os.path.basename(data.file_path)}")
@@ -703,75 +780,118 @@ class CsvEdMainWindow(QMainWindow):
         """セルが編集されたときに呼ばれる"""
         table = self.sender()
         if table is None:
-            table = self._current_table()
-        if table is None:
             return
 
-        tab_data = self.tab_data_map.get(table)
+        # テーブルから対応するドックを検索
+        target_dock = None
+        for dock, tab_data in self.tab_data_map.items():
+            if tab_data.table_widget is table:
+                target_dock = dock
+                break
+
+        if target_dock is None:
+            return
+
+        tab_data = self.tab_data_map.get(target_dock)
         if tab_data is not None and not tab_data.is_edited:
             tab_data.is_edited = True
-            idx = self.tab_widget.indexOf(table)
-            if idx != -1:
-                current_text = self.tab_widget.tabText(idx)
-                if not current_text.startswith("* "):
-                    self.tab_widget.setTabText(idx, f"* {current_text}")
+            current_title = target_dock.windowTitle()
+            if not current_title.startswith("* "):
+                target_dock.setWindowTitle(f"* {current_title}")
 
-    def _on_current_tab_changed(self, index):
-        """タブが切り替わったときに呼ばれる"""
-        self._update_window_title()
+    def _on_focus_changed(self, old, new):
+        """フォーカス変更を追跡してアクティブなドックを特定"""
+        widget = new
+        while widget is not None:
+            if isinstance(widget, CsvDockWidget):
+                if widget != self._active_dock:
+                    self._active_dock = widget
+                    self._update_window_title()
+                return
+            try:
+                widget = widget.parent()
+            except RuntimeError:
+                break
 
-    def close_tab(self, index):
-        """指定されたインデックスのタブを閉じる"""
-        table = self.tab_widget.widget(index)
-        if table is None:
-            return
-
-        tab_data = self.tab_data_map.get(table)
+    def _on_dock_close_request(self, dock_widget, event):
+        """ドックが閉じられようとしたときに呼ばれる"""
+        tab_data = self.tab_data_map.get(dock_widget)
         if tab_data is not None and tab_data.is_edited:
-            # 編集済みの場合は確認ダイアログ
             reply = QMessageBox.question(
                 self, "確認",
-                f"「{self.tab_widget.tabText(index)}」は編集されています。保存せずに閉じますか？",
+                f"「{dock_widget.windowTitle()}」は編集されています。保存せずに閉じますか？",
                 QMessageBox.Yes | QMessageBox.No,
                 QMessageBox.No
             )
             if reply == QMessageBox.No:
+                event.ignore()
                 return
 
-        # タブを削除
-        self.tab_widget.removeTab(index)
-        if table in self.tab_data_map:
-            del self.tab_data_map[table]
-        table.deleteLater()
+        # クリーンアップ
+        if dock_widget in self.tab_data_map:
+            del self.tab_data_map[dock_widget]
+        
+        # 参照ドックが閉じられた場合は更新
+        if dock_widget == self._reference_dock:
+            if self.tab_data_map:
+                self._reference_dock = next(iter(self.tab_data_map.keys()))
+            else:
+                self._reference_dock = None
+        
+        # アクティブドックが閉じられた場合は更新
+        if dock_widget == self._active_dock:
+            self._active_dock = None
+            # 他のドックがあればアクティブに
+            if self.tab_data_map:
+                self._active_dock = next(iter(self.tab_data_map.keys()))
 
-        # タブがなくなった場合は空のタブを追加
-        if self.tab_widget.count() == 0:
-            self._add_empty_tab()
+        self.removeDockWidget(dock_widget)
+        dock_widget.deleteLater()
+        event.accept()
+
+        # ドックがなくなった場合は空のドックを追加
+        if not self.tab_data_map:
+            self._add_empty_dock()
 
         self._update_window_title()
 
-    def _add_empty_tab(self):
-        """空の新規タブを追加する"""
+    def _add_empty_dock(self):
+        """空の新規ドックを追加する"""
         table = QTableWidget()
-        table.setContextMenuPolicy(Qt.CustomContextMenu)
-        table.customContextMenuRequested.connect(self.show_table_context_menu)
-        table.cellChanged.connect(self._on_cell_changed)
-
         table.setRowCount(3)
         table.setColumnCount(3)
         for r in range(3):
             for c in range(3):
                 table.setItem(r, c, QTableWidgetItem(""))
 
-        tab_data = CsvTabData(table, file_path=None, encoding=self.config_manager.get('default_encoding', 'utf-8'))
-        self.tab_data_map[table] = tab_data
+        dock = CsvDockWidget("新規ファイル", table, self)
+        tab_data = CsvTabData(dock, file_path=None, encoding=self.config_manager.get('default_encoding', 'utf-8'))
+        self.tab_data_map[dock] = tab_data
 
-        self.tab_widget.addTab(table, "新規ファイル")
-        self.tab_widget.setCurrentWidget(table)
-        self._update_window_title()
+        self._add_dock_to_area(dock)
+
+    def _remove_empty_dock_if_needed(self):
+        """編集済みでない空の新規ドックを削除する"""
+        to_remove = []
+        for dock, tab_data in self.tab_data_map.items():
+            if tab_data.file_path is None and not tab_data.is_edited:
+                to_remove.append(dock)
+        
+        for dock in to_remove:
+            if dock in self.tab_data_map:
+                del self.tab_data_map[dock]
+            if dock == self._reference_dock:
+                if self.tab_data_map:
+                    self._reference_dock = next(iter(self.tab_data_map.keys()))
+                else:
+                    self._reference_dock = None
+            if dock == self._active_dock:
+                self._active_dock = None
+            self.removeDockWidget(dock)
+            dock.deleteLater()
 
     def save_csv(self):
-        """現在のタブのCSVを保存する"""
+        """現在のドックのCSVを保存する"""
         tab_data = self._current_tab_data()
         if tab_data is None:
             return
@@ -798,10 +918,9 @@ class CsvEdMainWindow(QMainWindow):
                     writer.writerow(row_data)
 
             tab_data.is_edited = False
-            idx = self.tab_widget.indexOf(table)
-            if idx != -1:
-                tab_title = os.path.basename(file_path)
-                self.tab_widget.setTabText(idx, tab_title)
+            dock = tab_data.dock_widget
+            tab_title = os.path.basename(file_path)
+            dock.setWindowTitle(tab_title)
 
             QMessageBox.information(self, "成功", "ファイルを保存しました。")
             self._update_window_title()
@@ -811,14 +930,14 @@ class CsvEdMainWindow(QMainWindow):
             QMessageBox.critical(self, "エラー", f"ファイルの保存中にエラーが発生しました:\n{e}")
 
     def new_csv(self):
-        """新規CSVファイルを新しいタブで作成"""
-        self._add_empty_tab()
+        """新規CSVファイルを新しいドックで作成"""
+        self._add_empty_dock()
 
     def open_csv_dialog(self):
-        """ファイルダイアログからCSVを開く（新しいタブで開く）"""
+        """ファイルダイアログからCSVを開く（新しいドックで開く）"""
         path, _ = QFileDialog.getOpenFileName(self, "CSVファイルを開く", self.current_dir, "CSV Files (*.csv)")
         if path:
-            self._open_csv_in_new_tab(path)
+            self._open_csv_in_new_dock(path)
 
     def open_settings(self):
         dialog = SettingDialog(self.config_manager, self)
