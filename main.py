@@ -411,6 +411,8 @@ class CsvTabData:
         self.file_path = file_path
         self.encoding = encoding
         self.is_edited = False
+        self.is_transposed = False
+        self._base_title = dock_widget.windowTitle()
 
 
 class CsvDockWidget(QDockWidget):
@@ -585,6 +587,12 @@ class CsvEdMainWindow(QMainWindow):
         self.config_btn.clicked.connect(self.open_settings)
         self.toolbar.addWidget(self.config_btn)
 
+        # 行列反転 ボタン
+        self.transpose_btn = QToolButton(self)
+        self.transpose_btn.setText("行列反転")
+        self.transpose_btn.clicked.connect(self.transpose_table)
+        self.toolbar.addWidget(self.transpose_btn)
+
         # 左ペイン: フォルダ・ファイルリスト（QDockWidget）
         self.left_dock = QDockWidget("ファイル一覧", self)
         self.left_dock.setObjectName("file_list_dock")
@@ -739,6 +747,7 @@ class CsvEdMainWindow(QMainWindow):
         tab_title = os.path.basename(path)
         dock = CsvDockWidget(tab_title, table, self)
         tab_data = CsvTabData(dock, file_path=path, encoding=encoding)
+        tab_data._base_title = tab_title
         self.tab_data_map[dock] = tab_data
 
         self._add_dock_to_area(dock)
@@ -782,10 +791,10 @@ class CsvEdMainWindow(QMainWindow):
             current_data.file_path = path
             current_data.encoding = encoding
             current_data.is_edited = False
+            current_data.is_transposed = False
 
-            dock = current_data.dock_widget
-            tab_title = os.path.basename(path)
-            dock.setWindowTitle(tab_title)
+            current_data._base_title = os.path.basename(path)
+            self._update_dock_title(current_data)
         else:
             # アクティブなドックがない場合は新規ドックとして開く
             self._open_csv_in_new_dock(path)
@@ -825,15 +834,66 @@ class CsvEdMainWindow(QMainWindow):
             return self.tab_data_map.get(self._active_dock)
         return None
 
+    def _update_dock_title(self, tab_data):
+        """ドックタイトルを編集状態・反転状態を反映して更新"""
+        title = tab_data._base_title
+        if tab_data.is_transposed:
+            title = f"{title}（行列反転）"
+        if tab_data.is_edited:
+            title = f"\u25cf {title}"
+        tab_data.dock_widget.setWindowTitle(title)
+
     def _update_window_title(self):
         """ウィンドウタイトルを現在のドックに合わせて更新"""
         data = self._current_tab_data()
         if data is not None and data.file_path:
-            self.setWindowTitle(f"csv-ed - {os.path.basename(data.file_path)}")
+            title = f"csv-ed - {os.path.basename(data.file_path)}"
+            if data.is_transposed:
+                title = f"{title}（行列反転）"
+            self.setWindowTitle(title)
         elif data is not None:
             self.setWindowTitle("csv-ed - 新規ファイル")
         else:
             self.setWindowTitle("csv-ed")
+
+    def transpose_table(self):
+        """現在のテーブルの行と列を入れ替える（行列反転）"""
+        table = self._current_table()
+        tab_data = self._current_tab_data()
+        if table is None or tab_data is None:
+            return
+
+        row_count = table.rowCount()
+        col_count = table.columnCount()
+
+        # 現在のデータを読み取り
+        data = []
+        for r in range(row_count):
+            row_data = []
+            for c in range(col_count):
+                item = table.item(r, c)
+                row_data.append(item.text() if item else "")
+            data.append(row_data)
+
+        # 転置（行と列を入れ替え）
+        new_data = []
+        for c in range(col_count):
+            new_row = []
+            for r in range(row_count):
+                new_row.append(data[r][c] if c < len(data[r]) else "")
+            new_data.append(new_row)
+
+        # テーブルを再構築
+        table.blockSignals(True)
+        self.populate_table(table, new_data)
+        table.blockSignals(False)
+
+        # 反転状態をトグル
+        tab_data.is_transposed = not tab_data.is_transposed
+
+        # タイトルを更新
+        self._update_dock_title(tab_data)
+        self._update_window_title()
 
     def _on_cell_changed(self, row, col):
         """セルが編集されたときに呼ばれる"""
@@ -854,9 +914,7 @@ class CsvEdMainWindow(QMainWindow):
         tab_data = self.tab_data_map.get(target_dock)
         if tab_data is not None and not tab_data.is_edited:
             tab_data.is_edited = True
-            current_title = target_dock.windowTitle()
-            if not current_title.startswith("\u25cf "):
-                target_dock.setWindowTitle(f"\u25cf {current_title}")
+            self._update_dock_title(tab_data)
 
     def _on_focus_changed(self, old, new):
         """フォーカス変更を追跡してアクティブなドックを特定"""
@@ -925,6 +983,7 @@ class CsvEdMainWindow(QMainWindow):
 
         dock = CsvDockWidget("新規ファイル", table, self)
         tab_data = CsvTabData(dock, file_path=None, encoding=self.config_manager.get('default_encoding', 'utf-8'))
+        tab_data._base_title = "新規ファイル"
         self.tab_data_map[dock] = tab_data
 
         self._add_dock_to_area(dock)
@@ -977,9 +1036,8 @@ class CsvEdMainWindow(QMainWindow):
                     writer.writerow(row_data)
 
             tab_data.is_edited = False
-            dock = tab_data.dock_widget
-            tab_title = os.path.basename(file_path)
-            dock.setWindowTitle(tab_title)
+            tab_data._base_title = os.path.basename(file_path)
+            self._update_dock_title(tab_data)
 
             QMessageBox.information(self, "成功", "ファイルを保存しました。")
             self._update_window_title()
