@@ -739,7 +739,11 @@ class CsvEdMainWindow(QMainWindow):
                 with open(path, 'r', encoding=enc, newline='') as f:
                     reader = csv.reader(f)
                     data = list(reader)
-                    return data, enc
+                # セル値がダブルクォートで囲まれている場合は除去
+                stripped = []
+                for row in data:
+                    stripped.append([cell.strip('"') for cell in row])
+                return stripped, enc
             except Exception:
                 continue
         return None, None
@@ -841,6 +845,9 @@ class CsvEdMainWindow(QMainWindow):
         # 横ヘッダーを A, B, C, ... に設定
         headers = [self._column_label(c) for c in range(col_count)]
         table.setHorizontalHeaderLabels(headers)
+
+        # 行の高さを内容に合わせて自動調整
+        table.resizeRowsToContents()
 
         # ヘッダーのリサイズモード設定
         table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
