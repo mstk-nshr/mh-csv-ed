@@ -48,6 +48,5 @@ python main.py
 ```text
 mh-csv-ed/
 ├── main.py              # アプリケーションのメインロジック (GUI/イベント処理/設定管理)
-├── specificatiom.md     # アプリケーションの初期要件仕様書
 └── README.md            # 本書
 ```
