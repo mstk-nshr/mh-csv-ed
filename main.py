@@ -2,12 +2,13 @@ import os
 import sys
 import csv
 import toml
-from PySide6.QtCore import Qt, QDir
+from PySide6.QtCore import Qt, QDir, QTimer
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QSplitter, QTreeView, QTableWidget, QTableWidgetItem, QToolBar,
     QToolButton, QMenu, QMessageBox, QFileDialog, QInputDialog,
-    QDialog, QLabel, QLineEdit, QPushButton, QFormLayout, QHeaderView
+    QDialog, QLabel, QLineEdit, QPushButton, QFormLayout, QHeaderView,
+    QTabWidget
 )
 from PySide6.QtGui import QAction, QIcon, QFont
 
@@ -327,15 +328,31 @@ class SettingDialog(QDialog):
         self.accept()
 
 
+class CsvTabData:
+    """タブごとのメタデータを保持する"""
+    def __init__(self, table_widget, file_path=None, encoding='utf-8'):
+        self.table_widget = table_widget
+        self.file_path = file_path
+        self.encoding = encoding
+        self.is_edited = False
+
+
 class CsvEdMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("csv-ed")
         
         self.config_manager = ConfigManager()
-        self.current_csv_path = None
-        self.current_encoding = self.config_manager.get('default_encoding', 'utf-8')
         self.current_theme = self.config_manager.get('theme', 'dark')
+        
+        # タブ管理
+        self.tab_data_map = {}  # QTableWidget -> CsvTabData
+        
+        # シングルクリック / ダブルクリック 判別用タイマー
+        self.click_timer = QTimer(self)
+        self.click_timer.setSingleShot(True)
+        self.click_timer.timeout.connect(self._process_single_click)
+        self._pending_click_path = None
         
         self.init_ui()
         self.apply_theme(self.current_theme)
@@ -353,6 +370,26 @@ class CsvEdMainWindow(QMainWindow):
         self.setGeometry(x, y, w, h)
     
     def closeEvent(self, event):
+        # 編集済みタブの確認
+        edited_tabs = []
+        for table, tab_data in self.tab_data_map.items():
+            if tab_data.is_edited:
+                idx = self.tab_widget.indexOf(table)
+                if idx != -1:
+                    edited_tabs.append(self.tab_widget.tabText(idx))
+
+        if edited_tabs:
+            tab_list = "\n".join(f"  • {t}" for t in edited_tabs)
+            reply = QMessageBox.question(
+                self, "確認",
+                f"以下のタブが編集されています。保存せずに終了しますか？\n{tab_list}",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            if reply == QMessageBox.No:
+                event.ignore()
+                return
+
         # ウィンドウ終了時にジオメトリを保存
         geo = self.geometry()
         self.config_manager.set('app_window', {
@@ -443,17 +480,12 @@ class CsvEdMainWindow(QMainWindow):
         
         self.splitter.addWidget(self.left_widget)
 
-        # 右ペイン: CSV編集グリッド
-        self.right_widget = QWidget(self)
-        right_layout = QVBoxLayout(self.right_widget)
-        right_layout.setContentsMargins(0, 0, 0, 0)
-
-        self.table_widget = QTableWidget(self)
-        self.table_widget.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.table_widget.customContextMenuRequested.connect(self.show_table_context_menu)
-        right_layout.addWidget(self.table_widget)
-
-        self.splitter.addWidget(self.right_widget)
+        # 右ペイン: タブ付きCSV編集グリッド
+        self.tab_widget = QTabWidget(self)
+        self.tab_widget.setTabsClosable(True)
+        self.tab_widget.tabCloseRequested.connect(self.close_tab)
+        self.tab_widget.currentChanged.connect(self._on_current_tab_changed)
+        self.splitter.addWidget(self.tab_widget)
 
         # ペイン幅の初期比率を設定
         self.splitter.setSizes([300, 700])
@@ -469,6 +501,8 @@ class CsvEdMainWindow(QMainWindow):
         for i in range(1, self.file_model.columnCount()):
             self.tree_view.hideColumn(i)
 
+        # シングルクリック / ダブルクリック の両方を処理
+        self.tree_view.clicked.connect(self.on_item_clicked)
         self.tree_view.doubleClicked.connect(self.on_item_double_clicked)
 
     def load_directory(self, path):
@@ -482,13 +516,38 @@ class CsvEdMainWindow(QMainWindow):
         self.tree_view.setRootIndex(self.file_model.index(path))
         self.config_manager.set('last_directory', path)
 
+    def on_item_clicked(self, index):
+        """シングルクリック: タイマーを起動してダブルクリックと区別する"""
+        path = self.file_model.filePath(index)
+        if not self.file_model.isDir(index) and path.lower().endswith('.csv'):
+            self._pending_click_path = path
+            self.click_timer.start(250)  # 250ms以内にダブルクリックがなければシングルクリック処理
+
     def on_item_double_clicked(self, index):
+        """ダブルクリック: タイマーをキャンセルし、常に新規タブを追加"""
+        self.click_timer.stop()
+        self._pending_click_path = None
         path = self.file_model.filePath(index)
         if self.file_model.isDir(index):
             self.load_directory(path)
         else:
             if path.lower().endswith('.csv'):
-                self.load_csv_file(path)
+                self._open_csv_in_new_tab(path)
+
+    def _process_single_click(self):
+        """シングルクリックの実際の処理"""
+        path = self._pending_click_path
+        self._pending_click_path = None
+        if path is None:
+            return
+
+        current_data = self._current_tab_data()
+        if current_data is not None and current_data.is_edited:
+            # 現在のタブが編集済み → 閉じずに新規タブを追加
+            self._open_csv_in_new_tab(path)
+        else:
+            # 現在のタブが未編集 → 現在のタブを閉じて新しいファイルを表示
+            self._replace_current_tab(path)
 
     def is_root_directory(self, path):
         """Check if the given path is a root directory (e.g., C:\\)"""
@@ -530,93 +589,236 @@ class CsvEdMainWindow(QMainWindow):
             if parent_dir and parent_dir != self.current_dir:
                 self.load_directory(parent_dir)
 
-    def load_csv_file(self, path):
-        self.current_csv_path = path
+    def _read_csv_data(self, path):
+        """CSVファイルを読み込み、データとエンコーディングを返す"""
         encodings = [self.config_manager.get('default_encoding', 'utf-8'), 'utf-8', 'cp932', 'utf-8-sig']
-        
-        data = []
-        loaded = False
         for enc in encodings:
             try:
                 with open(path, 'r', encoding=enc, newline='') as f:
                     reader = csv.reader(f)
                     data = list(reader)
-                    self.current_encoding = enc
-                    loaded = True
-                    break
+                    return data, enc
             except Exception:
                 continue
+        return None, None
 
-        if not loaded:
+    def _open_csv_in_new_tab(self, path):
+        """CSVファイルを新しいタブで開く"""
+        data, encoding = self._read_csv_data(path)
+        if data is None:
             QMessageBox.critical(self, "エラー", "CSVファイルの読み込みに失敗しました。対応していない文字コードの可能性があります。")
             return
 
-        self.populate_table(data)
-        self.setWindowTitle(f"csv-ed - {os.path.basename(path)}")
+        table = QTableWidget()
+        table.setContextMenuPolicy(Qt.CustomContextMenu)
+        table.customContextMenuRequested.connect(self.show_table_context_menu)
+        table.cellChanged.connect(self._on_cell_changed)
 
-    def populate_table(self, data):
-        self.table_widget.clear()
+        self.populate_table(table, data)
+
+        tab_data = CsvTabData(table, file_path=path, encoding=encoding)
+        self.tab_data_map[table] = tab_data
+
+        tab_title = os.path.basename(path)
+        self.tab_widget.addTab(table, tab_title)
+        self.tab_widget.setCurrentWidget(table)
+
+        # 初回タブの場合、最初のタブとの差し替え判定
+        if self.tab_widget.count() == 1:
+            # 初回タブに空のデータがセットされていたら置き換え
+            pass
+
+        self._update_window_title()
+
+    def _replace_current_tab(self, path):
+        """現在のタブの内容を指定のCSVファイルで置き換える"""
+        data, encoding = self._read_csv_data(path)
+        if data is None:
+            QMessageBox.critical(self, "エラー", "CSVファイルの読み込みに失敗しました。対応していない文字コードの可能性があります。")
+            return
+
+        current_data = self._current_tab_data()
+        if current_data is not None:
+            table = current_data.table_widget
+            table.blockSignals(True)
+            self.populate_table(table, data)
+            table.blockSignals(False)
+
+            current_data.file_path = path
+            current_data.encoding = encoding
+            current_data.is_edited = False
+
+            idx = self.tab_widget.indexOf(table)
+            tab_title = os.path.basename(path)
+            self.tab_widget.setTabText(idx, tab_title)
+        else:
+            # カレントタブがない場合は新規タブとして開く
+            self._open_csv_in_new_tab(path)
+
+        self._update_window_title()
+
+    def populate_table(self, table, data):
+        table.clear()
         if not data:
-            self.table_widget.setRowCount(0)
-            self.table_widget.setColumnCount(0)
+            table.setRowCount(0)
+            table.setColumnCount(0)
             return
 
         row_count = len(data)
         col_count = max(len(row) for row in data) if data else 0
 
-        self.table_widget.setRowCount(row_count)
-        self.table_widget.setColumnCount(col_count)
+        table.setRowCount(row_count)
+        table.setColumnCount(col_count)
 
         for row_idx, row in enumerate(data):
             for col_idx, value in enumerate(row):
                 item = QTableWidgetItem(value)
-                self.table_widget.setItem(row_idx, col_idx, item)
+                table.setItem(row_idx, col_idx, item)
 
         # ヘッダーのリサイズモード設定
-        self.table_widget.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
+
+    def _current_table(self):
+        """現在アクティブなタブのQTableWidgetを返す"""
+        return self.tab_widget.currentWidget()
+
+    def _current_tab_data(self):
+        """現在アクティブなタブのCsvTabDataを返す"""
+        table = self._current_table()
+        if table is not None:
+            return self.tab_data_map.get(table)
+        return None
+
+    def _update_window_title(self):
+        """ウィンドウタイトルを現在のタブに合わせて更新"""
+        data = self._current_tab_data()
+        if data is not None and data.file_path:
+            self.setWindowTitle(f"csv-ed - {os.path.basename(data.file_path)}")
+        elif data is not None:
+            self.setWindowTitle("csv-ed - 新規ファイル")
+        else:
+            self.setWindowTitle("csv-ed")
+
+    def _on_cell_changed(self, row, col):
+        """セルが編集されたときに呼ばれる"""
+        table = self.sender()
+        if table is None:
+            table = self._current_table()
+        if table is None:
+            return
+
+        tab_data = self.tab_data_map.get(table)
+        if tab_data is not None and not tab_data.is_edited:
+            tab_data.is_edited = True
+            idx = self.tab_widget.indexOf(table)
+            if idx != -1:
+                current_text = self.tab_widget.tabText(idx)
+                if not current_text.startswith("* "):
+                    self.tab_widget.setTabText(idx, f"* {current_text}")
+
+    def _on_current_tab_changed(self, index):
+        """タブが切り替わったときに呼ばれる"""
+        self._update_window_title()
+
+    def close_tab(self, index):
+        """指定されたインデックスのタブを閉じる"""
+        table = self.tab_widget.widget(index)
+        if table is None:
+            return
+
+        tab_data = self.tab_data_map.get(table)
+        if tab_data is not None and tab_data.is_edited:
+            # 編集済みの場合は確認ダイアログ
+            reply = QMessageBox.question(
+                self, "確認",
+                f"「{self.tab_widget.tabText(index)}」は編集されています。保存せずに閉じますか？",
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
+            if reply == QMessageBox.No:
+                return
+
+        # タブを削除
+        self.tab_widget.removeTab(index)
+        if table in self.tab_data_map:
+            del self.tab_data_map[table]
+        table.deleteLater()
+
+        # タブがなくなった場合は空のタブを追加
+        if self.tab_widget.count() == 0:
+            self._add_empty_tab()
+
+        self._update_window_title()
+
+    def _add_empty_tab(self):
+        """空の新規タブを追加する"""
+        table = QTableWidget()
+        table.setContextMenuPolicy(Qt.CustomContextMenu)
+        table.customContextMenuRequested.connect(self.show_table_context_menu)
+        table.cellChanged.connect(self._on_cell_changed)
+
+        table.setRowCount(3)
+        table.setColumnCount(3)
+        for r in range(3):
+            for c in range(3):
+                table.setItem(r, c, QTableWidgetItem(""))
+
+        tab_data = CsvTabData(table, file_path=None, encoding=self.config_manager.get('default_encoding', 'utf-8'))
+        self.tab_data_map[table] = tab_data
+
+        self.tab_widget.addTab(table, "新規ファイル")
+        self.tab_widget.setCurrentWidget(table)
+        self._update_window_title()
 
     def save_csv(self):
-        if not self.current_csv_path:
+        """現在のタブのCSVを保存する"""
+        tab_data = self._current_tab_data()
+        if tab_data is None:
+            return
+
+        table = tab_data.table_widget
+        file_path = tab_data.file_path
+
+        if file_path is None:
             # 名前を付けて保存
             path, _ = QFileDialog.getSaveFileName(self, "CSVファイルの保存", self.current_dir, "CSV Files (*.csv)")
             if not path:
                 return
-            self.current_csv_path = path
+            tab_data.file_path = path
+            file_path = path
 
         try:
-            with open(self.current_csv_path, 'w', encoding=self.current_encoding, newline='') as f:
+            with open(file_path, 'w', encoding=tab_data.encoding, newline='') as f:
                 writer = csv.writer(f)
-                for r in range(self.table_widget.rowCount()):
+                for r in range(table.rowCount()):
                     row_data = []
-                    for c in range(self.table_widget.columnCount()):
-                        item = self.table_widget.item(r, c)
+                    for c in range(table.columnCount()):
+                        item = table.item(r, c)
                         row_data.append(item.text() if item else "")
                     writer.writerow(row_data)
-            
+
+            tab_data.is_edited = False
+            idx = self.tab_widget.indexOf(table)
+            if idx != -1:
+                tab_title = os.path.basename(file_path)
+                self.tab_widget.setTabText(idx, tab_title)
+
             QMessageBox.information(self, "成功", "ファイルを保存しました。")
-            self.setWindowTitle(f"csv-ed - {os.path.basename(self.current_csv_path)}")
+            self._update_window_title()
             # 左ペインのリストを更新
             self.load_directory(self.current_dir)
         except Exception as e:
             QMessageBox.critical(self, "エラー", f"ファイルの保存中にエラーが発生しました:\n{e}")
 
     def new_csv(self):
-        self.current_csv_path = None
-        self.current_encoding = self.config_manager.get('default_encoding', 'utf-8')
-        self.setWindowTitle("csv-ed - 新規ファイル")
-        
-        # デフォルトで3行3列の空のグリッドを作成
-        self.table_widget.clear()
-        self.table_widget.setRowCount(3)
-        self.table_widget.setColumnCount(3)
-        for r in range(3):
-            for c in range(3):
-                self.table_widget.setItem(r, c, QTableWidgetItem(""))
+        """新規CSVファイルを新しいタブで作成"""
+        self._add_empty_tab()
 
     def open_csv_dialog(self):
+        """ファイルダイアログからCSVを開く（新しいタブで開く）"""
         path, _ = QFileDialog.getOpenFileName(self, "CSVファイルを開く", self.current_dir, "CSV Files (*.csv)")
         if path:
-            self.load_csv_file(path)
+            self._open_csv_in_new_tab(path)
 
     def open_settings(self):
         dialog = SettingDialog(self.config_manager, self)
@@ -625,6 +827,10 @@ class CsvEdMainWindow(QMainWindow):
             self.load_directory(self.config_manager.get('last_directory'))
 
     def show_table_context_menu(self, pos):
+        table = self._current_table()
+        if table is None:
+            return
+
         menu = QMenu(self)
         
         insert_row_action = QAction("上に行を挿入", self)
@@ -645,35 +851,47 @@ class CsvEdMainWindow(QMainWindow):
         delete_col_action.triggered.connect(self.delete_column)
         menu.addAction(delete_col_action)
 
-        menu.exec_(self.table_widget.viewport().mapToGlobal(pos))
+        menu.exec_(table.viewport().mapToGlobal(pos))
 
     def insert_row(self):
-        current_row = self.table_widget.currentRow()
+        table = self._current_table()
+        if table is None:
+            return
+        current_row = table.currentRow()
         if current_row == -1:
-            current_row = self.table_widget.rowCount()
-        self.table_widget.insertRow(current_row)
+            current_row = table.rowCount()
+        table.insertRow(current_row)
         # 空のアイテムで初期化
-        for c in range(self.table_widget.columnCount()):
-            self.table_widget.setItem(current_row, c, QTableWidgetItem(""))
+        for c in range(table.columnCount()):
+            table.setItem(current_row, c, QTableWidgetItem(""))
 
     def delete_row(self):
-        current_row = self.table_widget.currentRow()
+        table = self._current_table()
+        if table is None:
+            return
+        current_row = table.currentRow()
         if current_row != -1:
-            self.table_widget.removeRow(current_row)
+            table.removeRow(current_row)
 
     def insert_column(self):
-        current_col = self.table_widget.currentColumn()
+        table = self._current_table()
+        if table is None:
+            return
+        current_col = table.currentColumn()
         if current_col == -1:
-            current_col = self.table_widget.columnCount()
-        self.table_widget.insertColumn(current_col)
+            current_col = table.columnCount()
+        table.insertColumn(current_col)
         # 空のアイテムで初期化
-        for r in range(self.table_widget.rowCount()):
-            self.table_widget.setItem(r, current_col, QTableWidgetItem(""))
+        for r in range(table.rowCount()):
+            table.setItem(r, current_col, QTableWidgetItem(""))
 
     def delete_column(self):
-        current_col = self.table_widget.currentColumn()
+        table = self._current_table()
+        if table is None:
+            return
+        current_col = table.currentColumn()
         if current_col != -1:
-            self.table_widget.removeColumn(current_col)
+            table.removeColumn(current_col)
 
     def apply_theme(self, theme):
         """テーマを適用する"""
