@@ -98,6 +98,11 @@ QHeaderView::section {
     border: 1px solid #313244;
     font-weight: bold;
 }
+QTableCornerButton::section {
+    background-color: #313244; 
+    border: none;
+}
+QHeaderView { background-color: #313244; }
 QMenu {
     background-color: #252538;
     color: #cdd6f4;
@@ -245,6 +250,11 @@ QHeaderView::section {
     border: 1px solid #d0d0d0;
     font-weight: bold;
 }
+QTableCornerButton::section {
+    background-color: #d0d0d0; 
+    border: none;
+}
+QHeaderView { background-color: #d0d0d0; }
 QMenu {
     background-color: #ffffff;
     color: #333333;
