@@ -445,7 +445,7 @@ class CsvDockWidget(QDockWidget):
 class CsvEdMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("csv-ed")
+        self.setWindowTitle("mh-csv-ed v0.1.0")
         self.setDockNestingEnabled(True)
         
         self.config_manager = ConfigManager()

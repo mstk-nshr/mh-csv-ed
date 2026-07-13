@@ -1,6 +1,6 @@
-# csv-ed (CSV Editor)
+# mh-csv-ed (CSV Editor)
 
-`csv-ed` は、Python と PySide6 (Qt) を使用して構築された、Windows向けのモダンなGUI付CSVエディタアプリケーションです。
+`mh-csv-ed` は、Python と PySide6 (Qt) を使用して構築された、Windows向けのモダンなGUI付CSVエディタアプリケーションです。
 人間工学に基づいたダークテーマ/ライトテーマに対応し、複数のCSVファイルをタブや分割ウィンドウ（ドック）形式で直感的に並行編集できます。
 
 ## 主な機能
