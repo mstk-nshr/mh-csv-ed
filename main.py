@@ -801,6 +801,15 @@ class CsvEdMainWindow(QMainWindow):
 
         self._update_window_title()
 
+    @staticmethod
+    def _column_label(index):
+        """0始まりの列インデックスをExcel形式の列ラベル（A, B, ..., Z, AA, AB, ...）に変換"""
+        label = ""
+        while index >= 0:
+            label = chr(index % 26 + 65) + label
+            index = index // 26 - 1
+        return label
+
     def populate_table(self, table, data):
         table.clear()
         if not data:
@@ -818,6 +827,10 @@ class CsvEdMainWindow(QMainWindow):
             for col_idx, value in enumerate(row):
                 item = QTableWidgetItem(value)
                 table.setItem(row_idx, col_idx, item)
+
+        # 横ヘッダーを A, B, C, ... に設定
+        headers = [self._column_label(c) for c in range(col_count)]
+        table.setHorizontalHeaderLabels(headers)
 
         # ヘッダーのリサイズモード設定
         table.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
@@ -980,6 +993,7 @@ class CsvEdMainWindow(QMainWindow):
         for r in range(3):
             for c in range(3):
                 table.setItem(r, c, QTableWidgetItem(""))
+        table.setHorizontalHeaderLabels([self._column_label(c) for c in range(3)])
 
         dock = CsvDockWidget("新規ファイル", table, self)
         tab_data = CsvTabData(dock, file_path=None, encoding=self.config_manager.get('default_encoding', 'utf-8'))
