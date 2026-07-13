@@ -855,8 +855,8 @@ class CsvEdMainWindow(QMainWindow):
         if tab_data is not None and not tab_data.is_edited:
             tab_data.is_edited = True
             current_title = target_dock.windowTitle()
-            if not current_title.startswith("* "):
-                target_dock.setWindowTitle(f"* {current_title}")
+            if not current_title.startswith("\u25cf "):
+                target_dock.setWindowTitle(f"\u25cf {current_title}")
 
     def _on_focus_changed(self, old, new):
         """フォーカス変更を追跡してアクティブなドックを特定"""
@@ -1103,7 +1103,7 @@ class CsvEdMainWindow(QMainWindow):
         """マウスホイール（中ボタン）クリックでタブを閉じる"""
         if event.type() == QEvent.MouseButtonPress and event.button() == Qt.MiddleButton:
             if isinstance(obj, QTabBar):
-                tab_index = obj.tabAt(event.pos())
+                tab_index = obj.tabAt(event.position().toPoint())
                 if tab_index >= 0:
                     tab_text = obj.tabText(tab_index).replace('&', '')
                     for dock, tab_data in list(self.tab_data_map.items()):
