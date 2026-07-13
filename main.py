@@ -137,6 +137,26 @@ QPushButton {
 QPushButton:hover {
     background-color: #45475a;
 }
+QTabBar::tab {
+    background-color: #313244;
+    color: #cdd6f4;
+    border: 1px solid #45475a;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+}
+QTabBar::tab:hover {
+    background-color: #45475a;
+    color: #ffffff;
+    border-color: #585b70;
+}
+QTabBar::tab:selected {
+    background-color: #1e1e2e;
+    color: #f5c2e7;
+    border-bottom: 2px solid #cba6f7;
+}
 """
 
 # ライトテーマ
@@ -263,6 +283,26 @@ QPushButton {
 }
 QPushButton:hover {
     background-color: #d0d0d0;
+}
+QTabBar::tab {
+    background-color: #e8e8e8;
+    color: #333333;
+    border: 1px solid #c0c0c0;
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+}
+QTabBar::tab:hover {
+    background-color: #d0d0d0;
+    color: #000000;
+    border-color: #a0a0a0;
+}
+QTabBar::tab:selected {
+    background-color: #ffffff;
+    color: #000000;
+    border-bottom: 2px solid #4a90d9;
 }
 """
 
