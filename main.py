@@ -1026,14 +1026,28 @@ class CsvEdMainWindow(QMainWindow):
             file_path = path
 
         try:
+            # テーブルデータを読み取り
+            data = []
+            for r in range(table.rowCount()):
+                row_data = []
+                for c in range(table.columnCount()):
+                    item = table.item(r, c)
+                    row_data.append(item.text() if item else "")
+                data.append(row_data)
+
+            # 行列反転中は元の向きに戻して保存
+            if tab_data.is_transposed:
+                original_data = []
+                for c in range(len(data[0]) if data else 0):
+                    new_row = []
+                    for r in range(len(data)):
+                        new_row.append(data[r][c] if c < len(data[r]) else "")
+                    original_data.append(new_row)
+                data = original_data
+
             with open(file_path, 'w', encoding=tab_data.encoding, newline='') as f:
                 writer = csv.writer(f)
-                for r in range(table.rowCount()):
-                    row_data = []
-                    for c in range(table.columnCount()):
-                        item = table.item(r, c)
-                        row_data.append(item.text() if item else "")
-                    writer.writerow(row_data)
+                writer.writerows(data)
 
             tab_data.is_edited = False
             tab_data._base_title = os.path.basename(file_path)
