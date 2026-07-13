@@ -141,9 +141,9 @@ QTabBar::tab {
     background-color: #313244;
     color: #cdd6f4;
     border: 1px solid #45475a;
-    border-bottom: none;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
     padding: 6px 14px;
     font-size: 13px;
 }
@@ -155,7 +155,7 @@ QTabBar::tab:hover {
 QTabBar::tab:selected {
     background-color: #1e1e2e;
     color: #f5c2e7;
-    border-bottom: 2px solid #cba6f7;
+    border-top: 4px solid #cba6f7;
 }
 """
 
@@ -288,9 +288,9 @@ QTabBar::tab {
     background-color: #e8e8e8;
     color: #333333;
     border: 1px solid #c0c0c0;
-    border-bottom: none;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
     padding: 6px 14px;
     font-size: 13px;
 }
@@ -302,7 +302,7 @@ QTabBar::tab:hover {
 QTabBar::tab:selected {
     background-color: #ffffff;
     color: #000000;
-    border-bottom: 2px solid #4a90d9;
+    border-top: 4px solid #4a90d9;
 }
 """
 
@@ -754,9 +754,13 @@ class CsvEdMainWindow(QMainWindow):
         else:
             self._reference_dock = dock
         
+        # 追加したタブを確実にアクティブ（カレントタブ）にする
+        dock.show()
         dock.raise_()
         dock.csv_table.setFocus()
         self._active_dock = dock
+        # イベントループ処理後に再度raiseしてタブ選択を確実にする
+        QTimer.singleShot(0, dock.raise_)
 
     def _replace_current_dock(self, path):
         """現在のアクティブなドックの内容を指定のCSVファイルで置き換える"""
