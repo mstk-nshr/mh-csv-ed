@@ -1,0 +1,832 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>UDB_Scenes</title><meta name="data-notion-page-icon" content="🎚️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8E%9A%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1c59da7d-49f6-80b6-8727-e3dc3af57e52" class="page sans" data-notion-page-icon="🎚️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🎚️"></span></div><h1 class="page-title" dir="auto">UDB_Scenes</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="1c59da7d-49f6-819f-9bcd-ea788927f8bd" class="" dir="auto">目次</h1><nav id="1c59da7d-49f6-818c-9a9f-d6abb5af62e6" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-819f-9bcd-ea788927f8bd">目次</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-81e2-914b-d44d2e780d20">■シーン関連設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2519da7d-49f6-8099-89ce-eef490cd452a">●ﾉﾝﾌｨｰﾙﾄﾞﾀﾞﾝｼﾞｮﾝ設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2519da7d-49f6-8066-a4c0-fceba2b1c7e1">●ﾉﾝﾌｨｰﾙﾄﾞ確率設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2339da7d-49f6-8001-9f28-f090eb0d9605">●クエスト分類</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81cb-9e90-fe17f63b3429">●クエスト設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-810f-8723-d7aa35b70679">●実績設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2339da7d-49f6-804e-8daf-e214c46da599">●ヘルプ分類</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-814c-82a0-ec5d3aad10bf">●ヘルプ設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-811c-b577-c2b35c87c411">●あらすじ設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32a9da7d-49f6-80d5-ab11-dbc5d12a08fc">●あらすじ分類2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32a9da7d-49f6-80a6-9bb1-ff1c811ce05b">●あらすじ設定2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81c4-bcc3-c20696165857">●権利表記</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81d4-b864-ff9e54a9dd70">●スタッフロール1</a></div></nav><hr id="1c59da7d-49f6-810f-b023-c93cf32cb53c" dir="auto"/><p id="1c59da7d-49f6-811c-bfba-c4dab388d08d" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8127-be77-eae346d1d30e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81da-9c8d-f366deee2287" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-819c-b65a-c1cf20538e5b" dir="auto"/><h1 id="1c59da7d-49f6-81e2-914b-d44d2e780d20" class="" dir="auto">■シーン関連設定</h1><p id="1c59da7d-49f6-810f-a6f0-f3b4c0abae6c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81fb-acd0-fd47ddf81d91" dir="auto"/><p id="2519da7d-49f6-8049-a9a7-ce580a66aa22" class="" dir="auto">
+</p><p id="2519da7d-49f6-808b-ba8d-c590e8d6776d" class="" dir="auto">
+</p><p id="2519da7d-49f6-8053-8851-ceac8da20a12" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8055-a8c9-f341ed295251" dir="auto"/><h2 id="2519da7d-49f6-8099-89ce-eef490cd452a" class="" dir="auto">●ﾉﾝﾌｨｰﾙﾄﾞﾀﾞﾝｼﾞｮﾝ設定1</h2><p id="2519da7d-49f6-80d0-9e62-ffa3c122d665" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8041-9de1-ff31ecd39339" dir="auto"/><ul id="2519da7d-49f6-80b2-8da3-c64b32fcb4bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="2519da7d-49f6-80ee-9b97-f852dedb088c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="2519da7d-49f6-809a-ad55-f88ecf334d13" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ダンジョン説明/推奨Lv<ul id="2519da7d-49f6-80bc-89db-da3165c3deb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ダンジョンの説明文と推奨Lvを設定します。<br/>出撃するかの選択肢で表示されます。</li></ul></li></ul><ul id="2519da7d-49f6-80b4-9fde-fbf4b5f21bf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ランダムEv設定1/ランダムEvシード値1<ul id="2519da7d-49f6-8004-9a32-fddee7f6af48" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ダンジョン内で発生するランダムイベントを設定します。<br/>シード値を1以上にすると乱数を固定化し、常に決まったイベントが発生するようになります。</li></ul></li></ul><ul id="2519da7d-49f6-80c3-9c0d-d42141fb0a1b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">全フロア数<ul id="2519da7d-49f6-80e5-9194-fb1b7f256555" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ダンジョンの全フロア数です。</li></ul></li></ul><ul id="2519da7d-49f6-801c-818a-f80d10f45b7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">開始位置/開始向き<ul id="2519da7d-49f6-80f6-9d99-dd8b8ed2609b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ノンフィールドダンジョンで使用する位置を設定します。</li></ul></li></ul><ul id="2519da7d-49f6-80bb-ae9f-fbfbacf646f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">撤退位置/撤退向き<ul id="2519da7d-49f6-8014-9f8d-d566d65211f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">引き返す/撤退/全滅時に移動する位置を設定します。</li></ul></li></ul><ul id="2519da7d-49f6-8094-baf6-ce6fcbb2bd7a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">完走位置/完走向き<ul id="2519da7d-49f6-80f7-8209-f6d805eda4a9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">完走時に移動する位置を設定します。</li></ul></li></ul><ul id="2519da7d-49f6-803c-b6f8-c955a504b3db" class="bulleted-list" dir="auto"><li style="list-style-type:disc">移動時コモンEv<ul id="2519da7d-49f6-8073-a07a-fcf3a23582cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">移動時に実行されるコモンイベントを指定します。</li></ul></li></ul><ul id="2519da7d-49f6-80d1-8dce-d7dfeea4fea4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クリア済Ev引数<ul id="2519da7d-49f6-806e-b686-f60fc06f7365" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのダンジョンをクリア済の場合、最終イベントと固定イベントとランダムイベントに設定したコモンのセルフ3番に1を代入するか0を代入するかを設定します。</li></ul></li></ul><ul id="2519da7d-49f6-80fd-a140-f8256e6dbe90" class="bulleted-list" dir="auto"><li style="list-style-type:disc">出撃前EvコモンID1<ul id="2519da7d-49f6-8008-a28f-e91fe21c6a67" class="bulleted-list" dir="auto"><li style="list-style-type:circle">出撃前に実行されるコモンイベントです。<br/>該当のコモンイベントのコモンセルフ0番にはダンジョンID、3番には出撃済フラグが代入されます。<br/>出撃済フラグは一度でも出撃すると、完走したか撤退したかに関係なくONになります。</li></ul></li></ul><ul id="2519da7d-49f6-8099-8ebb-d131681f9279" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クリア後EvコモンID1<ul id="2519da7d-49f6-8089-9819-f17ace053f58" class="bulleted-list" dir="auto"><li style="list-style-type:circle">完走時に実行されるコモンイベントです。<br/>該当のコモンイベントのコモンセルフ0番にはダンジョンID、3番にはクリア済フラグが代入されます。<br/>クリア済フラグは一度でも完走するとONになります。</li></ul></li></ul><ul id="2519da7d-49f6-806c-8658-c21f33fc525a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最終EvコモンID1<ul id="2519da7d-49f6-8082-b5fe-c199166afc0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">最後のマスで実行されるコモンイベントを設定します。<br/>該当のコモンイベントのコモンセルフ0番にはダンジョンID、1番にはフロア数、2番には引数、3番にはクリア済フラグが代入されます。<br/>コモンセルフ10番を「-1」にすると全滅とみなします。<br/>クリア済フラグは一度でも完走するとONになります。</li></ul></li></ul><ul id="2519da7d-49f6-8006-a672-cf02f61178e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">固定EvコモンID1/固定Ev引数1/固定Evフロア数1<ul id="2519da7d-49f6-804a-ad44-fd54f9dc2b7f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">固定イベントとして実行されるコモンイベントとその引数とそれが発生するフロア数を設定します。<br/>該当のコモンイベントのコモンセルフ0番にはダンジョンID、1番にはフロア数、2番には引数、3番にはクリア済フラグが代入されます。<br/>コモンセルフ10番を「-1」にすると全滅とみなします。<br/>クリア済フラグは一度でも完走するとONになります。</li></ul></li></ul><p id="2519da7d-49f6-8022-80cf-f48e0d198779" class="" dir="auto">
+</p><hr id="2519da7d-49f6-802e-8e55-c8ff03f6d66d" dir="auto"/><p id="2519da7d-49f6-8089-a3e9-e44e8e84740b" class="" dir="auto">
+</p><p id="2519da7d-49f6-8050-9438-c04a53aba50a" class="" dir="auto">
+</p><p id="2519da7d-49f6-80ca-98fe-ca53182b2f88" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8082-a345-dd1f7872591a" dir="auto"/><h2 id="2519da7d-49f6-8066-a4c0-fceba2b1c7e1" class="" dir="auto">●ﾉﾝﾌｨｰﾙﾄﾞ確率設定1</h2><p id="2519da7d-49f6-804e-b267-d9aaf0e7cea3" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8025-9304-c7e3df21ccce" dir="auto"/><ul id="2519da7d-49f6-80f2-9d43-f68d629958ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc">イベント1コモンEv1/イベント1引数1/イベント1優先度1<ul id="2519da7d-49f6-806b-81ac-d1f6816f3372" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ランダムイベントとして実行されるコモンイベントとその引数とその優先度を設定します。<br/>優先度が高いほどそのイベントが抽選されやすくなります。<br/>該当のコモンイベントのコモンセルフ0番にはダンジョンID、1番にはフロア数、2番には引数、3番にはクリア済フラグが代入されます。<br/>コモンセルフ10番を「-1」にすると全滅とみなします。<br/>クリア済フラグは一度でも完走するとONになります。</li></ul></li></ul><p id="2519da7d-49f6-80b5-bfca-e92bf59a83fd" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8062-a0af-d73ab469b840" dir="auto"/><p id="2519da7d-49f6-80d8-9f4f-e38ef3d0ef75" class="" dir="auto">
+</p><p id="2339da7d-49f6-805f-b79f-d0588d88a030" class="" dir="auto">
+</p><p id="2339da7d-49f6-80ac-90c0-d80933320876" class="" dir="auto">
+</p><hr id="2339da7d-49f6-80e2-aea6-d27a2b5096bd" dir="auto"/><h2 id="2339da7d-49f6-8001-9f28-f090eb0d9605" class="" dir="auto">●クエスト分類</h2><p id="2339da7d-49f6-8060-9e9b-df960cfe04c2" class="" dir="auto">
+</p><hr id="2339da7d-49f6-8094-9f21-d0e478ff0561" dir="auto"/><p id="2339da7d-49f6-804e-ab78-f9746c651089" class="" dir="auto">クエストの分類名を指定します。</p><p id="2339da7d-49f6-8015-b67b-dd0a616fb5e1" class="" dir="auto">
+</p><hr id="2339da7d-49f6-8043-b3d8-e6416422f746" dir="auto"/><p id="2339da7d-49f6-80d4-b492-e2078621bae9" class="" dir="auto">
+</p><p id="1c59da7d-49f6-811f-b2dd-f4b2e1010251" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8123-89a3-f391e9e4d96c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8107-a8b2-c46e047aea0c" dir="auto"/><h2 id="1c59da7d-49f6-81cb-9e90-fe17f63b3429" class="" dir="auto">●クエスト設定</h2><p id="1c59da7d-49f6-8189-9d32-ddf06116b400" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-810d-8511-c3f46b4b547f" dir="auto"/><ul id="1c59da7d-49f6-8132-87b6-fd1a7353132c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クエスト名<ul id="1c59da7d-49f6-81e4-a619-d9e2689874e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエスト名です。</li></ul></li></ul><ul id="1c59da7d-49f6-813c-afd0-fe1b30f88b79" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8164-8726-de03a12cd375" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-8115-ad8e-f443c226d3f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クエスト説明[進行前～完了]<ul id="1c59da7d-49f6-81ab-b45d-ed48a9aed52d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">受注前、進行中、完了時のクエストの説明文を設定します。</li></ul></li></ul><ul id="2339da7d-49f6-800d-9699-fa6799dc90b2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">分類<ul id="2339da7d-49f6-8048-9f53-c7c1a6615d3b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのクエストのクエスト画面での分類です。<br/>UDB「クエスト分類」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8104-b209-d445475b8610" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クエスト種別<ul id="1c59da7d-49f6-81a5-8109-c4af529b4ca2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの種別をモンスター討伐、アイテム納品、その他の中から設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-813d-9120-dd8424bb769a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">撃破対象敵キャラID1～5、必要撃破数1～5<ul id="1c59da7d-49f6-8185-882e-e158cc6510a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">撃破対象の敵キャラについて設定します。<blockquote id="1c59da7d-49f6-8135-9d23-d7886f83c560" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow"><strong>クエスト種別がモンスター討伐でのみ有効な項目です。</strong></mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8145-8d5d-d86f7a6df15a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">必要物品種別、アイテム1～3、個数1～5<ul id="1c59da7d-49f6-8170-b748-f5635bc0151a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの完了に必要なアイテムについて設定します。<blockquote id="1c59da7d-49f6-8131-b93c-f3bc7b197540" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow"><strong>クエスト種別がアイテム納品でのみ有効な項目です。</strong></mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81a2-ab44-df212aeb9dc2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">報酬種別、アイテム1～3、個数1～5<ul id="1c59da7d-49f6-81bd-8c45-f8e6b060b2b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">報酬として受け取るアイテムについて設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-817c-b8c5-d5bc27f7a4f8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">報酬金額<ul id="1c59da7d-49f6-81a5-9760-f65184314461" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの完了時に報酬として受け取る金額です。</li></ul></li></ul><p id="1c59da7d-49f6-81fe-929c-ff0aa92bd095" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-819e-9765-f9e291cd5b01" dir="auto"/><p id="1c59da7d-49f6-815e-94f5-fc5562089d3b" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81f6-a2d7-dd433b16520b" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8122-b0d3-d28a582b5baa" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b9-942f-d7716079e298" dir="auto"/><h2 id="1c59da7d-49f6-810f-8723-d7aa35b70679" class="" dir="auto">●実績設定</h2><p id="1c59da7d-49f6-814c-a395-cd1fe428f36c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c2-836e-f769067d896a" dir="auto"/><ul id="1c59da7d-49f6-81ad-9fa5-d0519e284ac8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">実績名<ul id="1c59da7d-49f6-81ab-bf88-cd5e4e223709" class="bulleted-list" dir="auto"><li style="list-style-type:circle">実績名です。</li></ul></li></ul><ul id="1c59da7d-49f6-81d0-95df-c8d3c31932fa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">達成時の説明文～条件不明時の説明文<ul id="1c59da7d-49f6-81e1-bbc4-e7d45ade9ae0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">達成時、条件判明時、条件不明時の説明文です。</li></ul></li></ul><ul id="1c59da7d-49f6-8128-9940-c5dca0650618" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アイコン、アイコン拡大率<ul id="1c59da7d-49f6-8159-a793-cfc704ef410a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">アイコンをUDB「アイコン画像設定」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-812a-b090-ca388e5ed678" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ごほうび画像、ごほうび画像拡大率<ul id="1c59da7d-49f6-81f8-af44-ef06576ca720" class="bulleted-list" dir="auto"><li style="list-style-type:circle">決定キーを押した時にごほうび画像が表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-811f-a5d3-c35526c3625e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">達成率条件[0-100]<ul id="1c59da7d-49f6-8194-a7c2-c3ace078837a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">設定された達成率を達成すると自動的に獲得します。</li></ul></li></ul><ul id="1c59da7d-49f6-819b-b420-dc7f40bea352" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最初から判明済みか<ul id="1c59da7d-49f6-8183-bcf4-dbbf730ebce8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">最初から条件が判明するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81cb-a2c4-f648edc01646" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8100-a815-f65397a3d21b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><p id="1c59da7d-49f6-8170-a1b4-c78aa7b23b4a" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b6-8741-ec999c428e0f" dir="auto"/><p id="1c59da7d-49f6-811b-9371-fc07181b046b" class="" dir="auto">
+</p><p id="2339da7d-49f6-80c9-b510-da18bcaf9d91" class="" dir="auto">
+</p><p id="2339da7d-49f6-8050-9f07-f3f5a44142c2" class="" dir="auto">
+</p><hr id="2339da7d-49f6-80a9-b0c5-da844daefd66" dir="auto"/><h2 id="2339da7d-49f6-804e-8daf-e214c46da599" class="" dir="auto">●ヘルプ分類</h2><p id="2339da7d-49f6-800e-aca2-dbb3398efce1" class="" dir="auto">
+</p><hr id="2339da7d-49f6-80df-918f-d4f024654b0e" dir="auto"/><p id="2339da7d-49f6-8070-8ccd-ffe86db2a215" class="" dir="auto">ヘルプの分類名を指定します。</p><p id="2339da7d-49f6-8033-872d-dbd0b6322be5" class="" dir="auto">
+</p><hr id="2339da7d-49f6-8068-b7ad-f3d014e6e570" dir="auto"/><p id="2339da7d-49f6-80ad-a947-f1b9c38b5a92" class="" dir="auto">
+</p><p id="2339da7d-49f6-8003-85d2-ffec74d4a048" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81b6-a735-fd51fdd1bd03" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81bf-82cf-f06da0816e5e" dir="auto"/><h2 id="1c59da7d-49f6-814c-82a0-ec5d3aad10bf" class="" dir="auto">●ヘルプ設定</h2><p id="1c59da7d-49f6-8157-ac0c-c583679eef91" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-818c-946b-ff668e857fad" dir="auto"/><ul id="1c59da7d-49f6-8140-8bbd-e7c2f4399da8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">項目名<ul id="1c59da7d-49f6-818c-8ced-d095234a77b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ヘルプ名です。</li></ul></li></ul><ul id="1c59da7d-49f6-8139-a86b-e55b2d085d8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">文章<ul id="1c59da7d-49f6-8172-adf7-c95e9a9dc808" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ヘルプブックで表示されます。</li></ul></li></ul><ul id="2339da7d-49f6-8045-86fb-e65700508c68" class="bulleted-list" dir="auto"><li style="list-style-type:disc">分類<ul id="2339da7d-49f6-8045-a672-fbad6f856c18" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのヘルプのヘルプ画面での分類です。<br/>UDB「ヘルプ分類」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81da-8d3f-e49db948f395" class="bulleted-list" dir="auto"><li style="list-style-type:disc">閲覧可能フラグ<ul id="1c59da7d-49f6-81fb-aa4d-d93fb3eb404a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">常に閲覧できるか、入手判定に依存するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81fc-9585-e05c2fc41d17" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8137-9b73-c6aa34fd59bb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><p id="1c59da7d-49f6-815c-9e96-d6be267738a7" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8100-822c-e102485408a0" dir="auto"/><p id="1c59da7d-49f6-81b0-b9ff-c23b87845797" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8138-92de-c3bc12d0a6a9" class="" dir="auto">
+</p><p id="1c59da7d-49f6-815d-a71a-eb0c2e033da6" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8196-adf3-fa206f242ed1" dir="auto"/><h2 id="1c59da7d-49f6-811c-b577-c2b35c87c411" class="" dir="auto">●あらすじ設定</h2><p id="1c59da7d-49f6-819c-985d-d8169ece91a7" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8194-be0b-cde12c054039" dir="auto"/><ul id="1c59da7d-49f6-811d-8aa5-cbc4ebd14f50" class="bulleted-list" dir="auto"><li style="list-style-type:disc">項目名<ul id="1c59da7d-49f6-8192-8072-e583ece7177a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">表示名です。</li></ul></li></ul><ul id="1c59da7d-49f6-814b-b5d0-e249bb12212d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">あらすじ内容<ul id="1c59da7d-49f6-816c-80f7-ffa4e1713c53" class="bulleted-list" dir="auto"><li style="list-style-type:circle">あらすじ画面で表示される文章です。</li></ul></li></ul><ul id="1c59da7d-49f6-8123-a7af-cdbb9ea8e0c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">シナリオID条件<ul id="1c59da7d-49f6-8141-bfd3-e594644a2652" class="bulleted-list" dir="auto"><li style="list-style-type:circle">あらすじの閲覧条件をシナリオIDで判定させます。</li></ul></li></ul><ul id="1c59da7d-49f6-8151-8dc8-ed993f367099" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変数1～3名、変数1～3条件<ul id="1c59da7d-49f6-81cc-abab-d311d4cb8caa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">あらすじの閲覧条件を通常変数の値で判定させます。</li></ul></li></ul><p id="1c59da7d-49f6-8162-9b10-ffa48bee94ad" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c5-ab6a-c17406cfcfc3" dir="auto"/><p id="32a9da7d-49f6-8038-a200-fcdf96b274a1" class="" dir="auto">
+</p><p id="32a9da7d-49f6-803a-91d6-f912ed083431" class="" dir="auto">
+</p><p id="32a9da7d-49f6-80b5-a86a-c697d97bf7d0" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-806f-8485-eba09a28e65d" dir="auto"/><h2 id="32a9da7d-49f6-80d5-ab11-dbc5d12a08fc" class="" dir="auto">●あらすじ分類2</h2><p id="32a9da7d-49f6-80e2-8dfb-d8bf3eb11a55" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-8071-90cc-c132378c5eba" dir="auto"/><ul id="32a9da7d-49f6-806d-90c9-ec107d6ba6e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">表示名<ul id="32a9da7d-49f6-8067-8300-e16e546e08a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">表示する分類名です。</li></ul></li></ul><ul id="32a9da7d-49f6-80a0-95c9-cd5b3ebbf1c5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">チェックリスト<ul id="32a9da7d-49f6-80b9-9da5-d690be91994f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">使わない<ul id="32a9da7d-49f6-803f-8259-c9ee98f4f127" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行度を表示しません。</li></ul></li></ul><ul id="32a9da7d-49f6-80e1-b87e-e08ab9a3a562" class="bulleted-list" dir="auto"><li style="list-style-type:circle">カウンターを使う<ul id="32a9da7d-49f6-803d-bb46-d8965cbd20d9" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行度を「●●●○○」といった具合に表示します。</li></ul></li></ul><ul id="32a9da7d-49f6-80e7-90bd-cd938a8f6dbe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[○%]を使う<ul id="32a9da7d-49f6-804a-95f4-e4acdfe79c1b" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行度をパーセント形式で表示します。</li></ul></li></ul><ul id="32a9da7d-49f6-803c-ace4-f01689554e84" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[○/○]を使う<ul id="32a9da7d-49f6-80a8-b8e7-cb2942636dba" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行度を分数形式で表示します。</li></ul></li></ul></li></ul><ul id="32a9da7d-49f6-80e5-b4b2-d9eb0c21182b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[1:カウンター]未達成<ul id="32a9da7d-49f6-80c0-9a0b-c51b02b69418" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「チェックリスト」がカウンターの場合、未達成として表示するマークです。<ul id="32a9da7d-49f6-8028-a6f9-cbeafdafaee6" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:○</li></ul></li></ul></li></ul><ul id="32a9da7d-49f6-801d-bd41-f8ae40ba30ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[1:カウンター]達成<ul id="32a9da7d-49f6-80ed-abc3-d843ad4c6b7d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「チェックリスト」がカウンターの場合、達成済として表示するマークです。<ul id="32a9da7d-49f6-8063-ab95-eb627c91f73a" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:●</li></ul></li></ul></li></ul><ul id="32a9da7d-49f6-8023-aec8-f6d745b4ada3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">［1:%,分数］ゲージ<ul id="32a9da7d-49f6-8016-9449-f7779f6b10b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「チェックリスト」が分数の場合、ゲージとして表示するかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-8018-a2f1-dc8053a80594" class="bulleted-list" dir="auto"><li style="list-style-type:disc">［使う］完了時<ul id="32a9da7d-49f6-8033-b579-e23f89fbc56d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじの完了時、この項目の1個下の項目に設定された文字列に置き換えるかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-80a8-a3b7-c817e4e636e5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[使う]失敗時に表示<ul id="32a9da7d-49f6-8036-9141-c0b51b285718" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじの失敗時、この項目に設定された文字列に置き換えるかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-80ea-97a7-d5a49b32a584" class="bulleted-list" dir="auto"><li style="list-style-type:disc">達成状況が未開放の項目<ul id="32a9da7d-49f6-80e7-9016-c222ce01ae51" class="bulleted-list" dir="auto"><li style="list-style-type:circle">表示しないか、「—-」「???」に置き換えるかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-80f4-9a9b-ea67c54bc9a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">各状況が変更された時<ul id="32a9da7d-49f6-809b-861f-cc982a46b493" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「変化させる変数」の値を置き換えるかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-8020-9105-f563d2083d00" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変化させる変数<ul id="32a9da7d-49f6-804b-a04b-e0b231338ed9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">変更対象となる通常変数の値です。</li></ul></li></ul><ul id="32a9da7d-49f6-8036-a31f-cd30fd1fd026" class="bulleted-list" dir="auto"><li style="list-style-type:disc">形式<ul id="32a9da7d-49f6-8017-a969-e77075b4b684" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最大の完了ID<ul id="32a9da7d-49f6-8053-ab9c-fdc32ff490ac" class="bulleted-list" dir="auto"><li style="list-style-type:square">そのカテゴリで進行状況が「完了」の項目のデータ番号の中で<br/>一番大きい物を100倍した値を代入します<br/>該当するものが無かった場合、「-100」を代入</li></ul></li></ul><ul id="32a9da7d-49f6-80d9-a76a-e88992a8c8ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最小の進行中ID<ul id="32a9da7d-49f6-804f-acbd-c4d8101959dc" class="bulleted-list" dir="auto"><li style="list-style-type:square">そのカテゴリで進行状況が「進行中」の項目のデータ番号の中で<br/>一番小さいものを100倍したものを代入します<br/>該当するものがなかった場合、「最大の完了ID*100＋その報告数」を代入</li></ul></li></ul><ul id="32a9da7d-49f6-805d-963a-e932dfb5e779" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最小の進行中ID+最大報告<ul id="32a9da7d-49f6-80b3-8618-f87a0bcd9434" class="bulleted-list" dir="auto"><li style="list-style-type:square">そのカテゴリで進行状況が「進行中」の項目のデータ番号の中で<br/>一番小さいものを100倍したものに一番大きい「達成」の報告番号を<br/>足した値を代入します<br/>該当するものがなかった場合、「最大の完了ID*100＋その報告数」を代入</li></ul></li></ul><ul id="32a9da7d-49f6-8090-9b69-f73c5b9e9098" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最小の進行中ID+最小目標<ul id="32a9da7d-49f6-8030-a469-d1dc4340569f" class="bulleted-list" dir="auto"><li style="list-style-type:square">そのカテゴリで進行状況が「進行中」の項目のデータ番号の中で<br/>一番小さいものを100倍したものに一番小さい「目標」の報告番号を<br/>足した値を代入します<br/>該当するものがなかった場合、「最小の進行中ID*100+最大報告」を代入</li></ul></li></ul><ul id="32a9da7d-49f6-80b0-8fb0-c2991257f117" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最後に変更したID<ul id="32a9da7d-49f6-8031-83aa-e7348111f93d" class="bulleted-list" dir="auto"><li style="list-style-type:square">コモンイベントを呼び出すときに使ったあらすじID*100を代入</li></ul></li></ul><ul id="32a9da7d-49f6-8016-a0be-dfe2f971c2e4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最後に変更したID+最大報告<ul id="32a9da7d-49f6-80b8-86b5-c7c1218e3284" class="bulleted-list" dir="auto"><li style="list-style-type:square">最小の進行中～と同じような感じ</li></ul></li></ul><ul id="32a9da7d-49f6-800a-9b87-f7fed74886c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=最後に変更したID+最小目標<ul id="32a9da7d-49f6-80af-86d8-dc2ae988ca84" class="bulleted-list" dir="auto"><li style="list-style-type:square">最小の進行中～と同じような感じ</li></ul></li></ul><ul id="32a9da7d-49f6-8043-a024-e11d5b762f1d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=進行中のID数<ul id="32a9da7d-49f6-80f8-b944-f2143d6c5d13" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行中の項目数を代入</li></ul></li></ul><ul id="32a9da7d-49f6-809e-8c4e-e6e0925dc21e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=進行中以上のID数<ul id="32a9da7d-49f6-80b5-bd4a-e5a38c4c07e6" class="bulleted-list" dir="auto"><li style="list-style-type:square">進行中以上の項目数を代入</li></ul></li></ul><ul id="32a9da7d-49f6-8001-bc9a-c768ce55a820" class="bulleted-list" dir="auto"><li style="list-style-type:circle">=完了済みのID数<ul id="32a9da7d-49f6-806a-8310-d77985c33819" class="bulleted-list" dir="auto"><li style="list-style-type:square">完了済みの項目数を代入</li></ul></li></ul></li></ul><ul id="32a9da7d-49f6-80a5-8885-d00f5ae0f7d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">進行中/完了ﾘｽﾄに表示しない<ul id="32a9da7d-49f6-80f4-9804-fc0f4e57f4a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">進行中や完了済のリストに表示するかしないかを設定します。<br/>操作説明などの形式の分類はこれに設定してください。</li></ul></li></ul><p id="32a9da7d-49f6-8077-979e-d99980bef7d4" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-809a-b049-c76934669df3" dir="auto"/><p id="32a9da7d-49f6-8048-8ade-d4f64ce8ae6a" class="" dir="auto">
+</p><p id="32a9da7d-49f6-80e5-a69c-cf8383a16fe7" class="" dir="auto">
+</p><p id="32a9da7d-49f6-80ff-a167-ddad96e87182" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-8097-bc65-fde106b9e1f6" dir="auto"/><h2 id="32a9da7d-49f6-80a6-9bb1-ff1c811ce05b" class="" dir="auto">●あらすじ設定2</h2><p id="32a9da7d-49f6-808d-a54f-ebc20b3d4753" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-80c4-98ca-d5893d1c64dc" dir="auto"/><ul id="32a9da7d-49f6-801f-bea4-f72d4c87a501" class="bulleted-list" dir="auto"><li style="list-style-type:disc">表示名<ul id="32a9da7d-49f6-80e4-8b0f-eedeb8cb8459" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじの表示名です。</li></ul></li></ul><ul id="32a9da7d-49f6-8080-b16a-d99b41b12507" class="bulleted-list" dir="auto"><li style="list-style-type:disc">カテゴリ<ul id="32a9da7d-49f6-8091-b267-c438736fcd7e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじのカテゴリ名です。</li></ul></li></ul><ul id="32a9da7d-49f6-8007-a792-c90d6fc98dc0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">背景画像<ul id="32a9da7d-49f6-8036-9104-cb26259e43a2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじの背景に表示する画像です。</li></ul></li></ul><ul id="32a9da7d-49f6-80ac-b671-f3333f8d32ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">目標数<ul id="32a9da7d-49f6-8039-a495-e6b6c928b615" class="bulleted-list" dir="auto"><li style="list-style-type:circle">このあらすじの目標数です。</li></ul></li></ul><ul id="32a9da7d-49f6-80b6-9a8d-ee2397ecc3e1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">①～⑮目標/┗報告<ul id="32a9da7d-49f6-80f9-b446-c96ad0190f76" class="bulleted-list" dir="auto"><li style="list-style-type:circle">目標には未報告時の文章を、報告には報告済の文章を入れてください。</li></ul></li></ul><ul id="32a9da7d-49f6-8042-b152-f457f54b95ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">次のあらすじID<ul id="32a9da7d-49f6-805e-a358-cd4fd0407da6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">次のあらすじIDです。</li></ul></li></ul><ul id="32a9da7d-49f6-8008-bf73-eef23162418a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">周回時初期化するか<ul id="32a9da7d-49f6-808a-b735-ced9114af3e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">周回時にあらすじを未達成にするかを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-80de-b721-e4c3f787cc66" class="bulleted-list" dir="auto"><li style="list-style-type:disc">常時/ﾌﾞﾗｳｻﾞ版/有料版初期閲覧可能[ﾋﾞｯﾄ]/常時初期目標設定[ﾋﾞｯﾄ]<ul id="32a9da7d-49f6-802d-b26b-c64ca9ee51c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">最初から各目標を報告済/設定済の状態にします。<br/>目標番号に応じたビット数は以下の通りです。<br/>「1」と入れると目標1が、「6」と入れると目標2と目標3が報告済/設定済となります<ul id="32a9da7d-49f6-80c4-9d9d-f9fc9d30af63" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標1<ul id="32a9da7d-49f6-8070-95ae-e71e9b620103" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数1</li></ul></li></ul><ul id="32a9da7d-49f6-80d3-8d8b-ead53755e0c4" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標2<ul id="32a9da7d-49f6-8077-8f7b-edb558f63931" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数2</li></ul></li></ul><ul id="32a9da7d-49f6-805a-8600-e740198fad59" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標3<ul id="32a9da7d-49f6-8093-8f2d-e224b5096f11" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数4</li></ul></li></ul><ul id="32a9da7d-49f6-8023-bd45-fd86f2f97abf" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標4<ul id="32a9da7d-49f6-8046-8915-c0b67bc17248" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数8</li></ul></li></ul><ul id="32a9da7d-49f6-8026-97a8-e583d42ff6f1" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標5<ul id="32a9da7d-49f6-80b3-9ee6-d749211eb76a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数16</li></ul></li></ul><ul id="32a9da7d-49f6-8019-a545-cf4ee87e1bc5" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標6<ul id="32a9da7d-49f6-8053-89b6-d9c2b6a9f938" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数32</li></ul></li></ul><ul id="32a9da7d-49f6-8010-a326-fd11fc5f9a87" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標7<ul id="32a9da7d-49f6-8001-96a0-dc24b9e9255e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数64</li></ul></li></ul><ul id="32a9da7d-49f6-80d1-8b5a-dc084f5ea0b3" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標8<ul id="32a9da7d-49f6-8052-a7ca-f8b3c9aa1f76" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数128</li></ul></li></ul><ul id="32a9da7d-49f6-80cf-8c18-f68e604298e2" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標9<ul id="32a9da7d-49f6-809c-a5ff-fdae2dea31b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数256</li></ul></li></ul><ul id="32a9da7d-49f6-808c-b12b-c13cbacb880f" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標10<ul id="32a9da7d-49f6-8063-9a8d-ee8f93837263" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数512</li></ul></li></ul><ul id="32a9da7d-49f6-802d-ba20-d897fb8a9d21" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標11<ul id="32a9da7d-49f6-80d1-91cc-f544a079de0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数1024</li></ul></li></ul><ul id="32a9da7d-49f6-801c-ba4c-faecefdb5bed" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標12<ul id="32a9da7d-49f6-8063-855f-d310655f654e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数2048</li></ul></li></ul><ul id="32a9da7d-49f6-801c-aae1-f59529849644" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標13<ul id="32a9da7d-49f6-8099-8308-cec1ad70905c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数4096</li></ul></li></ul><ul id="32a9da7d-49f6-8028-9a97-e93c3475f9c0" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標14<ul id="32a9da7d-49f6-8059-a55e-fed5efc01aea" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数8192</li></ul></li></ul><ul id="32a9da7d-49f6-8092-9256-d0fdcad3862b" class="bulleted-list" dir="auto"><li style="list-style-type:square">目標15<ul id="32a9da7d-49f6-80d7-be68-d53dc0c02b71" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ビット数16384</li></ul></li></ul></li></ul></li></ul><ul id="37d9da7d-49f6-80dc-aae4-ca9fe2b70e7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ討伐対象ｴﾈﾐｰﾘｽﾄ<ul id="37d9da7d-49f6-800a-8c9c-fb022c0b7483" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「DataName:」を文字列の先頭に設定するとIDではなくデータ名で設定します。<br/>「,」または改行で複数設定できます。<br/>敵キャラのID、またはデータ名で設定します。<ul id="37d9da7d-49f6-8072-9d48-eff78904e3e7" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37d9da7d-49f6-804e-ab73-ebea36c09270" class="bulleted-list" dir="auto"><li style="list-style-type:disc">DataName:(改行)大ネズミ:3,洞窟ネズミ:1,…</li></ul></li></ul></li></ul></li></ul><ul id="37d9da7d-49f6-80b1-971c-e72f41b5657c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ納品対象ｱｲﾃﾑﾘｽﾄ<ul id="37d9da7d-49f6-8063-8816-fbf485854437" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「DataName:」を文字列の先頭に設定するとIDではなくデータ名で設定します。<br/>「,」または改行で複数設定できます。<br/>アイテムのID、またはデータ名で設定します。<ul id="37d9da7d-49f6-80d2-a3c1-eca9472199bb" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37d9da7d-49f6-8080-a65d-fac16b6e4be7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">DataName:(改行)サンドイッチ:3,チョココロネ:1,…</li></ul></li></ul></li></ul></li></ul><ul id="37d9da7d-49f6-8039-b35d-d6bf1cd3b113" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ報酬ｱｲﾃﾑﾘｽﾄ/ﾘﾌﾟﾚｲ報酬ｱｲﾃﾑﾘｽﾄ<ul id="37d9da7d-49f6-80e0-8761-ddaa15afdc5e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「DataName:」を文字列の先頭に設定するとIDではなくデータ名で設定します。<br/>「,」または改行で複数設定できます。<br/>アイテムのID、またはデータ名で設定します。<br/>1回目の報酬は「ｸｴｽﾄ報酬ｱｲﾃﾑﾘｽﾄ」で、2回目の報酬は「ｸｴｽﾄﾘﾌﾟﾚｲ報酬ｱｲﾃﾑﾘｽﾄ」で設定します。<br/>「ｸｴｽﾄﾘﾌﾟﾚｲ報酬ｱｲﾃﾑﾘｽﾄ」が空欄の場合、2回目の報酬は1回目の報酬と同じになります。<ul id="37d9da7d-49f6-80f5-a7fc-df2f1de08a8d" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37d9da7d-49f6-807a-9156-c09facaf869b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">DataName:(改行)ポーション:2,エリクサー:1,…</li></ul></li></ul></li></ul></li></ul><ul id="37d9da7d-49f6-807c-b085-c17bab4ffd91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ報酬金額/ﾘﾌﾟﾚｲ報酬金額<ul id="37d9da7d-49f6-80be-bb9d-e7c6f9d31b13" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエスト完了時の報酬を設定します。<br/>1回目の報酬は「ｸｴｽﾄ報酬金額」で、2回目の報酬は「ｸｴｽﾄﾘﾌﾟﾚｲ報酬金額」で設定します。<br/>「ｸｴｽﾄﾘﾌﾟﾚｲ報酬金額」が「-1」以下の場合、2回目の報酬は1回目の報酬と同じになります。</li></ul></li></ul><ul id="37d9da7d-49f6-800f-9243-ee7160ffb33e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ受注条件目標[番号]<ul id="37d9da7d-49f6-809c-8555-cdf04d5eb0c4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの受注条件として設定する目標番号です。</li></ul></li></ul><ul id="37d9da7d-49f6-80db-8a46-f221c5055d10" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ受注時目標設定[ﾋﾞｯﾄ]<ul id="37d9da7d-49f6-80d0-b132-f77af7cd1f9b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエスト受注時にその目標番号が表示されます。<br/>ビット値で設定します。<br/>ビット値と目標番号の関係は「常時/ﾌﾞﾗｳｻﾞ版/有料版初期閲覧可能[ﾋﾞｯﾄ]」を参照してください。</li></ul></li></ul><ul id="37d9da7d-49f6-80f4-8cb3-e907af186120" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ敵討伐条件目標[ﾋﾞｯﾄ]<ul id="37d9da7d-49f6-8043-aabb-f7d8a2a3578a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの敵討伐完了時にその目標番号が報告されます。<br/>ビット値で設定します。<br/>ビット値と目標番号の関係は「常時/ﾌﾞﾗｳｻﾞ版/有料版初期閲覧可能[ﾋﾞｯﾄ]」を参照してください。</li></ul></li></ul><ul id="37d9da7d-49f6-8045-945e-e2e64fda9c3e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ納品条件目標[ﾋﾞｯﾄ]<ul id="37d9da7d-49f6-8068-aa75-dcc2ff91bf88" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストのアイテム納品完了時にその目標番号が報告されます。<br/>ビット値で設定します。<br/>ビット値と目標番号の関係は「常時/ﾌﾞﾗｳｻﾞ版/有料版初期閲覧可能[ﾋﾞｯﾄ]」を参照してください。</li></ul></li></ul><ul id="37d9da7d-49f6-801b-bcba-ebc2a6e9199c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｸｴｽﾄ完了条件目標[番号]<ul id="37d9da7d-49f6-80a0-93de-c9276df64f70" class="bulleted-list" dir="auto"><li style="list-style-type:circle">クエストの完了条件として設定する目標番号です。</li></ul></li></ul><ul id="37d9da7d-49f6-8050-b2f1-d811783f2742" class="bulleted-list" dir="auto"><li style="list-style-type:disc">実績ごほうび画像ﾌｧｲﾙ/拡大率<ul id="37d9da7d-49f6-80c7-a209-f6bc7761e5f8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ごほうび画像が設定されたあらすじ2をリストから開いた際に決定キーを押すと設定した画像を開けます。<br/>その拡大率も設定します。</li></ul></li></ul><ul id="37d9da7d-49f6-8048-96b8-d683a6c1a3de" class="bulleted-list" dir="auto"><li style="list-style-type:disc">実績達成率条件[0-100]<ul id="37d9da7d-49f6-803f-8330-e0740462a028" class="bulleted-list" dir="auto"><li style="list-style-type:circle">任意のあらすじ2を実績として完了させた際、実績完成率に応じて自動的に完了します。</li></ul></li></ul><p id="32a9da7d-49f6-80ff-8948-ed8146486908" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-806d-97a3-fc0fa8d47cce" dir="auto"/><p id="32a9da7d-49f6-80de-b537-f536caadee46" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8104-9373-ee14301b72e3" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8149-ac95-e3229e3658a1" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8120-a85f-ff80f278daf4" dir="auto"/><h2 id="1c59da7d-49f6-81c4-bcc3-c20696165857" class="" dir="auto">●権利表記</h2><p id="1c59da7d-49f6-818d-9a7f-dc09ae67953c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8156-8084-f05649aab78e" dir="auto"/><ul id="1d39da7d-49f6-80f0-bff1-d58035479758" class="bulleted-list" dir="auto"><li style="list-style-type:disc">項目名<ul id="1d39da7d-49f6-8057-b9a2-d334088e7d42" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「画像素材」や「音楽素材」などの項目名です。<br/>「@」を記述するとそれ以降の文字を表示しません。</li></ul></li></ul><ul id="1d39da7d-49f6-806a-af9d-dccd8c5a4ad8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">人物名txtファイル<ul id="1d39da7d-49f6-8082-ab46-e4d88f2f6ca0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「txt」形式のファイルを指定してください。<br/>ファイルの内容がそのまま表示されます。<br/>テキストファイルの文字コードを「UTF-8(BOM付き)」にしてください！<br/>「ANSI」「UTF-8」では文字化けします！<br/>テキストファイルの中身には人物名を入力してください。</li></ul></li></ul><ul id="1d39da7d-49f6-80b7-b5e6-d7fd6307bdaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最終項目<ul id="d0f463c1-720e-4c82-8934-931cce1384fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">これを1に設定すると、これを最後の項目として、これより後の項目を表示しません。<blockquote id="1d39da7d-49f6-8007-8de3-fc9349f54f10" class="" dir="auto"><mark class="highlight-red" data-notion-highlight="red">上級者向けの項目です！<br/>通常は0に設定する事をおすすめします！</mark></blockquote></li></ul></li></ul><p id="1c59da7d-49f6-8166-bad7-c170b3cb88ed" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8126-8d64-e2da4152cd99" dir="auto"/><p id="1c59da7d-49f6-81cb-96f3-ca6ad4c8ddbf" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81f2-ac78-ef07b880825e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-814f-8c08-f359eefd9e73" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b4-9e50-c0891755885d" dir="auto"/><h2 id="1c59da7d-49f6-81d4-b864-ff9e54a9dd70" class="" dir="auto">●スタッフロール1</h2><p id="1c59da7d-49f6-81c0-8a22-c3626563e837" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81de-a76a-d310ab2d57b7" dir="auto"/><ul id="1c59da7d-49f6-81de-b84b-fe761f8666cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">項目名<ul id="1c59da7d-49f6-81a5-a388-d6edb0f69444" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「@」を記述するとそれ以降の文字を表示しません。<br/>0番目のデータにはゲームのタイトル名を入れてください。<br/>1番目～最後のデータより1個前のデータには「画像素材」や「コモンイベント素材」等の役割名<br/>最後のデータには「遊んでくれてありがとう」</li></ul></li></ul><ul id="1c59da7d-49f6-8186-888a-fb1e0530d0e8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">人物名<ul id="1c59da7d-49f6-817d-993f-f9832ef53d13" class="bulleted-list" dir="auto"><li style="list-style-type:circle">0番目のデータには「制作スタッフ」を入れてください。<br/>1番目～最後のデータより1個前のデータには人物の名前かサイト名<br/>最後のデータには「By.(作者名)」を入れてください。</li></ul></li></ul><ul id="1c59da7d-49f6-8102-9a80-e54dac79ef64" class="bulleted-list" dir="auto"><li style="list-style-type:disc">URL<ul id="1c59da7d-49f6-81a1-9d6c-fd930ec47a2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">サイトのURLを入れてください。<br/>空欄でも大丈夫です。<br/>0番目のデータと最後のデータには無効です。</li></ul></li></ul><ul id="1c59da7d-49f6-81ed-9d48-f49eff848d67" class="bulleted-list" dir="auto"><li style="list-style-type:disc">備考<ul id="1c59da7d-49f6-8166-8a04-f681bb40f12f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">任意の文章を入れてください。<br/>空欄でも大丈夫です。<br/>0番目のデータと最後のデータには無効です。</li></ul></li></ul><ul id="1c59da7d-49f6-8112-845c-e0b28b02813f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">背景<ul id="1c59da7d-49f6-8107-8df1-fd6b168871e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">0番のデータに指定するとスタッフロール全体の背景を指定できます。<br/>1番以降のデータで「背景」を指定しても無効です。</li></ul></li></ul><ul id="1c59da7d-49f6-8154-9350-d33e82c7cc1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">一枚絵<ul id="1c59da7d-49f6-8107-9161-fe57de2c359c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">一枚絵です。<br/>0番目と最後のデータに指定するとテキストの代わりに画像を表示します。</li></ul></li></ul><ul id="1d39da7d-49f6-8033-a832-ffeded3e69c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最終項目<ul id="1d39da7d-49f6-80da-9122-f233b3a1406b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">これを1に設定すると、これを最後の項目として、これより後の項目を表示しません。<blockquote id="7fdb550f-e278-4227-91c0-622243581aae" class="" dir="auto"><mark class="highlight-red" data-notion-highlight="red">上級者向けの項目です！<br/>通常は0に設定する事をおすすめします！</mark></blockquote></li></ul></li></ul><p id="1c59da7d-49f6-8152-86a7-e7502586320c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8100-b5a9-c761cc6f3c33" dir="auto"/><p id="37d9da7d-49f6-803a-85dc-fd99aa0df23f" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

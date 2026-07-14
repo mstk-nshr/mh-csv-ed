@@ -1,0 +1,802 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>UDB_3DMap</title><meta name="data-notion-page-icon" content="🎚️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8E%9A%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1c59da7d-49f6-809e-9093-cb257db6ab64" class="page sans" data-notion-page-icon="🎚️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🎚️"></span></div><h1 class="page-title" dir="auto">UDB_3DMap</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="1c59da7d-49f6-8191-a2ee-ece89747527f" class="" dir="auto">目次</h1><nav id="1c59da7d-49f6-8177-8a3b-d7d877d3ffc4" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-8191-a2ee-ece89747527f">目次</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-812f-9b83-d569dae7e0f3">■３D関連設定🐺🌕🦊</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81e0-87e2-c7556ca4cb8e">●３Dマップ固有設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81b1-acf6-c286cb7276ed">●共通項目(3Dイベント＆３Dオブジェクト)</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-818d-8d8f-e7678fc0d43a">●３Dイベント</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8196-92c6-fd16fb974718">●３Dオブジェクト</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8115-ab7c-dfb87209b79a">●歩行エフェクト管理</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8140-b6e1-e68a0b8f53be">●分割パターン数管理</a></div></nav><hr id="1c59da7d-49f6-817d-9a31-e72a76cf9761" dir="auto"/><p id="1c59da7d-49f6-810e-80ef-e2506c8b22e7" class="" dir="auto">
+</p><p id="1c59da7d-49f6-811e-9dea-de572f9024f2" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8141-a458-ece833beef9e" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814e-b6af-d5cfc82be446" dir="auto"/><h1 id="1c59da7d-49f6-812f-9b83-d569dae7e0f3" class="" dir="auto">■３D関連設定🐺🌕🦊</h1><p id="1c59da7d-49f6-81ff-8e66-e0e1c7988491" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81d8-ab8c-ce976baf5423" dir="auto"/><p id="1c59da7d-49f6-812c-8f33-e430987a9666" class="" dir="auto">
+</p><p id="1c59da7d-49f6-817a-93ed-ed22bd4be22f" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a4-8b4d-cbeb0cf9feb4" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81e8-9361-c3615882fe6e" dir="auto"/><h2 id="1c59da7d-49f6-81e0-87e2-c7556ca4cb8e" class="" dir="auto">●３Dマップ固有設定</h2><p id="1c59da7d-49f6-815f-8916-ceb7292c7b8d" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81a6-938a-fff465283846" dir="auto"/><ul id="1c59da7d-49f6-8102-a225-c6a1a3f475da" class="bulleted-list" dir="auto"><li style="list-style-type:disc">３Dフラグ<ul id="1c59da7d-49f6-81d8-b35b-c1fc6d4fd545" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのマップが２Dなのか３Dなのかを設定します。<br/>「　[3D]マップ移動処理　」で移動した際に反映されます。</li></ul></li></ul><ul id="1c59da7d-49f6-816c-ad99-ce1e99d9eb5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">マップ上部<ul id="1c59da7d-49f6-81ca-b428-ec6f5ddca9c3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">マップ上部の東西南北を指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8122-a384-fe01d7f02d9f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">上の階/下の階<ul id="1c59da7d-49f6-81b6-ade6-c249104cf553" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「　[3D]階段↑　」「　[3D]階段↓　」「　[3D]エレベータ　」<br/>上記のコモンで移動した際の移動先として参照されます。</li></ul></li></ul><ul id="1c59da7d-49f6-818e-9c80-cfb3332ab59e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">地形（イベント）設定タイプ番号<ul id="1c59da7d-49f6-8181-aa8f-f1514170e58a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">CSVを使用しない場合に、<br/>マップによるタイル設定の違いに合わせて３Dの画像を変えるのに使います。</li></ul></li></ul><ul id="1c59da7d-49f6-81d5-a621-c4989c666506" class="bulleted-list" dir="auto"><li style="list-style-type:disc">地形（イベント）CSV上書き<ul id="1c59da7d-49f6-8179-8c4f-e3b7f3f1ff31" class="bulleted-list" dir="auto"><li style="list-style-type:circle">地形（イベント）設定タイプ番号をデフォルトにする場合に<br/>マップによるタイル設定の違いに合わせて３Dの画像を変えるのに使います。</li></ul></li></ul><ul id="1c59da7d-49f6-81d7-ad05-f01029b51643" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期X（Y）/向き<ul id="1c59da7d-49f6-8176-9271-c96c7d1bfa6a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">移動直後の初期座標や向きを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-810c-9cb9-e2053737097f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">エンカウント歩数/-1ﾅｼ<ul id="1c59da7d-49f6-81aa-bff9-e1e563d9b600" class="bulleted-list" dir="auto"><li style="list-style-type:circle">何歩でランダムエンカウントするか、或いは<br/>エンカウントシンボルが襲ってくるか<br/>それを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-814a-9bf1-d2be935bde21" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ランダムダンジョン設定<ul id="1c59da7d-49f6-81eb-ba27-d9d123329747" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ONでそのマップはランダムダンジョンとなります。<br/>「　○[変更可]ランダム迷宮生成　」コモンで詳細な内容を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8141-a12d-ebff079d5681" class="bulleted-list" dir="auto"><li style="list-style-type:disc">イベント設置用コモン<ul id="1c59da7d-49f6-81dd-b94c-ce851906069f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「ランダムダンジョン」にしている場合に、イベントを設置する際、<br/>どのコモンを参照するか。それを設定します。</li></ul></li></ul><ul id="32a9da7d-49f6-807c-96cf-f348e1daa888" class="bulleted-list" dir="auto"><li style="list-style-type:disc">足跡表示するチップ番号1～10<ul id="32a9da7d-49f6-80f6-b6a4-df09baf51e6a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">足跡を表示するチップ番号を設定します。</li></ul></li></ul><ul id="3709da7d-49f6-8092-b62c-dd0ba3e8ad25" class="bulleted-list" dir="auto"><li style="list-style-type:disc">エスケープ自動化チップ番号1～5<ul id="3709da7d-49f6-80ca-86c9-e7361fcd2bf3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">これに設定したチップを通った場合、エスケープフラグがONになり、最後に通った該当チップの座標に移動します！</li></ul></li></ul><ul id="3709da7d-49f6-80f6-88ab-c3026cf39c7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">出現エネミー<ul id="3709da7d-49f6-809c-ac0e-cd7869bd3faa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「○[2]迷路ﾀﾞﾝｼﾞｮﾝｲﾍﾞﾝﾄ量産」で使用されます。</li></ul></li></ul><p id="1c59da7d-49f6-8188-b7d1-c1d033563071" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-818e-a969-dc898c0e5d14" dir="auto"/><p id="1c59da7d-49f6-811e-b5ef-ded58912eea4" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8183-ad08-f250964bd85e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8140-ad4a-f4feb7589958" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81d1-b287-f268f13af9a4" dir="auto"/><h2 id="1c59da7d-49f6-81b1-acf6-c286cb7276ed" class="" dir="auto">●共通項目(3Dイベント＆３Dオブジェクト)</h2><p id="1c59da7d-49f6-8146-a5b6-ca1635de2ea4" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c9-9c17-cf079cb87a3f" dir="auto"/><ul id="1c59da7d-49f6-812c-b646-c2e7aa367942" class="bulleted-list" dir="auto"><li style="list-style-type:disc">歩行効果音参照先<ul id="1c59da7d-49f6-8198-9f75-c516892c1bf5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">効果音として参照するUDB「歩行エフェクト管理」のデータIDを指定します。<br/>３Dオブジェクトの場合は、床ダメージの決定にも参照されます。</li></ul></li></ul><ul id="1c59da7d-49f6-8150-aef3-e827da4ed704" class="bulleted-list" dir="auto"><li style="list-style-type:disc">コモン番号（-1）でなし/上記コモン起動条件<ul id="1c59da7d-49f6-8109-89c1-d27c2acd3689" class="bulleted-list" dir="auto"><li style="list-style-type:circle">決定キーやそのマスに侵入した際、或いはイベントやオブジェクトに激突した際、<br/>起動するコモンイベントと、その起動条件を指定します。</li></ul></li></ul><p id="1c59da7d-49f6-8128-b476-fab1f86415fb" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81ce-90a6-d1d1dc04e486" dir="auto"/><p id="1c59da7d-49f6-81c4-b985-d040f5c2e4a1" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8123-8933-d87adfcb177a" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8159-96d2-fe9c6625f180" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-818c-91db-e7e05e3db26a" dir="auto"/><h2 id="1c59da7d-49f6-818d-8d8f-e7678fc0d43a" class="" dir="auto">●３Dイベント</h2><p id="1c59da7d-49f6-812f-bb04-d102241e3cce" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c8-9234-d8f06967ca73" dir="auto"/><ul id="1c59da7d-49f6-8163-bb35-f3c57f271546" class="bulleted-list" dir="auto"><li style="list-style-type:disc">主人公（＋1万で敵）ID<ul id="1c59da7d-49f6-81f2-ba72-c3505f96f2fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">マップイベントの画像をエネミーグラフィックや主人公歩行グラフィックに<br/>置き換えるのに使用します。<br/>マイナスの値で、マップイベントの画像そのままを参照します。</li></ul></li></ul><ul id="1c59da7d-49f6-81cd-aa8c-d1dc443c6618" class="bulleted-list" dir="auto"><li style="list-style-type:disc">エンカウントフラグ<ul id="1c59da7d-49f6-8104-9e12-c1773086000e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">エンカウントシンボルなのかを設定します。<br/>ケモプレコラボ版の場合、エンカウントシンボルであれば、<br/>エンカウントゲージがいっぱいになったら、<br/>エンカウントシンボルが襲ってきます。</li></ul></li></ul><p id="1c59da7d-49f6-81a7-8df5-cea3765d75ab" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-816e-82cf-c4096b49d0e9" dir="auto"/><p id="1c59da7d-49f6-8166-834e-eca595e5b3a0" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8134-af30-dc525659e81d" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a5-97b1-edd02017066f" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8180-9353-cd589b6b296f" dir="auto"/><h2 id="1c59da7d-49f6-8196-92c6-fd16fb974718" class="" dir="auto">●３Dオブジェクト</h2><p id="1c59da7d-49f6-81f2-a93e-daa5df78fc1b" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8175-b5be-c814e3ad2962" dir="auto"/><ul id="1c59da7d-49f6-819e-9a00-c695c10686b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">扉設定/壁描画<ul id="1c59da7d-49f6-8106-abe3-ed02015b4f86" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのマスの特徴や画像の表示方法を決定します</li></ul></li></ul><ul id="1c59da7d-49f6-81a5-be02-c3b81556fd5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">壁（床）画像ファイル名/北面下向き（西面左向き/東面右向き/南面上向き）画像<ul id="1c59da7d-49f6-81db-938b-ff33779308e7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">壁やオブジェクト、床に使用する画像ファイルを指定します</li></ul></li></ul><ul id="1c59da7d-49f6-8187-a488-d44d278f9e2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">壁（床）分割パターン数管理ID<ul id="1c59da7d-49f6-81b1-bdc7-ddfd2d612548" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連番画像を参照ファイルとして指定した場合の分割数に参照する「分割パターン数管理」の<br/>データIDを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8122-b22c-edc55f92e1d1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">北面下向き/西面左向き/東面右向き/南面上向きパターン<ul id="1c59da7d-49f6-8138-8383-f7a9b7102b86" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連番画像を参照ファイルとして指定した場合に、どの分割部分を参照するのか<br/>それを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8195-94f0-c2c3e1d42c5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">床高さ<ul id="1c59da7d-49f6-81eb-8876-d857b6991c21" class="bulleted-list" dir="auto"><li style="list-style-type:circle">床の高さを指定します。<br/>隣接する床同士の高さの差が壁の高さになります。</li></ul></li></ul><ul id="1c59da7d-49f6-818f-928b-c6cb9ae5d7c1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">天井と空<ul id="1c59da7d-49f6-812e-a245-f2554bb1f2eb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのマスが屋内か室内か、それを指定します</li></ul></li></ul><ul id="2f39da7d-49f6-804b-848b-caa8784fd93a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">天井高さ<ul id="2f39da7d-49f6-804d-be65-f8ea0d0bc079" class="bulleted-list" dir="auto"><li style="list-style-type:circle">そのマスの天井の高さを設定します。</li></ul></li></ul><p id="1c59da7d-49f6-81dd-bd70-da50f2c75481" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8110-bf81-c98c9758dcdf" dir="auto"/><p id="1c59da7d-49f6-8158-8c52-e47c0b4f97af" class="" dir="auto">
+</p><p id="1c59da7d-49f6-813c-84b7-d9e605cd5c3e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8103-80be-cc7785050ecc" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8164-86e8-f3624b05d965" dir="auto"/><h2 id="1c59da7d-49f6-8115-ab7c-dfb87209b79a" class="" dir="auto">●歩行エフェクト管理</h2><p id="1c59da7d-49f6-813b-b0be-c90f4062fd3b" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814b-8e01-dc545bf0bae8" dir="auto"/><ul id="1c59da7d-49f6-81de-a422-f8eee8ff9f80" class="bulleted-list" dir="auto"><li style="list-style-type:disc">足音/激突/旋回SE番号<ul id="1c59da7d-49f6-81db-af04-e8e54b598908" class="bulleted-list" dir="auto"><li style="list-style-type:circle">効果音を指定します</li></ul></li></ul><ul id="1c59da7d-49f6-8114-a264-d082e8d65afa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">床ダメージ[Lv][最大HP][現在HP％][固定値]<ul id="1c59da7d-49f6-8196-bd57-e16af6c8aa77" class="bulleted-list" dir="auto"><li style="list-style-type:circle">床ダメージを指定します。</li></ul></li></ul><p id="1c59da7d-49f6-81af-93be-e78a0244c8a6" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8195-ba47-c23d578a5a28" dir="auto"/><p id="1c59da7d-49f6-813e-a0b4-c89258c34737" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8134-b21f-d16107c321bd" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81d7-88aa-de61252047c6" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81aa-b4c8-e63e121887a4" dir="auto"/><h2 id="1c59da7d-49f6-8140-b6e1-e68a0b8f53be" class="" dir="auto">●分割パターン数管理</h2><p id="1c59da7d-49f6-8153-bc64-ffa69a79ef1a" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8128-a1b3-c8cd32462e98" dir="auto"/><ul id="1c59da7d-49f6-81d6-894d-f9cd404d1935" class="bulleted-list" dir="auto"><li style="list-style-type:disc">分割数（縦/横）<ul id="1c59da7d-49f6-819a-a9fd-e5585920a67a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">縦横いくつに画像を分割するか、それを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81b1-9934-f2f00f429e1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">パターン番号（初期表示/アニメ開始/アニメ終了）<ul id="1c59da7d-49f6-81ec-9441-c2d14582beda" class="bulleted-list" dir="auto"><li style="list-style-type:circle">拡張子ピリオド前にAnimeとある連番画像のアニメーションを設定します。<br/>どの分割部分を始点と終点にするのか、それを設定します。</li></ul></li></ul><p id="1c59da7d-49f6-81cf-ac0b-d4f65da7998c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-810c-af2c-ddcd42b6b9e2" dir="auto"/><p id="1c59da7d-49f6-81f7-adb0-e4ac88530973" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -733,17 +733,21 @@ class CsvEdMainWindow(QMainWindow):
 
     def _read_csv_data(self, path):
         """CSVファイルを読み込み、データとエンコーディングを返す"""
-        encodings = [self.config_manager.get('default_encoding', 'utf-8'), 'utf-8', 'cp932', 'utf-8-sig']
-        for enc in encodings:
+        # utf-8-sig (BOM付きUTF-8) を utf-8 より先に試みることで、
+        # BOMが先頭文字列に混入してダブルクォートが残る問題を防ぐ。
+        # utf-8-sig はBOMなしファイルも正常に読めるため、常に utf-8 より優先する。
+        default_enc = self.config_manager.get('default_encoding', 'utf-8')
+        # utf-8 と utf-8-sig は別扱い: utf-8-sig を utf-8 より常に先に配置
+        base_order = ['utf-8-sig', 'utf-8', 'cp932']
+        # デフォルトエンコーディングが上記以外なら先頭に追加
+        if default_enc not in base_order:
+            base_order.insert(0, default_enc)
+        for enc in base_order:
             try:
                 with open(path, 'r', encoding=enc, newline='') as f:
                     reader = csv.reader(f)
                     data = list(reader)
-                # セル値がダブルクォートで囲まれている場合は除去
-                stripped = []
-                for row in data:
-                    stripped.append([cell.strip('"') for cell in row])
-                return stripped, enc
+                return data, enc
             except Exception:
                 continue
         return None, None

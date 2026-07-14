@@ -1,0 +1,902 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>MaterialStandards</title><meta name="data-notion-page-icon" content="🎚️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8E%9A%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="2059da7d-49f6-808d-af5c-ff556fdfe842" class="page sans" data-notion-page-icon="🎚️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🎚️"></span></div><h1 class="page-title" dir="auto">MaterialStandards</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><hr id="2059da7d-49f6-80af-bda2-e59fa7bbbb95" dir="auto"/><h1 id="2059da7d-49f6-80b6-bd0d-dd5775239e5b" class="" dir="auto">素材規格について</h1><h1 id="2059da7d-49f6-80e6-ba55-c382bcff8f67" class="" dir="auto">目次</h1><nav id="2059da7d-49f6-808b-a700-e3b794fa9a21" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2059da7d-49f6-80b6-bd0d-dd5775239e5b">素材規格について</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2059da7d-49f6-80e6-ba55-c382bcff8f67">目次</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80c6-b8ef-c7f23ba9efe0">●歩行画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8074-be57-e1019792ddd2">●顔画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-804b-88c2-c49ad3a978bb">●敵キャラ画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8085-998e-c26359d56b0d">●アイコン画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8037-a4c2-f297ff47fb47">●戦闘背景</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-802c-bf2e-ee23041655e3">●戦闘ウィンドウ画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8028-8f6c-f8e933f2699d">●MONリングコマンド画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80e4-8555-d31fbf792317">●マスク画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8099-bb74-cb142b7067d1">●カットイン</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80be-a7a8-ea6c474b85a5">●戦闘アニメーション</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8000-a056-c67ce714277b">●サイドビュー武器画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80a7-aac5-cc10d7e3f695">●実績ごほうび画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8032-a6e9-c1104d10e36b">●旧版スタッフロール画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80d7-88bd-c84efacdd4b0">●タイトル画面</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-809d-a086-ca233aa34dca">●メニュー画面</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8069-a8e9-ebb8834d3ec3">●システム画像/効果音</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-806c-a39a-c87431813e76">●有料版専用画像/効果音</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80da-a400-c01318237a18">●UDB内効果音設定項目</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80bd-a1e4-f6f50d7cf461">●UDB内テキスト設定項目</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-8025-a947-ff6c090a743c">●立ち絵</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-806f-816e-f5f04dc1ec9a">●マップ背景</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80d0-8ecf-e205c4133d30">●共通の画像の規格</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80fb-907c-e7f46934d13c">●共通のBGMの規格</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-807b-85d0-ef7fad2427c4">●共通の効果音の規格</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80e9-95f6-fef782451ac3">●3D関連画像</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2059da7d-49f6-80d2-895e-edf5a389bf7a">●追加素材の2Dミニマップ画像</a></div></nav><hr id="2059da7d-49f6-80eb-9128-c5a456c99486" dir="auto"/><p id="2059da7d-49f6-80b1-816c-f3370cb1e46d" class="" dir="auto">
+</p><p id="2059da7d-49f6-8023-8ab9-cc3a2fe35e2c" class="" dir="auto">
+</p><p id="2059da7d-49f6-8035-a0bb-fe4ce96003e8" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8097-b106-d700d4f62e7d" dir="auto"/><h2 id="2059da7d-49f6-80c6-b8ef-c7f23ba9efe0" class="" dir="auto">●歩行画像</h2><p id="2059da7d-49f6-8086-a104-e826462aa28b" class="" dir="auto">UDB「歩行画像設定」で設定</p><p id="2059da7d-49f6-8070-9dda-c9ef36d2292a" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80d0-8909-f84c1833837a" dir="auto"/><ul id="2059da7d-49f6-805d-8e26-d2ae2c7a46a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズはウディタデフォルトと同一の規格</li></ul><p id="2059da7d-49f6-80e0-99ac-eae66520a32c" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8027-85c9-d0bb322506e0" dir="auto"/><p id="2059da7d-49f6-808e-8ec4-e30716cd6ff8" class="" dir="auto">
+</p><p id="2059da7d-49f6-80eb-85f1-cc8ebb689476" class="" dir="auto">
+</p><p id="2059da7d-49f6-8032-9d7e-e4634802a0a1" class="" dir="auto">
+</p><hr id="2059da7d-49f6-801c-a978-d2c488544b9f" dir="auto"/><h2 id="2059da7d-49f6-8074-be57-e1019792ddd2" class="" dir="auto">●顔画像</h2><p id="2059da7d-49f6-8041-b88c-dadab76f35d7" class="" dir="auto">UDB「顔画像設定」で設定</p><p id="2059da7d-49f6-8096-a037-ce9364239a6a" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80bd-a792-d2199618188c" dir="auto"/><ul id="2059da7d-49f6-80e3-b6bf-d7ee6b9a39a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは正方形の画像なら任意<blockquote id="2059da7d-49f6-80d8-9e42-ca2846dd3c73" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-8087-8e09-d15f314ec103" class="" dir="auto">
+</p><hr id="2059da7d-49f6-809a-8d26-eba293954856" dir="auto"/><p id="2059da7d-49f6-8019-b5f4-e712a5f10e9f" class="" dir="auto">
+</p><p id="2059da7d-49f6-806f-9fce-d07fd40c8b6a" class="" dir="auto">
+</p><p id="2059da7d-49f6-8053-9b28-dbf4db8fd047" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8073-bac4-f694d190a7bd" dir="auto"/><h2 id="2059da7d-49f6-804b-88c2-c49ad3a978bb" class="" dir="auto">●敵キャラ画像</h2><p id="2059da7d-49f6-80f6-9d39-d5f16f1213b4" class="" dir="auto">UDB「敵キャラ画像設定」で設定</p><p id="2059da7d-49f6-8077-8a9e-f96db347c9c1" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8058-b4eb-d7fe4a0e73af" dir="auto"/><ul id="2059da7d-49f6-80e8-83da-ff669d01b16f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは任意<br/>拡大率を調整可<blockquote id="2059da7d-49f6-80db-aff3-de2dd280d3ae" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-8016-984c-d5016b903484" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80f9-a52a-ce9ff202eb58" dir="auto"/><p id="2059da7d-49f6-8028-ab75-cfd575cf5d3e" class="" dir="auto">
+</p><p id="2059da7d-49f6-80db-9e81-fa5e19140b7c" class="" dir="auto">
+</p><p id="2059da7d-49f6-8094-9139-e9a1584a263b" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8060-bd1d-ed06cd0ae0bf" dir="auto"/><h2 id="2059da7d-49f6-8085-998e-c26359d56b0d" class="" dir="auto">●アイコン画像</h2><p id="2059da7d-49f6-8050-90ce-f2938440789a" class="" dir="auto">UDB「アイコン画像設定」で設定</p><p id="2059da7d-49f6-8021-a39f-d80196921781" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80f8-8518-c873945518a7" dir="auto"/><ul id="2059da7d-49f6-80f9-a88e-e4dc3055cf5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは640x480の画面基準で24ピクセルの正方形の画像推奨<br/>1個の画像で、横や縦に複数個のアイコンが並んでる画像にも対応<figure id="2059da7d-49f6-8075-97f4-eb9a2f25211d" class="image" style="text-align:left" data-notion-image="MrH_Buff1.png" dir="ltr"><a href="MrH_Buff1.png"><img style="width:384px" src="MrH_Buff1.png"/></a></figure><blockquote id="2059da7d-49f6-8089-91b4-d990e76634c1" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-80ee-8819-d283f2223b34" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80db-8edb-e800ea1a1c8b" dir="auto"/><p id="2059da7d-49f6-80a3-9a80-e2333bf74f2c" class="" dir="auto">
+</p><p id="2059da7d-49f6-80a0-90a7-d4d1af26b97b" class="" dir="auto">
+</p><p id="2059da7d-49f6-805d-9fa4-fa2850ace3f3" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ca-8c43-fdce9e8e9092" dir="auto"/><h2 id="2059da7d-49f6-8037-a4c2-f297ff47fb47" class="" dir="auto">●戦闘背景</h2><p id="2059da7d-49f6-8011-a69e-c19c966078c7" class="" dir="auto">UDB「戦闘背景設定」で設定</p><p id="2059da7d-49f6-80c8-b6a2-d519738bedeb" class="" dir="auto">
+</p><hr id="2059da7d-49f6-803f-a5d5-d4ee5f890dd7" dir="auto"/><ul id="2059da7d-49f6-801d-acd0-f78a1237fb51" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは任意<blockquote id="2059da7d-49f6-80cc-83eb-ff0b615090a8" class="" dir="auto">自動でリサイズ対応<br/>2枚のレイヤーの画像を設定</blockquote></li></ul><p id="2059da7d-49f6-806b-8aef-c9abd20a8934" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ea-a70b-d06b6ec53b6f" dir="auto"/><p id="2059da7d-49f6-80f2-bdc8-e0e72a940937" class="" dir="auto">
+</p><p id="2059da7d-49f6-8019-9ae1-f8319faca314" class="" dir="auto">
+</p><p id="2059da7d-49f6-8090-8103-ca76f6d0de69" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8012-9c49-ff4b625027af" dir="auto"/><h2 id="2059da7d-49f6-802c-bf2e-ee23041655e3" class="" dir="auto">●戦闘ウィンドウ画像</h2><p id="2059da7d-49f6-8005-a5f9-f0620a7ca80f" class="" dir="auto">UDB「戦闘ウィンドウ設定」で設定</p><p id="2059da7d-49f6-8027-aee8-f80cac5de267" class="" dir="auto">
+</p><hr id="2059da7d-49f6-809c-901a-c6805931ed4d" dir="auto"/><ul id="2059da7d-49f6-80d0-9659-efb9992faea7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">メインウィンドウ/ウィンドウカバー<ul id="2059da7d-49f6-800c-bc1a-d4140544d55c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは320x240の画面基準で80x60ピクセル推奨<blockquote id="2059da7d-49f6-806d-a8cd-cca7b9b9a43b" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80be-81d9-e749797e2d9d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">カーソル/エフェクト<ul id="2059da7d-49f6-8062-b481-d9b1578995d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは320x240の画面基準で80x60ピクセル推奨<blockquote id="2059da7d-49f6-8022-8c66-df4ae448d48a" class="" dir="auto">画面サイズに応じてリサイズ対応<br/>通常表示か加算表示を選択可</blockquote></li></ul></li></ul><p id="2059da7d-49f6-80c1-8a47-e6dc09e45daf" class="" dir="auto">
+</p><hr id="2059da7d-49f6-802b-8054-ff01db832e6e" dir="auto"/><p id="2059da7d-49f6-805a-abfa-d7e230d16f42" class="" dir="auto">
+</p><p id="2059da7d-49f6-80ec-b02a-f64a2a534096" class="" dir="auto">
+</p><p id="2059da7d-49f6-8015-a8c7-d1e7f0ad8bbc" class="" dir="auto">
+</p><hr id="2059da7d-49f6-807a-8a5a-ff6eab718b1f" dir="auto"/><h2 id="2059da7d-49f6-8028-8f6c-f8e933f2699d" class="" dir="auto">●MONリングコマンド画像</h2><p id="2059da7d-49f6-808e-8a5d-cb904f4a2cc4" class="" dir="auto">UDB「MONリングコマンド」で設定</p><p id="2059da7d-49f6-80d6-9882-f437fcc4f7fc" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80fc-8146-ec08854fa8b6" dir="auto"/><ul id="2059da7d-49f6-800e-9d0a-fdc8d2793724" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは正方形の画像なら任意<br/>表示サイズはUDB側で設定<blockquote id="2059da7d-49f6-8046-9b60-f4255ffc009f" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-80e1-8ee7-e3c9074768ef" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80f9-8bd4-cf1fe4bf464b" dir="auto"/><p id="2059da7d-49f6-8018-8eea-c815cca45af7" class="" dir="auto">
+</p><p id="2059da7d-49f6-8053-888c-da118c9c0f1f" class="" dir="auto">
+</p><p id="2059da7d-49f6-80c0-88bb-c91ef797c134" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80c8-8d39-d1e8d916e7d2" dir="auto"/><h2 id="2059da7d-49f6-80e4-8555-d31fbf792317" class="" dir="auto">●マスク画像</h2><p id="2059da7d-49f6-8048-b9f2-d77c3c97f4dd" class="" dir="auto">UDB「マスク画像設定1」で設定</p><p id="2059da7d-49f6-804b-bfe4-c950f9542084" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80a2-afe2-dff3131272aa" dir="auto"/><ul id="2059da7d-49f6-80ac-9ce0-fd43e1cbb807" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは任意<blockquote id="2059da7d-49f6-802d-8119-c2aaafb1452c" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-80bf-9328-de532023bb05" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ba-ad89-e560c9462daf" dir="auto"/><p id="2059da7d-49f6-8040-bd0c-de48936c6b0b" class="" dir="auto">
+</p><p id="2059da7d-49f6-80be-8823-c7e854371113" class="" dir="auto">
+</p><p id="2059da7d-49f6-8030-a6ff-f0efe547d591" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80d5-8508-dc28726f6cbb" dir="auto"/><h2 id="2059da7d-49f6-8099-bb74-cb142b7067d1" class="" dir="auto">●カットイン</h2><p id="2059da7d-49f6-8009-9ea6-ff7a40b9691a" class="" dir="auto">UDB「カットイン用設定」で設定</p><p id="2059da7d-49f6-802d-adf3-f1a35ac51e5b" class="" dir="auto">
+</p><hr id="2059da7d-49f6-807e-8ebf-e698504abdd6" dir="auto"/><ul id="2059da7d-49f6-8075-a23a-e0bc387ccd58" class="bulleted-list" dir="auto"><li style="list-style-type:disc">エフェクト用画像<ul id="2059da7d-49f6-803a-9aa1-d0795abaa926" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは正方形なら任意<blockquote id="2059da7d-49f6-80aa-9c70-dc1815c43bd1" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-804c-89eb-ef496f307ed2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">効果音を設定する項目に関しては効果音の規格とUDB設定方法を参照してください</li></ul><p id="2059da7d-49f6-8001-afcb-d036ab701c0d" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8099-98b0-c7011af760c5" dir="auto"/><p id="2059da7d-49f6-80c9-bc25-f795d14905cc" class="" dir="auto">
+</p><p id="2059da7d-49f6-80cc-aabc-df6d8f80524a" class="" dir="auto">
+</p><p id="2059da7d-49f6-8051-90df-f40c0b4b9d87" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8072-b45d-e3d1498ce1c7" dir="auto"/><h2 id="2059da7d-49f6-80be-a7a8-ea6c474b85a5" class="" dir="auto">●戦闘アニメーション</h2><p id="2059da7d-49f6-80a3-9990-e05de6b6c2ea" class="" dir="auto">UDB「戦闘アニメセット設定」で設定</p><p id="2059da7d-49f6-80d9-b212-e0e0ed22e34f" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80a4-af19-d7581ed1846f" dir="auto"/><ul id="2059da7d-49f6-800c-896e-dec72cf48956" class="bulleted-list" dir="auto"><li style="list-style-type:disc">UDB「単体アニメ設定」で設定したアニメ画像を設定</li></ul><p id="2059da7d-49f6-80f9-9057-f6196716dc62" class="" dir="auto">
+</p><hr id="2059da7d-49f6-800c-972f-c26ae8270420" dir="auto"/><p id="2059da7d-49f6-80ce-8f5f-cf84785efbe1" class="" dir="auto">UDB「単体アニメ設定」で設定</p><p id="2059da7d-49f6-80e5-ac22-e8c9dc87c379" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80e0-b1cc-f0365c7d8745" dir="auto"/><ul id="2059da7d-49f6-8012-a98f-cbb2da2d4e9e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像の規格に関して<br/>横サイズは「横分割数×任意」<br/>縦サイズは「縦分割数×任意」<br/>です<blockquote id="2059da7d-49f6-8010-90a1-d5ec44651b03" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><ul id="2059da7d-49f6-8094-9089-eb9ff450e240" class="bulleted-list" dir="auto"><li style="list-style-type:disc">効果音を設定する項目に関しては効果音の規格とUDB設定方法を参照してください</li></ul><p id="2059da7d-49f6-8044-bb46-cb970004df29" class="" dir="auto">
+</p><hr id="2059da7d-49f6-802a-8ead-dc91312fe16a" dir="auto"/><p id="2059da7d-49f6-80d5-9ca1-d51ff5278307" class="" dir="auto">
+</p><p id="2059da7d-49f6-80b7-8d26-d12ffe667871" class="" dir="auto">
+</p><p id="2059da7d-49f6-8005-b8f1-f085ec8e2149" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8063-9ae4-dd250c3d0ea4" dir="auto"/><h2 id="2059da7d-49f6-8000-a056-c67ce714277b" class="" dir="auto">●サイドビュー武器画像</h2><p id="2059da7d-49f6-8078-b84e-f28a172e992b" class="" dir="auto">UDB「装備タイプ設定」で設定</p><p id="2059da7d-49f6-8009-b417-ccc5e7e71293" class="" dir="auto">
+</p><hr id="2059da7d-49f6-804a-b12a-d7379de0b134" dir="auto"/><ul id="2059da7d-49f6-80d4-a21d-cb3ebbeaafc5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像の規格に関して<br/>横サイズは「横分割数×任意」<br/>縦サイズは「縦分割数×任意」<br/>です<blockquote id="2059da7d-49f6-8023-900b-f003801259c4" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-8062-96f4-da2d6c44f69e" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8027-8914-e9c05d3d6135" dir="auto"/><p id="2059da7d-49f6-806a-827c-de7668f3a538" class="" dir="auto">
+</p><p id="2059da7d-49f6-80b0-b476-c8420e1fe516" class="" dir="auto">
+</p><p id="2059da7d-49f6-8025-8f7a-eb7529abf89e" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80b5-9b84-e05c887ef2fe" dir="auto"/><h2 id="2059da7d-49f6-80a7-aac5-cc10d7e3f695" class="" dir="auto">●実績ごほうび画像</h2><p id="2059da7d-49f6-8027-b3ef-d558fd9eca43" class="" dir="auto">UDB「実績設定」で設定</p><p id="2059da7d-49f6-809e-aea3-e1c32ecbb64a" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80a9-a586-ef25c01098a3" dir="auto"/><ul id="2059da7d-49f6-80eb-a323-cd39c981e36a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは任意<blockquote id="2059da7d-49f6-80c8-be29-e8949c517d17" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-80ff-a7ac-eccd37e2f109" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8050-869b-e72c9d902b53" dir="auto"/><p id="2059da7d-49f6-80b7-b736-d4cf873550ca" class="" dir="auto">
+</p><p id="2059da7d-49f6-8000-a6bd-e2ac1bcc2820" class="" dir="auto">
+</p><p id="2059da7d-49f6-80d0-99da-f874fca604b6" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8066-9fb8-edc6786577e3" dir="auto"/><h2 id="2059da7d-49f6-8032-a6e9-c1104d10e36b" class="" dir="auto">●旧版スタッフロール画像</h2><p id="2059da7d-49f6-80a3-9646-fef94d79420e" class="" dir="auto">UDB「スタッフロール1」で設定</p><p id="2059da7d-49f6-80ea-aff2-edee29dcbfcd" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80b2-8749-da550503d062" dir="auto"/><ul id="2059da7d-49f6-80bc-b45f-c99163c23ac7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">背景/1枚絵<ul id="2059da7d-49f6-80cf-ba9c-c91bfd7581a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-806a-a6d7-f36fb982d5a8" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><p id="2059da7d-49f6-8052-8f40-e979a1e5e347" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ee-b9fb-dee53ec6032b" dir="auto"/><p id="2059da7d-49f6-80dd-88de-c16d49d928ad" class="" dir="auto">
+</p><p id="2059da7d-49f6-8048-8247-d8a7d05bdbaf" class="" dir="auto">
+</p><p id="2059da7d-49f6-80a3-b36f-d95dc4928189" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80c5-8da7-f2fe4e39a5e8" dir="auto"/><h2 id="2059da7d-49f6-80d7-88bd-c84efacdd4b0" class="" dir="auto">●タイトル画面</h2><p id="2059da7d-49f6-80e6-a8c7-f264cfd29de6" class="" dir="auto">UDB「タイトルUI変更」で設定</p><p id="2059da7d-49f6-8068-a5cb-ea5d88d8d929" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8063-9842-fffa7f511167" dir="auto"/><ul id="2059da7d-49f6-8033-a3ac-cfb103ad28bd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">遠景<ul id="2059da7d-49f6-80b2-b423-d8d5d7d1daec" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-80e2-b944-eeaca43096c8" class="" dir="auto">自動でリサイズ対応<br/>2枚のレイヤーの画像を設定</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80c3-a470-fea0fcbd8ac2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">メインタイトル/サブタイトル/＊＊＊＊(コマンド名)画像名<ul id="2059da7d-49f6-80f6-a216-e0171c3c35a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-80c2-859c-da36454fcdb9" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><p id="2059da7d-49f6-803c-b6e3-ec8e16795910" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8030-9c54-e56e91c01f8e" dir="auto"/><p id="2059da7d-49f6-8018-b686-f0117dda4657" class="" dir="auto">
+</p><p id="2059da7d-49f6-80f4-b552-c4e5c0318c2b" class="" dir="auto">
+</p><p id="2059da7d-49f6-806f-8b06-e6ba61d1fc0d" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8056-b163-d8a0560857fe" dir="auto"/><h2 id="2059da7d-49f6-809d-a086-ca233aa34dca" class="" dir="auto">●メニュー画面</h2><p id="2059da7d-49f6-80a5-a617-facd281c027a" class="" dir="auto">UDB「メニューUI変更」で設定</p><p id="2059da7d-49f6-8010-8313-c78fa79d11f9" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ab-8732-c12345fcf96f" dir="auto"/><ul id="2059da7d-49f6-807e-94bd-ef3b96326fac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">各種ウィンドウ/カーソル画像<ul id="2059da7d-49f6-8039-a7de-d0e763104f3c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">縦横3分割の画像を使用</li></ul></li></ul><p id="2059da7d-49f6-80a1-bef9-d167bcb36b9a" class="" dir="auto">
+</p><hr id="2059da7d-49f6-807d-a2bd-e229620a5489" dir="auto"/><p id="2059da7d-49f6-80f8-af68-c52e5409fcd6" class="" dir="auto">
+</p><p id="2059da7d-49f6-80bc-a3f0-db0d4393270c" class="" dir="auto">
+</p><p id="2059da7d-49f6-80ce-b15b-cf43dc0a8cb6" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80dc-9917-f980acc0195f" dir="auto"/><h2 id="2059da7d-49f6-8069-a8e9-ebb8834d3ec3" class="" dir="auto">●システム画像/効果音</h2><p id="2059da7d-49f6-8037-a548-f7167b88ae29" class="" dir="auto">UDB「ｼｽﾃﾑﾌｧｲﾙ設定1」で設定</p><p id="2059da7d-49f6-80bc-a3a5-cd78198db372" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8073-a692-d15b507fa09a" dir="auto"/><ul id="2059da7d-49f6-80ab-a85a-da6db09f271c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">起動時ロード背景<ul id="2059da7d-49f6-80dc-b744-dff0de3a234e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-80d7-ac0e-fe891b87ba7b" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8086-b155-f8ef1b05cd42" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ローディング画像ファイル<ul id="2059da7d-49f6-804d-857c-cf0cddd45a32" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-80d4-9c16-e98a5179d4b0" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-809e-8d04-c3a2e477256d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ウィンドウ画像ファイル/カーソル画像ファイル/メッセージウィンドウベース画像/スクロールバー画像<ul id="2059da7d-49f6-8041-b37c-ed7aa738db98" class="bulleted-list" dir="auto"><li style="list-style-type:circle">縦横3分割の画像を使用</li></ul></li></ul><ul id="2059da7d-49f6-80b6-8cff-cdf68f93de11" class="bulleted-list" dir="auto"><li style="list-style-type:disc">マウス矢印画像<ul id="2059da7d-49f6-80e0-abcd-e95fecd3b6d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8068-80ee-fce9c846ad5c" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-809c-9b50-d5f3daf3c5c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タッチUI画像<ul id="2059da7d-49f6-8041-8038-ec71cf2079f2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">320x240の画面基準で縦横20ピクセルの画像を使用<br/>UIの配置は以下の通り<table id="2059da7d-49f6-803b-82a3-ff5ff1b6f6fb" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-80bc-9ab3-c7beda7cb7a6" dir="ltr"><td id="U}Ll" class="" style="width:79px">下</td><td id="PT]H" class="" style="width:75px">左</td><td id="KN^g" class="" style="width:79px">右</td><td id="VvcJ" class="" style="width:78px">上</td><td id="SGDU" class="" style="width:89px">下<br/>(二重)</td><td id="fyoR" class="" style="width:90px">左<br/>(二重)</td><td id="R=wI" class="" style="width:91px">右<br/>(二重)</td><td id="RFGd" class="" style="width:89px">上<br/>(二重)</td></tr><tr id="2059da7d-49f6-8036-bcca-fdea2c60ac67" dir="ltr"><td id="U}Ll" class="" style="width:79px">Aボタン</td><td id="PT]H" class="" style="width:75px">Bボタン</td><td id="KN^g" class="" style="width:79px">Xボタン</td><td id="VvcJ" class="" style="width:78px">Yボタン</td><td id="SGDU" class="" style="width:89px">メニュー</td><td id="fyoR" class="" style="width:90px">ヘルプ</td><td id="R=wI" class="" style="width:91px">会話ログ</td><td id="RFGd" class="" style="width:89px">ミニマップ</td></tr><tr id="2059da7d-49f6-8007-a187-d1d91baf202b" dir="ltr"><td id="U}Ll" class="" style="width:79px">前ページ<br/>(キャラクター)</td><td id="PT]H" class="" style="width:75px">次ページ<br/>(キャラクター)</td><td id="KN^g" class="" style="width:79px">前ページ<br/>(アイテム分類)</td><td id="VvcJ" class="" style="width:78px">次ページ<br/>(アイテム分類)</td><td id="SGDU" class="" style="width:89px">対象単体化</td><td id="fyoR" class="" style="width:90px">対象全体化</td><td id="R=wI" class="" style="width:91px">データ削除</td><td id="RFGd" class="" style="width:89px">(不使用)</td></tr></tbody></table><figure id="2059da7d-49f6-801b-a527-ca1e7bfbb955" class="image" style="text-align:left" data-notion-image="System_TotchUI.png" dir="ltr"><a href="System_TotchUI.png"><img style="width:384px" src="System_TotchUI.png"/></a></figure><blockquote id="2059da7d-49f6-8084-9c73-eb53f02f67ad" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="bbe860c0-56d7-4999-ab2c-86e680187b71" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ロゴ画像ファイル<ul id="2059da7d-49f6-80bb-b55f-e789eb52c636" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8054-b530-e95b2b5e3ef3" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80c7-a6de-c1d721b6c846" class="bulleted-list" dir="auto"><li style="list-style-type:disc">シナリオ画面背景1～2<ul id="2059da7d-49f6-8088-85b4-ed0d5e5b4b69" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<br/>2枚のレイヤーの画像を設定<blockquote id="2059da7d-49f6-80a5-80ec-fcc8dab5e3f1" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80b8-ab86-e93347d61706" class="bulleted-list" dir="auto"><li style="list-style-type:disc">シナリオ画面タイトルロゴ画像<ul id="2059da7d-49f6-80a3-baf2-cedd013db4e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8094-80e9-d0ed6bd561ff" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-806c-ae95-fddaaccc9f1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘背景カバー<ul id="2059da7d-49f6-808a-9684-cd5547219aba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8055-a01d-c8d94f3809d3" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80c3-87b6-deffa99858fb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">状態アイコン数字画像<ul id="2059da7d-49f6-80e5-a8c3-c02bc86f4435" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは640x480の画面基準で24ピクセルの正方形の画像推奨<br/>1つの画像で横に11枚のアイコンを並べた画像を使用<br/>状態アイコンの上に表示される<br/>アイコンの並び順は以下の通り<table id="2059da7d-49f6-803d-a325-c2f26f502721" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-802e-b4a2-cc6b7f006843" dir="ltr"><td id="lkUg" class="" style="width:35px">1</td><td id="r}ln" class="" style="width:35px">2</td><td id="nGEl" class="" style="width:35px">3</td><td id="elY=" class="" style="width:35px">4</td><td id="IPXC" class="" style="width:35px">5</td><td id="?PCg" class="" style="width:35px">6</td><td id="gIO}" class="" style="width:35px">7</td><td id=":Yhp" class="" style="width:35px">8</td><td id="XX&lt;V" class="" style="width:35px">9</td><td id="Cwcf" class="" style="width:52px">10～</td><td id="zlu`" class="" style="width:35px">∞</td></tr></tbody></table><figure id="2059da7d-49f6-80cd-8475-ff65aa853398" class="image" style="text-align:left" data-notion-image="System_StateIcon_Turn.png" dir="ltr"><a href="System_StateIcon_Turn.png"><img style="width:384px" src="System_StateIcon_Turn.png"/></a></figure><blockquote id="2059da7d-49f6-8035-b833-cc37bcf48e33" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8094-9c9a-d5f09c75524e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵カーソル画像<ul id="2059da7d-49f6-8055-b783-e9b5deb321a3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">横と縦のサイズは任意<br/>横分割数は2とする<blockquote id="2059da7d-49f6-802d-baa0-d53ac273bfb6" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8039-80e1-c7fa774f5526" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵ターゲット画像/敵選択弱点画像<ul id="2059da7d-49f6-80a5-b1f5-ce00fab60463" class="bulleted-list" dir="auto"><li style="list-style-type:circle">横と縦のサイズは任意<br/>横分割数に関しては、「横サイズ÷縦サイズ」とする<blockquote id="2059da7d-49f6-80b3-bfa1-e2db594bf488" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8076-a09d-cfced4397ac2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘時影グラフィック<ul id="2059da7d-49f6-80e0-9d49-c41e9c346970" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意で<br/>1コマの画像を使用<blockquote id="2059da7d-49f6-80dc-bd46-cb73b1f45e22" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-804d-af9f-fcefa97df5b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">汎用QTE画像<ul id="2059da7d-49f6-8018-bda6-e9792a30e2e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">320x240の画面基準で縦横10ピクセルの画像を使用<br/>1つの画像で横に6枚、縦に2枚のアイコンを並べた画像を使用<br/>1段目はカウント前、2段目はカウント後<br/>それぞれの段は以下の規格となる<table id="2059da7d-49f6-804c-9d4b-e0888119f279" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-80c7-a2ab-e31499fb2454" dir="ltr"><td id="CK=A" class="" style="width:72px">待機<br/>(経過前)</td><td id="flud" class="" style="width:92px">任意ボタン<br/>(経過前)</td><td id="&gt;PlJ" class="" style="width:71px">下<br/>(経過前)</td><td id="|J|R" class="" style="width:70px">左<br/>(経過前)</td><td id="okuz" class="" style="width:72px">右<br/>(経過前)</td><td id="RLi&lt;" class="" style="width:70px">上<br/>(経過前)</td></tr><tr id="2059da7d-49f6-8063-8e54-e84918f4c728" dir="ltr"><td id="CK=A" class="" style="width:72px">待機<br/>(経過後)</td><td id="flud" class="" style="width:92px">任意ボタン<br/>(経過後)</td><td id="&gt;PlJ" class="" style="width:71px">下<br/>(経過後)</td><td id="|J|R" class="" style="width:70px">左<br/>(経過後)</td><td id="okuz" class="" style="width:72px">右<br/>(経過後)</td><td id="RLi&lt;" class="" style="width:70px">上<br/>(経過後)</td></tr></tbody></table><figure id="2059da7d-49f6-80a6-a37b-d39aca3992ac" class="image" style="text-align:left" data-notion-image="System_QTE.png" dir="ltr"><a href="System_QTE.png"><img style="width:384px" src="System_QTE.png"/></a></figure><blockquote id="2059da7d-49f6-80c2-98b1-f6626e79d506" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80db-b083-de239aad25ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">効果音を設定する項目に関しては効果音の規格とUDB設定方法を参照してください</li></ul><p id="2059da7d-49f6-80d4-83da-e75b38ebfdcb" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8022-be3f-d2933956666b" dir="auto"/><p id="2059da7d-49f6-80e4-b33f-c6a96f16581a" class="" dir="auto">UDB「ｼﾅﾘｵ設定1」で設定</p><p id="2059da7d-49f6-80f8-92a1-dcd4a152ca85" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80a5-b86d-cb9161e9e216" dir="auto"/><ul id="2059da7d-49f6-808d-a091-d41c69800765" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ゲームオーバー画像ファイル<ul id="2059da7d-49f6-80c1-93ff-ef4eea83d039" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8064-a279-e68f1b555a32" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80a8-9a22-ed56282ac6b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">コマンド選択画像<ul id="2059da7d-49f6-80cd-98bd-f9a3310cfbb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コマンド選択スタイルをロールにする場合<ul id="2059da7d-49f6-807a-92ea-dc8ae18df865" class="bulleted-list" dir="auto"><li style="list-style-type:square">画像のサイズは320x240の画面基準で72x18ピクセルを使用<blockquote id="2059da7d-49f6-80ba-a0eb-fa510a9f6828" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80be-bc23-ff3dd7f112ee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コマンド選択スタイルをスプレッドにする場合<ul id="2059da7d-49f6-8054-b298-c1092fcfb8d5" class="bulleted-list" dir="auto"><li style="list-style-type:square">画像のサイズは320x240の画面基準で80x38ピクセルを使用<blockquote id="2059da7d-49f6-80ed-add7-f96fb16d2698" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80b0-a635-e5cc53eb46d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コマンド選択スタイルをセンタースプレッドにする場合<ul id="2059da7d-49f6-8044-a470-db36cbff03eb" class="bulleted-list" dir="auto"><li style="list-style-type:square">画像のサイズは320x240の画面基準で130x50ピクセルを使用<blockquote id="2059da7d-49f6-80c6-8b2f-c730a4bf4447" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul></li></ul><ul id="2059da7d-49f6-8065-8278-c096ab7371ec" class="bulleted-list" dir="auto"><li style="list-style-type:disc">海上/飛行船画像<ul id="2059da7d-49f6-80ef-8a23-d8acbd9be19e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズはウディタデフォルトと同一のキャラチップの規格</li></ul></li></ul><p id="2059da7d-49f6-8013-8720-f1bca285ea31" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8005-a180-c455c699cc9f" dir="auto"/><p id="2059da7d-49f6-804b-af36-f255bcde6954" class="" dir="auto">
+</p><p id="2059da7d-49f6-8008-b369-cbb02d02f5c6" class="" dir="auto">
+</p><p id="2059da7d-49f6-801f-be54-eae33001b760" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8029-9665-d05ba16349bc" dir="auto"/><h2 id="2059da7d-49f6-806c-a39a-c87431813e76" class="" dir="auto">●有料版専用画像/効果音</h2><p id="2059da7d-49f6-80ff-9c4f-c79314424482" class="" dir="auto">UDB「[P]プロ版関連設定」で設定</p><p id="2059da7d-49f6-8028-a763-ca228f6cec13" class="" dir="auto">
+</p><hr id="2059da7d-49f6-801e-8eb1-ccf616ce9062" dir="auto"/><ul id="2059da7d-49f6-80de-89de-e95b75d037f4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">スクショアルバム背景<ul id="2059da7d-49f6-806f-bef7-c39704d1e283" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-8043-8ea3-fb6a384f981a" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-80d4-847a-fdce442479bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">スクショカーソル<ul id="2059da7d-49f6-80d4-bd9a-f071e3a167ca" class="bulleted-list" dir="auto"><li style="list-style-type:circle">縦横3分割の画像を使用</li></ul></li></ul><ul id="2059da7d-49f6-806d-a784-f6fb81063e4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">スクショなし画像<ul id="2059da7d-49f6-8045-8286-dc36d51c7d5e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<blockquote id="2059da7d-49f6-80f0-9abe-d5b62c79a094" class="" dir="auto">自動でリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8039-8f90-f45dd1a9ab8f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">効果音を設定する項目に関しては効果音の規格とUDB設定方法を参照してください</li></ul><p id="2059da7d-49f6-80a3-aa3b-ef1202c1cd5b" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8004-8652-debd6a7b7c81" dir="auto"/><p id="2059da7d-49f6-803b-bfff-fa501306215e" class="" dir="auto">
+</p><p id="2059da7d-49f6-80ef-bb15-cc2dba3f5204" class="" dir="auto">
+</p><p id="2059da7d-49f6-80bc-89a8-e6fb9eefa08b" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8040-9220-dd5e0b29badf" dir="auto"/><h2 id="2059da7d-49f6-80da-a400-c01318237a18" class="" dir="auto">●UDB内効果音設定項目</h2><p id="2059da7d-49f6-8035-a259-f3f061a9b1e3" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80d5-abed-ca31759a7577" dir="auto"/><ul id="2059da7d-49f6-8034-84ef-cdc818eac62d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">以下の文字列を設定します<ul id="2059da7d-49f6-806c-bd9b-d4f98362be1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">効果音のファイル名(改行)<br/>音量(改行)<br/>ピッチ</li></ul></li></ul><p id="2059da7d-49f6-800c-8e8e-c3d4e03d3b07" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80e9-a02e-df198c5e3a0c" dir="auto"/><p id="2059da7d-49f6-80b4-b98b-fd1b71760be2" class="" dir="auto">
+</p><p id="2059da7d-49f6-80f3-a9e1-fd99863f0d98" class="" dir="auto">
+</p><p id="2059da7d-49f6-80ee-b556-c26c7bbb5aef" class="" dir="auto">
+</p><hr id="2059da7d-49f6-800c-a1e7-c3b846929c3c" dir="auto"/><h2 id="2059da7d-49f6-80bd-a1e4-f6f50d7cf461" class="" dir="auto">●UDB内テキスト設定項目</h2><p id="2059da7d-49f6-8050-9564-e9f5d6bd0d5c" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80dd-a7da-f29e29981259" dir="auto"/><ul id="2059da7d-49f6-80a4-a971-d6ca33a40995" class="bulleted-list" dir="auto"><li style="list-style-type:disc">テキストファイルの文字コードは必ず<br/>「UTF-8(BOM付き)」<br/>にしてください！<blockquote id="2059da7d-49f6-8094-92fd-ec4a177d389c" class="" dir="auto">それ以外の文字コードだと必ず文字化けします！</blockquote></li></ul><p id="2059da7d-49f6-8075-9a24-e1fa97e6a0d1" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8074-85a7-dcd9373fcc3d" dir="auto"/><p id="2059da7d-49f6-80b4-be4a-e8a026b23580" class="" dir="auto">
+</p><p id="2059da7d-49f6-80ff-9e05-cb56f654c10e" class="" dir="auto">
+</p><p id="2059da7d-49f6-80f0-b93d-c979841836e2" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ea-bbca-c4ba34a51dd1" dir="auto"/><h2 id="2059da7d-49f6-8025-a947-ff6c090a743c" class="" dir="auto">●立ち絵</h2><p id="2059da7d-49f6-80e7-a4fd-fa2061d6cbcb" class="" dir="auto">SDB「顔グラフィック名」で設定</p><p id="2059da7d-49f6-80bd-83d1-c0d988e48004" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8013-9e21-eb32219ccb2e" dir="auto"/><ul id="2059da7d-49f6-805b-8890-f44ccfa1ecea" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは任意<blockquote id="2059da7d-49f6-806b-b528-ef5825ce0e72" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-8016-bd6c-fecf12998ea0" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8020-8d50-f7b957858924" dir="auto"/><p id="2059da7d-49f6-809c-ad63-ce967931d1a7" class="" dir="auto">
+</p><p id="2059da7d-49f6-8047-a7d4-f339f2214418" class="" dir="auto">
+</p><p id="2059da7d-49f6-8006-9f62-dedb40b31a49" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8042-bdba-fcf8b15a55d0" dir="auto"/><h2 id="2059da7d-49f6-806f-816e-f5f04dc1ec9a" class="" dir="auto">●マップ背景</h2><p id="2059da7d-49f6-807e-82e8-d74b841b420d" class="" dir="auto">SDB「遠景画像」で設定)</p><p id="2059da7d-49f6-8019-a263-cfe42915f1ad" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ee-815f-ee770a6b64ee" dir="auto"/><ul id="2059da7d-49f6-8008-9027-d00c3befba3e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像のサイズは画面サイズ分以上のピクセル数</li></ul><p id="2059da7d-49f6-80a0-9629-c1137b7ecfac" class="" dir="auto">
+</p><hr id="2059da7d-49f6-805a-a131-c69b0cec0229" dir="auto"/><p id="2059da7d-49f6-80cc-ab4f-f2bd7ed49c84" class="" dir="auto">
+</p><p id="2059da7d-49f6-804b-a9cf-ce31884d1770" class="" dir="auto">
+</p><p id="2059da7d-49f6-8028-9f94-d6963f00b2fc" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8058-af8a-e85ecc884d4c" dir="auto"/><h2 id="2059da7d-49f6-80d0-8ecf-e205c4133d30" class="" dir="auto">●共通の画像の規格</h2><p id="2059da7d-49f6-80b9-87b8-e70aeb23526f" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80b5-a525-e1f3605590c0" dir="auto"/><ul id="2059da7d-49f6-80d8-8277-dbaa6f91125a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">png、jpg、bmpに対応<blockquote id="2059da7d-49f6-8012-a106-cf403c9ac17a" class="" dir="auto">pngを強く推奨<br/>bmpは非推奨</blockquote></li></ul><p id="2059da7d-49f6-80b6-9800-fb0e4ff82681" class="" dir="auto">
+</p><hr id="2059da7d-49f6-803e-b6ac-d6e42cb9eabc" dir="auto"/><p id="2059da7d-49f6-8020-9673-e6115f62e20c" class="" dir="auto">
+</p><p id="2059da7d-49f6-80cf-b3c0-e36526403c77" class="" dir="auto">
+</p><p id="2059da7d-49f6-80d5-a5a9-f6cd297938a7" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80ac-ba95-e1f101dc5ecf" dir="auto"/><h2 id="2059da7d-49f6-80fb-907c-e7f46934d13c" class="" dir="auto">●共通のBGMの規格</h2><p id="2059da7d-49f6-80f9-8c42-e230bcbafe03" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8012-a936-c4e448b699d3" dir="auto"/><ul id="2059da7d-49f6-80d0-a608-c8e61ae40866" class="bulleted-list" dir="auto"><li style="list-style-type:disc">mid、ogg、mp3、wavに対応<blockquote id="2059da7d-49f6-80ba-9042-f11f5a38151f" class="" dir="auto">oggを強く推奨<br/>wavは非推奨<br/>(midの場合はたまに音楽が鳴らない)</blockquote></li></ul><p id="2059da7d-49f6-8074-bd2e-c2909651b13d" class="" dir="auto">
+</p><hr id="2059da7d-49f6-807d-a881-f6ea507bcf3c" dir="auto"/><p id="2059da7d-49f6-80a4-99de-e326244d3141" class="" dir="auto">
+</p><p id="2059da7d-49f6-80d3-bd60-ddcabaa9b861" class="" dir="auto">
+</p><p id="2059da7d-49f6-80c5-ae6c-db8add43de53" class="" dir="auto">
+</p><hr id="2059da7d-49f6-804c-a040-c485c46210b0" dir="auto"/><h2 id="2059da7d-49f6-807b-85d0-ef7fad2427c4" class="" dir="auto">●共通の効果音の規格</h2><p id="2059da7d-49f6-806b-8d60-cfe8b8e0bb88" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80b1-966c-f887904728e9" dir="auto"/><ul id="2059da7d-49f6-80ec-bd27-d3706005b2d9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ogg、mp3、wavに対応<ul id="2059da7d-49f6-80bb-8665-fe89218cb5cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">oggを強く推奨<br/>mp3は非推奨</li></ul></li></ul><p id="2059da7d-49f6-8007-baf1-de8ab0c68b02" class="" dir="auto">
+</p><hr id="2059da7d-49f6-809a-9d79-ce52dd97eaed" dir="auto"/><p id="2059da7d-49f6-80a9-850b-e33e68a219e5" class="" dir="auto">
+</p><p id="2059da7d-49f6-8022-b3dd-ccfc3390ac50" class="" dir="auto">
+</p><p id="2059da7d-49f6-80d6-a91e-fad9081bdefd" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80fc-b48e-c84156de0f95" dir="auto"/><h2 id="2059da7d-49f6-80e9-95f6-fef782451ac3" class="" dir="auto">●3D関連画像</h2><p id="2059da7d-49f6-8056-be83-e49a26e9b4b3" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80b7-9c8b-e96b68be824f" dir="auto"/><ul id="2059da7d-49f6-8012-a4ad-c13bd01089ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アクション画像<ul id="2059da7d-49f6-80a5-ae89-c4330b83db83" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<br/>横分割数に関しては、3とする<br/>以下の規格となる<table id="2059da7d-49f6-8005-90b4-f8ba348540e7" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-8023-af1b-f7333afed9ec" dir="ltr"><td id="Z:G?" class="">アクション</td><td id="zB{`" class="">メニュー</td><td id="RXWu" class="">ログ</td></tr></tbody></table><figure id="2059da7d-49f6-808b-ac1a-edc3fe43b998" class="image" style="text-align:left" data-notion-image="M_ACT_KPR2.png" dir="ltr"><a href="M_ACT_KPR2.png"><img style="width:336px" src="M_ACT_KPR2.png"/></a></figure><blockquote id="2059da7d-49f6-80ca-8b36-cfe2f4d0f42f" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-8033-94ef-c14fa253bc90" class="bulleted-list" dir="auto"><li style="list-style-type:disc">3D用のレーダー画像<ul id="2059da7d-49f6-807a-9ed3-cc87bfe3ac1e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<br/>横分割数に関しては4、縦分割数に関しては3とする<br/>1段目はオブジェクトの属性<br/>2段目は自身の向き<br/>3段目は方位となり<br/>それぞれ以下の規格となる<table id="2059da7d-49f6-8070-9819-e394039f713d" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-80e5-804d-fe54a2fe6738" dir="ltr"><td id="{toC" class="" style="width:55px">透過</td><td id="&lt;\i;" class="" style="width:80px">通行可能</td><td id="xnRk" class="" style="width:78px">通行不能</td><td id="~Z&gt;l" class="" style="width:52px">EV</td></tr><tr id="2059da7d-49f6-80fe-a140-f6e93c1f57c6" dir="ltr"><td id="{toC" class="" style="width:55px">上</td><td id="&lt;\i;" class="" style="width:80px">左</td><td id="xnRk" class="" style="width:78px">下</td><td id="~Z&gt;l" class="" style="width:52px">右</td></tr><tr id="2059da7d-49f6-803c-8fe4-e4a303fa837d" dir="ltr"><td id="{toC" class="" style="width:55px">北</td><td id="&lt;\i;" class="" style="width:80px">東</td><td id="xnRk" class="" style="width:78px">南</td><td id="~Z&gt;l" class="" style="width:52px">西</td></tr></tbody></table><figure id="2059da7d-49f6-80cf-b29b-c41ea972b777" class="image" style="text-align:left" data-notion-image="M_MAP_KPR2.png" dir="ltr"><a href="M_MAP_KPR2.png"><img style="width:336px" src="M_MAP_KPR2.png"/></a></figure><blockquote id="2059da7d-49f6-8090-b315-c8c13985ebb8" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><ul id="2059da7d-49f6-800b-8bdd-ea0286df1cca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">3D用のコンパス画像<ul id="2059da7d-49f6-8010-abc7-fe7a96740679" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のサイズは任意<figure id="2059da7d-49f6-8021-ad81-c97d53cc34fa" class="image" style="text-align:left" data-notion-image="M_CMP_LCF.png" dir="ltr"><a href="M_CMP_LCF.png"><img style="width:336px" src="M_CMP_LCF.png"/></a></figure><blockquote id="2059da7d-49f6-8059-ab43-e0ad2cb21d68" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul></li></ul><p id="2059da7d-49f6-8058-a984-ef948570432c" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80c4-b7d2-dcf4567f1cd6" dir="auto"/><p id="2059da7d-49f6-803c-9422-ce3eed9a6ed6" class="" dir="auto">
+</p><p id="2059da7d-49f6-809f-8c59-de65d1fe2855" class="" dir="auto">
+</p><p id="2059da7d-49f6-809a-92dc-fda994634c5c" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80cd-8b61-d5a0574894bf" dir="auto"/><h2 id="2059da7d-49f6-80d2-895e-edf5a389bf7a" class="" dir="auto">●追加素材の2Dミニマップ画像</h2><p id="2059da7d-49f6-8018-932a-ebab948bfc89" class="" dir="auto">
+</p><hr id="2059da7d-49f6-8071-bdbf-e3ba26507715" dir="auto"/><ul id="2059da7d-49f6-809e-99b7-d87b563cd6c9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">横分割数に関しては4、縦分割数に関しては3とする<br/>縦分割2つ目までは3D用のミニマップと同じ。<br/>3つ目から10個目は、イベントに使用され、<br/>イベントの向きと横分割何番目の関係は、縦2分割目と同じです。<table id="2059da7d-49f6-8051-9488-fec7a96c611a" class="simple-table" dir="ltr"><tbody><tr id="2059da7d-49f6-8041-ad25-ff7abbdb6817" dir="ltr"><td id="YXBH" class="">オブジェクトの属性</td></tr><tr id="2059da7d-49f6-803d-8746-c22bde227f82" dir="ltr"><td id="YXBH" class="">自身の向き</td></tr><tr id="2059da7d-49f6-80db-8f01-dd12f31b5743" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-80c6-8149-ea1035351cf8" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-80a4-86ce-eaf4316f98c2" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-8011-b930-ce58cb795794" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-80fa-ada9-e2f3f93232b5" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-80fa-b73a-eb5519eb0479" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-8020-bbd1-e7ed8cc3baf2" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr><tr id="2059da7d-49f6-807c-b6e6-c90ba842ad91" dir="ltr"><td id="YXBH" class="">イベントの向き</td></tr></tbody></table><figure id="2059da7d-49f6-806f-96ff-eacb379bce39" class="image" style="text-align:left" data-notion-image="2DMAP2.png" dir="ltr"><a href="2DMAP2.png"><img style="width:384px" src="2DMAP2.png"/></a></figure><blockquote id="2059da7d-49f6-8098-b25c-f4ad724261fd" class="" dir="auto">画面サイズに応じてリサイズ対応</blockquote></li></ul><p id="2059da7d-49f6-80e9-8aea-fdc6d343c3b4" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80f9-a208-dddf2c804e9a" dir="auto"/><p id="2059da7d-49f6-80e8-ba37-cc8510eaf7b5" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

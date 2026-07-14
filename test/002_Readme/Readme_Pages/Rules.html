@@ -1,0 +1,957 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Rules</title><meta name="data-notion-page-icon" content="📘"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%98%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="19e9da7d-49f6-8075-a821-de5d7cc4af59" class="page sans" data-notion-page-icon="📘"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📘"></span></div><h1 class="page-title" dir="auto">Rules</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><hr id="1c59da7d-49f6-80e2-a7c9-cdf040303fe3" dir="auto"/><h1 id="1c59da7d-49f6-80d4-8662-d11e58d0e03b" class="" dir="auto">利用規約</h1><p id="19e9da7d-49f6-8089-971b-c8aad4cd08b8" class="" dir="auto">無料高機能RPGシステムMr.Hのコモンおよび同梱画像／音楽素材の利用規約を<br/>抜粋して記載しています。</p><p id="19e9da7d-49f6-8044-b0d7-f593cac472d6" class="" dir="auto"><strong>その他詳細は本コモン内に同梱された<br/>「02_Readme」フォルダ内の「001_Readme.txt」よりご確認ください。</strong></p><h1 id="19e9da7d-49f6-80d7-bd32-ca2e23b73e24" class="" dir="auto">目次</h1><nav id="19e9da7d-49f6-8094-aa41-d07f89d7855a" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-80d4-8662-d11e58d0e03b">利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19e9da7d-49f6-80d7-bd32-ca2e23b73e24">目次</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#19e9da7d-49f6-8015-a318-da546def112e">コモンイベント</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c49da7d-49f6-80ef-a2ee-eddac30366f7">画像/音声素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-8074-bb2f-e4772c0f35d2">Mr.H素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80d8-8b38-de235cbf1c4c">ＧＤ様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-804d-8691-c0baf885235c">モンスター集会所様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80db-bcd0-ea6a110c514b">ぴぽや倉庫様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-808a-852d-fa5c823e82d4">CharaMEL素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e19da7d-49f6-8020-aa57-c290326e9719">アンデッドとか好きだから様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e19da7d-49f6-80ba-afd3-eec5eb2e27ae">ノーマル軍様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80eb-a7da-c6253f2ea083">Lucifa様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-8098-a69d-c4f5f888b582">ケモプレ素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80d6-85d9-edb06465882a">魔王魂様素材</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80b3-a80c-ed60a01b80a4">おもしろゲーム神殿様素材🎈🎡</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c39da7d-49f6-803b-9cdc-cfb0ce1c7690">利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80cc-a55b-d9c831654354">コモンイベントの利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80f4-aa32-c3ea28c063b3">「Mr.H」画像素材の利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-806f-bb0a-f53691af82e5">「なかよし島日和」素材の利用規約🏝</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c49da7d-49f6-8004-a38d-e611544e6f75">「モンスター集会所」素材の利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c49da7d-49f6-80ef-9d8f-ebd3ad85d95e">「ぴぽや倉庫」素材の利用規約🌳</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c49da7d-49f6-80d6-929d-dffe764ff333">CharaMELで生成した画像素材の利用規約🍫</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e19da7d-49f6-8069-85b1-e30fb2aebf8f">「アンデッドとか好きだから」素材の利用規約🌳</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1e19da7d-49f6-802a-98ea-e315aab2eb73">「ノーマル軍の素材置き場」素材の利用規約🌳</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80d7-bd9a-c80b5ebc6075">「BGM」「SE」内の音楽/効果音素材の利用規約♫💿</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-803c-95ee-ef6db745dbb9">クレジット表記テンプレート📝</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c39da7d-49f6-801f-945f-e9c776f1f927">ケモプレコラボ版で追加される権利表記</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80f8-a3ab-f6ca0e2532ba">「SystemFile」内の素材の利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-808c-8c18-e9fd8587be3c">「狼は愛を」素材の利用規約🐺🦊🐍</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-8011-a1b6-cb9cfcfb2c98">「REVIVE」素材の利用規約🍖</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c49da7d-49f6-80d5-a479-cfaafc7bdcc9">MON様素材の利用規約</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80af-a839-fcdb90d62bd4">ろぜちは様素材の利用規約🐲</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2999da7d-49f6-8080-a418-c2d07edad74f">備考</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c39da7d-49f6-80a2-aac6-fd1951607ed5">クレジット表記テンプレート📝</a></div></nav><hr id="1c49da7d-49f6-808f-9c24-e5015b325e38" dir="auto"/><p id="1c49da7d-49f6-804b-b97e-ca747c2f2d5b" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80b9-afc9-dbd7ce5bcbe6" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80b0-a96d-c810c5f6ef11" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80b8-acfd-e4c5385b8e81" dir="auto"/><h1 id="19e9da7d-49f6-8015-a318-da546def112e" class="" dir="auto">コモンイベント</h1><p id="1c49da7d-49f6-80ed-a805-f9ce1aea97b4" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8013-a0c0-e4e575d37911" dir="auto"/><p id="1c39da7d-49f6-80e8-81ea-d0065323ae04" class="" dir="auto">このコモンはrute様がウディタの公式サイトで<br/>配布しているコモン「基本システムAdvanced」を<br/>Mr.Hが大幅に改造＆機能を追加した大規模コモンです。</p><p id="3efc807f-c24b-4d3c-b65f-1d88978348b1" class="" dir="auto">本コモンを作成するにあたり、以下のコモンを参考にさせていただきました。<br/>また、以下のコモンを改造させていただきました。<br/>感謝を込めてここに載せています。</p><ul id="1c49da7d-49f6-8095-aee6-fc85af662dc7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">■使用、または参考にさせていただいたコモン<ul id="1c39da7d-49f6-80c0-add9-e495ca371b5b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lucifa様<br/>３Dダンジョン作成・表示コモン</li></ul><ul id="11abc4b5-09a2-4a9a-bbc3-cf70538fc628" class="bulleted-list" dir="auto"><li style="list-style-type:circle">リック様:<br/>作戦型オートバトル</li></ul><ul id="41f12388-fe95-419a-a42d-54e915b3e4d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">通りすがり様:<br/>ポイント制職業システム＋装備拡張特技</li></ul><ul id="6682a042-26bc-448a-949a-11bf97e966de" class="bulleted-list" dir="auto"><li style="list-style-type:circle">苦八様:<br/>CTBコモン</li></ul><ul id="3868d93d-586c-4c04-8114-84c3fbce18a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">yu-fu-nel様：<br/>エネミーフォーメーション<br/>環境ウィルコモン</li></ul><ul id="9106cd95-862b-4079-b96a-5b180aeeb82d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">苦手様<br/>乗り物コモン</li></ul><ul id="703e4cf9-540b-4f3a-b70e-db40d2cd8908" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ロンバート様<br/>状態異常数限界突破コモン<br/>(直接使用していないため、いままで権利表記には記載してなかったですが<br/>とても参考になり、作者へのリスペクトを伝えたいため、権利表記に追加)<br/>ド迫力！？カットインコモン<br/>(推薦をいただいたので追加)<br/>高解像度でも倍角にできる慣性カメラNEO Ver2</li></ul><ul id="9456b0e5-c0f7-45cf-a50c-88e359282577" class="bulleted-list" dir="auto"><li style="list-style-type:circle">モンスター集会所様<br/>戦闘エフェクト強化コモン</li></ul><ul id="2c4a2228-595b-4645-bfcd-8fa38ee61429" class="bulleted-list" dir="auto"><li style="list-style-type:circle">AT様<br/>サイドビュー+ATB+アニメーションコモン</li></ul><ul id="11acf721-1395-40b1-a467-09aaa85d9f6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ケモプレデーションゲームス様<br/>クリックして離すとカーソルが合わさる</li></ul><ul id="32a9da7d-49f6-8029-80d1-d8a3f22735a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ぴぽや様<br/>パーティクルコモン<br/>感情、状態吹き出しコモン</li></ul><ul id="32a9da7d-49f6-8002-9c8a-eaa9f1dced22" class="bulleted-list" dir="auto"><li style="list-style-type:circle">くうきいぬ様<br/>あらすじシステムコモン</li></ul><p id="73e1cba2-de72-45dd-a11a-bb2ea94b05d8" class="" dir="auto">※上記全てのコモンは全て改造物の二次配布可能/改造可能なコモンです。</p></li></ul><ul id="71b0ef4c-db1f-4ab5-8c1a-98ba19893336" class="bulleted-list" dir="auto"><li style="list-style-type:disc">■使用はしていないけど、インスピレーションを受けたコモン<ul id="1c49da7d-49f6-809a-84da-dbbde07910b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">YADO氏　気紛れ３Dダンジョン<br/>３Dダンジョン上で、キャラクターを動かしたいというモチベーションの源になりました</li></ul><ul id="feb48986-2214-4fe9-8b44-e106dd309611" class="bulleted-list" dir="auto"><li style="list-style-type:circle">カル太氏　みたらし３D<br/>３Dダンジョン上で見下ろしビューをやってみたいというモチベーションの源になりました<br/>（コモンは使用していませんが、pipo氏の画像改変素材をお借りしました）</li></ul><ul id="6513e308-4033-4cbd-8053-c3f983a35f3a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ZZZ氏　３D風コモン<br/>方向別の画像を表示したいというモチベーションの源になりました<br/>（コモンは使用していませんが、画像素材をお借りしました）</li></ul></li></ul><p id="1c49da7d-49f6-8055-aaca-c8ccd8400a7d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-807c-b6ee-d7b8eb7d43f3" dir="auto"/><p id="1c49da7d-49f6-8015-b2c8-dfa76784f954" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8028-9e78-f4ae31f8457e" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80dc-9236-f6525f8e116d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8094-bd64-d0706ca4ed40" dir="auto"/><h1 id="1c49da7d-49f6-80ef-a2ee-eddac30366f7" class="" dir="auto">画像/音声素材</h1><p id="1c49da7d-49f6-8048-8287-c4e68ce3507e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8002-a860-f8d3ff3d0fa9" dir="auto"/><p id="1c49da7d-49f6-80e2-99fb-c5346edd707f" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8011-a95f-d89e88c96699" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80aa-800d-f00259889800" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80d7-9ba5-dc69236ea46f" dir="auto"/><h2 id="1c39da7d-49f6-8074-bb2f-e4772c0f35d2" class="" dir="auto">Mr.H素材</h2><p id="1c49da7d-49f6-8005-a72b-fe0894bd26d5" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80da-86ac-efb712e71ebc" dir="auto"/><ul id="1c39da7d-49f6-80a5-b0b7-f4493d9d8bc9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「_RTP_Sys」内、「Face」内、「Icon」内の画像/音声は<br/>Mr.Hが作成した物ですのでご自由に使用してください。<br/>ただし、AIの学習リソースへの使用を禁止とします！</li></ul><ul id="1c39da7d-49f6-8094-bfff-d28bbed68d5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「BattleEffect」内にあるファイル名に<strong>「MrH_」</strong>が付く画像は<br/>Mr.Hが作成したものですのでご自由に使用してください。<br/>ただし、AIの学習リソースへの使用を禁止とします！</li></ul><ul id="1c39da7d-49f6-80d3-b97b-edc6a6a46af4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「BGM」内にあるファイル名に<strong>「MrH_」</strong>が付く全ての音楽は<br/>Mr.Hが作曲したものですのでご自由に使用してください。<br/>ただし、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1c49da7d-49f6-80af-b5ce-f17d8e07adda" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-804a-a810-e5dbbde283f8" dir="auto"/><p id="1c49da7d-49f6-8054-b28f-cd512b38a49f" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8089-88c8-e1ebb610beb1" class="" dir="auto">
+</p><p id="1c49da7d-49f6-809c-9f29-c245e36a959f" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8001-b719-f002de513c3a" dir="auto"/><h2 id="1c39da7d-49f6-80d8-8b38-de235cbf1c4c" class="" dir="auto">ＧＤ様素材</h2><p id="1c49da7d-49f6-80f7-8d2d-ca2dcfbd8171" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8018-a596-dddf1eeac058" dir="auto"/><ul id="846a220e-92df-4e51-8c80-02e6a84f632f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「CharaPic」内の、ファイル名の先頭に<strong>「GD_」</strong>が付く敵グラ素材は<br/>ウディタ同梱素材(GD様)の画像となります。<br/>また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1c49da7d-49f6-8066-9bbb-f15ae32d7e79" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-804e-b089-dcda33b9bd17" dir="auto"/><p id="1c49da7d-49f6-8055-894c-e7404bd7ecd1" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8027-872a-f9b496ab4c8d" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8095-a46a-e4e91f2ebcb5" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8001-91c3-cc7cac68d3aa" dir="auto"/><h2 id="1c39da7d-49f6-804d-8691-c0baf885235c" class="" dir="auto">モンスター集会所様素材</h2><p id="1c49da7d-49f6-8093-9c8b-c3f41d5f2d68" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8054-8a9c-ea99a8006cc8" dir="auto"/><ul id="5e9be970-8b26-486f-a685-9dae29dc5669" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「BattleEffect」内にあるファイル名に<strong>「MonsSyukai_」</strong>が付く画像は<br/>モンスター集会所様からお借りした素材です。<br/>また、AIの学習リソースへの使用を禁止とします！<br/>詳しくは下記の利用規約を参照してください。</li></ul><p id="1c49da7d-49f6-806f-b767-f2527bdd9736" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80af-9199-df183253cdfb" dir="auto"/><p id="1c49da7d-49f6-80c0-8b2d-f95a175af5aa" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80e6-9f54-d46c92176feb" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80d0-ad2a-d4f584fd434e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8090-a15e-d8b4b112a732" dir="auto"/><h2 id="1c39da7d-49f6-80db-bcd0-ea6a110c514b" class="" dir="auto">ぴぽや倉庫様素材</h2><p id="1c49da7d-49f6-8014-8ef5-fc7ac67c5b14" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8070-a327-f2a5562a6d27" dir="auto"/><ul id="57372857-eeea-47b3-9e3b-57d0ae16300b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「Pipo_」</strong>が付く全ての画像素材はぴぽや倉庫からお借りした素材です。<br/>「ぴぽや倉庫」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1c49da7d-49f6-80b7-91fe-e21ea29d0c8c" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8089-81ef-d210ef95b58a" dir="auto"/><p id="1c49da7d-49f6-8085-9669-c5c611084dd4" class="" dir="auto">
+</p><p id="1c49da7d-49f6-807b-aa0f-e54f0fa202d8" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80e3-b873-c8109b2946c8" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8060-b723-d47ec77cd321" dir="auto"/><h2 id="1c39da7d-49f6-808a-852d-fa5c823e82d4" class="" dir="auto">CharaMEL素材</h2><p id="1c49da7d-49f6-804f-8329-daf9f649ea02" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f9-9c4d-f1a6a1d9d98e" dir="auto"/><ul id="75d4692f-3895-409e-b530-59abbcbe1d7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「CMEL_」</strong>が付く全ての画像素材はCharaMELで生成した画像素材です。<br/>「CharaMEL(生成した画像)」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1c49da7d-49f6-8007-947b-f29a57e9bb21" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80e3-a194-c9d1d9f5fc39" dir="auto"/><p id="1e19da7d-49f6-808d-bb14-fbb0546fcb84" class="" dir="auto">
+</p><p id="1e19da7d-49f6-803f-bd7f-ea3ca1db61c5" class="" dir="auto">
+</p><p id="1e19da7d-49f6-80e6-9698-cf9fb0ed8ab1" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8079-874b-c5b72ae64f0d" dir="auto"/><h2 id="1e19da7d-49f6-8020-aa57-c290326e9719" class="" dir="auto">アンデッドとか好きだから様素材</h2><p id="1e19da7d-49f6-80e6-8673-f880ad2344b3" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-804b-92eb-fe23df15ada3" dir="auto"/><ul id="1e19da7d-49f6-80c5-9207-e5bdd544574f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「Qut_」</strong>が付く全ての画像素材はアンデッドとか好きだからからお借りした素材です。<br/>「アンデッドとか好きだから」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1e19da7d-49f6-800f-b23c-f33ba5baa4fc" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-801e-bb4a-e07568548e8e" dir="auto"/><p id="1e19da7d-49f6-80b5-bbc7-ddebf660be28" class="" dir="auto">
+</p><p id="1e19da7d-49f6-80da-a92d-e17921a115a4" class="" dir="auto">
+</p><p id="1e19da7d-49f6-8031-9618-e50ea3c8e811" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-809b-947e-fc29614802ed" dir="auto"/><h2 id="1e19da7d-49f6-80ba-afd3-eec5eb2e27ae" class="" dir="auto">ノーマル軍様素材</h2><p id="1e19da7d-49f6-80a2-b31b-d60fc0a4bb6b" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8083-9725-e3ded1f3809e" dir="auto"/><ul id="1e19da7d-49f6-808c-acbb-f13754fd5ddd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「Normal_」</strong>が付く全ての画像素材はノーマル軍の素材置き場からお借りした素材です。<br/>「ノーマル軍の素材置き場」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="1e19da7d-49f6-8010-990a-d7a42ff15f06" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8088-b82a-c5885c8f644f" dir="auto"/><p id="1e19da7d-49f6-80f5-bc9e-d151d0de9060" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8059-828a-e93810d74edf" class="" dir="auto">
+</p><p id="1c49da7d-49f6-804b-86c1-c3ddb162b694" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80cb-be91-f582cbe5d449" dir="auto"/><h2 id="1c39da7d-49f6-80eb-a7da-c6253f2ea083" class="" dir="auto">Lucifa様素材</h2><p id="1c49da7d-49f6-8045-b5f5-e7e507a6ba42" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80ed-8d3a-ffaefe4496d1" dir="auto"/><ul id="e971bd9f-216a-4b88-81d9-fdcf444e8fb5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">以下のファイルはLucifa様から借りた素材です。<br/>「Lucifa様」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！<ul id="1c49da7d-49f6-8059-9ed2-dc649e68bd9d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>SystemFile</strong><ul id="1c49da7d-49f6-80c6-b83c-fbc253137ffa" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>M_CMP_LCF.png</strong></li></ul></li></ul></li></ul><p id="1c49da7d-49f6-80b5-8d91-ff6a1f21a790" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f7-9de2-db81de8eeb27" dir="auto"/><p id="1c49da7d-49f6-800e-a0d1-ed744799af77" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80f1-a433-e1536e34ab42" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80a6-929c-ed35487f46ee" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8039-9932-d1afb2340447" dir="auto"/><h2 id="1c39da7d-49f6-8098-a69d-c4f5f888b582" class="" dir="auto">ケモプレ素材</h2><p id="1c49da7d-49f6-80d0-a37b-d472ff3f30ab" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8029-a4cf-ca8593485898" dir="auto"/><ul id="92451279-87d9-4cc6-a582-1f67e6d60a3d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">以下のファイルはケモプレデーションゲームス様から借りた素材です。<br/>「ケモプレデーションゲームス様」の権利表記を記載する必要があります。<br/>また、AIの学習リソースへの使用を禁止とします！<ul id="1c49da7d-49f6-80fc-aec6-d022b66e44af" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>SystemFile</strong><ul id="1c49da7d-49f6-80e4-8cd6-f04966b69927" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BW_KPR_Base.png</strong></li></ul><ul id="1c49da7d-49f6-80e7-b82d-e24ed6e01abe" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BW_KPR_Base2.png</strong></li></ul><ul id="1c49da7d-49f6-8084-800c-cc0097cc5ebb" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BW_KPR_Base3.png</strong></li></ul><ul id="1c49da7d-49f6-80e9-bc5e-fb7132bbbba3" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BW_KPR_MrH2_Base.png</strong></li></ul><ul id="1c49da7d-49f6-8069-8daf-f5125637f35f" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>BW_KPR2_Base.png</strong></li></ul><ul id="1c49da7d-49f6-80e2-af49-c2ee13d8d6ad" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>M_ACT_KPR2.png</strong></li></ul><ul id="1c49da7d-49f6-806b-880e-cad528d6923b" class="bulleted-list" dir="auto"><li style="list-style-type:square"><strong>M_MAP_KPR2.png</strong></li></ul></li></ul></li></ul><p id="1c49da7d-49f6-8039-9ca4-e26db1a28c36" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8032-a424-f3cb5b6ae133" dir="auto"/><p id="1c49da7d-49f6-80f4-89de-ddd6085de397" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8049-bf5c-e23b5ef9441c" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8002-b866-ce9770e7c62d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80d5-b469-d86338ba1914" dir="auto"/><h2 id="1c39da7d-49f6-80d6-85d9-edb06465882a" class="" dir="auto">魔王魂様素材</h2><p id="1c49da7d-49f6-807d-be0d-dd5c63c81687" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8013-ac11-ef59b8790384" dir="auto"/><ul id="10ff3da5-5004-455c-a283-b53e61f3ec31" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「Maoudamasii_」</strong>がつく音楽/効果音素材は魔王魂からお借りした素材です。<br/>詳しくは下記の利用規約を参照してください。</li></ul><p id="1c49da7d-49f6-8097-a9f4-f9f8a5ec182d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8009-b692-f68b8e7012a5" dir="auto"/><p id="1c49da7d-49f6-807f-8964-eaf1095cd726" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8017-8450-c0d151d3ebb0" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ac-9b4c-fad57b66697e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f1-9cc5-e93764a4d857" dir="auto"/><h2 id="1c39da7d-49f6-80b3-a80c-ed60a01b80a4" class="" dir="auto">おもしろゲーム神殿様素材🎈🎡</h2><p id="1c49da7d-49f6-8056-a1de-d6b94c20a4ab" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-800e-be9a-f4788c000e3a" dir="auto"/><ul id="970adf10-316d-4cef-8fce-0725a83ecb13" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ファイル名に<strong>「AE_」「AE4_」「AEP_」「Anton_」</strong>がつく音楽/効果音素材は<br/>おもしろゲーム神殿からお借りした素材です。</li></ul><p id="1c49da7d-49f6-807b-967c-d4a7da674f4f" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8037-b487-db6fd5f014a1" dir="auto"/><p id="1c49da7d-49f6-800d-a7f0-f0dcc35bb16e" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80c0-9199-db8392123c0b" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80cf-8ead-c53262b76b78" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8064-890f-cde3a242a8f4" dir="auto"/><h1 id="1c39da7d-49f6-803b-9cdc-cfb0ce1c7690" class="" dir="auto">利用規約</h1><p id="1c49da7d-49f6-80c8-82c7-e788311a0b13" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-801e-bc9c-e85ed9f3d95c" dir="auto"/><ul id="2999da7d-49f6-805f-9aa7-f5f698b09023" class="bulleted-list" dir="auto"><li style="list-style-type:disc">全ての素材について、二次配布や改造物の配布に関しては<br/>無償であり、見返りを求めない場合のみ許可します！</li></ul><ul id="2999da7d-49f6-803e-85cc-e226d6330105" class="bulleted-list" dir="auto"><li style="list-style-type:disc">全ての素材について、改造に関しては<br/>悪意を持った改造を禁止します！</li></ul><ul id="2999da7d-49f6-808d-93ae-ea1c576965a0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mr.Hが作った素材、またはMr.Hが改変した素材に関しては、商用利用に関しては以下の条件で商用利用とみなします！<ul id="2999da7d-49f6-801a-9d77-e32a50c243fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">広告、または課金コンテンツが含まれている場合</li></ul><ul id="2999da7d-49f6-80fe-b4d9-e3dbc791e79c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">商用展開のあるコンテストに参加する場合</li></ul></li></ul><ul id="2999da7d-49f6-80d6-b845-db0f48514f22" class="bulleted-list" dir="auto"><li style="list-style-type:disc">全ての素材について、以下の行為を禁止しています！<ul id="2f062547-e981-4133-9a79-9debad8a0db5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">素材単体での販売</li></ul><ul id="2999da7d-49f6-80f1-b5ef-c3c867a31e64" class="bulleted-list" dir="auto"><li style="list-style-type:circle">著作権/肖像権侵害</li></ul><ul id="2999da7d-49f6-803d-bfc2-cc799a4d66a6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">犯罪行為</li></ul><ul id="2999da7d-49f6-80bb-9b69-f2f9aec0f861" class="bulleted-list" dir="auto"><li style="list-style-type:circle">不謹慎な行為</li></ul><ul id="2999da7d-49f6-8013-a9c1-dac105504ec7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">政治利用</li></ul><ul id="2999da7d-49f6-8069-a9e9-d991b575f8b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">事件を題材にしたコンテンツ</li></ul><ul id="2999da7d-49f6-8072-ae16-fcd24f4481d4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">新しい宗教を題材にしたコンテンツ<br/>（神話や昔話を題材にするのは可）</li></ul><ul id="2999da7d-49f6-80e0-a396-da2076958f1f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">差別的行為</li></ul><ul id="2999da7d-49f6-809b-a6fd-dbb1991d4814" class="bulleted-list" dir="auto"><li style="list-style-type:circle">AI学習リソースへの利用</li></ul><ul id="2999da7d-49f6-800d-980b-f712cc6fb69a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">著作権登録<ul id="2999da7d-49f6-8093-9f29-e9a74130f35b" class="bulleted-list" dir="auto"><li style="list-style-type:square">「著作権管理事業者」または「著作権等管理団体」への登録を禁じます！</li></ul><ul id="2999da7d-49f6-8027-b8c4-ed29250db200" class="bulleted-list" dir="auto"><li style="list-style-type:square">ベルヌ条約への加盟の折り合いが複雑な国において、一部方式主義の慣例を引き継いでいる国における著作権登録も禁止します</li></ul></li></ul><ul id="2999da7d-49f6-80dc-a044-c3949b0ae06c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">商標登録<ul id="2999da7d-49f6-80c3-8a0d-d42450ce9b37" class="bulleted-list" dir="auto"><li style="list-style-type:square">「著作権管理事業者」または「著作権等管理団体」への登録を禁じます！</li></ul><ul id="2999da7d-49f6-80dc-bfe0-efc99ed78201" class="bulleted-list" dir="auto"><li style="list-style-type:square">ベルヌ条約への加盟の折り合いが複雑な国において、一部方式主義の慣例を引き継いでいる国における商標登録も禁止します</li></ul></li></ul></li></ul><ul id="8ca362b2-054e-4c82-93e7-477035111d47" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mr.Hが作成した全ての画像/音楽素材について<br/>AIの学習リソースへの使用を禁止します！</li></ul><ul id="0a9fede9-1f96-4fdb-b8b6-76699112ebeb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">素材元からお借りした全ての画像/音楽素材について素材元から特記が無い限り<br/>AIの学習リソースへの使用を禁止します！</li></ul><ul id="ec39213e-9097-43bc-9469-600d037c242a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">他の人/サイトの素材を追加して利用する際<br/>AIによって生成された素材を追加する事を禁止します！<br/>(例:それぞれの素材制作者がAIを使わずに自力で作った素材である事)</li></ul><ul id="2519da7d-49f6-80da-b1c6-c38757aff327" class="bulleted-list" dir="auto"><li style="list-style-type:disc">AI生成素材を使用する際は「適切な権利がある素材」で学習されたモデルやサービス以外で生成したAI生成素材の使用を禁止します。<br/>以下はこの基準です。<br/>(※予告なく基準を変更する場合があります！)<ul id="2519da7d-49f6-8020-8e70-d6f8ece5a0aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Adobeの「Adobe Firefly」や、Stable Diffusion用の「Mitsua Diffusion」モデルのような<br/>「パブリックドメインやCC0の素材、許諾ありの素材のみで学習されたAI生成素材」(オプトイン制)<br/>のAIで生成した素材のみ使用可</li></ul><ul id="2519da7d-49f6-801c-88ac-ed4f608f36b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Stable Diffusion用の基本モデルを含むほぼ全てのモデル、NovelAI、Midjourney系、Dall-E(Bing、Windows Copilot、ChatGPT)などの、学習元データが明示されていない、または「モデル/サービス提供者が権利を持たない画像」で学習されたAIで生成した素材は使用禁止</li></ul></li></ul><ul id="2b49da7d-49f6-803e-96dd-d1eb646dbf5a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">無料高機能RPGシステムMr.Hのコモンイベントおよびデータベース部分(処理内容)について、第三者の手によるウディタ以外のプログラムへの移植および、ゲーム制作ソフトとしての配布を、クレジット表記を行うことを条件に許可します。<br/>ただし、素材単体での販売や自作発言は禁止とします。<br/>また、ゲーム制作ソフトとして配布する場合は、以下の条件を満たすことを必須とします。<ul id="2b49da7d-49f6-809d-b52f-c7a4f633b5d6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">完全無料であること</li></ul><ul id="2b49da7d-49f6-8097-ac05-cd67e4e1bdfe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">処理内容などがオープンソースで公開されていること</li></ul><ul id="2b49da7d-49f6-80be-a51c-dbd035398e91" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ソースコードの二次配布、改造、および改造物の配布を許可すること</li></ul><ul id="2b49da7d-49f6-8009-9317-ddbd221623fb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">広告を一切表示しないこと</li></ul><ul id="2b49da7d-49f6-806f-8e5c-f63dc7aae600" class="bulleted-list" dir="auto"><li style="list-style-type:circle">課金要素を設けないこと</li></ul><ul id="2b49da7d-49f6-80c9-8ddc-d0368f90dc80" class="bulleted-list" dir="auto"><li style="list-style-type:circle">見返りを求めないこと</li></ul><ul id="2b49da7d-49f6-80e5-8cbe-f560548021b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">同梱素材の規約を守ること<br/>(特に、二次配布禁止の素材は同梱不可)</li></ul></li></ul><p id="1c39da7d-49f6-8082-9880-c738f86ea314" class="" dir="auto">詳しくは下記の利用規約を参照してください。</p><p id="2999da7d-49f6-80cf-a81c-f25995ae3dd8" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8033-a765-f85f845402cd" dir="auto"/><p id="1c49da7d-49f6-80d7-aa3a-e40c466dbae8" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8035-8b15-cecaea6592cb" class="" dir="auto">
+</p><p id="1c49da7d-49f6-806a-a010-ef10a03ef002" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8034-a67d-f31753bed122" dir="auto"/><h2 id="1c39da7d-49f6-80cc-a55b-d9c831654354" class="" dir="auto">コモンイベントの利用規約</h2><p id="1c49da7d-49f6-80a5-81c3-f41baae05390" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8093-b61f-c74d2e0b1635" dir="auto"/><p id="1c39da7d-49f6-80d8-b722-d6f561b24749" class="" dir="auto">二次配布:禁止</p><p id="1c49da7d-49f6-80d3-9696-cdf768073207" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-80bb-869e-d76834c86b9e" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-80f9-8fed-c38b41f7c372" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-80c4-87ed-c7d921a49644" class="" dir="auto">商用利用:自由</p><p id="1c49da7d-49f6-807d-9cd2-e39ae3d9e497" class="" dir="auto">成人向け(R-18)ゲームでの利用:自由</p><p id="1c49da7d-49f6-808e-ad27-d9fae7da892c" class="" dir="auto">クレジット表記:必須</p><p id="3189da7d-49f6-8036-912e-c2b15012c471" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8007-a7c3-edaa9eded945" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8023-a62d-fbc0580b8ea0" dir="auto"/><p id="1c49da7d-49f6-8083-aec4-dcebba4daf39" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ba-86b2-e628b2db6526" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ae-ac7d-de8a65904f9d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80d7-b29b-fff7a1b3645f" dir="auto"/><h2 id="1c39da7d-49f6-80f4-aa32-c3ea28c063b3" class="" dir="auto">「Mr.H」画像素材の利用規約</h2><p id="1c49da7d-49f6-8027-a262-c8e84494ad98" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80ac-8d93-fbe5cba85d86" dir="auto"/><ul id="1c49da7d-49f6-8058-b733-da95b6fc598b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「RTP_Sys</strong><em><strong>」<br/>「</strong></em><strong>Icon</strong><em><strong>」</strong></em><ul id="1c49da7d-49f6-8068-9139-d2a40e329231" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>全ての画像素材</strong></li></ul></li></ul><ul id="1c49da7d-49f6-803b-886c-edb5a578fa26" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><em><strong>「</strong></em><strong>SystemFile</strong><em><strong>」</strong></em><ul id="f4cabf0e-20ea-4e76-8f1d-2eefc3680243" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Album_NotFound.png」</strong></li></ul><ul id="772271f7-de12-454a-80e2-2199d8b3c115" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Battle_EnemyCursol.png」</strong></li></ul><ul id="1c49da7d-49f6-8003-b763-fafddda3fbfa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Battle_EnemyTarget.png」</strong></li></ul><ul id="1c49da7d-49f6-8069-83d2-e20a11530cb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Battle_EnemyWeak.png」</strong></li></ul><ul id="d65a3b0c-be40-4612-86c7-44a8a34708b4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BCommandW_CenterSpread.png」</strong></li></ul><ul id="d126eea3-91f9-4c8b-841f-e1d8e04c993a" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BCommandW_Ring.png」</strong></li></ul><ul id="b0eedb40-450c-4ad4-b073-b5db329e9b17" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BCommandW_Ring_2.png」</strong></li></ul><ul id="a72c8ac1-03aa-482e-8ccc-5ccc699462d9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BCommandW_Roll.png」</strong></li></ul><ul id="692361bf-04af-4adc-bafc-f84ab9034e88" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BCommandW_Spread.png」</strong></li></ul><ul id="95dd42cc-b675-4574-8a2a-aecd2a676cdd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH_Base.png」</strong></li></ul><ul id="04522b94-4eed-4289-919e-84436479df26" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH2_Base.png」</strong></li></ul><ul id="a424a473-f19f-4dd2-99ff-116aa162820c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH3_Base.png」</strong></li></ul><ul id="9485c81f-8c1c-47b6-938c-04f0a57a8d66" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH4_Base.png」</strong></li></ul><ul id="3ed4433f-98d6-4f4f-a811-4240dac1ae55" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH5_Base.png」</strong></li></ul><ul id="df1af8c4-22d3-4e5d-9929-e7ca756e286d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH6_Base.png」</strong></li></ul><ul id="b799b58c-b406-4969-9d5e-5b233f2a4329" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH7_Base.png」</strong></li></ul><ul id="e73ffcb9-8e8a-4b4f-8dda-c3f9bc3b3f92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH8_Base.png」</strong></li></ul><ul id="f40f40db-b434-49c9-895b-fb131ae909f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「BW_MrH9_Base.png」</strong></li></ul><ul id="196c0b54-036b-4c01-9475-81b5ef506fd6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「NoImg2.png」</strong></li></ul><ul id="a2228f08-7d70-4feb-9c6c-d5951ab64dc0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「NoSnd2.ogg」</strong></li></ul><ul id="bd4209fb-33c2-432c-aec5-fd17b20dfdfb" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_4dir_16_CharaShade.png」</strong></li></ul><ul id="ec6139c6-fb6b-4fe6-96a5-edf75fa58e4c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_4dir_32_CharaShade.png」</strong></li></ul><ul id="6b22866d-7d2c-45c1-a491-4b247a2f06f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_4dir_48_CharaShade.png」</strong></li></ul><ul id="9f1bf880-8006-49cc-8ea6-d5bc8623451f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_8dir_32_CharaShade.png」</strong></li></ul><ul id="2b8262a1-0106-4e4f-8055-19a966d9863c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_8dir_48_CharaShade.png」</strong></li></ul><ul id="84daf951-ba2e-46d1-930b-2709b2321ee7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_320x240_CursorBase_1.png」</strong></li></ul><ul id="833a4372-49b6-40cf-9544-a076ce0366bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_640x480_CursorBase_1.png」</strong></li></ul><ul id="f405d93f-2f6a-4c53-b750-59a6e15795f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_960x720_CursorBase_1.png」</strong></li></ul><ul id="ca4f01be-73b5-45d9-b3ab-faa893702549" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_Arrow.png」</strong></li></ul><ul id="1c49da7d-49f6-80cc-980e-c3f3ef06480f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_QTE.png」</strong></li></ul><ul id="d1194bba-f5a5-460d-9d16-438d3a608b7c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_ScrollBar.png」</strong></li></ul><ul id="4541383a-bdf6-4432-99b4-ba4f89cb9974" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「TCommand_Set.png」</strong></li></ul><ul id="c3d2302c-41e8-4088-a6dc-c7d43913ee92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Transition_640x480_Random.png」</strong></li></ul><ul id="56853d67-f04b-4a5c-a08f-8c4957797115" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Transition_960x720_Random.png」</strong></li></ul><ul id="4cd39013-b43a-463c-a787-e90433b329a1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「Transition_1280x720_Random.png」</strong></li></ul></li></ul><p id="1c49da7d-49f6-80fe-949c-eea2101a532e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8094-9131-c5237d5a383e" dir="auto"/><p id="1c39da7d-49f6-8099-9617-c501ec11980d" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-8067-848f-c90cb835be4b" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-80bb-a5bc-dee8cd55fb3c" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-8008-b032-f8d0089ed641" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-80bb-a2ba-dda5c5626f12" class="" dir="auto">商用利用:自由</p><p id="1c49da7d-49f6-80d5-ac53-ea9b07562800" class="" dir="auto">成人向け(R-18)ゲームでの利用:自由</p><p id="1c49da7d-49f6-8035-bb55-fb80d64a650f" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-804a-8107-c218c3adacfb" class="" dir="auto">ウディタ以外での利用:自由</p><p id="3189da7d-49f6-8035-adc0-ee1d7ceed476" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-80dc-b311-f1c83e48c8cb" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-802f-8cb8-f285e7deabfd" dir="auto"/><ul id="1c49da7d-49f6-8088-a302-c9fc1cdce266" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「BattleEffect」</strong><ul id="1c49da7d-49f6-8013-8446-d473312895ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「MrH_」を含む全ての画像素材</strong></li></ul></li></ul><p id="1c49da7d-49f6-800a-ab3b-fe1cc02f2c51" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8002-9988-d8d618ce8a89" dir="auto"/><p id="1c39da7d-49f6-8076-90c8-fb9b61da0920" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-80f3-8611-cfc32f8307bd" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-80af-9749-dba96622b914" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-8019-9653-ebb0cceefe01" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-805f-b8bb-ea24797452d8" class="" dir="auto">商用利用:自由</p><p id="1c49da7d-49f6-8027-9bf5-e65ce9250fb0" class="" dir="auto">成人向け(R-18)ゲームでの利用:自由</p><p id="1c49da7d-49f6-80f1-898b-e6b2235e1ebc" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-807e-b4bb-c115bc972bcc" class="" dir="auto">ウディタ以外での利用:自由</p><p id="3189da7d-49f6-80dc-ac2c-d1717b829c20" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8038-90d6-d2d622a25bdb" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80c4-81f3-ce68bf7ae778" dir="auto"/><ul id="1c49da7d-49f6-803a-8ba7-fe87c09b4d4d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「Fog_BackGround」<br/>「CharaPic」</strong><ul id="1c49da7d-49f6-80cc-967e-f4391ee5f92d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「Nakasuma_」「GD_」を含まない全ての画像素材</strong></li></ul></li></ul><p id="1c49da7d-49f6-80d5-abc6-f190a99574f0" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8070-9ecd-dc25ad6d8057" dir="auto"/><p id="1c39da7d-49f6-80b0-b2c6-f83fd36359e9" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-8044-a8ed-d00e2e4f21b1" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-8021-8ab2-d3148f1e7297" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-8013-8d0d-f1960a521f88" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-80da-bc99-c8125038a517" class="" dir="auto">商用利用:禁止</p><p id="1c49da7d-49f6-80b2-90c1-d9c21cafe734" class="" dir="auto">成人向け(R-18)ゲームでの利用:禁止</p><p id="1c49da7d-49f6-80f3-890b-dbcf098636fc" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-803a-9045-e839fe5c58f3" class="" dir="auto">ウディタ以外での利用:自由</p><p id="3189da7d-49f6-8082-920d-c0b5e5c37a83" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-804e-9103-fc56cdbb3199" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8018-b46d-c661d584ff20" dir="auto"/><ul id="1c49da7d-49f6-802c-98af-d61a04e85f43" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「MapChip」</strong><ul id="1c49da7d-49f6-80e4-805e-f9a7d8d141a0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「Nakasuma_」を含まない＆ファイル名に「MrH_」を含む全ての画像素材</strong></li></ul></li></ul><p id="1c49da7d-49f6-808a-b0ff-edb56989bdec" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8015-9288-dbc162af5d27" dir="auto"/><p id="1c49da7d-49f6-80f1-b3b9-f30d335f9fe4" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-8024-8d8c-c3c879698647" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-8008-8850-f2e932ade307" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-80fa-899c-d428d0762238" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-800f-a816-f5d00e0c9bcf" class="" dir="auto">商用利用:禁止</p><p id="1c49da7d-49f6-8055-a88f-c094ba8ee503" class="" dir="auto">成人向け(R-18)ゲームでの利用:禁止</p><p id="1c49da7d-49f6-8084-9504-de60583f0cf5" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-8097-adfb-f805f57a61bd" class="" dir="auto">ウディタ以外での利用:自由</p><p id="3189da7d-49f6-8012-9f50-debbcb022058" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-803b-b9ad-e6d113fecb18" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80d2-afe8-c6220e360f27" dir="auto"/><h2 id="1c39da7d-49f6-806f-bb0a-f53691af82e5" class="" dir="auto">「なかよし島日和」素材の利用規約🏝</h2><p id="1c49da7d-49f6-805a-9cd5-d96046dccfbd" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8033-af50-fbf13da954be" dir="auto"/><ul id="1c49da7d-49f6-80c8-af26-cfe010b43b4c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Nakasuma_」を含む全てのフォルダの画像素材</strong></li></ul><p id="1c49da7d-49f6-807c-9653-c700cc0e8001" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80df-8e53-fad3da62997f" dir="auto"/><p id="1c39da7d-49f6-809d-97d0-d0c2f5e9084a" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-80dc-992e-fac131aae456" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-805e-b759-d4671fc52521" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-804d-8280-e755e7ef51bd" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-80df-bc33-d5cd4ccf662e" class="" dir="auto">商用利用:禁止</p><p id="1c49da7d-49f6-80e0-b073-ea431daae920" class="" dir="auto">成人向け(R-18)ゲームでの利用:禁止</p><p id="1c49da7d-49f6-80e6-8748-f573c840f5ea" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-806d-80a5-fbfd39ed35f4" class="" dir="auto">ウディタ以外での利用:自由</p><p id="3189da7d-49f6-8018-9145-cf346e6d5661" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-803c-b39c-c9e505273261" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80b8-9098-f91619572bc8" dir="auto"/><p id="1c49da7d-49f6-806c-afb0-c931420262f1" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8021-bae4-c52b6abe3bca" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8055-a2b0-f28f8008f288" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80d5-802d-eb9a4aeb67c7" dir="auto"/><h2 id="1c49da7d-49f6-8004-a38d-e611544e6f75" class="" dir="auto">「モンスター集会所」素材の利用規約</h2><p id="1c49da7d-49f6-80fb-8752-eff348821ed5" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80c1-a0d7-e1bc32faeebe" dir="auto"/><ul id="1c49da7d-49f6-80db-8f66-da4e124d5b03" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「MonsSyukai_」を含む全ての画像素材</strong></li></ul><p id="1c49da7d-49f6-800d-886b-f98b2ea26a81" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-801c-8524-f7f7f2036929" dir="auto"/><p id="1c49da7d-49f6-8021-85dd-c11cc7926810" class="" dir="auto">モンスター集会所様の利用規約に依存します。<br/>そのため、使用する際は以下の権利表記が必要です！</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1c49da7d-49f6-8035-a3de-dd5714667aed" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="d4e4ca8f-3851-43f6-b767-86c3933809b9" class="" dir="auto">モンスター集会所<br/><a href="http://monstermeetingplace.web.fc2.com/">http://monstermeetingplace.web.fc2.com</a></p></div></aside><p id="1c49da7d-49f6-806d-9562-e679ca33bb12" class="" dir="auto">無料高機能RPGシステムMr.Hから切り離して<br/>無料高機能RPGシステムMr.Hに無関係の用途で使用する場合は<br/>「BattleEffect」フォルダからコピーせずに<br/>上記のURLからダウンロードしてください！<br/>上記のURLには無料高機能RPGシステムMr.Hで使用されているアニメーション素材の他にも<br/>たくさんの画像素材が配布されています。<br/>また、ファイル名の「MonsSyukai_」の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8009-9968-d2521f229307" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80c4-a2dd-d07cbc048bf1" dir="auto"/><p id="1c49da7d-49f6-80d4-9393-f6e074e5db21" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80fe-a4d1-d7c688929427" class="" dir="auto">
+</p><p id="1c49da7d-49f6-804a-9937-f2eeff2a49a8" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80eb-a86f-ffaf27f4ec3c" dir="auto"/><h2 id="1c49da7d-49f6-80ef-9d8f-ebd3ad85d95e" class="" dir="auto">「ぴぽや倉庫」素材の利用規約🌳</h2><p id="1c49da7d-49f6-8067-8c52-da9812fde2ee" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-804c-9522-d052df2f7ca5" dir="auto"/><ul id="1c49da7d-49f6-80d0-87e0-f644cebff5ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Pipo_」を含む全ての画像素材</strong></li></ul><p id="1c49da7d-49f6-80e9-b58b-cc8d42a6e925" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80aa-a347-f3c65b14eb7e" dir="auto"/><p id="1c49da7d-49f6-807d-8a6e-e98c517f9125" class="" dir="auto">ぴぽや倉庫の利用規約に依存します。<br/>そのため、使用する際は以下の権利表記が必要です！</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1c49da7d-49f6-8007-850a-dbf95fd64100" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="7a9ab76e-b172-4cfa-938b-7dcbbe055320" class="" dir="auto">ぴぽや倉庫<br/><a href="https://pipoya.net/">https://pipoya.net/</a></p></div></aside><p id="1c49da7d-49f6-80f3-9aa4-eaeb90f9d329" class="" dir="auto">無料高機能RPGシステムMr.Hから切り離して<br/>無料高機能RPGシステムMr.Hに無関係の用途で使用する場合は<br/>「BattleEffect」「CharaChip」フォルダからコピーせずに<br/>上記のURLからダウンロードしてください！<br/>上記のURLには無料高機能RPGシステムMr.Hで使用されている画像素材の他にも<br/>たくさんの画像素材が配布されています。<br/>また、ファイル名の「Pipo_」の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8049-bb26-cdb05ceaa38a" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-801f-bf4c-f69bb727424a" dir="auto"/><p id="1c49da7d-49f6-8064-9773-e29e16901168" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ba-83c5-ff7b1c72270b" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80be-bd3a-cb5c33025d74" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f9-8a52-c4bbf751b5c4" dir="auto"/><h2 id="1c49da7d-49f6-80d6-929d-dffe764ff333" class="" dir="auto">CharaMELで生成した画像素材の利用規約🍫</h2><p id="1c49da7d-49f6-8038-a444-e9de16d7718e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8031-85b1-e32837e3f37c" dir="auto"/><ul id="1c49da7d-49f6-80e4-9f9c-e0abba661f7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「CharaChip」フォルダ内の以下の素材</strong><ul id="c2cdcc05-2013-4f81-b7eb-2f5af33e8e57" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「CMEL_」を含む全ての画像素材</strong></li></ul><ul id="a83f1216-2d22-4f34-98a9-0d3118f1400e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「SpiridonRTP」を含む全ての画像素材</strong></li></ul><ul id="ec892472-ff92-4979-9ff0-679cf8eef87b" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MrH_Fairy001_Chara.png」</strong></li></ul><ul id="6ead91ac-37dc-4ed9-87d3-2ab6e209bb90" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MrH_Fairy002_Chara.png」</strong></li></ul><ul id="427373cd-325e-4772-af9c-a829968e1e0f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MrH_Fairy003_Chara.png」</strong></li></ul><ul id="c7b5e83c-50c9-4669-a490-bd7bc4a8ce32" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MrH_Fairy004_Chara.png」</strong></li></ul><ul id="03c34a22-5fe5-4166-8d1e-862e9e968aae" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MrH_Fairy005_Chara.png」</strong></li></ul></li></ul><p id="1c49da7d-49f6-806f-bd3c-ec7b8e5fc98e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8009-935d-d69cacc309d2" dir="auto"/><p id="1c49da7d-49f6-800d-a092-ddbb88ce3e49" class="" dir="auto">CharaMELで生成した画像素材のため、ぴぽや倉庫の利用規約に依存します。<br/>そのため、使用する際は以下の権利表記が必要です！</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1c49da7d-49f6-80b1-9e9b-da62a4e36b93" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="1c49da7d-49f6-8135-b8b4-fad8b93ccd46" class="" dir="auto">ぴぽや倉庫<br/><a href="https://pipoya.net/">https://pipoya.net/</a><br/><br/>CharaMEL<br/><a href="https://app.notion.com/p/6fb3b97cc5f643e7a8025fce608e7050?pvs=21">https://pipoya.notion.site/pipoya/CharaMEL-6fb3b97cc5f643e7a8025fce608e7050</a><br/>(生成した画像)</p></div></aside><p id="1c49da7d-49f6-80a1-8d06-eecc7ce5f6e8" class="" dir="auto">ファイル名の「CMEL_」の表記も消さないようにお願いします！</p><p id="3189da7d-49f6-803e-af85-d1b981a42c49" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8087-9639-d5a1be8fbb14" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8001-b3c2-d81287312b63" dir="auto"/><p id="1c49da7d-49f6-8015-bf03-c6a7a6e0c104" class="" dir="auto">
+</p><p id="1e19da7d-49f6-80c5-992c-dc59fadb1214" class="" dir="auto">
+</p><p id="1e19da7d-49f6-80fb-8a95-f8158c4ca58a" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8056-8cfc-c1b63b2e8747" dir="auto"/><h2 id="1e19da7d-49f6-8069-85b1-e30fb2aebf8f" class="" dir="auto">「アンデッドとか好きだから」素材の利用規約🌳</h2><p id="1e19da7d-49f6-80e0-ab94-c01a3d1a2494" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-80be-af3a-eaf3e4ebcc05" dir="auto"/><ul id="1e19da7d-49f6-802d-a2c3-c02f9ebd0ab6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Qut_」を含む全ての画像素材</strong></li></ul><p id="1e19da7d-49f6-8013-a89b-d95a90460aa8" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-800b-ad3e-f7d8748ec587" dir="auto"/><p id="1e19da7d-49f6-808e-99d5-d9cbc837df83" class="" dir="auto">アンデッドとか好きだからの利用規約に依存します。<br/>そのため、使用する際は以下の権利表記が必要です！</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1e19da7d-49f6-80ca-9277-ed5781b766b0" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="65b6ea6f-6698-4fba-adc5-e5253ef039b9" class="" dir="auto">アンデッドとか好きだから<br/>(公開終了)</p></div></aside><p id="1e19da7d-49f6-8040-acef-cd38aa057c65" class="" dir="auto">アンデッドとか好きだから様のサイトは現在、公開終了していますが、公開していた時点では二次配布と改造を許可していたようです。<br/>また、ファイル名の「<strong>Qut_</strong>」の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="1e19da7d-49f6-8002-9aa5-d3152ca75896" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8035-a642-e9d2ec3c54f7" dir="auto"/><p id="1e19da7d-49f6-8061-ac1b-c9816411f713" class="" dir="auto">
+</p><p id="1e19da7d-49f6-8016-95f8-c7cf5b8e92f1" class="" dir="auto">
+</p><p id="1e19da7d-49f6-806b-8a01-f58315eaea7d" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-80ee-b177-f16f2a8a1154" dir="auto"/><h2 id="1e19da7d-49f6-802a-98ea-e315aab2eb73" class="" dir="auto">「ノーマル軍の素材置き場」素材の利用規約🌳</h2><p id="1e19da7d-49f6-80ad-8a6c-f25b2d5d7544" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-80a4-86c4-c10e21cf311c" dir="auto"/><ul id="1e19da7d-49f6-80e0-a678-d8add9b7d846" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Normal_」を含む全ての画像素材</strong></li></ul><p id="1e19da7d-49f6-80de-8a8d-ef563c2d0b08" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-807e-9014-f50d08a0d03b" dir="auto"/><p id="1e19da7d-49f6-80d6-a278-e469f6de7dcf" class="" dir="auto">ノーマル軍の素材置き場の利用規約に依存します。<br/>そのため、使用する際は以下の権利表記が必要です！</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1e19da7d-49f6-809c-a937-ee71eba02887" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="0ae624de-b0fc-4692-a731-2ff3db48949b" class="" dir="auto">ノーマル軍の素材置き場<br/><a href="https://groovy-life.sakura.ne.jp/game/RE/index.html">https://groovy-life.sakura.ne.jp/game/RE/index.html</a></p></div></aside><p id="1e19da7d-49f6-801c-ada4-ef471dc019c6" class="" dir="auto">無料高機能RPGシステムMr.Hから切り離して<br/>無料高機能RPGシステムMr.Hに無関係の用途で使用する場合は<br/>「EnemyGraphic」フォルダからコピーせずに<br/>上記のURLからダウンロードしてください！<br/>上記のURLには無料高機能RPGシステムMr.Hで使用されている画像素材の他にも<br/>たくさんの画像素材が配布されています。<br/>また、ファイル名の「<strong>Normal</strong>_」の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="1e19da7d-49f6-8054-96c8-f971378315ac" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8049-8a32-f264d172d98e" dir="auto"/><p id="1e19da7d-49f6-8010-91c6-daa02ecda8ed" class="" dir="auto">
+</p><p id="1e19da7d-49f6-80cd-9d98-fdc20485cd28" class="" dir="auto">
+</p><p id="1e19da7d-49f6-804a-a792-fde8045dadc9" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80a3-935b-fa8a38223aa2" dir="auto"/><h2 id="1c39da7d-49f6-80d7-bd9a-c80b5ebc6075" class="" dir="auto">「BGM」「SE」内の音楽/効果音素材の利用規約♫💿</h2><p id="1c49da7d-49f6-8047-a331-c0d783dbf0c4" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80e4-b6ed-fbc753a70b30" dir="auto"/><ul id="1c49da7d-49f6-8005-ac04-f20f68f54d1b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「MrH_」を含む全ての音楽素材</strong></li></ul><p id="1c49da7d-49f6-8044-8201-fecc8279aa68" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8027-8e8e-d909fd054a87" dir="auto"/><p id="1c39da7d-49f6-8096-aab3-e916190591b4" class="" dir="auto">二次配布:自由</p><p id="1c49da7d-49f6-8022-ac4b-d38fec643a4a" class="" dir="auto">改造:自由</p><p id="1c49da7d-49f6-8005-bb25-ebe1fd09e4b6" class="" dir="auto">改造物の配布:自由</p><p id="1c49da7d-49f6-80df-888f-edb0b3dfd7b2" class="" dir="auto">素材単体での販売:禁止</p><p id="1c49da7d-49f6-8055-9072-d9958b17b01f" class="" dir="auto">商用利用:自由</p><p id="1c49da7d-49f6-8036-a504-c2b750c96023" class="" dir="auto">成人向け(R-18)ゲームでの利用:自由</p><p id="1c49da7d-49f6-80dd-97ba-fb3e4ff7cf48" class="" dir="auto">クレジット表記:自由</p><p id="1c49da7d-49f6-8075-b35e-ceb4e5b32543" class="" dir="auto">ウディタ以外での利用:自由</p><p id="1c49da7d-49f6-801c-a5e8-d604366c706a" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f3-99a2-d449f68434e6" dir="auto"/><ul id="1c49da7d-49f6-80b4-8cfc-ce1747a27a81" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Maoudamasii_」を含む全ての音楽/効果音素材</strong></li></ul><p id="1c49da7d-49f6-80ac-a085-fa9c97e03ad4" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8019-8dee-f7f2ad0ded8e" dir="auto"/><p id="1c39da7d-49f6-8021-91ab-e9fe79e225a7" class="" dir="auto">ファイル名に「Maoudamasii_」がつく音楽/効果音素材は魔王魂からお借りした素材であり<br/>該当の音楽/効果音素材は魔王魂の利用規約に依存します。<br/>大規模コモンイベント素材に含めての二次配布は<br/>「魔王魂」のクレジット表記(サイト名とURLの両方)をする事や<br/>ファイル名に「魔王魂」or「Maoudamasii」を含める事で可能との事です。<br/>そのため、説明書やスタッフロールなどに必ず以下の表記をしてください！<br/>魔王魂の利用規約も以下のURLのページに書いています。<br/>以下、権利表記のテンプレート</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1c49da7d-49f6-8062-b572-f7a87d2f34f6" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="918d0614-0dd0-427c-a8ae-144399f001eb" class="" dir="auto">魔王魂<br/><a href="https://maou.audio/">https://maou.audio/</a></p></div></aside><p id="0d1cd4eb-73e9-4c53-811b-7a02d30f90c3" class="" dir="auto">無料高機能RPGシステムMr.Hから切り離して<br/>無料高機能RPGシステムMr.Hに無関係の用途で使用する場合は<br/>「BGM」「SE」フォルダからコピーせずに<br/>上記のURLからダウンロードしてください！<br/>上記のURLには無料高機能RPGシステムMr.Hで使用されているBGMの他にも<br/>たくさんの音楽素材が配布されています。<br/>また、ファイル名の「Maoudamasii_」の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8096-ac64-df93abef1ba5" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-806d-a67e-ce917a2f057b" dir="auto"/><ul id="1c49da7d-49f6-80fe-bbaf-e992e94b227e" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「AE_」「AE4_」「AEP_」「Anton_」を含む全ての音楽/効果音素材</strong></li></ul><p id="1c49da7d-49f6-80f4-827e-cf084e2a4925" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80ef-81ac-ff20cdf557a2" dir="auto"/><p id="1c39da7d-49f6-8026-8f15-f37b402aa8d3" class="" dir="auto">ファイル名に「AE_」「AE4_」「AEP_」「Anton_」がつく音楽/効果音素材は<br/>おもしろゲーム神殿からお借りした素材であり<br/>該当の音楽/効果音素材はおもしろゲーム神殿の利用規約に依存します。<br/>大規模コモンイベント素材に含めての二次配布は自由であるとの事です。</p><p id="2999da7d-49f6-80de-9934-db335bedc2d3" class="" dir="auto">そのため、説明書やスタッフロールなどに必ず以下の表記をしてください！<br/>おもしろゲーム神殿のサイトは現在、公開終了済です！<br/>以下、権利表記のテンプレート</p><aside class="block-color-gray_background callout" data-notion-callout="" data-notion-callout-icon="💡" data-notion-callout-background="gray_background" style="white-space:pre-wrap;display:flex" id="1c49da7d-49f6-805b-bc9e-f706abd49705" dir="ltr"><div style="font-size:1.5em"><span class="icon" data-emoji="💡"></span></div><div style="width:100%"><p id="ba4a72a8-ebe0-4ca8-95df-7407fb8da54f" class="" dir="auto">おもしろゲーム神殿<br/>(公開終了)</p></div></aside><p id="0df671e9-5941-4b5c-b3d2-b3bca638846e" class="" dir="auto">無料高機能RPGシステムMr.Hから切り離して<br/>無料高機能RPGシステムMr.Hに無関係の用途で使用してもいいですが<br/>使用は自己責任でお願いします！<br/>また、ファイル名の「AE_」「AE4_」「AEP_」「Anton_」<br/>の表記も消さないようにお願いします！<br/>また、AIの学習リソースへの使用を禁止とします！</p><p id="2ac5e6e6-3c67-4536-9a3c-381e85ce514b" class="" dir="auto">また、ファイル名に「AEP_KZ_」がつく音楽素材を利用する際は<br/>説明書やスタッフロールなどに必ず以下の表記をしてください！<br/>以下、権利表記のテンプレート</p><p id="4daa2e1e-3b4b-4789-bd02-013979bbd4fb" class="" dir="auto">一樹様</p><p id="3189da7d-49f6-8092-a169-ee705facc14d" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="30709c45-2917-476f-9a7b-2422eccfb8ef" class="" dir="auto">もともとは、ファイル名に「AEP_KZ_」がつく音楽素材も<br/>おもしろゲーム神殿で配布されていたのですが<br/>該当のサイトの閉鎖に伴い、公開終了したようです。</p><p id="1c49da7d-49f6-80f1-92af-df9d30abb1d0" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8032-af02-fa6817052141" dir="auto"/><p id="1c49da7d-49f6-800e-acc9-d28e7883037b" class="" dir="auto">
+</p><p id="1c49da7d-49f6-803a-a50f-ed32cc705ec3" class="" dir="auto">
+</p><p id="1c49da7d-49f6-804c-a664-c5c8c99379de" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-805b-91f5-f5243863bd35" dir="auto"/><h2 id="1c39da7d-49f6-803c-95ee-ef6db745dbb9" class="" dir="auto">クレジット表記テンプレート📝</h2><p id="1c49da7d-49f6-80f6-8c4e-df2700baba0b" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-807c-b846-e10b5ed1ac9d" dir="auto"/><p id="1c39da7d-49f6-80cb-9a8b-efbfa0e7ab13" class="" dir="auto">フォント素材:</p><p id="1c49da7d-49f6-80b7-8b68-f1f4204fbd56" class="" dir="auto">UmeFont<br/>(公開終了)</p><p id="73e5d772-122a-4716-992b-42f5b8a88aa1" class="" dir="auto">LinuxPlayers<br/>(公開終了)</p><p id="1c49da7d-49f6-8069-8633-f4341d6d37af" class="" dir="auto">
+</p><p id="dbfa305f-bc84-4b97-bbf6-1474a458e5bb" class="" dir="auto">画像素材:</p><p id="1c49da7d-49f6-8062-8d09-e0291851bb27" class="" dir="auto">リーフスカイ様</p><p id="498a15fb-58f4-43eb-a8e3-bb64328be441" class="" dir="auto">ケモプレデーションゲームス様</p><p id="4aef7b3c-124f-4a5d-ba1b-fd52e3e7e0a4" class="" dir="auto">WOLFRPGエディター同梱素材</p><p id="61606ce1-6692-4bae-aafa-37755b33dec9" class="" dir="auto">GD様</p><p id="f5b912b0-6547-4e06-9b45-04495ec8f416" class="" dir="auto">WOLF RPGエディター 公式サイト<br/>rute様<br/>Lucifa様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="cb5bfb9c-1ef4-4962-8bd5-d705fbd38b79" class="" dir="auto">ぴぽや倉庫<br/><a href="https://pipoya.net/">https://pipoya.net/</a></p><p id="10d7cf35-3024-469d-a4d3-80f39c5854f0" class="" dir="auto">CharaMEL<br/><a href="https://app.notion.com/p/6fb3b97cc5f643e7a8025fce608e7050?pvs=21">https://pipoya.notion.site/pipoya/CharaMEL-6fb3b97cc5f643e7a8025fce608e7050</a><br/>(生成した画像)</p><p id="8429d64c-c859-4c17-bde0-599870089ef7" class="" dir="auto">モンスター集会所<br/><a href="http://monstermeetingplace.web.fc2.com/">http://monstermeetingplace.web.fc2.com</a></p><p id="1e19da7d-49f6-809d-9aa5-e394c04281bd" class="" dir="auto">アンデッドとか好きだから<br/>(公開終了)</p><p id="1e19da7d-49f6-80ea-bc45-e60661fd2573" class="" dir="auto">ノーマル軍の素材置き場<br/><a href="https://groovy-life.sakura.ne.jp/game/RE/index.html">https://groovy-life.sakura.ne.jp/game/RE/index.html</a></p><p id="33fc028b-d222-4e19-a99e-4463cc13287c" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a></p><p id="1c49da7d-49f6-8001-9da1-fe25c472de00" class="" dir="auto">
+</p><p id="4664c839-857f-4afc-bade-1a435eb517da" class="" dir="auto">音楽素材:</p><p id="1c49da7d-49f6-8001-a0bf-ee921ece1100" class="" dir="auto">WOLFRPGエディター同梱素材</p><p id="1c49da7d-49f6-804c-b5fd-e841ccb02386" class="" dir="auto">魔王魂<br/><a href="https://maou.audio/">https://maou.audio/</a></p><p id="923a9700-3b01-43c9-b3b4-cbf4e81dfa3e" class="" dir="auto">おもしろゲーム神殿<br/>(公開終了)</p><p id="23f508cd-c0e0-4ea6-b972-41f5caef49a9" class="" dir="auto">一樹様</p><p id="a04924dc-1bbb-40eb-8ef2-70c07d89780f" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a></p><p id="1c49da7d-49f6-80f0-9697-f82b3a1a671b" class="" dir="auto">
+</p><p id="dc3c0ac4-0690-458b-b876-6d1e80bdf717" class="" dir="auto">効果音素材:</p><p id="1c49da7d-49f6-8042-8a37-c51aea25604e" class="" dir="auto">WOLFRPGエディター同梱素材</p><p id="fe86fa34-05f5-4f88-a296-e609d41289ae" class="" dir="auto">魔王魂<br/><a href="https://maou.audio/">https://maou.audio/</a></p><p id="f471fcb6-9f85-45f3-a27b-d0be58921cc1" class="" dir="auto">おもしろゲーム神殿<br/>(公開終了)</p><p id="1c49da7d-49f6-80aa-a990-f7c7fdb4cd30" class="" dir="auto">
+</p><p id="e217d08a-d6f8-437b-ba45-8e0cd6842afe" class="" dir="auto">コモンイベント素材:</p><p id="1c49da7d-49f6-8091-a916-f1cbf9b7e781" class="" dir="auto">WOLF RPGエディター 公式サイト<br/>rute様<br/>リック様<br/>通りすがり様<br/>苦八様<br/>yu-fu-nel様<br/>苦手様<br/>モンスター集会所様<br/>AT様<br/>ケモプレデーションゲームス様<br/>ロンバート様<br/>くうきいぬ様<br/>Lucifa様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="32a9da7d-49f6-80e6-aaa1-f13cfbd48aa7" class="" dir="auto">ぴぽや倉庫<br/><a href="https://pipoya.net/">https://pipoya.net/</a></p><p id="66c78b1d-a587-496a-9e15-bd9a002fe22e" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a><br/>(rute様のコモン「基本システムAdvanced」を改造した物を使用)</p><p id="1c49da7d-49f6-80dc-9282-f14f7632b884" class="" dir="auto">
+</p><p id="88d027fb-d77b-4b3c-8635-3f9919b0867a" class="" dir="auto">無料高機能RPGシステムMr.H SPTHX:</p><p id="1c49da7d-49f6-80ad-8369-d0cbb9e0e0fb" class="" dir="auto">リーフスカイ様</p><p id="1c49da7d-49f6-80d2-b844-e59845455e3e" class="" dir="auto">はてなん様</p><p id="1c49da7d-49f6-80b8-8f75-f3cc73c6f299" class="" dir="auto">ケモプレデーションゲームス様</p><p id="1c49da7d-49f6-8029-b686-e94530d1a012" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8018-9136-f422c73beb61" dir="auto"/><p id="1c49da7d-49f6-80b7-8d14-f0a7a7059676" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8089-a5e4-fbfbb24e3d97" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8018-82aa-f99021781d6c" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f0-a6dd-cbf86367d70a" dir="auto"/><h1 id="1c39da7d-49f6-801f-945f-e9c776f1f927" class="" dir="auto">ケモプレコラボ版で追加される権利表記</h1><p id="1c49da7d-49f6-809d-a1f9-d701a0e54488" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8020-abf3-db46639a724d" dir="auto"/><p id="1c49da7d-49f6-8056-803f-ebdb66eafbed" class="" dir="auto">
+</p><p id="1c49da7d-49f6-800c-87ea-daa133d4fb5a" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80a5-90ba-ea1696e68e7d" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8058-9eca-fa6c8b2672af" dir="auto"/><h2 id="1c39da7d-49f6-80f8-a3ab-f6ca0e2532ba" class="" dir="auto">「SystemFile」内の素材の利用規約</h2><p id="1c49da7d-49f6-80e7-bf58-f5d9bc80b821" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-806d-86ee-e1369779a90e" dir="auto"/><ul id="1c49da7d-49f6-8042-97d3-e7180e55c27d" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「SystemFile」内の以下の画像/音声</strong><ul id="1c49da7d-49f6-80bf-9296-c81fb984a079" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_ARW.png」</strong></li></ul><ul id="1c49da7d-49f6-80ed-abe6-dc6d63367f07" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Battle_EnemyCursol.png」</strong></li></ul><ul id="1c49da7d-49f6-80f0-b3f8-e867d1ddf19f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Battle_EnemyTarget.png」</strong></li></ul><ul id="1c49da7d-49f6-802f-9f68-fd0db9b8d3d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Battle_EnemyTarget_2.png」</strong></li></ul><ul id="1c49da7d-49f6-8066-8fa9-cd3deebbc801" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Battle_EnemyTarget_3.png」</strong></li></ul><ul id="1c49da7d-49f6-80e6-8d7a-c9d69bab4854" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BCommandW_CenterSpread.png」</strong></li></ul><ul id="1c49da7d-49f6-807e-90ee-c6639d8ea52d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BCommandW_Ring.png」</strong></li></ul><ul id="1c49da7d-49f6-80ac-a619-cb9fbf33fcf3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BCommandW_Ring_2.png」</strong></li></ul><ul id="1c49da7d-49f6-80b2-ac16-ee9e79362608" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BCommandW_Roll.png」</strong></li></ul><ul id="1c49da7d-49f6-80ad-a899-ccd1d4b9ee48" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BCommandW_Spread.png」</strong></li></ul><ul id="1c49da7d-49f6-8017-aa3c-e8229f9aa899" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-80e3-a840-ea2d2871ce92" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH2_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-80c9-81f6-e1c8cceae9a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH2_Guage_1Menu.png」</strong></li></ul><ul id="1c49da7d-49f6-80ec-bbe6-eec7831953b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH2_Guage_2Menu.png」</strong></li></ul><ul id="1c49da7d-49f6-8070-a6ba-d6dec4dd7116" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH3_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-8036-8978-cc3610e0e140" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH4_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-8077-9c3a-cd189e19596e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH5_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-801c-a809-f05f81b6a7bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH6_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-809b-b75b-fe0497387e9c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH7_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-8075-8241-e6ee968c5631" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH8_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-80f8-a100-d7eb7342c2c9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_BW_MrH9_Base.png」</strong></li></ul><ul id="1c49da7d-49f6-80b5-90f4-d66b74c75f72" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_System_Arrow.png」</strong></li></ul><ul id="1c49da7d-49f6-80f1-9f1a-e04f952e5410" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Titl.jpg」</strong></li></ul><ul id="1c49da7d-49f6-8024-bbda-f283b63b0ebe" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Weak.png」</strong></li></ul><ul id="1c49da7d-49f6-80d7-b24d-f8b80e471527" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_Weak3.png」</strong></li></ul><ul id="1c49da7d-49f6-8072-a101-da406c6d7ca8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「M_ACT_KPR.png」</strong></li></ul><ul id="1c49da7d-49f6-802d-9e4b-dd5abadd30ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「M_ACT_KPR2.png」</strong></li></ul><ul id="1c49da7d-49f6-80c0-b03e-cc51b41675b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「M_CMP_KPR.png」</strong></li></ul><ul id="1c49da7d-49f6-802e-b58d-c887caea00b9" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「M_MAP_KPR.png」</strong></li></ul><ul id="1c49da7d-49f6-8017-a17c-d8ba5f6d9679" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「M_MAP_KPR2.png」</strong></li></ul><ul id="1c49da7d-49f6-8054-b131-d190a987c941" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「No_BG_B.bmp」</strong></li></ul><ul id="1c49da7d-49f6-8021-a982-ccfb2bac2674" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「No_IMG.png」</strong></li></ul><ul id="1c49da7d-49f6-805e-b884-fdabad827899" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「System_Arrow.png」</strong></li></ul></li></ul><p id="1c49da7d-49f6-8011-8a81-d6b239b91f3b" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80af-b069-e6ae167800af" dir="auto"/><p id="1c49da7d-49f6-8006-96f9-c670f3c89d76" class="" dir="auto">上記の素材は、素材単体での販売でなければ、自由に使用してください。</p><p id="3189da7d-49f6-8073-bcae-d87e14d3779a" class="" dir="auto">ただし、AIの学習リソースへの使用を禁止とします！</p><p id="1c39da7d-49f6-80cf-9770-f053852030f4" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80de-baa5-ca8065def260" dir="auto"/><p id="1c49da7d-49f6-80a4-ba19-dd22dd2f9e64" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8094-8d0c-dc53c18a16b6" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ef-ad64-da74993738ed" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80fa-baaa-f437acfe1bd7" dir="auto"/><h2 id="1c39da7d-49f6-808c-8c18-e9fd8587be3c" class="" dir="auto">「狼は愛を」素材の利用規約🐺🦊🐍</h2><p id="1c49da7d-49f6-80ed-91f4-dd9258000a5b" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-804c-9083-cc32e55b23e5" dir="auto"/><ul id="1c49da7d-49f6-806e-b544-ea94144031b0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「BGM」フォルダ内のファイル名に「KPR_KRRN_」を含む全ての音楽素材</strong></li></ul><ul id="1c49da7d-49f6-807f-825f-ce2f9a14e12b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「CharaPic」フォルダ内の以下の素材</strong><ul id="1c49da7d-49f6-8080-928e-d052b1b934a5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「CG_KPR_AMKR.png」</strong></li></ul><ul id="1c49da7d-49f6-8076-add7-e41b99f81cc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「CG_KPR_KNI2.png」</strong></li></ul><ul id="1c49da7d-49f6-80ab-8584-e6baed1203d5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「CG_KPR_KNIR.png」</strong></li></ul><ul id="1c49da7d-49f6-80de-b280-d72f0859d7c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「CG_KPR_TKF2.png」</strong></li></ul><ul id="1c49da7d-49f6-805b-aaf0-ccb8a6bf5af6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「CG_KPR_TKFM.png」</strong></li></ul></li></ul><p id="1c49da7d-49f6-8071-aaa0-fa861e665302" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80e4-8f8f-cfe5b3314f29" dir="auto"/><p id="1c39da7d-49f6-80e5-830e-ce0beb0bcaa7" class="" dir="auto">上記の素材は、ケモプレ＠獣のPredation様が作成したゲーム<br/>「狼は愛を、狐は狼からの報復を、蛇は狼と狐に打ち倒されることを望んだ」<br/>にてケモプレ＠獣のPredation様が新たに書き下ろした画像及びBGM素材です。</p><p id="f424e86a-6158-4d66-878a-790b9560bf93" class="" dir="auto">上記の素材は上記のゲームの二次創作かつ非商用の場合に限り<br/>使用可能としております。</p><p id="3189da7d-49f6-8041-8850-cd2a1c7c1b13" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8019-aa6a-c4c876b9bb6a" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-802c-af47-fb26b0078258" dir="auto"/><p id="1c49da7d-49f6-80b0-9d96-d61f658187fa" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80aa-ba1d-c8e33192b60b" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80cb-9ccd-eab9441037f7" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8049-93ec-f3fcdf3f0aa0" dir="auto"/><h2 id="1c39da7d-49f6-8011-a1b6-cb9cfcfb2c98" class="" dir="auto">「REVIVE」素材の利用規約🍖</h2><p id="1c49da7d-49f6-800a-8ef9-e9868b71dd4e" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80fb-a151-f8625479c894" dir="auto"/><ul id="1c49da7d-49f6-80a3-8c8b-c7e8be45c905" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「BGM」フォルダ内のファイル名に「KPR_Rev_」を含む全ての音楽素材</strong></li></ul><ul id="1c49da7d-49f6-80d7-99b0-c4a680524d7b" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「CharaPic」フォルダ内の以下の素材</strong><ul id="1c49da7d-49f6-80a8-a50c-c9aa9ffc761d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_BAT.png」</strong></li></ul><ul id="1c49da7d-49f6-805f-888c-e1ec53296787" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_DRP.png」</strong></li></ul><ul id="1c49da7d-49f6-80fc-83ed-c3e0d16a2ad7" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_KBN.png」</strong></li></ul><ul id="1c49da7d-49f6-80aa-a894-db2fec7b10dc" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_LVY.png」</strong></li></ul><ul id="1c49da7d-49f6-8017-a1c2-f83c252755bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_MLG.png」</strong></li></ul><ul id="1c49da7d-49f6-8076-9a26-cb1d820f99c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「KPR_CG_Rev1_TAK.png」</strong></li></ul><ul id="1c49da7d-49f6-8063-8272-ff1ce9c04cc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_CG_Rev1_LASL01.png」</strong></li></ul><ul id="1c49da7d-49f6-80b2-8ec0-e32282f1a1d8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_CG_Rev1_SIAN01.png」</strong></li></ul></li></ul><ul id="1c49da7d-49f6-80a9-b753-df94c1852f8c" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「Face」フォルダ内の以下の素材</strong><ul id="1c49da7d-49f6-8052-8118-f9d570263b58" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_CRFO.png」</strong></li></ul><ul id="1c49da7d-49f6-8069-a823-e1fc8d25c90c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_GART.png」</strong></li></ul><ul id="1c49da7d-49f6-80b6-8b87-d4b7a1524164" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_KATSEL.png」</strong></li></ul><ul id="2999da7d-49f6-80c4-aff4-d9bd019ad01c" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_KATSEL2.png」</strong></li></ul><ul id="1c49da7d-49f6-806e-8e4c-d901a57d148d" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_LASL.png」</strong></li></ul><ul id="1c49da7d-49f6-804f-86b5-f7399324e72f" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_LASL02.png」</strong></li></ul><ul id="1c49da7d-49f6-80e9-ac23-c3c1bb689384" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_LIEL.png」</strong></li></ul><ul id="1c49da7d-49f6-804e-8f1b-fae33b5a6196" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_LVAN.png」</strong></li></ul><ul id="1c49da7d-49f6-8070-9824-d25a925d7670" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_LVAN2.png」</strong></li></ul><ul id="1c49da7d-49f6-800b-bbe5-e9df04eb651e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_MORG.png」</strong></li></ul><ul id="1c49da7d-49f6-8058-8408-e6c9704b0f6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_PRNA.png」</strong></li></ul><ul id="1c49da7d-49f6-8026-bfb8-ebaf12fc6ad1" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_PRNA2.png」</strong></li></ul><ul id="2999da7d-49f6-80b8-b6ac-d5193bfb2dd8" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_SIAN.png」</strong></li></ul><ul id="2999da7d-49f6-80f8-99a3-c0c910f0ca22" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_SIAN02.png」</strong></li></ul><ul id="2999da7d-49f6-8007-998a-e4dbd00ea337" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_VAL.png」</strong></li></ul><ul id="2999da7d-49f6-8063-ac54-d46c30376ca6" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_VAL2.png」</strong></li></ul><ul id="2999da7d-49f6-808d-89b1-d096a8982465" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_ZOT.png」</strong></li></ul><ul id="2999da7d-49f6-80dd-ac21-f8689e3fbc28" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>「MON_Face_Rev1_ZOT2.png」</strong></li></ul></li></ul><p id="1c49da7d-49f6-808e-9420-e118c39b7731" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80e4-b179-d2d505fc18e9" dir="auto"/><p id="1c39da7d-49f6-80e3-ad45-dc1e1155d073" class="" dir="auto">上記の素材は、ケモプレ＠獣のPredation様とMON様が共同作成したゲーム<br/>「REVIVE」<br/>にてケモプレ＠獣のPredation様およびMON様が新たに書き下ろした画像及びBGM素材です。</p><p id="20a4353e-259c-41b7-8651-c533780dd730" class="" dir="auto">上記の素材は上記のゲームの二次創作かつ非商用の場合に限り<br/>使用可能としております。</p><p id="3189da7d-49f6-80c1-9dd7-e77c33780676" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-80ec-a994-db248b8101b4" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8023-bc3a-c21dd834658a" dir="auto"/><p id="1c49da7d-49f6-809b-887d-e87b3c46a30a" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8097-bdc0-fec8fcddc545" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8030-a320-c33dc273c089" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8029-8689-f139a238797b" dir="auto"/><h2 id="1c49da7d-49f6-80d5-a479-cfaafc7bdcc9" class="" dir="auto">MON様素材の利用規約</h2><p id="1c49da7d-49f6-8031-8071-f5a64e631488" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80bf-bb33-c441d57dbb10" dir="auto"/><ul id="1c49da7d-49f6-8076-af23-c220264df48a" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「MON」が含まれる全ての画像素材</strong></li></ul><p id="1c49da7d-49f6-8015-851d-cfb54994fe2c" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8093-930b-c3db6029d80c" dir="auto"/><p id="1c49da7d-49f6-80d9-a1b5-dc090a2a373c" class="" dir="auto">上記の素材を使用するには「MON様」の権利表記が必要です！</p><p id="3189da7d-49f6-800f-8c2c-f7a1a5dac4e3" class="" dir="auto">また、AIの学習リソースへの使用を禁止とします！</p><p id="1c49da7d-49f6-8073-95bd-c872f996e98f" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80f0-8115-ed7643fe78e4" dir="auto"/><p id="1c49da7d-49f6-8098-ae74-cb123b02cd06" class="" dir="auto">
+</p><p id="1c49da7d-49f6-8014-b171-ff6025169041" class="" dir="auto">
+</p><p id="1c49da7d-49f6-803d-a20f-e7a2194e70ca" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8063-a9f5-e4c02e8e7993" dir="auto"/><h2 id="1c39da7d-49f6-80af-a839-fcdb90d62bd4" class="" dir="auto">ろぜちは様素材の利用規約🐲</h2><p id="1c49da7d-49f6-8047-bfb6-e5349b9d8494" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-806c-ba99-c24a720b137d" dir="auto"/><ul id="1c49da7d-49f6-80a7-8360-d53ada43f8c6" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>「CharaPic」「Face」フォルダ内の以下の素材</strong><ul id="1c49da7d-49f6-806f-b9a6-cef3efbb6ffa" class="bulleted-list" dir="auto"><li style="list-style-type:circle"><strong>ファイル名に「Roze_」が含まれる全ての素材</strong></li></ul></li></ul><p id="1c49da7d-49f6-80ab-8d1a-d13d4bda8f82" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80c9-a384-e6993f9aaeee" dir="auto"/><p id="2999da7d-49f6-80d1-a41f-c9d73dc2e459" class="" dir="auto">上記の素材は、ケモプレ＠獣のPredation様とろぜちは様とMr.Hが共同作成したゲーム<br/>「REVIVE4＆ペンタ」<br/>及び、ケモプレ＠獣のPredation様とMON様とMr.Hが共同作成したゲーム<br/>「REVIVE」<br/>にて、ろぜちは様が作成した素材です。</p><p id="f9d51b59-f494-4b1e-a132-d2f56206c6c9" class="" dir="auto">また、上記の素材の二次配布の許可をろぜちは様からいただきましたので<br/>無料高機能RPGシステムMr.Hのケモプレコラボ版に組み込んでのみ使用する事が可能です。</p><ul id="45fa8d65-7815-4acd-a7b1-b0a0539db871" class="bulleted-list" dir="auto"><li style="list-style-type:disc">改造後の二次配布を禁止します<br/>「ろぜちは様の作ったマップチップやキャラチップなどをその作者さんが使いやすいように、あるいは自作品のキャラとして改造してその作者さんご自身だけが使う」ならOKです。<br/>つまり、改造と二次配布両方が重なるとアウトです。 </li></ul><ul id="2999da7d-49f6-803e-9ae6-ed46ef943aee" class="bulleted-list" dir="auto"><li style="list-style-type:disc">二次配布しない場合なら改造はOKです。<ul id="2999da7d-49f6-8014-8f55-dd56cb420b1d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ろぜちは様としても自身が作ったマップチップや他のグラを他の作者さんがどう改造して使うかって事は参考にしたいとのことです。</li></ul></li></ul><ul id="3189da7d-49f6-80db-a121-ce2c5b3dd4bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">また、AIの学習リソースへの使用を禁止とします！</li></ul><p id="f42ab9fe-6062-420b-b97e-bd78bd6f8c3c" class="" dir="auto">さらに、以下の素材はMONさんの意向により、上記の制限の他、Reviveの二次創作かつ非商用の場合に限り使用可能です。</p><ul id="2999da7d-49f6-80d3-bd56-d22d663baef0" class="bulleted-list" dir="auto"><li style="list-style-type:disc"><strong>ファイル名に「Rev1_」も含まれる全ての素材</strong></li></ul><p id="2999da7d-49f6-8016-8607-d0d964e76955" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80b1-ad18-c81960e87361" dir="auto"/><p id="2999da7d-49f6-804a-baa8-d971f9c24077" class="" dir="auto">
+</p><p id="2999da7d-49f6-8002-961e-d91a0ac014bf" class="" dir="auto">
+</p><p id="2999da7d-49f6-8030-9fec-da9bfbc566ad" class="" dir="auto">
+</p><hr id="2999da7d-49f6-80d0-82b5-fe34c5c619bd" dir="auto"/><h1 id="2999da7d-49f6-8080-a418-c2d07edad74f" class="" dir="auto">備考</h1><p id="2999da7d-49f6-809f-9eb2-cb83717da9ac" class="" dir="auto">
+</p><hr id="2999da7d-49f6-80b3-9c56-ea2039164645" dir="auto"/><ul id="2999da7d-49f6-8096-a21c-de85a23fa3f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">著作権と著作者人格権の違い<ul id="2999da7d-49f6-8049-823b-ed0597630d27" class="bulleted-list" dir="auto"><li style="list-style-type:circle">著作権は譲渡や放棄ができるのに対し、著作者人格権は譲渡や放棄ができません。</li></ul></li></ul><ul id="2999da7d-49f6-8089-bb51-f9d67817a097" class="bulleted-list" dir="auto"><li style="list-style-type:disc">勝手に改変されない権利<ul id="2999da7d-49f6-80f1-911a-d17c5712225c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">同一性保持権は、著作者人格権によるものであり、「二次創作以外への使用不可」や「改造後の二次配布禁止」も同一性保持権を行使したもので、規約は安心して素材を使ってもらうに辺り、著作者がどれを行使し、どれを黙認するかを、明文化したものです。</li></ul></li></ul><p id="2999da7d-49f6-80c9-a1ff-e92fdc46447c" class="" dir="auto">
+</p><hr id="2999da7d-49f6-808b-85e9-d002bd1622e3" dir="auto"/><p id="2999da7d-49f6-80ed-86cf-e3ad6baf322e" class="" dir="auto">
+</p><p id="2999da7d-49f6-8026-b267-ede0ed691073" class="" dir="auto">
+</p><p id="1c49da7d-49f6-80ec-98f5-dfb995067531" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80c0-8f38-d033244483c3" dir="auto"/><h2 id="1c39da7d-49f6-80a2-aac6-fd1951607ed5" class="" dir="auto">クレジット表記テンプレート📝</h2><p id="1c49da7d-49f6-807f-9d23-cecf8220073c" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-8029-b9be-e70c673735cb" dir="auto"/><p id="1c49da7d-49f6-80a0-98c3-d75240f031e9" class="" dir="auto">フォント素材:</p><p id="1c49da7d-49f6-808f-bc51-cb37223b633c" class="" dir="auto">UmeFont<br/>(公開終了)</p><p id="c5d8f439-49f1-4285-b76f-824e56051425" class="" dir="auto">LinuxPlayers<br/>(公開終了)</p><p id="1c49da7d-49f6-8072-b334-e89527cd13f6" class="" dir="auto">
+</p><p id="0930aa50-6798-4a81-b9b0-cf220528148d" class="" dir="auto">画像素材:</p><p id="1c49da7d-49f6-8030-b2ca-c292ff9af8bc" class="" dir="auto">リーフスカイ様</p><p id="89f020b3-0367-4533-b3f0-e9eb83ea267f" class="" dir="auto">ケモプレデーションゲームス様</p><p id="2cdfbd2c-91ee-497d-9ff9-3e748fc3ab30" class="" dir="auto">WOLFRPGエディター同梱素材</p><p id="e3a7593b-e6f7-40c7-8776-2fe105ff5ab6" class="" dir="auto">GD様</p><p id="f0ed92a6-7220-4587-a4bb-76a9c5c02da7" class="" dir="auto">WOLF RPGエディター 公式サイト<br/>rute様<br/>Lucifa様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="47ad8835-69bc-4192-986f-872ced724181" class="" dir="auto">ぴぽや倉庫<br/><a href="https://pipoya.net/">https://pipoya.net/</a></p><p id="aaa5ca3c-094e-4f87-b5b5-290ea0d90177" class="" dir="auto">CharaMEL<br/><a href="https://app.notion.com/p/6fb3b97cc5f643e7a8025fce608e7050?pvs=21">https://pipoya.notion.site/pipoya/CharaMEL-6fb3b97cc5f643e7a8025fce608e7050</a><br/>(生成した画像)</p><p id="d1b12df2-fae9-4888-8bc7-ce047bcaba1d" class="" dir="auto">モンスター集会所<br/><a href="http://monstermeetingplace.web.fc2.com/">http://monstermeetingplace.web.fc2.com</a></p><p id="1e19da7d-49f6-8055-ad92-d828dd500539" class="" dir="auto">アンデッドとか好きだから<br/>(公開終了)</p><p id="1e19da7d-49f6-80c7-bace-f992cfa752d2" class="" dir="auto">ノーマル軍の素材置き場<br/><a href="https://groovy-life.sakura.ne.jp/game/RE/index.html">https://groovy-life.sakura.ne.jp/game/RE/index.html</a></p><p id="e922daaa-5fca-4657-8c22-e3ad7d4d9a4d" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a></p><p id="1c49da7d-49f6-80a0-af9b-c354336dca9c" class="" dir="auto">
+</p><p id="76e82bc1-db3d-4a89-a72c-4f2bbbdeaf9b" class="" dir="auto">音楽素材:</p><p id="1c49da7d-49f6-8086-81a1-cc70cebbb7b4" class="" dir="auto">魔王魂<br/><a href="https://maou.audio/">https://maou.audio/</a></p><p id="2b12f6f0-7581-4c6b-8c8c-f845ea8fde3e" class="" dir="auto">おもしろゲーム神殿<br/>(公開終了)</p><p id="5d83e86a-212b-47d6-8e4f-572da3b6fa3d" class="" dir="auto">一樹様</p><p id="6706e81d-77dd-47c8-b339-f12580e989de" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a></p><p id="1c49da7d-49f6-80f0-938a-d306ddf76de6" class="" dir="auto">
+</p><p id="d3969e29-78ea-478c-bf86-3d02b2584e21" class="" dir="auto">効果音素材:</p><p id="1c49da7d-49f6-8010-be7e-eea2ca6d0efb" class="" dir="auto">WOLFRPGエディター同梱素材</p><p id="17fcaeb5-68cb-44b4-aff3-3d2c893737b2" class="" dir="auto">魔王魂<br/><a href="https://maou.audio/">https://maou.audio/</a></p><p id="feb2e148-8723-4cee-9221-d841253be0d1" class="" dir="auto">おもしろゲーム神殿<br/>(公開終了)</p><p id="1c49da7d-49f6-80c8-b34d-c2f0ea68a17d" class="" dir="auto">
+</p><p id="7beeb4ab-67dd-4bbd-8f68-1dc8f2f46724" class="" dir="auto">コモンイベント素材:</p><p id="1c49da7d-49f6-804e-ae6b-c29ae5152712" class="" dir="auto">WOLF RPGエディター 公式サイト<br/>rute様<br/>リック様<br/>通りすがり様<br/>苦八様<br/>yu-fu-nel様<br/>苦手様<br/>モンスター集会所様<br/>AT様<br/>ケモプレデーションゲームス様<br/>ロンバート様<br/>Lucifa様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="6b079b70-989a-4f6e-b822-6aef506d51c1" class="" dir="auto">Mr.Hのフリーゲーム道場<br/><a href="https://mrhfreegamedojo.miraheze.org/wiki/Main_Page">https://mrhfreegamedojo.miraheze.org/wiki/Main_Page</a><br/>(rute様のコモン「基本システムAdvanced」を改造した物を使用)</p><p id="1c49da7d-49f6-807e-8d53-d2f93650ea18" class="" dir="auto">
+</p><p id="37662f83-82ea-48ce-9171-591eda545b8e" class="" dir="auto">無料高機能RPGシステムMr.H SPTHX:</p><p id="1c49da7d-49f6-80a9-9731-c9add3432542" class="" dir="auto">リーフスカイ様</p><p id="1c49da7d-49f6-8004-8f36-fce34995f170" class="" dir="auto">はてなん様</p><p id="1c49da7d-49f6-80cc-a3b3-c000ce5a71b2" class="" dir="auto">ケモプレデーションゲームス様</p><p id="a9f79701-a6ca-449a-ad38-2ff1cf6845bc" class="" dir="auto">コモンイベント素材(3D版で追加):<br/>WOLF RPGエディター 公式サイト<br/>Lucifa様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="1c49da7d-49f6-8057-b020-dbadc22d7134" class="" dir="auto">
+</p><p id="46df82a8-85d9-4d97-9dd0-e8d30807fc8e" class="" dir="auto">画像素材(ケモプレコラボ版):</p><p id="1c49da7d-49f6-80ba-8231-f3f43cd8b824" class="" dir="auto">ケモプレデーションゲームス様</p><p id="e7b676c9-6c97-4921-88dc-9fda831ad31e" class="" dir="auto">WOLF RPGエディター 公式サイト<br/>Lucifa様<br/>zzz様<br/><a href="http://www.silversecond.com/WolfRPGEditor/">http://www.silversecond.com/WolfRPGEditor/</a></p><p id="9307a4e6-71b7-4643-8b90-efdb42203c5e" class="" dir="auto">アンデッドとか好きだから―――ッ！！！<br/>(公開終了)</p><p id="f725c17a-a2bd-42c5-8731-8ba7e86112b6" class="" dir="auto">かる太様<br/>(ぴぽ様のマップチップ素材を3Dオブジェクトに改変)</p><p id="d6919238-fab4-4b95-9b39-1873d10ff5d2" class="" dir="auto">ぴぽ様</p><p id="31d1c3e9-515b-4f19-a35f-63196b1473d6" class="" dir="auto">MON様</p><p id="1d39da7d-49f6-809b-a81f-d2183f556ded" class="" dir="auto">ろぜちは様</p><p id="1c49da7d-49f6-80b6-a883-e1fd0818e4c5" class="" dir="auto">
+</p><hr id="1c49da7d-49f6-80dd-b7fc-e0a5d964263f" dir="auto"/><p id="1c49da7d-49f6-80ab-9454-f1c791627ccb" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

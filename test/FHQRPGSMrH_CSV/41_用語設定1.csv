@@ -1,0 +1,885 @@
+﻿"JP","EN",
+"A","A",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]Aﾎﾞﾀﾝ,
+"B","B",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]Bﾎﾞﾀﾝ,
+"X","X",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]Xﾎﾞﾀﾝ,
+"Y","Y",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]Yﾎﾞﾀﾝ,
+"ZL","ZL",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]L1ﾎﾞﾀﾝ,
+"ZR","ZR",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]R1ﾎﾞﾀﾝ,
+"LT","LT",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]L2ﾎﾞﾀﾝ,
+"RT","RT",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]R2ﾎﾞﾀﾝ,
+"連射","TURBO",<<!--DATANAME--!>>[ﾎﾞﾀﾝ]連射,
+"全回復","All-Recovery",<<!--DATANAME--!>>[ﾒﾆｭｰ]全回復,
+"アイテム","Item",<<!--DATANAME--!>>[ﾒﾆｭｰ]アイテム,
+"スキル","Skill",<<!--DATANAME--!>>[ﾒﾆｭｰ]スキル,
+"パッシブ","Passive",<<!--DATANAME--!>>[ﾒﾆｭｰ]パッシブ,
+"装備","Equip",<<!--DATANAME--!>>[ﾒﾆｭｰ]装備,
+"ステータス","Status",<<!--DATANAME--!>>[ﾒﾆｭｰ]ステータス,
+"隊列","Formation",<<!--DATANAME--!>>[ﾒﾆｭｰ]並び替え,
+"作戦変更","Taitics",<<!--DATANAME--!>>[ﾒﾆｭｰ]作戦変更,
+"スキル設定","Skill-Setting",<<!--DATANAME--!>>[ﾒﾆｭｰ]スキル設定,
+"AP振り分け","AP-Viewer",<<!--DATANAME--!>>[ﾒﾆｭｰ]極意強化,
+"クラスチェンジ","Class-Change",<<!--DATANAME--!>>[ﾒﾆｭｰ]職業変更,
+"クラスLv上昇","Class-Lv-Up",<<!--DATANAME--!>>[ﾒﾆｭｰ]職業レベルアップ,
+"テレポート","Teleport",<<!--DATANAME--!>>[ﾒﾆｭｰ]テレポート,
+"アイテム合成","Item-Synthesis",<<!--DATANAME--!>>[ﾒﾆｭｰ]アイテム合成,
+"用語図鑑","WordBook",<<!--DATANAME--!>>[ﾒﾆｭｰ]あらすじ,
+"ヘルプ","Help",<<!--DATANAME--!>>[ﾒﾆｭｰ]ヘルプブック,
+"エネミー図鑑","Enemy-Book",<<!--DATANAME--!>>[ﾒﾆｭｰ]エネミー図鑑,
+"アイテム図鑑","Item-Book",<<!--DATANAME--!>>[ﾒﾆｭｰ]アイテム図鑑,
+"クエストリスト","Quest",<<!--DATANAME--!>>[ﾒﾆｭｰ]クエストリスト,
+"実績リスト","Achivement",<<!--DATANAME--!>>[ﾒﾆｭｰ]実績リスト,
+"難易度変更","Difficuluty",<<!--DATANAME--!>>[ﾒﾆｭｰ]戦闘難易度変更,
+"オプション","Option",<<!--DATANAME--!>>[ﾒﾆｭｰ]オプション,
+"セーブ","Save",<<!--DATANAME--!>>[ﾒﾆｭｰ]セーブ,
+"ロード","Load",<<!--DATANAME--!>>[ﾒﾆｭｰ]ロード,
+"中断セーブ","Quick-Save",<<!--DATANAME--!>>[ﾒﾆｭｰ]中断セーブ,
+"クレジット","Credit",<<!--DATANAME--!>>[ﾒﾆｭｰ]権利表記,
+"ゲームをやめる","Game-End",<<!--DATANAME--!>>[ﾒﾆｭｰ]ゲーム終了,
+"セーブデータから","Load-Game",<<!--DATANAME--!>>[全滅]ロードゲーム,
+"タイトルに戻る","To-Title",<<!--DATANAME--!>>[全滅]タイトルへ,
+"ゲームをやめる","Game-End",<<!--DATANAME--!>>[全滅]ゲーム終了,
+"セーブする","Save",<<!--DATANAME--!>>[ｾｰﾌﾞ]セーブする,
+"セーブしない","Not Save",<<!--DATANAME--!>>[ｾｰﾌﾞ]セーブしない,
+"ロードする","Load",<<!--DATANAME--!>>[ｾｰﾌﾞ]ロードする,
+"ロードしない","Not load",<<!--DATANAME--!>>[ｾｰﾌﾞ]ロードしない,
+"削除する","delete",<<!--DATANAME--!>>[ｾｰﾌﾞ]削除する,
+"本当に削除する","really delete",<<!--DATANAME--!>>[ｾｰﾌﾞ]本当に削除する,
+"本当の本当に削除する","really really delete",<<!--DATANAME--!>>[ｾｰﾌﾞ]本当の本当に削除する,
+"削除しない","do not delete",<<!--DATANAME--!>>[ｾｰﾌﾞ]削除しない,
+"常時ダッシュ","auto dash",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]常時ダッシュ,
+"壁避け","Wall Sliding",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]壁避け,
+"ｷｰ位置保存","Save key pos",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ｷｰ位置保存,
+"ｷｰﾘﾋﾟｰﾄ速度","Key repeat speed",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ｷｰﾘﾋﾟｰﾄ速度,
+"ﾏｯﾌﾟ操作ﾍﾙﾌﾟ非表示","Map Control Help Hide",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ﾏｯﾌﾟｷｰﾍﾙﾌﾟ非表示,
+"戦闘時 自動連打","Battle auto repeat",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]戦闘時自動連打,
+"オート時高速化","AutoBattleFaster",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]オート時高速化,
+"戦闘高速化","BattleFaster",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]戦闘高速化,
+"戦闘ﾒｯｾｰｼﾞ速度","Battle message speed",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]戦闘ﾒｯｾｰｼﾞ速度,
+"オートバトル思考","Auto Battle Think",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ｵｰﾄﾊﾞﾄﾙ思考,
+"BGMモード","BGM Mode",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]BGMモード,
+"BGM音量","BGM Volume",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]BGM音量,
+"SE音量","SE Volume",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]SE音量,
+"フォント","Font",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ﾌｫﾝﾄ変更,
+"ボタン","Button",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]ボタン,
+"仮想キー","Virtual key",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]仮想キー,
+"バトル設定へ","toBattleConfig",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]バトル設定へ,
+"キー設定へ","toKeyConfig",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]キー設定へ,
+"システム設定へ","toSystemConfig",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]システム設定へ,
+"リセット","Reset",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]リセット,
+"設定完了","Save config",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]設定完了,
+"設定を続ける","Continue config",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]設定を続ける,
+"設定を破棄する","destroy the config",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]設定を破棄する,
+"購入","Buy",<<!--DATANAME--!>>[お店]購入,
+"売却","Sell",<<!--DATANAME--!>>[お店]売却,
+"売り切れ","SOLD OUT",<<!--DATANAME--!>>[お店]完売,
+"謎の","Mystery",<<!--DATANAME--!>>[お店]商品名前置錬成装備,
+"預ける","Deposit",<<!--DATANAME--!>>[倉庫]預ける,
+"引き出す","To-Draw-Out",<<!--DATANAME--!>>[倉庫]引き出す,
+"リサイクルする","Recycle",<<!--DATANAME--!>>[錬成ﾘｻｲｸﾙ]ﾘｻｲｸﾙする,
+"リサイクルしない","Not Recycle",<<!--DATANAME--!>>[錬成ﾘｻｲｸﾙ]ﾘｻｲｸﾙしない,
+"再錬成する","Re-enchant",<<!--DATANAME--!>>[再錬成]再錬成する,
+"再錬成しない","Not Re-enchant",<<!--DATANAME--!>>[再錬成]再錬成しない,
+"分解する","Disasse",<<!--DATANAME--!>>[錬成分解]分解する,
+"分解しない","Not Disasse",<<!--DATANAME--!>>[錬成分解]分解しない,
+"ストックから使う","Use-From-Stock",<<!--DATANAME--!>>[ｱｲﾃﾑ]ｽﾄｯｸｱｲﾃﾑ使用,
+"キャラに持たせる","Give-Any-Chara-The-Item",<<!--DATANAME--!>>[ｱｲﾃﾑ]ｷｬﾗｱｲﾃﾑ所持,
+"使う","use",<<!--DATANAME--!>>[ｱｲﾃﾑ]使う,
+"並び替え","Formation",<<!--DATANAME--!>>[ｱｲﾃﾑ]入れ替え,
+"詳細説明","Detaile",<<!--DATANAME--!>>[ｱｲﾃﾑ]詳細説明,
+"捨てる","dispose",<<!--DATANAME--!>>[ｱｲﾃﾑ]捨てる,
+"本当に捨てる","really dispose",<<!--DATANAME--!>>[ｱｲﾃﾑ]本当に捨てる,
+"自動装備","Auto-Equip",<<!--DATANAME--!>>[装備]自動装備,
+"装備外す","Remove-Equip",<<!--DATANAME--!>>[装備]装備外す,
+"難易度選択","Difficult-Select",<<!--DATANAME--!>>[難易度]難易度選択名称,
+"この難易度にする","set this difficulty level",<<!--DATANAME--!>>[難易度]この難易度にする,
+"別の難易度にする","set another difficulty level",<<!--DATANAME--!>>[難易度]別の難易度にする,
+"タイトルへ","to Title",<<!--DATANAME--!>>[終了]タイトルへ,
+"ゲーム選択に戻る","To-Game-Select",<<!--DATANAME--!>>[終了]ゲームの再起動,
+"ゲーム終了","exit game",<<!--DATANAME--!>>[終了]ゲーム終了,
+"メニューに戻る","back to menu",<<!--DATANAME--!>>[終了]メニューに戻る,
+"出撃","Go",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]出撃,
+"メニュー","Menu",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]ﾒﾆｭｰ,
+"引き返す","Return",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]引き返す,
+"進む","Next",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]進む,
+"撤退","Escape",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]撤退,
+"戦闘","Battle",<<!--DATANAME--!>>[戦闘]戦闘する,
+"作戦","Taitics",<<!--DATANAME--!>>[戦闘]作戦,
+"逃走","Escape",<<!--DATANAME--!>>[戦闘]逃走,
+"戦闘ログ","Batttle-Log",<<!--DATANAME--!>>[戦闘]戦闘ログ,
+"味方状態確認","Actor-Status",<<!--DATANAME--!>>[戦闘]味方状態確認,
+"敵状態確認","Enemy-Status",<<!--DATANAME--!>>[戦闘]敵状態確認,
+"召喚獣確認","Active-Servant",<<!--DATANAME--!>>[戦闘]召喚獣確認,
+"1回オート","Auto",<<!--DATANAME--!>>[戦闘]オート,
+"ずっとオート","Full-Auto",<<!--DATANAME--!>>[戦闘]フルオート,
+"リピート","Repeat",<<!--DATANAME--!>>[戦闘]リピート,
+"待機","Wait",<<!--DATANAME--!>>[戦闘]待機,
+"本当に逃走する","really escape away",<<!--DATANAME--!>>[逃走]本当に逃走する,
+"逃走しない","Cancel this escape",<<!--DATANAME--!>>[逃走]逃走しない,
+"LV","LV",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]Lｖ名称,
+"EXP","EXP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]経験値名称,
+"次LVまで","To-Next-Level",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]次LｖUP経験値,
+"Level-Max","Level-Max",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]Lｖ上限,
+"最大","Max",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]最大,
+"HP","HP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]HP,
+"MP","MP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]MP,
+"TP","TP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]TP,
+"攻撃力","ATK",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]攻撃力,
+"防御力","DEF",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]防御力,
+"魔法力","MAG",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]魔法攻撃,
+"抵抗力","REG",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]魔法防御,
+"素早さ","AGI",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]敏捷性,
+"肉体力","STR",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]ｶｽﾀﾑ能力値1,
+"器用さ","DEX",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]ｶｽﾀﾑ能力値2,
+"信仰力","HEL",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]ｶｽﾀﾑ能力値3,
+"","",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]ｶｽﾀﾑ能力値4,
+"","",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]ｶｽﾀﾑ能力値5,
+"命中率","HIT",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]命中率,
+"回避率","EVA",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]回避率,
+"会心率","CRI",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]クリティカル率,
+"EP","EP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]装備ポイント,
+"CP","CP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]スキル選択ポイント,
+"極意","Ability",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]極意名称,
+"AP","AP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]極意強化ポイント,
+"クラス","Class",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]職業名称,
+"無職","Novice",<<!--DATANAME--!>>[ｼｽﾃﾑ]無職名称,
+"CP","CP",<<!--DATANAME--!>>[ｽﾃｰﾀｽ]職業ポイント,
+"右手 ","Right-Hand ",<<!--DATANAME--!>>[装備]装備欄1,
+"左手 ","Left-Hand ",<<!--DATANAME--!>>[装備]装備欄2,
+"頭　 ","Head ",<<!--DATANAME--!>>[装備]装備欄3,
+"身体 ","Body ",<<!--DATANAME--!>>[装備]装備欄4,
+"装飾 ","Accessory ",<<!--DATANAME--!>>[装備]装備欄5,
+"装飾2","Accessory2 ",<<!--DATANAME--!>>[装備]装備欄6,
+"","",<<!--DATANAME--!>>[装備]装備欄7,
+"","",<<!--DATANAME--!>>[装備]装備欄8,
+"","",<<!--DATANAME--!>>[装備]装備欄9,
+"","",<<!--DATANAME--!>>[装備]装備欄A,
+"","",<<!--DATANAME--!>>[装備]装備欄B,
+"","",<<!--DATANAME--!>>[装備]装備欄C,
+"","",<<!--DATANAME--!>>[装備]装備欄D,
+"","",<<!--DATANAME--!>>[装備]装備欄E,
+"","",<<!--DATANAME--!>>[装備]装備欄F,
+"獲得経験値","EXP",<<!--DATANAME--!>>[図鑑]獲得経験値,
+"獲得金額","Gold",<<!--DATANAME--!>>[図鑑]獲得金額,
+"獲得アイテム","DropItem",<<!--DATANAME--!>>[図鑑]獲得アイテム,
+"弱点属性","WeakElem",<<!--DATANAME--!>>[図鑑]弱点属性,
+"耐性属性","ResElem",<<!--DATANAME--!>>[図鑑]耐性属性,
+"大弱点属性","SWeakElem",<<!--DATANAME--!>>[図鑑]大弱点属性,
+"大耐性属性","SResElem",<<!--DATANAME--!>>[図鑑]大耐性属性,
+"無効属性","BlockElem",<<!--DATANAME--!>>[図鑑]無効属性,
+"弱点状態","WeakStat",<<!--DATANAME--!>>[図鑑]弱点状態,
+"耐性状態","ResStat",<<!--DATANAME--!>>[図鑑]耐性状態,
+"無効状態","BlockStat",<<!--DATANAME--!>>[図鑑]無効状態,
+"買値","Buy Price",<<!--DATANAME--!>>[図鑑]買値,
+"売値","Sell Price",<<!--DATANAME--!>>[図鑑]売値,
+"戦闘タイプ","Battlle-Type",<<!--DATANAME--!>>[作戦]戦闘タイプ,
+"作戦タイプ","Tactics-Type",<<!--DATANAME--!>>[作戦]作戦タイプ,
+"アイテム使用","Use-Item",<<!--DATANAME--!>>[作戦]ｱｲﾃﾑ使用ﾀｲﾌﾟ,
+"マニュアル","Manual",<<!--DATANAME--!>>[作戦]マニュアル戦闘,
+"オート","Auto",<<!--DATANAME--!>>[作戦]オート戦闘,
+"バランスよく行動せよ","Ballance",<<!--DATANAME--!>>[作戦]バランス型,
+"全力で攻撃せよ","Attack",<<!--DATANAME--!>>[作戦]全力攻撃型,
+"命を大切にせよ","Heal",<<!--DATANAME--!>>[作戦]回復型,
+"仲間を援護せよ","Support",<<!--DATANAME--!>>[作戦]補助型,
+"MPを節約せよ","No-Cost",<<!--DATANAME--!>>[作戦]節約型,
+"使用しない","Do not use",<<!--DATANAME--!>>[作戦]ｱｲﾃﾑ使用OFF,
+"使用する","Use",<<!--DATANAME--!>>[作戦]ｱｲﾃﾑ使用ON,
+"所持数","Possession",<<!--DATANAME--!>>[倉庫]所持数,
+"預かり数","Deposited",<<!--DATANAME--!>>[倉庫]預かり数,
+"ファイル","File",<<!--DATANAME--!>>[セーブ]セーブデータ名称,
+"オートセーブ","AutoSave",<<!--DATANAME--!>>[ｼｽﾃﾑ]オートセーブ,
+"戦闘難易度","difficulty",<<!--DATANAME--!>>[ｾｰﾌﾞ画面]戦闘難易度,
+"現在のストーリー","Story",<<!--DATANAME--!>>[ｾｰﾌﾞ画面]現在のストーリー,
+"現在のマップ","Map",<<!--DATANAME--!>>[ｾｰﾌﾞ画面]現在のマップ,
+"どのファイルにセーブしますか？","Which file do you want to save to?",<<!--DATANAME--!>>[セーブ]セーブ時メッセージ,
+"どのファイルをロードしますか？","Which file do you want to load from?",<<!--DATANAME--!>>[セーブ]ロード時メッセージ,
+"このセーブデータを消しますか？
+(消したセーブデータは二度と元に戻りません)","Do you want to delete this save data?
+(Deleted save data will never be recovered)",<<!--DATANAME--!>>セーブデータ削除説明文章1,
+"後悔するかもしれないけど
+セーブデータを消しますか？
+(消したセーブデータは二度と元に戻りません)","Do you really want to delete it?
+(Deleted save data will never be recovered)",<<!--DATANAME--!>>セーブデータ削除説明文章2,
+"消さない方がいいですよ。
+本当の本当にセーブデータを消しますか？
+(消したセーブデータは二度と元に戻りません)","Final confirmation! 
+Do you really want to delete it?
+(Deleted save data will never be recovered)",<<!--DATANAME--!>>セーブデータ削除説明文章3,
+"セーブデータを消しました","I deleted save data",<<!--DATANAME--!>>セーブデータを消しました,
+"このスクリーンショットを消しますか？","Do you want to delete this 
+screenshot?",<<!--DATANAME--!>>スクショ削除説明文章1,
+"本当にこのスクリーンショットを消しますか？","Do you really want to delete this 
+screenshot?",<<!--DATANAME--!>>スクショ削除説明文章2,
+"最終確認です！
+本当の本当にこのスクリーンショットを消しますか？","One last confirmation!
+Are you sure you want to 
+delete this screenshot?",<<!--DATANAME--!>>スクショ削除説明文章3,
+"スクリーンショットを消しました！","I deleted the screenshot!",<<!--DATANAME--!>>スクショを消しました,
+"1:最も遅い","1:Slowest",<<!--DATANAME--!>>[ｷｰﾘﾋﾟｰﾄ]1:最も遅い,
+"2:やや遅い","2:Slow",<<!--DATANAME--!>>[ｷｰﾘﾋﾟｰﾄ]2:やや遅い,
+"3:通常","3:Normal",<<!--DATANAME--!>>[ｷｰﾘﾋﾟｰﾄ]3:通常,
+"4:やや高速","4:Fast",<<!--DATANAME--!>>[ｷｰﾘﾋﾟｰﾄ]4:やや高速,
+"5:最も高速","5:Fastest",<<!--DATANAME--!>>[ｷｰﾘﾋﾟｰﾄ]5:最も高速,
+"表示","Display",<<!--DATANAME--!>>[ﾏｯﾌﾟｷｰﾍﾙﾌﾟ]非表示:OFF,
+"非表示","Hidden",<<!--DATANAME--!>>[ﾏｯﾌﾟｷｰﾍﾙﾌﾟ]非表示:ON,
+"OFF","OFF",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]オート時高速化:OFF,
+"ON","ON",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]オート時高速化:ON,
+"ふつう","Normal",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]戦闘速度:普通,
+"はやい","Fast",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]戦闘速度:高速,
+"1:最も遅い","1:Slowest",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]1:最も遅い,
+"2:かなり遅い","2:QuiteSlow",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]2:かなり遅い,
+"3:遅い","3:Slow",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]3:遅い,
+"4:やや遅い","4:SomewhatSlow",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]4:やや遅い,
+"5:標準","5:Normal",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]5:標準,
+"6:やや高速","6:SomewhatFast",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]6:やや高速,
+"7:高速","7:Fast",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]7:高速,
+"8:かなり高速","8:QuiteFast",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]8:かなり高速,
+"9:最も高速","9:Fastest",<<!--DATANAME--!>>[ﾒｯｾｰｼﾞ速度]9:最も高速,
+"期待値","Expected",<<!--DATANAME--!>>[ｵｰﾄﾊﾞﾄﾙ思考]期待値,
+"最悪値","Worst Case",<<!--DATANAME--!>>[ｵｰﾄﾊﾞﾄﾙ思考]最悪値,
+"タイプ1","Type1",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]BGMモード1,
+"タイプ2","Type2",<<!--DATANAME--!>>[ｵﾌﾟｼｮﾝ]BGMモード2,
+"メニュー","Menu",<<!--DATANAME--!>>[ﾏｯﾌﾟUI]メニュー,
+"会話ログ","MessageLog",<<!--DATANAME--!>>[ﾏｯﾌﾟUI]会話ログ,
+"マップ","Map",<<!--DATANAME--!>>[ﾏｯﾌﾟUI]ミニマップ,
+"インフォメーション","Infomation",<<!--DATANAME--!>>[通知]ｲﾝﾌｫﾒｰｼｮﾝ,
+"お金入手","The gotten Money",<<!--DATANAME--!>>[通知]お金入手,
+"お金消失","The lost Money",<<!--DATANAME--!>>[通知]お金消失,
+"アイテム入手","The gotten Item",<<!--DATANAME--!>>[通知]ｱｲﾃﾑ入手,
+"アイテム消失","The lost Item",<<!--DATANAME--!>>[通知]ｱｲﾃﾑ消失,
+"実績獲得！","Get Achivement",<<!--DATANAME--!>>[通知]実績獲得,
+"購入しますか？","Do you want to buy?",<<!--DATANAME--!>>[お店]購入確認,
+"売却しますか？","Do you want to sell?",<<!--DATANAME--!>>[お店]売却確認,
+"これは捨てられない","It cannot be thrown away",<<!--DATANAME--!>>これは捨てられない,
+"アイテムがありません","There are no items",<<!--DATANAME--!>>アイテムがありません,
+"%1は%2を覚えた！","%1 learned %2!",<<!--DATANAME--!>>[移動]スキル習得,
+"最大所持数","Maximum posses",<<!--DATANAME--!>>[ｱｲﾃﾑ説明]最大所持数,
+"売却不可","Disable Sell",<<!--DATANAME--!>>[ｱｲﾃﾑ説明]売却不可,
+"捨てる不可","Disable Dispose",<<!--DATANAME--!>>[ｱｲﾃﾑ説明]捨てる不可,
+"追加効果","Add Parameter",<<!--DATANAME--!>>[ｱｲﾃﾑ説明]錬成装備追加効果,
+"CT","CT",<<!--DATANAME--!>>[ｽｷﾙ一覧]ﾀｰﾝCT,
+"CT(戦)","CT(B)",<<!--DATANAME--!>>[ｽｷﾙ一覧]戦闘CT,
+"WAIT","WAIT",<<!--DATANAME--!>>[ｽｷﾙ一覧]WT,
+"READY","READY",<<!--DATANAME--!>>[ｽｷﾙ一覧]READY,
+"∞","∞",<<!--DATANAME--!>>[状態ｱｲｺﾝ]∞ﾀｰﾝ,
+"L","L",<<!--DATANAME--!>>[状態ｱｲｺﾝ]11ﾀｰﾝ以上,
+"TURN","TURN",<<!--DATANAME--!>>[状態確認]ターン,
+"ETERNAL","ETERNAL",<<!--DATANAME--!>>[状態確認]∞ターン,
+"STEP","STEP",<<!--DATANAME--!>>[状態確認]歩数,
+"ETERNAL","ETERNAL",<<!--DATANAME--!>>[状態確認]∞歩,
+"ダンジョンを制覇した！","You cleared the dungeon!",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]完走文章1,
+"ダンジョンから撤退した。","Escaped from the dungeon.",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]撤退文章1,
+"全滅した。","Defeated.",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]全滅文章1,
+"全体化","Expand",<<!--DATANAME--!>>[戦闘UI]全体化,
+"単体化","Reduce",<<!--DATANAME--!>>[戦闘UI]単体化,
+"フィールド","Field",<<!--DATANAME--!>>[戦闘UI]ﾌｨｰﾙﾄﾞ確認,
+"発生済みの召喚獣","Active-Servant",<<!--DATANAME--!>>[戦闘UI]召喚獣確認,
+"\font[1]MISS","\font[1]MISS",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]ミス,
+"\font[1]EVADE","\font[1]EVADE",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]回避,
+"\font[1]DODGE","\font[1]DODGE",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]スキル無効,
+"\font[1]REFRECT!","\font[1]REFRECT!",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]反射,
+"\font[1]CRITICAL","\font[1]CRITICAL",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]クリティカル,
+"\font[1]CT UPDATE","\font[1]CT UPDATE",<<!--DATANAME--!>>[ﾎﾟｯﾌﾟ]再使用待機時間更新,
+"\font[1]WEAK!","\font[1]WEAK!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]弱点1％～50％,
+"\font[1]WEAK!","\font[1]WEAK!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]弱点51％～,
+"\font[1]RESIST!","\font[1]RESIST!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]耐性1％～50％,
+"\font[1]RESIST!","\font[1]RESIST!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]耐性51％～99％,
+"\font[1]BLOCK!","\font[1]BLOCK!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]無効,
+"\font[1]ABSORB!","\font[1]ABSORB!",<<!--DATANAME--!>>[属性ﾎﾟｯﾌﾟ]吸収,
+"戦闘から逃走しますか？
+※逃走に成功すると戦利品が獲得できません！
+　逃走に失敗すると敵の攻撃を受けます！","Do you want to escape away from battle?
+*If you successfully escape, you will not
+receive a reward! If you fail to escape,
+you will be attacked by the enemy!",<<!--DATANAME--!>>逃走確認文章,
+"【戦いに勝った！】","[You-Win]",<<!--DATANAME--!>>[戦闘勝利]戦利品獲得文字列,
+"取得経験値","EXP",<<!--DATANAME--!>>[戦闘勝利]取得経験値,
+"取得金額","Money",<<!--DATANAME--!>>[戦闘勝利]取得金額,
+"レベルアップ","Level-Up",<<!--DATANAME--!>>[戦闘勝利]レベルアップ,
+"習得スキル","Learning-Skill",<<!--DATANAME--!>>[戦闘勝利]習得スキル,
+"その場全体","the whole place",<<!--DATANAME--!>>[ｼｽﾃﾑ]その場全体,
+"味方全体","all of party",<<!--DATANAME--!>>[ｼｽﾃﾑ]味方全体,
+"【戦闘開始】","[BattleStart]",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]【戦闘開始】,
+"【ターン開始】","[TurnStart]",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]【ターン開始】,
+"【ターン終了】","[TurnEnd]",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]【ターン終了】,
+"%1が現れた！","%1 emerged!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]敵出現,
+"%1の先制攻撃！","%1 got the upper hand!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]先制攻撃,
+"%1は不意をつかれた！","%1 was surprised!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]不意打ち,
+"%1は逃げ出そうとした！","%1 has just tried to escape!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]逃走開始,
+"何とか逃走に成功した！","The escape succeeded! ",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]逃走成功,
+"確実に逃走した！","The escape succeeded! No wonder, because it has a 100% escape rate.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]逃走確定成功,
+"しかし、逃げる事はできなかった！","However, it couldn't.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]逃走失敗,
+"この戦いからは逃げられない！","You couldn't escape from the fight!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]逃走不可,
+"は逃げ出した！"," escaped!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]敵逃走,
+"%1の勝利！","You're victorious!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]勝利,
+"%1は戦いに敗れた。","You have been defeated.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]敗北,
+"%1は戦いに引き分けた。","You have been drawed.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]引き分け,
+"残り%1ターン！","%1 turn left!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]残りターン数表示,
+"%1は%2のダメージを受けた！","%1 took %2 damage!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]被ﾀﾞﾒｰｼﾞ,
+"%1の%2が%3回復した！","%1 recovered %2 %3!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]回復,
+"%1の%2が%3増えた！","%1 gained %2 %3!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ﾎﾟｲﾝﾄ増加,
+"%1の%2が%3減った！","%1 lost %2 %3!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ﾎﾟｲﾝﾄ減少,
+"%1はダメージを受けていない！","%1 took no damage!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ﾉｰﾀﾞﾒｰｼﾞ,
+"会心の一撃！！","Critical Hit!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ｸﾘﾃｨｶﾙ敵対象,
+"痛恨の一撃！！","Critical Hit!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ｸﾘﾃｨｶﾙ味方対象,
+"命中判定に成功！","Hit! The check successed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]命中判定成功,
+"命中判定に失敗！次の命中判定…","Failure! Proceed to the next hit check.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]次の命中判定へ,
+"命中判定に成功！","Hit! The check successed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]最後の命中判定で成功,
+"全ての命中判定に失敗！","All checks have failed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]全ての命中判定に失敗,
+"%1には効かなかった！","There was no effect on %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]スキル失敗,
+"ミス！%1には効かなかった！","Miss! %1 There was no effect on %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]スキル非命中,
+"%1は身をかわした！","%1 evaded the attack!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]スキル回避,
+"%1は魔法を打ち消した！","%1 nullified the magic!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]魔法回避,
+"%1は攻撃を受け止めた！","%1 dodged the attack!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]スキル無効,
+"%1は%2をかばった！","%1 protected %2!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]庇護,
+"%1は物理攻撃を受け流した！","%1 reflected the figic!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]物理反射,
+"%1は魔法を跳ね返した！","%1 reflected the magic!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]魔法反射,
+"%1はスキルを跳ね返した！","%1 reflected the skill!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]その他反射,
+"効果はばつぐんだ！","Element Weaked!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]属性相性弱点,
+"あまり効果がないようだ！","Element Resisted!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]属性相性耐性,
+"全く効果がない！","Element Blocked!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]属性相性無効,
+"属性ダメージを吸収した！","Element Absorb!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]属性相性吸収,
+"%1の状態異常を消し去った！","%1's bad-state removed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]状態異常解除,
+"%1の強化を消し去った！","%1's buff removed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]強化解除,
+"%1の弱体を消し去った！","%1's debuff removed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]]弱体解除,
+"%1の補助効果を消し去った！","%1's support state removed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]強化弱体解除,
+"%1の%2が更新された！","%1's %2 has been Updated!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]再使用待機時間更新,
+"%1を盗んだ！","They could steal %1 from the enemy!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]盗み成功,
+"盗みに失敗した！","It is failed stealing!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]盗み失敗,
+"%1は何も持っていない！","%1 doesn't have an item that can be stolen.",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]盗み済み,
+"%1を捕まえた！","I geted %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]捕まえる成功,
+"%1を捕まえるのに失敗した！","I failed to get %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]捕まえる失敗,
+"%1を捕えられそうにない！","%1 doesn't look can be geten!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]捕まえる不可,
+"%1を食べた！","I eated %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]食べる成功,
+"%1を食べるのに失敗した！","I failed to eat %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]食べる失敗,
+"%1を食べられそうにない！","%1 doesn't look can be eaten!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]食べる不可,
+"%1は%2に変化した！","%1 was %2 changed!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]アイテム変化成功,
+"%1は%2を覚えた！","%1 learned %2!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]スキル習得,
+"%1の獲得経験値が%2％になった！","EXP gained rates %1 has now %2 %!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]獲得経験値変化,
+"%1の獲得金額が%2％になった！","Money gained rates %1 has now %2 %!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]獲得金額変化,
+"%1のドロップ率が%2％になった！","Item drop rate is %1 has now increased to %2 %!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ドロップ率変化,
+"しかし、仲間は来なかった！","But the companion never came!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]仲間が来なかった,
+"お金を %1%2 奪われた！","%1%2 has been stolen!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]敵が金を奪う成功,
+"お金を奪われなかった！","The enemy couldn't steal the money!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]敵が金を奪う失敗,
+"%1はHPの自動全回復に失敗した！","%1 failed to autofullrecover his HP!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]HP自動全快失敗,
+"お金を持ってなかった！","I didn't have any money!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]金を持ってない,
+"%1が足りない！","Not enough %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]コストが足りない,
+"%1がなかった！","There were no %1!",<<!--DATANAME--!>>[戦闘ﾛｸﾞ]ｱｲﾃﾑが無い,
+"セットアッププロセス","Setup Process",<<!--DATANAME--!>>[TRPG]ｾｯﾄｱｯﾌﾟﾌﾟﾛｾｽ文章,
+"イニシアチブプロセス","Initiative Process",<<!--DATANAME--!>>[TRPG]ｲﾆｼｱﾁﾌﾞﾌﾟﾛｾｽ文章,
+"メインプロセス","Main Process",<<!--DATANAME--!>>[TRPG]ﾒｲﾝﾌﾟﾛｾｽ文章,
+"クリンナッププロセス","Clean-up Process",<<!--DATANAME--!>>[TRPG]ｸﾘﾝﾅｯﾌﾟﾌﾟﾛｾｽ文章,
+"命中判定 %1/10000","Hit judgment %1/10000",<<!--DATANAME--!>>[TRPG]命中判定文章,
+"回避判定 %1/10000","Evasion judgment %1/10000",<<!--DATANAME--!>>[TRPG]回避判定文章,
+"  1d10000 => %2","  1d10000 => %2",<<!--DATANAME--!>>[TRPG]ﾀﾞｲｽ判定文章,
+"  \c[2]ゾロ目\c[0]","  \c[2]Repeating\c[0]",<<!--DATANAME--!>>[TRPG]判定ｿﾞﾛ目文章,
+"  \c[4]入れ替え\c[0]","  \c[4]Swap\c[0]",<<!--DATANAME--!>>[TRPG]判定入れ替え文章,
+"  \c[3]失敗\c[0]","  \c[3]Fail\c[0]",<<!--DATANAME--!>>[TRPG]判定失敗文章,
+"キャンセル","cancel",<<!--DATANAME--!>>[ｼｽﾃﾑ]キャンセル,
+"%1しない","don't %1",<<!--DATANAME--!>>[ｼｽﾃﾑ]%1しない,
+"はい","Yes",<<!--DATANAME--!>>[ｼｽﾃﾑ]はい/Yes,
+"いいえ","No",<<!--DATANAME--!>>[ｼｽﾃﾑ]いいえ/No,
+"(未使用)","(Empty)",<<!--DATANAME--!>>[ｼｽﾃﾑ](未使用),
+"(設定解除)","(Remove)",<<!--DATANAME--!>>[ｼｽﾃﾑ](設定解除),
+"%1%2初期化","%1%2 Reset",<<!--DATANAME--!>>%1%2初期化,
+"個"," piece",<<!--DATANAME--!>>[個数単位]個,
+"枚"," sheets",<<!--DATANAME--!>>[個数単位]枚,
+"本"," piece",<<!--DATANAME--!>>[個数単位]本,
+"人"," people",<<!--DATANAME--!>>[個数単位]人,
+"回","",<<!--DATANAME--!>>[個数単位]回,
+"－－－－－－","------------",<<!--DATANAME--!>>－－－－－－,
+"なし","None",<<!--DATANAME--!>>[ｼｽﾃﾑ]なし/None,
+"と"," And ",<<!--DATANAME--!>>[ｼｽﾃﾑ]と/And,
+"はい","Yes",<<!--DATANAME--!>>[ｼｽﾃﾑ]はい,
+"いいえ","No",<<!--DATANAME--!>>[ｼｽﾃﾑ]いいえ,
+"制作スタッフ","Production staff",<<!--DATANAME--!>>[ｼｽﾃﾑ]制作スタッフ,
+"番号","ID",<<!--DATANAME--!>>[ｼｽﾃﾑ]番号名称,
+"所持金","Money",<<!--DATANAME--!>>[ｼｽﾃﾑ]所持金,
+"装備中","equipping?",<<!--DATANAME--!>>[ｼｽﾃﾑ]装備中,
+"装備可能","equipable?",<<!--DATANAME--!>>[ｼｽﾃﾑ]装備可能,
+"装備不能","unequipable",<<!--DATANAME--!>>[ｼｽﾃﾑ]装備不能,
+"残り","Rest",<<!--DATANAME--!>>[ｼｽﾃﾑ]残り,
+"全て","All",<<!--DATANAME--!>>[ｼｽﾃﾑ]全て,
+"耐性","Resist",<<!--DATANAME--!>>[ｼｽﾃﾑ]耐性名称,
+"パーティ","Battler",<<!--DATANAME--!>>[ｼｽﾃﾑ]パーティ,
+"控えメンバー","Reserve",<<!--DATANAME--!>>[ｼｽﾃﾑ]控えメンバー,
+"ページ","Page",<<!--DATANAME--!>>[ｼｽﾃﾑ]ページ,
+"[専]","[ex]",<<!--DATANAME--!>>[ｼｽﾃﾑ][専],
+"%1完成率","%1 complete",<<!--DATANAME--!>>[ｼｽﾃﾑ]%1完成率,
+"最大%1設定数","Max%1Settings",<<!--DATANAME--!>>最大%1設定数,
+"かかっている状態","Added state",<<!--DATANAME--!>>[ｼｽﾃﾑ]かかっている状態,
+"状態ターン数","StateTurn",<<!--DATANAME--!>>[ｼｽﾃﾑ]状態ターン数,
+"戦術指南","TacticalGuide",<<!--DATANAME--!>>[ｼｽﾃﾑ]戦術説明,
+"クリック/タッチでスタート","click / touch the screen to start",<<!--DATANAME--!>>ブラウザ版起動時説明文章,
+"このゲームは以下の方法で操作できます
+キーボード ゲームパッド マウス タッチ","This game can be controlled
+ using the following methods:
+Keyboard Gamepad Mouse Touch",<<!--DATANAME--!>>このゲームはマウスでの操作に対応しています,
+"リセットまで %1
+F12 を押し続けるとゲームをリセットします！
+すぐにゲームをリセットするには
+以下のキーを同時に押す
+F12 + 左Shift + 右Shift
+スクリーンショットは %2ScloolLock Pause です！","%1 left until reset
+Hold down F12 to reset the game!
+To quickly reset the game,
+press the following keys simultaneously:
+F12 + Left Shift + Right Shift
+Screenshot is %2ScloolLock Pause!",<<!--DATANAME--!>>[ｼｽﾃﾑ]ﾘｾｯﾄ説明文章,
+"セーブデータがありません","Empty Data",<<!--DATANAME--!>>セーブデータがありません,
+"セーブ日時","Save Time",<<!--DATANAME--!>>[ｾｰﾌﾞ画面]セーブ日時,
+"プレイ時間","Play Time",<<!--DATANAME--!>>[ｾｰﾌﾞ画面]プレイ時間,
+"左右キー:%1番号±1
+上下キー:%1番号±10
+%A%:%1番号の決定
+%B%:戻る","Left,Right:%1 ID +-1
+Up,Down:%1 ID +-10
+%A%:%1 ID Decision
+%B%:Return",<<!--DATANAME--!>>セーブ画面操作説明文章無料,
+"左右キー:%1番号±1
+上下キー:%1番号±10
+%A%:%1番号の決定
+%B%:戻る
+%R1%:この%1を削除(※注意！)","Left,Right:%1 ID +-1
+Up,Down:%1 ID +-10
+%A%:%1 ID Decision
+%B%:Return
+%R1%:Delete this %1 (*Caution!)",<<!--DATANAME--!>>セーブ画面操作説明文章プロ,
+"%2%1にデータをセーブしますか？
+※データは上書きされます！","Do you want to save data to %2%1?
+*Data will be overwritten!",<<!--DATANAME--!>>%2セーブ上書き説明文章,
+"%2%1のセーブデータを読み込みますか？
+※セーブしてないデータは失われます！","Do you want to load %2%1 data?
+*Unsaved data will be lost!",<<!--DATANAME--!>>%2セーブ読込説明文章,
+"体験版のセーブデータは
+完全版で読み込む事ができません！","Save data from the demo version
+cannot be loaded into the full version!",<<!--DATANAME--!>>体験版セーブ文章,
+"読み込み不可のバージョンのセーブデータです！","This is a save data version that 
+cannot be loaded!",<<!--DATANAME--!>>読込不可Verセーブ文章,
+"無効なセーブデータです！","Invalid save data!",<<!--DATANAME--!>>無効セーブ文章,
+"%1しますか？
+※%1のデータがすでにある場合は
+　そのデータに上書きされます！","Do you want to %1?
+*If %1 data already exists,
+ it will be overwritten!",<<!--DATANAME--!>>%1中断セーブ確認,
+"%1にセーブしました","Saved to %1",<<!--DATANAME--!>>%1にセーブしました,
+"%1へのセーブに失敗しました","Saving to %1 failed",<<!--DATANAME--!>>%1へのセーブに失敗しました,
+"通常のセーブデータにセーブしたため
+%1を消しました！","Saved to %1",<<!--DATANAME--!>>通常セーブにセーブし%1を削除,
+"通常のセーブデータをロードしたため
+%1を消しました！","Saved to %1",<<!--DATANAME--!>>通常セーブをロードし%1を削除,
+"常にダッシュ移動にします","Always dash move",<<!--DATANAME--!>>常時ダッシュ説明文章,
+"壁を避けます。","Automatically slide around 
+walls or event symbols upon collision",<<!--DATANAME--!>>壁避け説明文章,
+"スキル・アイテムを開いたときの
+カーソル位置を保存します","Saves cursor position when
+opening skills and items",<<!--DATANAME--!>>ｷｰ位置保存説明文章,
+"キーのリピート速度を変更します
+速いほど、キーの反応が早くなります","Change key repeat speed
+The faster it is
+the faster the keys will respond",<<!--DATANAME--!>>ｷｰﾘﾋﾟｰﾄ速度説明文章,
+"マップ上でキー操作のヘルプを
+隠すかどうかを設定します。","Sets whether to hide 
+key control help on the map.",<<!--DATANAME--!>>ﾏｯﾌﾟｷｰﾍﾙﾌﾟ非表示説明文章,
+"戦闘時、キーを押しっぱなしにしたとき
+ターンを越えても連打を続けるか設定","Sets whether to continue hitting
+repeatedly even after a turn
+when a key is held down during battle.",<<!--DATANAME--!>>戦闘時自動連打説明文章,
+"オート戦闘時に戦闘速度を最速にします。","Speeds up battle scenes.",<<!--DATANAME--!>>オート時高速化説明文章,
+"戦闘メッセージの速度の設定","Setting the speed of battle messages",<<!--DATANAME--!>>戦闘ﾒｯｾｰｼﾞ速度説明文章,
+"戦闘シーンを高速化します。","Speeds up battle scenes.",<<!--DATANAME--!>>戦闘高速化説明文章,
+"戦闘時、オートコマンドを使用した際
+期待値を考慮して行動を選択します。","When using auto-commands during battle, 
+the system will select actions based on 
+expected value.",<<!--DATANAME--!>>ｵｰﾄﾊﾞﾄﾙ期待値考慮説明文章,
+"戦闘時、オートコマンドを使用した際
+確実性を考慮して行動を選択します。","When using auto-commands during battle, 
+the system will select actions based on 
+their reliability.",<<!--DATANAME--!>>ｵｰﾄﾊﾞﾄﾙ最悪値考慮説明文章,
+"再生するBGMの種類を設定します","Set the type of BGM to play",<<!--DATANAME--!>>BGMモード説明文章,
+"BGMの音量を設定します","Set the BGM volume",<<!--DATANAME--!>>BGM音量説明文章,
+"SEの音量を設定します","Set the SE volume",<<!--DATANAME--!>>SE音量説明文章,
+"<<デフォルト>>","<<Default>>",<<!--DATANAME--!>>フォント変更デフォルト名称,
+"ゲーム中のフォントを変更します。
+存在しないフォントは
+「MS Gothic」で表示されます。","Change the font in-game.
+Fonts that do not exist will be 
+displayed as ""MS Gothic"".",<<!--DATANAME--!>>フォント変更説明文章,
+"キーボードのキー設定を設定します
+変更したいキーを押して下さい","Set keyboard key settings
+press the key you want to change.",<<!--DATANAME--!>>キーボタン説明文章,
+"仮想キーの配置を入れ替えます","Swap the virtual key placement",<<!--DATANAME--!>>仮想キー説明文章,
+"右から時計回りに","clockwise from the right",<<!--DATANAME--!>>仮想キー表示説明文章,
+"仮想キーを表示しません。","It will not be displayed about virtual-pad",<<!--DATANAME--!>>仮想キー非表示説明文章,
+"バトル設定に切り替えます","Switch to Battle config",<<!--DATANAME--!>>バトル設定へ説明文章,
+"キー設定に切り替えます","Switch to Key config",<<!--DATANAME--!>>キー設定へ説明文章,
+"システム設定に切り替えます","Switch to System config",<<!--DATANAME--!>>システム設定へ説明文章,
+"すべての設定を元に戻します","Reset all configs",<<!--DATANAME--!>>リセット説明文章,
+"この設定を反映します","Save this config",<<!--DATANAME--!>>設定完了説明文章,
+"設定を反映しました。","The config has just been saved!",<<!--DATANAME--!>>設定を反映しました。,
+"設定を続けますか？","Do you want to discard the config?",<<!--DATANAME--!>>オプション設定破棄確認文章,
+"%L1%:キーヘルプを開く","%L1%:To open the help about key.",<<!--DATANAME--!>>[ﾍﾙﾌﾟ]ﾍﾙﾌﾟOFF時操作説明文章,
+"十字ボタン:カーソルとキャラクターの移動
+%Y%+十字キー:キャラクターのダッシュ移動
+%A%:項目の決定、人と話す、物を調べる
+%B%:項目のキャンセル、メニューを開く
+%L1%:キーヘルプを閉じる
+%R1%:会話ログを開く
+%L2%:ミニマップの呼び出し","Arrow:To move the cursor and character
+%Y%+Arrow:To make character's movement dashed
+%A%:Decition,Talk,Search
+%B%:Cancel,Menu
+%L1%:To close the key help
+%R1%:message log
+%L2%:minimap",<<!--DATANAME--!>>[ﾍﾙﾌﾟ]2Dﾏｯﾌﾟ操作説明文章,
+"↑:前進
+←→:方向転換
+↓:方向反転
+右スティック：キャラクターの移動
+%Y%+十字ボタン:キャラクターの移動
+※移動中は敵シンボルが止まります
+%A%:項目の決定、人と話す、物を調べる
+%B%:項目のキャンセル、メニューを開く
+%X%:見下ろし/主観切り替え
+%L1%:キーヘルプを閉じる
+%R1%:会話ログを開く
+%L2%:ミニマップの呼び出し","↑: Forward
+←→: Turn View
+↓: Reverse View
+Rstick: Move Character
+%Y%+Arrow: Strafe/Parallel Move
+※Enemies Stop/Slow Down During Strafe.
+%A%: Select/Decide, Talk, Interact
+%B%: Cancel, Open Menu
+%X%: Toggle View (Top-Down/First-Person)
+%L1%: Close Key Help
+%R1%: Message Log
+%L2%: Toggle Minimap",<<!--DATANAME--!>>[ﾍﾙﾌﾟ]3Dﾏｯﾌﾟ操作説明文章,
+"十字ボタン:カーソルの移動
+%A%:項目の決定、メッセージを進める
+%R1%:会話ログを開く","Arrow:Move cursor
+%A%:To decide on items, To advance the message
+%R1%:message log",<<!--DATANAME--!>>[ﾍﾙﾌﾟ]ﾒｯｾｰｼﾞ操作説明文章,
+"%R2%:メッセージのスキップ","%R2%:To skip the message",<<!--DATANAME--!>>[ﾍﾙﾌﾟ]文章ｽｷｯﾌﾟ操作説明文章,
+"%2%3手に入れた","It has been gotten about %2%3.",<<!--DATANAME--!>>%2%3手に入れた,
+"%2%3失った","It has been lost about %2%3.",<<!--DATANAME--!>>%2%3失った,
+"%2%3受け取った","It has been received about %2%3.",<<!--DATANAME--!>>%2%3受け取った,
+"%2%3払った","It has been paid about %2%3.",<<!--DATANAME--!>>%2%3払った,
+"%2%3見つけた","It has been found about %2%3.",<<!--DATANAME--!>>%2%3見つけた,
+"%2%3使った","It has been used about %2%3.",<<!--DATANAME--!>>%2%3使った,
+"%2%3作った","It has been made about %2%3.",<<!--DATANAME--!>>%2%3作った,
+"%2%3破壊された","It has been crashed about %2%3.",<<!--DATANAME--!>>%2%3破壊された,
+"「%1」を%2%3手に入れた","It has been gotten about %2 %3 of [%1].?",<<!--DATANAME--!>>「%1」を%2%3手に入れた,
+"「%1」を%2%3失った","It has been lost about %2 %3 of [%1].?",<<!--DATANAME--!>>「%1」を%2%3失った,
+"「%1」を%2%3受け取った","It has been received about %2 %3of [%1].?",<<!--DATANAME--!>>「%1」を%2%3受け取った,
+"「%1」を%2%3渡した","It has been given about %2 %3of [%1].?",<<!--DATANAME--!>>「%1」を%2%3渡した,
+"「%1」を%2%3見つけた","It has been found about %2 %3of [%1].?",<<!--DATANAME--!>>「%1」を%2%3見つけた,
+"「%1」を%2%3使った","It has been used about %2 %3 of [%1].?",<<!--DATANAME--!>>「%1」を%2%3使った,
+"「%1」を%2%3作った","It has been maked about %2 %3 of [%1].?",<<!--DATANAME--!>>「%1」を%2%3作った,
+"「%1」を%2%3破壊された","It has been crashed about %2 %3 of [%1].?",<<!--DATANAME--!>>「%1」を%2%3破壊された,
+"%1が %2 個完成した！","%2 pieces of %1 completed!",<<!--DATANAME--!>>%1が %2 個完成した！,
+"%1を習得！","Learn %1!",<<!--DATANAME--!>>%1を習得！,
+"%1の%2が%3ポイント回復した。","%2 of %1 has recovered %3 points.",<<!--DATANAME--!>>%1の%2が%3ポイント回復した。,
+"%1の%2が%3ポイント減少した。","%2 of %1 decreased by %3 points.",<<!--DATANAME--!>>%1の%2が%3ポイント減少した。,
+"%1の%2が%3上がった！","%1's %2 has gone up by %3!",<<!--DATANAME--!>>%1の%2が%3上がった！,
+"%1の%2が%3下がった！","%2 of %1 has gone down by %3!",<<!--DATANAME--!>>%1の%2が%3下がった！,
+"%1は%3の%2を手に入れた！","%1 got %3's %2!",<<!--DATANAME--!>>%1は%3の%2を手に入れた！,
+"%1は%3の%2を失った！","%1 lost %3's %2!",<<!--DATANAME--!>>%1は%3の%2を失った！,
+"リングコマンドは画面右上に表示されたボタンを
+クリックして操作します","Ring commands are controlled by 
+clicking the buttons displayed in the 
+top right corner of the screen.",<<!--DATANAME--!>>リングコマンド説明,
+"%L2%:ミニマップにズームインする","%L2%:zoom in the minimap",<<!--DATANAME--!>>%L2%:ミニマップにズームインする,
+"%L2%:ミニマップを閉じる","%L2%:Close minimap",<<!--DATANAME--!>>%L2%:ミニマップを閉じる,
+"名前が一文字も入力されていません！","Not a single character of the name has been entered!",<<!--DATANAME--!>>名前が一文字も入力されていません！,
+"その名前は使われています！","That name have been already used!",<<!--DATANAME--!>>その名前は使われています！,
+"数字や記号のみの名前は入力できません！","It isn't able to make the name symbols or numbers only.",<<!--DATANAME--!>>数字や記号のみの名前は入力できません！,
+"不適切な単語が含まれています！
+対象単語:%1","That message contains inappropriate words!
+target word:%1",<<!--DATANAME--!>>不適切な単語が含まれています！,
+"その名前は使用できません！
+対象単語:%1","That name is not able to use!
+target word:%1",<<!--DATANAME--!>>その名前は使用できません！,
+"%L1%/%R1%で
+キャラの切り替え","Switch characters with
+the %L1%/%R1%",<<!--DATANAME--!>>%L1%/%R1%でキャラの切り替え,
+"装
+
+備
+
+中","eq
+ui
+pp
+in
+g?",<<!--DATANAME--!>>[お店ｽﾃｰﾀｽ]装備中,
+"この効果を再錬成しますか？","Would you like to
+ re-enchant this effect?",<<!--DATANAME--!>>[再錬成]再錬成確認1,
+"%1
+が %2個 必要ですが","%1
+ of %2 need,",<<!--DATANAME--!>>[再錬成]再錬成確認2,
+"現在所持数:%3","Posses:%3",<<!--DATANAME--!>>[再錬成]再錬成確認3,
+"再錬成をした！","Re-enchanted!",<<!--DATANAME--!>>[再錬成]再錬成成功,
+"%1 
+が足りない！","%1
+ is missing!",<<!--DATANAME--!>>[再錬成]コスト足りない,
+"%1
+を分解しますか？
+%2
+を %3個 獲得できます！","Would you like to disassemble the 
+%1 ?
+You'll earn %3 
+%2!",<<!--DATANAME--!>>[錬成分解]分解確認,
+"これ以上
+%1
+を持ちきれません","I can't carry any more 
+%1",<<!--DATANAME--!>>[錬成分解]持ちきれない,
+"有効な%1がありません","No valid %1",<<!--DATANAME--!>>有効な%1がありません,
+"覚えようとしている%1は
+すでに覚えています！","The %1 you are trying to learning
+has already been learninged!",<<!--DATANAME--!>>覚えようとしている%1はすでに覚えています！,
+"%1の習得可能数が上限を超えたため
+新たに%1を覚える事ができません！","A new %1 cannot be learned
+because it's going to be over limit
+if the %1 has been learned!",<<!--DATANAME--!>>%1の習得可能数が上限を超えたため新たに%1を覚える事ができません！,
+"消費%1","%1 Cost",<<!--DATANAME--!>>[ｽｷﾙ説明]消費%1,
+"消費金額","money Cost",<<!--DATANAME--!>>[ｽｷﾙ説明]消費金額,
+"誰が%1を
+使用しますか？","Who uses
+%1?",<<!--DATANAME--!>>誰が%1を使用しますか？,
+"誰の%1を
+確認しますか？","Whose %1
+do you want to check?",<<!--DATANAME--!>>誰の%1を確認しますか？,
+"『%1』
+使用対象を
+選択して下さい","""%1""
+Please select the
+usage target.",<<!--DATANAME--!>>『%1』使用対象を選択して下さい,
+"ランダムで
+使用されます","used
+randomly",<<!--DATANAME--!>>ランダムで使用されます,
+"これ以上
+使用できません","Cannot be used
+anymore",<<!--DATANAME--!>>これ以上使用できません,
+"自分自身には使用できません","Cannot be used on yourself",<<!--DATANAME--!>>自分自身には使用できません,
+"エンカウント率が増加した！","Encounter rate has increased!",<<!--DATANAME--!>>エンカウント率が増加した！,
+"エンカウント率が減少した！","Encounter rate has decreased!",<<!--DATANAME--!>>エンカウント率が減少した！,
+"エンカウント率が元に戻った！","The encounter rate is back to normal!",<<!--DATANAME--!>>エンカウント率が元に戻った！,
+"誰の%1を
+設定しますか？","Whose %1
+do you want
+to set?",<<!--DATANAME--!>>誰の%1を設定しますか？,
+"%1設定を解除します。","Remove %1 settings",<<!--DATANAME--!>>%1設定を解除します。,
+"%1の習得可能数が
+上限を超えています！","The number of things you can learn for
+%1 exceeds the upper limit!",<<!--DATANAME--!>>%1の習得可能数が上限を超えています！,
+"%1が装備から外れました","%1 removed from equipment",<<!--DATANAME--!>>%1が装備から外れました,
+"%1を解除します。","Remove %1.",<<!--DATANAME--!>>%1を解除します。,
+"装備可能な%1を自動的に装備します。","Automatically equip the %1
+that can be equipped.",<<!--DATANAME--!>>自動装備説明文章,
+"このキャラは%1を変更できません","It is not able to change the %1 about this character.",<<!--DATANAME--!>>このキャラは%1を変更できません,
+"この%1を外す事ができません","This %1 cannot be removed",<<!--DATANAME--!>>この装備を外す事ができません,
+"外すことができない%1があるため、
+この%1を付けることができませんでした。","This %1 could not be
+attached because there is
+%1 that cannot be removed.",<<!--DATANAME--!>>外せない装備あるため装備不可,
+"交換対象を
+選択してください","Please select
+the item to
+exchange",<<!--DATANAME--!>>並び替え交換元選択確認文章,
+"どの位置と
+交換しますか?","What position would
+you like to
+replace it with?",<<!--DATANAME--!>>並び替え交換先選択確認文章,
+"%A%:選択
+%B%:編成終了
+%X%:ステータス確認","%A%:Choice
+%B%:Exit
+%X%:Check status",<<!--DATANAME--!>>パーティ編成交換元選択確認文章,
+"%A%:交換
+%B%:選択解除
+%X%:ステータス確認","%A%:Change
+%B%:Cancel
+%X%:Check status",<<!--DATANAME--!>>パーティ編成交換先選択確認文章,
+"%A%:パーティから外す
+%B%:選択解除
+%X%:ステータス確認","%A%:Remove
+%B%:Cancel
+%X%:Check status",<<!--DATANAME--!>>パーティ編成パーティから外す確認文章,
+"戦闘タイプ変更","Change Auto Mode",<<!--DATANAME--!>>戦闘タイプ変更名称,
+"作戦タイプ変更","Change AI Type",<<!--DATANAME--!>>作戦タイプ変更名称,
+"オートにするとマニュアル操作でも
+作戦にしたがって行動します","If you set it to auto, it will act according to
+the AI even in manual mode.",<<!--DATANAME--!>>戦闘タイプ変更説明,
+"攻撃と回復と補助のバランスを取りながら
+%1を使います。","Use %1 while balancing
+attack, recovery, and support.",<<!--DATANAME--!>>バランス型AI説明,
+"残り%2を気にせず、威力の高い%1を
+優先して使います。","Don't worry about the remaining %2,
+prioritize using the more powerful %1.",<<!--DATANAME--!>>攻撃型AI説明,
+"仲間の生存を第一に考えて
+回復系の%1を優先して使います。","Prioritize the survival of your allies and
+use recovery-type %1 first.",<<!--DATANAME--!>>回復型AI説明,
+"味方を援護したり敵を妨害したりする
+%1を優先して使います。","Prioritize use of %1 to support allies or
+hinder enemies.",<<!--DATANAME--!>>補助型AI説明,
+"何があっても%2を消費する
+%1を使いません。","No matter what happens, I won't use
+%1 which consumes %2.",<<!--DATANAME--!>>節約型AI説明,
+"戦闘時のオートコマンドで
+%1を使用しません","Do not use %1 in 
+battle autocommands",<<!--DATANAME--!>>ｱｲﾃﾑ使用ﾀｲﾌﾟOFF説明,
+"戦闘時のオートコマンドで
+%1を使用します","Use %1 in 
+battle autocommands",<<!--DATANAME--!>>ｱｲﾃﾑ使用ﾀｲﾌﾟON説明,
+"誰の%1を
+上昇させますか？","Whose %1 would you
+like to increase?",<<!--DATANAME--!>>誰の%1を上昇させますか？,
+"誰の%1を
+変更しますか？","Whose %1 do you
+want to change?",<<!--DATANAME--!>>誰の%1を変更しますか？,
+"次の%1に必要な%2","%2 needed for next %1",<<!--DATANAME--!>>次の%1に必要な%2,
+"必要%2","Required%2",<<!--DATANAME--!>>必要%2,
+"%1についていない状態です。","I don't have a %1",<<!--DATANAME--!>>%1についていない状態です。,
+"全ての%1%2を初期化します。
+振り分けた%3は全て元に戻ります。","it will be initialized about all of %1 %2
+these allocated %3 are return all.",<<!--DATANAME--!>>%1%2%3レベル初期化説明文章,
+"%1に%2しました。","%2 to %1.",<<!--DATANAME--!>>%1に%2しました。,
+"%1になりました。","I became %1.",<<!--DATANAME--!>>無職になりました。,
+"%A%:%1%2操作の確定
+左右キー:%1%2±1","%A%:Finalizing %1%2 Controls
+Left,Right:%1%2±1",<<!--DATANAME--!>>職業LvUP操作説明1,
+"%X%:%3","%X%:%3",<<!--DATANAME--!>>職業LvUP操作説明2,
+"%B%:%1%2操作のキャンセル","%B%:Canceling %1%2 Controls",<<!--DATANAME--!>>職業LvUP操作説明3,
+"%1をキャンセルしますか？","Do you want to cancel %1?",<<!--DATANAME--!>>職業LvUP強制キャンセル確認,
+"左右キーでページ変更:%A%で%1確認:%B%で戻る","Change page Left,Right:Check %1 %A%:Return %B%",<<!--DATANAME--!>>職業確認画面操作説明文章,
+"誰の%1を
+振り分けますか？","Who will you
+allocate your
+%1 to?",<<!--DATANAME--!>>誰の%1を振り分けますか？,
+"%1が習得されます。","It will be learn %1.",<<!--DATANAME--!>>%1が習得されます。,
+"完成品","Get Item",<<!--DATANAME--!>>[ｱｲﾃﾑ合成]完成品,
+"大成功時完成品","Success Get Item",<<!--DATANAME--!>>[ｱｲﾃﾑ合成]大成功時完成品,
+"大成功率","Rate",<<!--DATANAME--!>>[ｱｲﾃﾑ合成]大成功率,
+"素材","material",<<!--DATANAME--!>>[ｱｲﾃﾑ合成]素材,
+"この敵はまだ登録されていません。","Empty Data",<<!--DATANAME--!>>この敵はまだ登録されていません。,
+"この%1はまだ登録されていません。","Empty Data",<<!--DATANAME--!>>この%1はまだ登録されていません。,
+"%1分類","%1 Category",<<!--DATANAME--!>>%1分類,
+"%1種別","%1 Type",<<!--DATANAME--!>>%1種別,
+"%1が図鑑に登録されました！","%1 has been added to the guide book!",<<!--DATANAME--!>>%1が図鑑に登録されました！,
+"未受注","No orders received",<<!--DATANAME--!>>[ｸｴｽﾄ]未受注,
+"進行中","in progress",<<!--DATANAME--!>>[ｸｴｽﾄ]進行中,
+"リプレイ中","Replay in progress",<<!--DATANAME--!>>[ｸｴｽﾄ]リプレイ中,
+"完了条件達成","Completion condition achieved",<<!--DATANAME--!>>[ｸｴｽﾄ]完了条件達成,
+"完了済","Completed",<<!--DATANAME--!>>[ｸｴｽﾄ]完了済,
+"完了回数","clear count",<<!--DATANAME--!>>[ｸｴｽﾄ]完了回数,
+"討伐数","kill count",<<!--DATANAME--!>>[ｸｴｽﾄ]討伐数,
+"納品数","Delivery count",<<!--DATANAME--!>>[ｸｴｽﾄ]納品数,
+"完了報酬","Reward",<<!--DATANAME--!>>[ｸｴｽﾄ]完了報酬,
+"リプレイ報酬","Reward(Replay)",<<!--DATANAME--!>>[ｸｴｽﾄ]リプレイ報酬,
+"%A%でクエスト受注
+%X%でページ切り替え
+%B%で戻る","%A% Quest order
+%X% page change
+%B% Return",<<!--DATANAME--!>>クエスト受注操作説明文章,
+"%A%でアイテム納品
+%X%でページ切り替え
+%B%で戻る","%A% Item delivery
+%X% page change
+%B% Return",<<!--DATANAME--!>>クエスト納品操作説明文章,
+"%X%でページ切り替え
+%B%で戻る","%X% page change
+%B% Return",<<!--DATANAME--!>>クエスト確認操作説明文章,
+"クエスト「%1」の完了条件達成！","Quest ""%1"" conditions achieved!",<<!--DATANAME--!>>クエスト「%1」の完了条件達成！,
+"「%1」
+を完了した！","Quest clear
+""%1""!",<<!--DATANAME--!>>「%1」を完了した！,
+"↑↓:あらすじ選択　←→:カテゴリ選択　%A%:詳細表示　%B%:戻る　%Y%+↑↓:高速スクロール","↑↓:StorySelect  ←→:CategorySelect  %A%:Detaile  %B%:Exit  %Y%+↑↓:FastScroll",<<!--DATANAME--!>>あらすじ2キーヘルプ表示,
+"%A%:閉じる","%A%:Exit",<<!--DATANAME--!>>あらすじ2抜粋キーヘルプ表示1,
+"%A%/%B%:閉じる","%A%/%B%:Exit",<<!--DATANAME--!>>あらすじ2抜粋キーヘルプ表示2,
+"↑↓:行送り　%Y%+↑↓:ページ送り　%A%/%B%:閉じる","↑↓:Scroll  %Y%+↑↓:PageChange  %A%/%B%:Exit",<<!--DATANAME--!>>あらすじ2全文キーヘルプ表示,
+"↑↓:行送り　%Y%+↑↓:ページ送り　%A%:受注する %B%:受注しない","↑↓:Scroll  %Y%+↑↓:PageChange  %A%:Undertake %B%:Exit",<<!--DATANAME--!>>あらすじ2ｸｴｽﾄ受注ｷｰﾍﾙﾌﾟ表示,
+"↑↓:行送り　%Y%+↑↓:ページ送り　%B%:閉じる","↑↓:Scroll  %Y%+↑↓:PageChange  %B%:Exit",<<!--DATANAME--!>>あらすじ2ｸｴｽﾄ確認ｷｰﾍﾙﾌﾟ表示,
+"↑↓:行送り　%Y%+↑↓:ページ送り　%A%:納品する %B%:納品しない","↑↓:Scroll  %Y%+↑↓:PageChange  %A%:Delivery %B%:Exit",<<!--DATANAME--!>>あらすじ2ｸｴｽﾄ納品ｷｰﾍﾙﾌﾟ表示,
+"↑↓:行送り　%Y%+↑↓:ページ送り　%A%:画像表示　%B%:閉じる","↑↓:Scroll  %Y%+↑↓:PageChange  %A%:DisplayPicture　%B%:Exit",<<!--DATANAME--!>>あらすじ2実績キーヘルプ表示,
+"ゲームをやめてこの後どうしますか？","What do you do after you quit the game?",<<!--DATANAME--!>>ゲーム終了説明,
+"本当にタイトルに戻りますか？
+※セーブしてないデータは失われます！","Do you really want to go back to the title?
+*Unsaved data will be lost!",<<!--DATANAME--!>>タイトルに戻る確認文章,
+"本当にゲーム選択画面に戻りますか？
+※セーブしてないデータは失われます！","Do you really want to go back to the game select?
+*Unsaved data will be lost!",<<!--DATANAME--!>>ゲーム再起動確認文章,
+"本当にゲームを終了しますか？
+※セーブしてないデータは失われます！","Are you sure you want to exit the game?
+*Unsaved data will be lost!",<<!--DATANAME--!>>ゲーム終了確認文章,
+"%1
+推奨Lv:%2
+%3","%1
+DungeonLevel:%2
+%3",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]出撃準備文章1,
+"%1
+フロア数(%2/%3)","%1
+Floor(%2/%3)",<<!--DATANAME--!>>[ﾉﾝﾌｨｰﾙﾄﾞ]ﾀﾞﾝｼﾞｮﾝ探索文章1,
+"手動でキャラクターごとのコマンドを選択します。","Manually select the commands for each character.",<<!--DATANAME--!>>[戦闘]戦闘ｺﾏﾝﾄﾞ説明,
+"戦闘に関わる色々な情報を確認/設定できます。","You can check and configure various 
+information related to battles.",<<!--DATANAME--!>>[戦闘]作戦ｺﾏﾝﾄﾞ説明,
+"自動でコマンドを選択する際の作戦を設定します。","Sets the strategy for automatically 
+selecting commands.",<<!--DATANAME--!>>[戦闘]作戦変更ｺﾏﾝﾄﾞ説明,
+"そのターンにおいて自動でコマンドを選択します。","The command will be automatically selected on that turn.",<<!--DATANAME--!>>[戦闘]ｵｰﾄｺﾏﾝﾄﾞ説明,
+"全てのターンにおいて自動でコマンドを選択します。","The command is automatically selected for all turns.",<<!--DATANAME--!>>[戦闘]ﾌﾙｵｰﾄｺﾏﾝﾄﾞ説明,
+"直線のターンで使用した行動を使用します。","Use the actions used in a straight turn.",<<!--DATANAME--!>>[戦闘]ﾘﾋﾟｰﾄｺﾏﾝﾄﾞ説明,
+"これまでの戦闘ログを確認します。","Check the battle logs so far.",<<!--DATANAME--!>>[戦闘]戦闘ﾛｸﾞｺﾏﾝﾄﾞ説明,
+"現在の味方の状態を確認します。","Check the current actor status.",<<!--DATANAME--!>>[戦闘]味方状態確認ｺﾏﾝﾄﾞ説明,
+"現在の敵の状態を確認します。","Check the current enemy status.",<<!--DATANAME--!>>[戦闘]敵状態確認ｺﾏﾝﾄﾞ説明,
+"発生中の召喚獣を確認します。","Check for servants occurring.",<<!--DATANAME--!>>[戦闘]召喚獣確認ｺﾏﾝﾄﾞ説明,
+"ゲーム中の各種設定を変更します。","Change the various options in the game.",<<!--DATANAME--!>>[戦闘]ｵﾌﾟｼｮﾝｺﾏﾝﾄﾞ説明,
+"戦闘から逃走します。逃走に失敗する事もあります。","You will escape from the battle. 
+You may also fail to escape.",<<!--DATANAME--!>>[戦闘]逃走ｺﾏﾝﾄﾞ説明,
+"強制的に勝利させます。テストプレイ時のみ有効です。","Forced to Victory. 
+It is only valid during test play.",<<!--DATANAME--!>>[戦闘]強制勝利ｺﾏﾝﾄﾞ説明,
+"強制的に敗北させます。テストプレイ時のみ有効です。","Forced to defeated. 
+It is only valid during test play.",<<!--DATANAME--!>>[戦闘]強制敗北ｺﾏﾝﾄﾞ説明,
+"自分以外の対象が存在しませんでした。","There was no object other than myself.",<<!--DATANAME--!>>自分以外の対象が存在しませんでした。,
+"%B%押しっぱなしでオート戦闘解除","Cancel auto battle by holding down %B%",<<!--DATANAME--!>>%B%押しっぱなしでオート戦闘解除,
+"【ターン更新】","[NEXT TURN]",<<!--DATANAME--!>>[行動順]ターン更新表示,
+"通常変数の操作","Normal variable control",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]通常変数の操作,
+"サウンドテスト","sound test",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]サウンドテスト,
+"エフェクトテスト","Effect test",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]エフェクトテスト,
+"%1の操作","%1 control",<<!--DATANAME--!>>%1の操作,
+"%1許可フラグ全てON","Enable %1 flag all ON",<<!--DATANAME--!>>%1許可フラグ全てON,
+"%1許可フラグ初期化","Enable %1 flag reset",<<!--DATANAME--!>>%1許可フラグ初期化,
+"%1全て最大化","%1Maximize all",<<!--DATANAME--!>>%1全て最大化,
+"%1初期化","%1 Reset",<<!--DATANAME--!>>%1初期化,
+"所持金の操作","gold control",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]所持金の操作,
+"%1全入手","Get all %1",<<!--DATANAME--!>>%1全入手,
+"ダメージ分散:OFF","DamageRange:OFF",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]ダメージ分散OFF,
+"ダメージ分散:ON","DamageRange:ON",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]ダメージ分散ON,
+"戦闘勝敗数予測:OFF","Battle win predict:OFF",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]戦闘勝敗数予測OFF,
+"戦闘勝敗数予測:ON","Battle win predict:ON",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]戦闘勝敗数予測ON,
+"戦闘テスト","battle test",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]戦闘テスト,
+"%1完成","%1 completed",<<!--DATANAME--!>>%1完成,
+"テキストにデータを出力","Output data to text",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]テキストにデータを出力,
+"アイコン閲覧","View icon",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]アイコン閲覧,
+"F11再読み込み","F11 reload",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]F11再読み込み,
+"強制勝利","forced victory",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]強制勝利,
+"強制敗北","forced defeat",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]強制敗北,
+"基本ピクチャ","Base Picture ID",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]基本ピクチャ,
+"素材フォルダ","asset folder",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]素材フォルダ,
+"敵能力値","Enemy Param",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]敵能力値,
+"%B%で入力中止","Abort input with %B%",<<!--DATANAME--!>>%B%で入力中止,
+"%A%:変数の操作
+左右キー:変数ID±1
+上下キー:変数ID±10
+%B%:デバッグモード終了","%A%:variable control
+Left,Right:variable ID+-1
+Up,Down:variable ID+-10
+%B%:Exit",<<!--DATANAME--!>>通常変数の操作説明文章,
+"0でキャンセル","Cancel with 0",<<!--DATANAME--!>>0でキャンセル,
+"強制的に敗北しますか？","Forced defeat?",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]強制敗北確認文章1,
+"本当に強制的に敗北しますか？","Are you really forced to defeat?",<<!--DATANAME--!>>[ﾃﾞﾊﾞｯｸﾞ]強制敗北確認文章2,
+"モンテカルロ実行中","It's being processed monte carlo now.",<<!--DATANAME--!>>[デバッグ]モンテカルロ中,
+"<<アップデート>>(※インターネットに接続します！)","<<Update>>(*Connect to the Internet!)",<<!--DATANAME--!>><<アップデート>>,
+"アップデートする","Update",<<!--DATANAME--!>>アップデートする,
+"このゲームをアップデートしますか？
+※インターネットに接続します！
+　セキュリティリスクに注意！！","Would you like to update this game?
+*Connect to the Internet!
+Beware of security risks! !",<<!--DATANAME--!>>アップデート確認文章,

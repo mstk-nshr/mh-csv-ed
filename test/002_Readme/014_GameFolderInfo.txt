@@ -1,0 +1,41 @@
+以下のファイルはゲーム配布時に消してください
+・「001_GameData」フォルダ
+  ・「OldSave」フォルダ
+  ・「Save」フォルダ
+  ・Editor.ini
+  ・Editor.exe
+  ・EditorPro.exe
+  ・Game_DataBaseCSVInput.bat
+  ・Game_DataBaseCSVUpd.bat
+  ・Game_EnemyGraphicViewer1.bat
+  ・Game_Test.bat
+・「002_Readme」フォルダ内の全てのファイル
+(ゲーム制作者に向けた説明であるため、誤解を避けるため、削除必須)
+
+特に、以下のファイルは利用規約により配布時は削除必須となっています
+・EditorPro.exe
+
+また、削除必須でないが、以下のファイルは配布時に削除した方がいいです
+・「001_GameData」フォルダ
+  ・「Data」フォルダ
+    ・「BasicData」フォルダ
+      ・「AutoBackUp」から始まるフォルダ内の全てのファイル
+      (ゲームの動作には一切関連性は無いので削除推奨)
+・「003_BaseSystemAdvanced_Readme」フォルダ内の全てのファイル
+(ゲーム制作者に向けた説明であるため、誤解を避けるため、削除推奨)
+・「004_WOLFRPGEditor_Readme」フォルダ内の全てのファイル
+(ゲーム制作者に向けた説明であるため、誤解を避けるため、削除推奨)
+
+ゲーム配布時の配布形態は以下の通りです
+・「001_GameData」フォルダ
+  ・「Data」フォルダ内の全てのファイル (暗号化した場合は「Data.wolf」)
+  ・Config.exe
+  ・DefaultMaterial.txt
+  ・Game.ini (無くてもいい)
+  ・Game.exe (有料版は「GamePro.exe」)
+  ・GuruGuruSMF4.dll (ゲーム基本設定での設定によっては無し)
+  ・Readme.txt
+
+配布前に必ず編集するファイル
+・Readme.txt
+テンプレートの状態から、各自でゲームに合った文言に書き換えてください

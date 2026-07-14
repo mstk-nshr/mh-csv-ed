@@ -1,0 +1,900 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>UpdLog</title><meta name="data-notion-page-icon" content="📑"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%91%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="16e9da7d-49f6-80a8-99a0-f5e801e172ea" class="page sans" data-notion-page-icon="📑"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📑"></span></div><h1 class="page-title" dir="auto">UpdLog</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><hr id="1c59da7d-49f6-801e-a1cf-f33a0d2b70f0" dir="auto"/><h1 id="1c59da7d-49f6-8013-bba4-f3ae4963b16b" class="" dir="auto">更新履歴</h1><p id="25f9da7d-49f6-80df-aa7d-c4d37c7e0af6" class="" dir="auto">
+</p><hr id="25f9da7d-49f6-8062-8913-f531014f1e06" dir="auto"/><p id="39a9da7d-49f6-80c7-9dc8-e51a3204e84a" class="" dir="auto">
+</p><p id="39a9da7d-49f6-8095-b768-ce23f16523f7" class="" dir="auto">
+</p><p id="39a9da7d-49f6-80e8-908d-ff35d913645d" class="" dir="auto">
+</p><hr id="39a9da7d-49f6-8086-a4ed-cebeeb5fd947" dir="auto"/><h1 id="39a9da7d-49f6-80d8-8d9e-d002cc4c51a5" class="" dir="auto">2026/07/12</h1><p id="39a9da7d-49f6-80cb-be43-d85c9d239f51" class="" dir="auto">
+</p><hr id="39a9da7d-49f6-801b-8ac1-d4b370c7ef51" dir="auto"/><p id="39a9da7d-49f6-80b7-8ba8-fe4d346bd996" class="" dir="auto">マニュアルをV5.172に対応</p><p id="39a9da7d-49f6-8034-b0c0-d25e033ccbcc" class="" dir="auto">
+</p><hr id="39a9da7d-49f6-807e-8aa0-fda9a2561c49" dir="auto"/><h1 id="39a9da7d-49f6-8081-8da9-ddaf8e6f2f9a" class="" dir="auto">2026/07/11</h1><p id="39a9da7d-49f6-80e7-87f8-c15335bcb423" class="" dir="auto">
+</p><hr id="39a9da7d-49f6-80af-8100-de361c54283e" dir="auto"/><p id="39a9da7d-49f6-8096-97e8-e6304b0ac474" class="" dir="auto">マニュアルをV5.171に対応</p><p id="3919da7d-49f6-8004-a3d7-db117a086010" class="" dir="auto">
+</p><hr id="3919da7d-49f6-808f-b519-e2a4fa0c3034" dir="auto"/><h1 id="3919da7d-49f6-808d-a30c-d045211c1593" class="" dir="auto">2026/07/05</h1><p id="3919da7d-49f6-80a9-ab60-d65f71d4903c" class="" dir="auto">
+</p><hr id="3919da7d-49f6-8025-a0d1-f6e3ed28f460" dir="auto"/><p id="3919da7d-49f6-801f-90f7-f0e40095bae6" class="" dir="auto">マニュアルをV5.170に対応</p><p id="3919da7d-49f6-80d4-9fb6-e9f2d73708cf" class="" dir="auto">「エディションについて」のSTANDARD版のスクショをV5.170時点のものに変更</p><p id="38f9da7d-49f6-800c-8c4a-ccdae8bb932b" class="" dir="auto">
+</p><hr id="38f9da7d-49f6-8034-8666-c2a5f8f368dd" dir="auto"/><h1 id="38f9da7d-49f6-8000-8304-f02a53af9bce" class="" dir="auto">2026/07/01</h1><p id="38f9da7d-49f6-800e-bdd0-cd797cf6d3af" class="" dir="auto">
+</p><hr id="38f9da7d-49f6-8050-a20f-f012c0a88c9a" dir="auto"/><p id="38f9da7d-49f6-80f5-827f-c1da49f1c1e6" class="" dir="auto">マニュアルをV5.169に対応</p><p id="38f9da7d-49f6-8077-b417-f78c599582e5" class="" dir="auto">「ツクールシリーズとの比較」に抜けがあったり、情報が間違ってたり、情報が古かったりしてたのをV5.169の時点での情報に修正</p><p id="38c9da7d-49f6-8075-b7cb-c53a2714951b" class="" dir="auto">
+</p><hr id="38c9da7d-49f6-8038-acd3-c062ef947fc5" dir="auto"/><h1 id="38c9da7d-49f6-8069-a5f7-d3f0ee7babee" class="" dir="auto">2026/06/28</h1><p id="38c9da7d-49f6-8045-868b-e7d37ecdf6a9" class="" dir="auto">
+</p><hr id="38c9da7d-49f6-804d-9174-edaf83e0cbbc" dir="auto"/><p id="38d9da7d-49f6-801a-be14-e3eb9aea3e56" class="" dir="auto">マニュアルをV5.168に対応</p><p id="38c9da7d-49f6-808e-a03c-c17fd63df393" class="" dir="auto">Mr.Hのフリーゲーム道場のURLを移転に合わせて改訂</p><p id="3869da7d-49f6-80fe-8512-e0a1bfce4e05" class="" dir="auto">
+</p><hr id="3869da7d-49f6-80e1-bdac-ee2e4ebf4748" dir="auto"/><h1 id="3869da7d-49f6-802d-acb8-d62462af237b" class="" dir="auto">2026/06/21</h1><p id="3869da7d-49f6-8085-a180-e40d48fadbb1" class="" dir="auto">
+</p><hr id="3869da7d-49f6-8030-98f7-ceded63bd8d3" dir="auto"/><p id="3869da7d-49f6-80b3-bf96-cc803aa6af18" class="" dir="auto">マニュアルをV5.167に対応</p><p id="37f9da7d-49f6-805e-aa4b-c9c113a749d4" class="" dir="auto">
+</p><hr id="37f9da7d-49f6-8093-a1cf-c770850f438b" dir="auto"/><h1 id="37f9da7d-49f6-802f-92cd-d9df0517e7ba" class="" dir="auto">2026/06/14</h1><p id="37f9da7d-49f6-8067-9799-d0e765f56da9" class="" dir="auto">
+</p><hr id="37f9da7d-49f6-80f0-8452-c9a6b7c0cc2a" dir="auto"/><p id="37f9da7d-49f6-80b9-bda1-f3c380070e5f" class="" dir="auto">マニュアルをV5.162に対応</p><p id="37d9da7d-49f6-80f1-ba8d-ee107e40519d" class="" dir="auto">
+</p><hr id="37d9da7d-49f6-805a-b6ba-ec74a11f65f7" dir="auto"/><h1 id="37d9da7d-49f6-80a0-8dd0-c963c896218f" class="" dir="auto">2026/06/13</h1><p id="37d9da7d-49f6-8081-848a-e814cc1e78d8" class="" dir="auto">
+</p><hr id="37d9da7d-49f6-803b-9b04-ce57568d15d7" dir="auto"/><p id="37d9da7d-49f6-802f-bac8-db94aa3cb1e9" class="" dir="auto">マニュアルをV5.161に対応</p><p id="37d9da7d-49f6-802a-9139-cc2af5c5e63d" class="" dir="auto">「UDB」に削除されたUDBタイプの説明がまだ残ってたのを修正</p><p id="37d9da7d-49f6-80a6-a7e6-ffc80b368056" class="" dir="auto">「コモンイベント」に抜けがあったり、情報が古かったりしてたのを修正</p><p id="3779da7d-49f6-8035-ba85-c1b5c3c6318e" class="" dir="auto">
+</p><hr id="3779da7d-49f6-8015-9fd3-fd28b45bf277" dir="auto"/><h1 id="3779da7d-49f6-8013-b14b-fd328744879d" class="" dir="auto">2026/06/07</h1><p id="3779da7d-49f6-8027-b8ec-f6f340bcb8f7" class="" dir="auto">
+</p><hr id="3779da7d-49f6-8039-9ce1-cd1dc66872ed" dir="auto"/><p id="3779da7d-49f6-803c-8e89-f3a0a0cb4178" class="" dir="auto">マニュアルをV5.160に対応</p><p id="3709da7d-49f6-80bc-b4cf-ca34c6280892" class="" dir="auto">
+</p><hr id="3709da7d-49f6-80fc-82ef-c4f4ac13660b" dir="auto"/><h1 id="3709da7d-49f6-808c-ade0-e31986c4e3b1" class="" dir="auto">2026/05/31</h1><p id="3709da7d-49f6-8072-9520-d307272b8120" class="" dir="auto">
+</p><hr id="3709da7d-49f6-8022-8d62-c59df803d98b" dir="auto"/><p id="3709da7d-49f6-8004-9a50-d24cbd7bf8e1" class="" dir="auto">マニュアルをV5.159に対応</p><p id="3629da7d-49f6-805f-8900-dc0fcc3481aa" class="" dir="auto">
+</p><hr id="3629da7d-49f6-80be-8559-d1660783d5ec" dir="auto"/><h1 id="3629da7d-49f6-8031-b6ad-ca836744a1c7" class="" dir="auto">2026/05/17</h1><p id="3629da7d-49f6-80a3-8e65-e0fca6068ea9" class="" dir="auto">
+</p><hr id="3629da7d-49f6-800e-a244-c5e253caba71" dir="auto"/><p id="3629da7d-49f6-8077-905a-ce16874989cb" class="" dir="auto">マニュアルをV5.156に対応</p><p id="35c9da7d-49f6-808b-8b8a-d094743a9f48" class="" dir="auto">
+</p><hr id="35c9da7d-49f6-80ab-82e8-e9bf88362f38" dir="auto"/><h1 id="35c9da7d-49f6-80a7-9051-daa47c827eda" class="" dir="auto">2026/05/10</h1><p id="35c9da7d-49f6-802c-8ace-fee859cb0bac" class="" dir="auto">
+</p><hr id="35c9da7d-49f6-8009-99ac-f428546fc9f5" dir="auto"/><p id="35c9da7d-49f6-809b-9aaa-f6c65573f92c" class="" dir="auto">マニュアルをV5.153に対応</p><p id="3579da7d-49f6-80c0-b558-d73b7c48f36f" class="" dir="auto">
+</p><hr id="3579da7d-49f6-803f-9671-f299e057e7fc" dir="auto"/><h1 id="3579da7d-49f6-80a0-a647-d6d449506d80" class="" dir="auto">2026/05/06</h1><p id="3579da7d-49f6-80dd-be45-c3afc51524f8" class="" dir="auto">
+</p><hr id="3579da7d-49f6-80f4-b7da-d732e8f6621a" dir="auto"/><p id="3579da7d-49f6-8069-9dfd-e29d262d1513" class="" dir="auto">マニュアルをV5.152に対応</p><p id="3499da7d-49f6-8068-8ed1-ccf2d1704617" class="" dir="auto">
+</p><hr id="3499da7d-49f6-8029-9513-df804fc226eb" dir="auto"/><h1 id="3499da7d-49f6-8058-a4c5-c95af07399d4" class="" dir="auto">2026/04/22</h1><p id="3499da7d-49f6-8018-80f4-f93179243837" class="" dir="auto">
+</p><hr id="3499da7d-49f6-80fa-a4bb-e69e94b0b5d5" dir="auto"/><p id="3499da7d-49f6-80e8-91d1-eede1afb4740" class="" dir="auto">マニュアルをV5.146に対応</p><p id="33f9da7d-49f6-8002-ae77-ce522ad2b79f" class="" dir="auto">
+</p><hr id="33f9da7d-49f6-804e-b2ba-c2ec5c871237" dir="auto"/><h1 id="33f9da7d-49f6-8027-8c27-ffb34255a4cb" class="" dir="auto">2026/04/12</h1><p id="33f9da7d-49f6-80e7-8ab1-fe5ec315166c" class="" dir="auto">
+</p><hr id="33f9da7d-49f6-8052-a48a-cf29c1fc7d80" dir="auto"/><p id="33f9da7d-49f6-800a-969e-d5f6aa29ae29" class="" dir="auto">マニュアルをV5.145に対応</p><p id="33f9da7d-49f6-80d3-8fe4-d0fe9084cb74" class="" dir="auto">
+</p><hr id="3329da7d-49f6-807f-bd40-f5ee026ece22" dir="auto"/><h1 id="3329da7d-49f6-80da-8fc8-ed3e3846ebea" class="" dir="auto">2026/03/29</h1><p id="3329da7d-49f6-80ff-94a0-e9d22366986c" class="" dir="auto">
+</p><hr id="3329da7d-49f6-80fd-ac82-fc1e3d4cedf1" dir="auto"/><p id="3329da7d-49f6-80c5-a75f-fed332eace93" class="" dir="auto">マニュアルをV5.142に対応</p><p id="32a9da7d-49f6-80ce-8352-cb33fa937290" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-8059-b4b8-daf60a3da142" dir="auto"/><h1 id="32a9da7d-49f6-805e-b6d7-e6f6bb1df13a" class="" dir="auto">2026/03/21</h1><p id="32a9da7d-49f6-80be-8e40-e12e7a500d01" class="" dir="auto">
+</p><hr id="32a9da7d-49f6-80f2-b328-fdccfcdcf4c5" dir="auto"/><p id="32a9da7d-49f6-801e-aa80-f552e10cb987" class="" dir="auto">マニュアルをV5.141に対応</p><p id="32a9da7d-49f6-8033-adca-eabef1bcafbf" class="" dir="auto">これに伴い、利用規約に追加分の素材を追記</p><p id="2f39da7d-49f6-80be-a632-e9e6ab02498a" class="" dir="auto">
+</p><hr id="3189da7d-49f6-804d-a08e-faa07835143b" dir="auto"/><h1 id="3189da7d-49f6-8073-a101-e159dfcbd5e4" class="" dir="auto">2026/03/06</h1><p id="3189da7d-49f6-8056-9331-fd7579bae00f" class="" dir="auto">
+</p><hr id="3189da7d-49f6-8016-8661-c4cb44df5f10" dir="auto"/><p id="3189da7d-49f6-8017-8add-ed526e3f2cb9" class="" dir="auto">マニュアルをV5.140に対応</p><p id="3189da7d-49f6-8093-9d82-dad730c37044" class="" dir="auto">利用規約について、個別の規約ごとにAI学習リソースへの使用を禁止とする文言を追記</p><p id="2f39da7d-49f6-80bf-bdd4-e9d3e6e8dd54" class="" dir="auto">
+</p><hr id="2f39da7d-49f6-809a-90e8-f8f277245193" dir="auto"/><h1 id="2f39da7d-49f6-80b3-9751-d09f5e9274b6" class="" dir="auto">2026/02/10</h1><p id="2f39da7d-49f6-80a8-a740-db1cfdf88ee7" class="" dir="auto">
+</p><hr id="2f39da7d-49f6-80d6-8e5b-f96473f16365" dir="auto"/><p id="2f39da7d-49f6-8092-a4e3-efebc3961fa1" class="" dir="auto">マニュアルをV5.139に対応</p><p id="2e99da7d-49f6-80b0-8b22-c6f037761088" class="" dir="auto">
+</p><hr id="2e99da7d-49f6-8075-8923-fe39fbc55148" dir="auto"/><h1 id="2e99da7d-49f6-80e6-b9b7-d62eb2be93ef" class="" dir="auto">2026/01/16</h1><p id="2e99da7d-49f6-80c5-a3bd-ddfb17213cbe" class="" dir="auto">
+</p><hr id="2e99da7d-49f6-80e6-a99f-ff13b489816a" dir="auto"/><p id="2e99da7d-49f6-8014-ab86-c859f8dd7d86" class="" dir="auto">マニュアルをV5.136に対応</p><p id="2dd9da7d-49f6-802d-9a3b-d2f6ce57e9ed" class="" dir="auto">
+</p><hr id="2dd9da7d-49f6-8064-9191-d9776a291341" dir="auto"/><h1 id="2dd9da7d-49f6-800b-9596-fed18e247b73" class="" dir="auto">2026/01/04</h1><p id="2dd9da7d-49f6-807e-aeb8-c643504c5c95" class="" dir="auto">
+</p><hr id="2dd9da7d-49f6-806b-9713-c819ec40ed18" dir="auto"/><p id="2dd9da7d-49f6-8054-a6e6-d57a1b4f55a5" class="" dir="auto">マニュアルをV5.133に対応</p><p id="2d89da7d-49f6-8081-bb65-f5d121b11237" class="" dir="auto">
+</p><hr id="2d89da7d-49f6-8012-a772-f11bcd902ab7" dir="auto"/><h1 id="2d89da7d-49f6-807f-9924-c47ff6a0cb48" class="" dir="auto">2025/12/30</h1><p id="2d89da7d-49f6-8059-9e0c-f186080af30f" class="" dir="auto">
+</p><hr id="2d89da7d-49f6-805b-a2f2-eda1096fb8aa" dir="auto"/><p id="2d89da7d-49f6-8022-8803-ef87511e1f06" class="" dir="auto">マニュアルをV5.131に対応</p><p id="2d89da7d-49f6-809a-84c2-e36d87856fbb" class="" dir="auto">「コモンイベント」に抜けがあったり、情報が古かったりしてたのを修正</p><p id="2d69da7d-49f6-80e6-aba0-c1eda3d53175" class="" dir="auto">
+</p><hr id="2d69da7d-49f6-80bb-ac30-c2edc7c8a800" dir="auto"/><h1 id="2d69da7d-49f6-8063-a0ea-ee53b505d740" class="" dir="auto">2025/12/27</h1><p id="2d69da7d-49f6-807b-b8a9-f7b7b8c0ee14" class="" dir="auto">
+</p><hr id="2d69da7d-49f6-8020-8847-dc3d91c3659d" dir="auto"/><p id="2d69da7d-49f6-8062-8bd7-eb770cba2ef3" class="" dir="auto">マニュアルをV5.130に対応</p><p id="2d39da7d-49f6-808d-8d46-dae864c408ad" class="" dir="auto">
+</p><hr id="2d39da7d-49f6-8039-bc47-eb16d9764072" dir="auto"/><h1 id="2d39da7d-49f6-8075-bcff-c4b19b791889" class="" dir="auto">2025/12/24</h1><p id="2d39da7d-49f6-80bf-a5de-c3968e8a23f1" class="" dir="auto">
+</p><hr id="2d39da7d-49f6-80fd-8d07-d1fd2e18f038" dir="auto"/><p id="2d39da7d-49f6-8000-b05b-c4b2ba367e7f" class="" dir="auto">「同梱ファイルについて」を更新</p><p id="2d09da7d-49f6-80a9-b2b1-f8dcf8a4417d" class="" dir="auto">
+</p><hr id="2d09da7d-49f6-807d-8467-fcc258895dd9" dir="auto"/><h1 id="2d09da7d-49f6-80c6-8678-e7d2a5b19c3c" class="" dir="auto">2025/12/20</h1><p id="2d09da7d-49f6-8001-8d00-f59cbfb9a6fd" class="" dir="auto">
+</p><hr id="2d09da7d-49f6-8091-b0e5-f1c926b82e71" dir="auto"/><p id="2d09da7d-49f6-800e-bc51-ca7927e43db7" class="" dir="auto">マニュアルをV5.128に対応</p><p id="2c89da7d-49f6-80b2-8c28-ef83ba632318" class="" dir="auto">
+</p><hr id="2c89da7d-49f6-80ed-86a2-ec48aed335ae" dir="auto"/><h1 id="2c89da7d-49f6-809b-b744-d9026e6644b4" class="" dir="auto">2025/12/14</h1><p id="2c89da7d-49f6-80cc-9dca-e34f358c2b19" class="" dir="auto">
+</p><hr id="2c89da7d-49f6-806d-9808-ce034de7101b" dir="auto"/><p id="2c89da7d-49f6-806d-ad9d-cffd1f536cb0" class="" dir="auto">マニュアルをV5.126に対応</p><p id="2bb9da7d-49f6-8088-a3ad-d843d01a25dc" class="" dir="auto">
+</p><hr id="2bb9da7d-49f6-805d-b512-ef17a0241ee9" dir="auto"/><h1 id="2bb9da7d-49f6-80e9-ae7b-f64f214a258d" class="" dir="auto">2025/12/01</h1><p id="2bb9da7d-49f6-8073-9ada-e9ace680a742" class="" dir="auto">
+</p><hr id="2bb9da7d-49f6-80fc-8192-e9490af32748" dir="auto"/><p id="2bb9da7d-49f6-80e1-af46-d670280c80e4" class="" dir="auto">マニュアルをV5.120に対応</p><p id="2b89da7d-49f6-80ed-9592-c710df55ee5a" class="" dir="auto">
+</p><hr id="2b89da7d-49f6-806e-bee3-cea6fa7b9eab" dir="auto"/><h1 id="2b89da7d-49f6-8019-98ee-e9b31d71a47d" class="" dir="auto">2025/11/27</h1><p id="2b89da7d-49f6-8067-8b59-d37668349ff9" class="" dir="auto">
+</p><hr id="2b89da7d-49f6-800c-bd3e-ef17c22155b8" dir="auto"/><p id="2b89da7d-49f6-80a0-8230-daf62569e198" class="" dir="auto">マニュアルをV5.119に対応</p><p id="2b49da7d-49f6-8007-b56c-fedd094c0098" class="" dir="auto">
+</p><hr id="2b49da7d-49f6-80bc-a395-c9d72d8cbe7d" dir="auto"/><h1 id="2b49da7d-49f6-809c-b6b4-d2c91545c377" class="" dir="auto">2025/11/24</h1><p id="2b49da7d-49f6-8061-aef2-cdb4fcc693f9" class="" dir="auto">
+</p><hr id="2b49da7d-49f6-802e-9fd6-c5b5d6b4c150" dir="auto"/><p id="2b49da7d-49f6-8069-b328-e35159c372e5" class="" dir="auto">マニュアルをV5.118に対応</p><p id="2b49da7d-49f6-806e-8916-c53dee5aa9e1" class="" dir="auto">
+</p><hr id="2b49da7d-49f6-804e-89a1-fa42d52753e7" dir="auto"/><h1 id="2b49da7d-49f6-80be-b749-f3d99fb33043" class="" dir="auto">2025/11/23</h1><p id="2b49da7d-49f6-8080-9b74-c3e05faf3d55" class="" dir="auto">
+</p><hr id="2b49da7d-49f6-8041-aa30-c2f5b23959d8" dir="auto"/><p id="2b49da7d-49f6-8008-92f5-e492a797d94f" class="" dir="auto">マニュアルをV5.117に対応</p><p id="2b49da7d-49f6-800a-acfb-eb71f59406e4" class="" dir="auto">素材全体の権利に以下を追加<br/>コモンイベントおよびデータベース部分(処理内容)について<br/>第三者の手によるウディタ以外への移植および<br/>ゲーム制作ソフトとしての配布を許可する点を追記<br/>詳しい条件は「利用規約」に記載しています</p><p id="2ac9da7d-49f6-8016-a62e-d13946607647" class="" dir="auto">
+</p><hr id="2ac9da7d-49f6-8036-83d0-eb00d54f9a0e" dir="auto"/><h1 id="2ac9da7d-49f6-808b-964f-c7bd9c905648" class="" dir="auto">2025/11/16</h1><p id="2ac9da7d-49f6-802e-9045-da21e6c47971" class="" dir="auto">
+</p><hr id="2ac9da7d-49f6-8088-bee4-f3202adaaf17" dir="auto"/><p id="2ac9da7d-49f6-8080-aa89-decb3510d6c0" class="" dir="auto">「利用規約」「無料高機能RPGシステムMr.Hとは？」を加筆</p><p id="2ac9da7d-49f6-80e5-8eab-f86c21fcc486" class="" dir="auto">マニュアルをV5.114に対応</p><p id="2a49da7d-49f6-807f-ac40-cdc85b5f6624" class="" dir="auto">
+</p><hr id="2a49da7d-49f6-8021-8868-dc932e6abc6a" dir="auto"/><h1 id="2a49da7d-49f6-8041-a012-f3530cf4ff10" class="" dir="auto">2025/11/08</h1><p id="2a49da7d-49f6-804d-a7c9-fb046e09235b" class="" dir="auto">
+</p><hr id="2a49da7d-49f6-8049-8c2d-cabe19dbf472" dir="auto"/><p id="2a49da7d-49f6-8070-a650-c07b8a2b9d7b" class="" dir="auto">「エディションについて」について、2025/11/07時点の仕様に合わせて加筆および訂正</p><p id="2a49da7d-49f6-80b6-81d1-f4afeb13a566" class="" dir="auto">「同梱ファイルについて」について、2025/11/07時点の仕様に合わせて加筆および訂正</p><p id="2a49da7d-49f6-8096-8634-fb873f02593f" class="" dir="auto">マニュアルをV5.111に対応</p><p id="2999da7d-49f6-8015-8e48-efd0d91e992c" class="" dir="auto">
+</p><hr id="2999da7d-49f6-803e-aaa0-da9ecfcf635d" dir="auto"/><h1 id="2999da7d-49f6-80b7-9109-e67b42179f91" class="" dir="auto">2025/10/27</h1><p id="2999da7d-49f6-80a6-b025-eeb1b7a3b0a3" class="" dir="auto">
+</p><hr id="2999da7d-49f6-801d-9b91-e93f04e89150" dir="auto"/><p id="2999da7d-49f6-8017-812d-caa51cca2ae8" class="" dir="auto">全体の利用規約とろぜちは様素材の権利を変更</p><p id="2999da7d-49f6-802d-b868-cb7d742c2691" class="" dir="auto">
+</p><hr id="2979da7d-49f6-80a8-91d4-ee8154be0c29" dir="auto"/><h1 id="2979da7d-49f6-803f-87bb-cf524d502c72" class="" dir="auto">2025/10/25-2</h1><p id="2979da7d-49f6-803b-b57c-fe7ca53d35a7" class="" dir="auto">
+</p><hr id="2979da7d-49f6-803f-877b-f65742fe265b" dir="auto"/><p id="2979da7d-49f6-8041-ab5a-edbf3a4e4f72" class="" dir="auto">マニュアルをV5.107に対応</p><p id="2979da7d-49f6-8043-9aff-ed2cff3c09cb" class="" dir="auto">
+</p><hr id="2979da7d-49f6-8081-ba0d-decbfbadacae" dir="auto"/><h1 id="2969da7d-49f6-8003-b6ed-f79ae1e7acc4" class="" dir="auto">2025/10/25-1</h1><p id="2969da7d-49f6-8029-ab0e-edc5da407107" class="" dir="auto">
+</p><hr id="2969da7d-49f6-8042-8c13-e9baee8ce1a3" dir="auto"/><p id="2969da7d-49f6-8075-96a5-daa4ddecf6ee" class="" dir="auto">マニュアルをV5.105に対応</p><p id="2969da7d-49f6-8070-8847-e450e9b3a2d4" class="" dir="auto">
+</p><hr id="2969da7d-49f6-80bd-bd6f-dd0672130cf2" dir="auto"/><h1 id="2919da7d-49f6-80bd-b0a4-d2317c733c6f" class="" dir="auto">2025/10/19-2</h1><p id="2919da7d-49f6-8053-ba4b-edf2666b5c79" class="" dir="auto">
+</p><hr id="2919da7d-49f6-80e2-b033-e87623d7ed2d" dir="auto"/><p id="2919da7d-49f6-80d2-93ad-d0ca9cd25977" class="" dir="auto">マニュアルをV5.103に対応</p><p id="2919da7d-49f6-80c3-8cca-e194e42b8c2d" class="" dir="auto">ユーザーDBの各ページの誤字および記載抜けを修正</p><p id="2919da7d-49f6-8097-a67e-c1f8205955c9" class="" dir="auto">
+</p><hr id="2919da7d-49f6-80b6-be3e-fee210977b40" dir="auto"/><h1 id="2909da7d-49f6-8046-b43e-e34fe348efc1" class="" dir="auto">2025/10/19-1</h1><p id="2909da7d-49f6-80df-9e44-f8e3becc62f7" class="" dir="auto">
+</p><hr id="2909da7d-49f6-8014-8062-e3bd33fb72a9" dir="auto"/><p id="2909da7d-49f6-801b-9183-d79ea8a92d15" class="" dir="auto">マニュアルをV5.102に対応</p><p id="2909da7d-49f6-805e-b5c2-e978fb0ba128" class="" dir="auto">
+</p><hr id="2909da7d-49f6-80b3-bc6a-df234f1a5219" dir="auto"/><h1 id="2839da7d-49f6-80e0-b586-f88fa3d53a71" class="" dir="auto">2025/10/06</h1><p id="2839da7d-49f6-80d6-a573-f4419b21f2f3" class="" dir="auto">
+</p><hr id="2839da7d-49f6-8059-b927-f9840cfe0373" dir="auto"/><p id="2839da7d-49f6-806b-bec8-f51bbb6b9851" class="" dir="auto">マニュアルをV5.100に対応</p><p id="2839da7d-49f6-8024-a886-c0878c599347" class="" dir="auto">無料高機能RPGシステムMr.Hとは？を更新</p><p id="27a9da7d-49f6-80e8-bbac-f8da67ccee1c" class="" dir="auto">
+</p><hr id="27a9da7d-49f6-8074-ad1c-d585cbe18f9f" dir="auto"/><h1 id="27a9da7d-49f6-80c4-9496-ed53a83f6ef5" class="" dir="auto">2025/09/27</h1><p id="27a9da7d-49f6-80c7-bd13-c50d44b6bb00" class="" dir="auto">
+</p><hr id="27a9da7d-49f6-8092-b4de-f3c062d557a9" dir="auto"/><p id="27a9da7d-49f6-8043-a690-ec7823ddb9da" class="" dir="auto">マニュアルをV5.096に対応</p><p id="27a9da7d-49f6-80ca-94ba-fb99b114f146" class="" dir="auto">ケモプレコラボ版のろぜちは様素材の権利の説明文を若干修正</p><p id="27a9da7d-49f6-8069-bab6-c2b87405558a" class="" dir="auto">(権利に変更はありません)</p><p id="2749da7d-49f6-8033-912b-d53cbbbc7543" class="" dir="auto">
+</p><hr id="2749da7d-49f6-800e-866a-d9519e000f20" dir="auto"/><h1 id="2749da7d-49f6-80e5-b45f-cc3899abd24e" class="" dir="auto">2025/09/20</h1><p id="2749da7d-49f6-80bb-94df-d66c03d79c02" class="" dir="auto">
+</p><hr id="2749da7d-49f6-80a1-8531-e7ab05d0aa83" dir="auto"/><p id="2749da7d-49f6-8087-90f3-e9339c3bff84" class="" dir="auto">マニュアルをV5.092に対応</p><p id="2749da7d-49f6-8016-9097-ec65b325527a" class="" dir="auto">
+</p><hr id="26e9da7d-49f6-80e4-8ce8-cf6f1e365281" dir="auto"/><h1 id="26e9da7d-49f6-80d7-b2c0-c16fd8b794bb" class="" dir="auto">2025/09/14</h1><p id="26e9da7d-49f6-805d-8ef2-e2b1b1899f80" class="" dir="auto">
+</p><hr id="26e9da7d-49f6-80a3-91cc-fddf8fd26fdf" dir="auto"/><p id="26e9da7d-49f6-809a-97c9-d950bf9725d3" class="" dir="auto">ケモプレコラボ版のろぜちは様素材の権利を変更</p><p id="2639da7d-49f6-80c9-9b75-e353d40c590a" class="" dir="auto">
+</p><hr id="2639da7d-49f6-8028-98ef-fc4e11b86087" dir="auto"/><h1 id="2639da7d-49f6-8056-8374-d53cfdbef1bb" class="" dir="auto">2025/09/03</h1><p id="2639da7d-49f6-80b1-8b30-c4da1964c89a" class="" dir="auto">
+</p><hr id="2639da7d-49f6-80e0-8e06-c5dddc2ed169" dir="auto"/><p id="2639da7d-49f6-80b5-afc2-d1cf1cc72980" class="" dir="auto">マニュアルをV5.090に対応</p><p id="25f9da7d-49f6-80d4-8382-e621ac7c12ae" class="" dir="auto">
+</p><hr id="25f9da7d-49f6-80cd-bd80-d51b84f89b1f" dir="auto"/><h1 id="25f9da7d-49f6-8063-a38d-f5cd57b04723" class="" dir="auto">2025/08/31</h1><p id="25f9da7d-49f6-8090-b801-f9b04a44604e" class="" dir="auto">
+</p><hr id="25f9da7d-49f6-8097-96ab-dd47a825680e" dir="auto"/><p id="25f9da7d-49f6-8024-ac24-f2225089bda0" class="" dir="auto">マニュアルをV5.087に対応</p><p id="2519da7d-49f6-80e2-a513-f69151a761e4" class="" dir="auto">
+</p><hr id="2519da7d-49f6-8091-a5a1-dbbeed4bda00" dir="auto"/><h1 id="2519da7d-49f6-8013-939e-d86ea70553b5" class="" dir="auto">2025/08/16</h1><p id="2519da7d-49f6-8020-9988-c426d0451ebb" class="" dir="auto">
+</p><hr id="2519da7d-49f6-809a-87de-faf9454dbed8" dir="auto"/><p id="2519da7d-49f6-80a0-941e-f4af21774914" class="" dir="auto">マニュアルをV5.085に対応</p><p id="2519da7d-49f6-80ca-9108-e5f6d3a579eb" class="" dir="auto">
+</p><hr id="2489da7d-49f6-8037-a8e7-fecf8ff71c66" dir="auto"/><h1 id="2489da7d-49f6-8085-9a5a-e1e490255712" class="" dir="auto">2025/08/08</h1><p id="2489da7d-49f6-80c1-ba02-c17ebac47bc2" class="" dir="auto">
+</p><hr id="2489da7d-49f6-80c8-a034-f193f5cefa0d" dir="auto"/><p id="2489da7d-49f6-8011-959b-ee5a094726d0" class="" dir="auto">マニュアルをV5.083に対応</p><p id="2439da7d-49f6-8051-9dcb-cd4603031786" class="" dir="auto">
+</p><hr id="2439da7d-49f6-80e4-bea2-e75fcc9e30b5" dir="auto"/><h1 id="2439da7d-49f6-80b8-972e-ccd24c13576f" class="" dir="auto">2025/08/03</h1><p id="2439da7d-49f6-8078-9b32-f8aaa424be91" class="" dir="auto">
+</p><hr id="2439da7d-49f6-8065-996e-c9b1520d1690" dir="auto"/><p id="2439da7d-49f6-8020-9c18-e33c4641bbef" class="" dir="auto">マニュアルをV5.080に対応</p><p id="23e9da7d-49f6-80fe-92a9-e46c45eb3eda" class="" dir="auto">
+</p><hr id="23e9da7d-49f6-803a-a88b-db6efba5d17f" dir="auto"/><h1 id="23e9da7d-49f6-8011-a5f5-f3235bdea4b1" class="" dir="auto">2025/07/29</h1><p id="23e9da7d-49f6-80c6-949a-ef6666def7a3" class="" dir="auto">
+</p><hr id="23e9da7d-49f6-80f1-876f-fe5c7c1ed303" dir="auto"/><p id="23e9da7d-49f6-804e-ba9c-fed97b395868" class="" dir="auto">マニュアルをV5.079に対応</p><p id="2339da7d-49f6-8017-9b76-c5b2dd9a79a5" class="" dir="auto">
+</p><hr id="2339da7d-49f6-8026-ad1e-cbb0874410f4" dir="auto"/><h1 id="2339da7d-49f6-8001-bf62-fa6dd5a2d190" class="" dir="auto">2025/07/18</h1><p id="2339da7d-49f6-802f-97ea-f1c729488938" class="" dir="auto">
+</p><hr id="2339da7d-49f6-8003-8858-c8bc1ef5f055" dir="auto"/><p id="2339da7d-49f6-80fd-b38e-f76b3909740b" class="" dir="auto">マニュアルをV5.076に対応</p><p id="2279da7d-49f6-80ca-a6c6-ead09515647b" class="" dir="auto">
+</p><hr id="2279da7d-49f6-8019-9605-cdf57934f87c" dir="auto"/><h1 id="2279da7d-49f6-80bf-aca0-db9cba0f45b9" class="" dir="auto">2025/07/06</h1><p id="2279da7d-49f6-804a-a702-e0d7e3d17269" class="" dir="auto">
+</p><hr id="2279da7d-49f6-8034-8cbb-c069e3c2ea3b" dir="auto"/><p id="2279da7d-49f6-8019-a216-f7df717a69ec" class="" dir="auto">マニュアルをV5.073に対応</p><p id="2209da7d-49f6-8007-b76a-fe50e313f813" class="" dir="auto">
+</p><hr id="2209da7d-49f6-8027-abe3-fbbc2a9c424c" dir="auto"/><h1 id="2209da7d-49f6-8084-b89d-dbf3ebab89da" class="" dir="auto">2025/06/28</h1><p id="2209da7d-49f6-80ff-a6d3-f7014c8bd450" class="" dir="auto">
+</p><hr id="2209da7d-49f6-80b4-8a87-ee04a43aa6a3" dir="auto"/><p id="2209da7d-49f6-8049-bd7a-eee7b45bae6e" class="" dir="auto">マニュアルをV5.071に対応</p><p id="2189da7d-49f6-80f8-bcf9-f74be3eb3ff7" class="" dir="auto">
+</p><hr id="2189da7d-49f6-80f1-9198-d9e5a00ec6be" dir="auto"/><h1 id="2189da7d-49f6-8000-a74d-f4e1af2ea85f" class="" dir="auto">2025/06/20</h1><p id="2189da7d-49f6-80c3-a4b4-e9033de5e7c1" class="" dir="auto">
+</p><hr id="2189da7d-49f6-80c1-9288-d02e916835af" dir="auto"/><p id="2189da7d-49f6-8060-89f9-c0e4ad36c10c" class="" dir="auto">マニュアルをV5.070に対応</p><p id="2149da7d-49f6-80e5-bb64-e5be40564921" class="" dir="auto">
+</p><hr id="2149da7d-49f6-8009-95a1-d7d2e0dfd12f" dir="auto"/><h1 id="2149da7d-49f6-80e5-a8bf-c70ffec083b3" class="" dir="auto">2025/06/17</h1><p id="2149da7d-49f6-8026-93de-e5aeb899e2e2" class="" dir="auto">
+</p><hr id="2149da7d-49f6-802a-b327-e961364bb50c" dir="auto"/><p id="2149da7d-49f6-801a-936f-c5673245708a" class="" dir="auto">マニュアルをV5.069に対応</p><p id="2149da7d-49f6-806f-958d-fee3e31a9229" class="" dir="auto">
+</p><hr id="2059da7d-49f6-80de-8d47-fdd903de5569" dir="auto"/><h1 id="2059da7d-49f6-80ff-b55d-f5a33f67aa85" class="" dir="auto">2025/06/01</h1><p id="2059da7d-49f6-804f-b61c-d8430d2705ac" class="" dir="auto">
+</p><hr id="2059da7d-49f6-806d-a802-d7048e7050a8" dir="auto"/><p id="2059da7d-49f6-8098-821a-e0c0b463e5ea" class="" dir="auto">マニュアルをV5.065に対応</p><p id="2059da7d-49f6-80f8-93ac-d6c391622344" class="" dir="auto">「素材規格について」のページを追加</p><p id="1fd9da7d-49f6-8076-871f-cc5a79afe02f" class="" dir="auto">
+</p><hr id="1fd9da7d-49f6-805f-b87c-c9536a14394b" dir="auto"/><h1 id="1fd9da7d-49f6-8034-a31b-fb86d76268b8" class="" dir="auto">2025/05/24</h1><p id="1fd9da7d-49f6-8077-b6b7-fbd91a6aa173" class="" dir="auto">
+</p><hr id="1fd9da7d-49f6-802f-89cd-d708adb418e7" dir="auto"/><p id="1fd9da7d-49f6-80e3-a551-f4bad0a6f7fd" class="" dir="auto">マニュアルをV5.059に対応</p><p id="1fd9da7d-49f6-802e-ae23-d7b327a080f1" class="" dir="auto">「ツクールシリーズとの比較」の対応漏れを修正</p><p id="1fd9da7d-49f6-80a2-bd9e-c583664552f7" class="" dir="auto">
+</p><hr id="1fa9da7d-49f6-80a0-b508-e90e4c7c5ab8" dir="auto"/><h1 id="1fa9da7d-49f6-8009-ac51-f2b6ed6e102b" class="" dir="auto">2025/05/22</h1><p id="1fa9da7d-49f6-8041-a4bd-e101dd9d81b7" class="" dir="auto">
+</p><hr id="1fa9da7d-49f6-80e1-b92f-db7c35f3192f" dir="auto"/><p id="1fa9da7d-49f6-80f7-b0bc-c4ef6793af5e" class="" dir="auto">マニュアルをV5.057に対応</p><p id="1ef9da7d-49f6-8044-b1f3-e93fdbcaceac" class="" dir="auto">
+</p><hr id="1ef9da7d-49f6-803d-8ba1-d66c7e537053" dir="auto"/><h1 id="1ef9da7d-49f6-800e-9076-e622b1b22c56" class="" dir="auto">2025/05/11</h1><p id="1ef9da7d-49f6-805a-ac97-f100b16a1844" class="" dir="auto">
+</p><hr id="1ef9da7d-49f6-8071-adcc-f0535ade610c" dir="auto"/><p id="1ef9da7d-49f6-8083-b55c-ecb05fe52b85" class="" dir="auto">マニュアルをV5.052に対応</p><p id="1ef9da7d-49f6-80ba-8738-e8336a1a8f34" class="" dir="auto">
+</p><hr id="1ec9da7d-49f6-8090-a3c2-f9d72584f26b" dir="auto"/><h1 id="1ec9da7d-49f6-80fe-8ff2-c213fd3f691a" class="" dir="auto">2025/05/09</h1><p id="1ec9da7d-49f6-8078-a18f-ccaa9e073f16" class="" dir="auto">
+</p><hr id="1ec9da7d-49f6-8092-9561-caadd31c7d7e" dir="auto"/><p id="1ec9da7d-49f6-807b-b4f1-df3c699ea9fe" class="" dir="auto">マニュアルをV5.050に対応</p><p id="1ec9da7d-49f6-8004-ae63-c84b30fa002e" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-80cf-8b07-d9205b884a77" dir="auto"/><h1 id="1e19da7d-49f6-808c-b18c-fd6914261080" class="" dir="auto">2025/04/30</h1><p id="1e19da7d-49f6-80c8-a429-e906cd80e0f2" class="" dir="auto">
+</p><hr id="1e19da7d-49f6-8065-b8b4-d1a89dfbaee1" dir="auto"/><p id="1e19da7d-49f6-8052-93fb-d58c24940fa3" class="" dir="auto">マニュアルをV5.043に対応</p><p id="1e19da7d-49f6-8020-ba8a-ddea67d34670" class="" dir="auto">これに伴い、利用規約について新規素材に関する記述を追加</p><p id="1e59da7d-49f6-80be-ab7b-c15c944375de" class="" dir="auto">エディションについてのページに関し、通常版のスクリーンショットを変更し、文言を追加</p><p id="1e59da7d-49f6-80fe-8535-f34167d5fe4a" class="" dir="auto">ユーザーDBのスキル/アイテム関連設定の使用スキル設定のATB増加固定値の記載漏れを修正</p><p id="1de9da7d-49f6-800f-a6c5-eb1fde60509e" class="" dir="auto">
+</p><hr id="1de9da7d-49f6-808a-93df-feed196e2d0f" dir="auto"/><h1 id="1de9da7d-49f6-8019-8726-d84964a74d69" class="" dir="auto">2025/04/23</h1><p id="1de9da7d-49f6-80dc-9c27-d572761541c5" class="" dir="auto">
+</p><hr id="1de9da7d-49f6-809c-b165-ff17726aa47f" dir="auto"/><p id="1de9da7d-49f6-8099-b440-f5c5bbea2785" class="" dir="auto">マニュアルをV5.042に対応</p><p id="1da9da7d-49f6-80a0-a2a1-e63a40779c87" class="" dir="auto">
+</p><hr id="1da9da7d-49f6-8018-b770-c59fe4cde2fe" dir="auto"/><h1 id="1da9da7d-49f6-80fd-a4a8-c289be692f92" class="" dir="auto">2025/04/20</h1><p id="1da9da7d-49f6-80da-878e-f106bdcb7d5c" class="" dir="auto">
+</p><hr id="1da9da7d-49f6-8017-83e4-dd4b6dcaff66" dir="auto"/><p id="1da9da7d-49f6-80ee-9d04-f6ea4698fd97" class="" dir="auto">マニュアルをV5.041に対応</p><p id="1da9da7d-49f6-802c-b4d4-c99933692498" class="" dir="auto">
+</p><hr id="1d39da7d-49f6-8019-92d7-f56920502459" dir="auto"/><h1 id="1d39da7d-49f6-80f2-8c67-dea38f7f79f2" class="" dir="auto">2025/04/13</h1><p id="1d39da7d-49f6-805e-aebc-dfe51f5b7088" class="" dir="auto">
+</p><hr id="1d39da7d-49f6-80a3-960e-d8cf3b33396f" dir="auto"/><p id="1d39da7d-49f6-801f-a962-f4a278820811" class="" dir="auto">マニュアルをV5.040に対応</p><p id="1d39da7d-49f6-8057-bc19-c4cff20fd337" class="" dir="auto">利用規約のページにて、クレジット表記テンプレートの記載漏れを修正</p><p id="1d39da7d-49f6-8097-a47c-cff1a8010d55" class="" dir="auto">コモンイベントのページにて、ロード処理呼出の欄にて<br/>「必ず自動移動するプレイヤー/イベント接触起動のイベントの前に呼び出してください」<br/>の警告を追記</p><p id="1cd9da7d-49f6-80d2-9326-d5c4c23be9b3" class="" dir="auto">
+</p><hr id="1cd9da7d-49f6-80ef-b8cd-d71af29e9e51" dir="auto"/><h1 id="1cd9da7d-49f6-8036-8dc6-f7e34ab00ae4" class="" dir="auto">2025/04/06</h1><p id="1cd9da7d-49f6-8003-93a2-e8a0136773e9" class="" dir="auto">
+</p><hr id="1cd9da7d-49f6-800c-abb3-e80434a6a239" dir="auto"/><p id="1cd9da7d-49f6-80bc-bbae-e3c32d5e08ff" class="" dir="auto">マニュアルをV5.035に対応</p><p id="1cd9da7d-49f6-8078-8625-cafac6dc0980" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-80ba-9a3f-fe505d7aa607" dir="auto"/><h1 id="1cb9da7d-49f6-8032-a07b-e5e9622dba1c" class="" dir="auto">2025/04/05</h1><p id="1cb9da7d-49f6-8039-81be-e9928f947808" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-8049-ab6e-ded7338323da" dir="auto"/><p id="1cb9da7d-49f6-80a3-a5e2-f1d59ee24920" class="" dir="auto">「可変データベース(CDB)」のページを追加</p><p id="1cb9da7d-49f6-8052-99ad-d1f9e143d10e" class="" dir="auto">「ツクールシリーズとの比較」のページを追加</p><p id="1cb9da7d-49f6-8096-ac6c-e702ccb5513c" class="" dir="auto">「同梱ファイルについて」のページに記載し忘れの箇所を修正</p><p id="1cb9da7d-49f6-8012-a41a-c477b3a72c4b" class="" dir="auto">「無料高機能RPGシステムMr.H とは？」のページに主な機能の紹介を追加</p><p id="1cb9da7d-49f6-803c-823d-d52c6a2dca56" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-8098-9511-e4361c291337" dir="auto"/><h1 id="1c59da7d-49f6-802b-b060-cbb88ba9571a" class="" dir="auto">2025/03/30</h1><p id="1c59da7d-49f6-80b1-b37a-ffc519e36729" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-80d9-84e3-c73a423a6613" dir="auto"/><p id="1c59da7d-49f6-8069-ad3a-f25f3ffcec85" class="" dir="auto">マニュアルを全体的に書き直し</p><p id="1c59da7d-49f6-802b-b3a4-e1e14c90abf8" class="" dir="auto">マニュアルをV5.033に対応</p><p id="1c59da7d-49f6-80c7-8a3e-e8381a141873" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-809a-9f82-f23ac120b7da" dir="auto"/><p id="1c59da7d-49f6-803a-9850-e138d276c6a2" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

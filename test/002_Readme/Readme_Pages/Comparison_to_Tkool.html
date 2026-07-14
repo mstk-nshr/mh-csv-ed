@@ -1,0 +1,812 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Comparison_to_Tkool</title><meta name="data-notion-page-icon" content="📗"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%93%97%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1cb9da7d-49f6-8049-b565-c33ada45d44f" class="page sans" data-notion-page-icon="📗"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="📗"></span></div><h1 class="page-title" dir="auto">Comparison_to_Tkool</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><hr id="4dc6dbad-ac09-415d-9dde-1f1db0f580c1" dir="auto"/><h1 id="562c5dfe-b47f-41f2-9796-5028a302e97d" class="" dir="auto">ツクールシリーズとの比較</h1><p id="1253941e-b3fc-473d-8c3d-fb32becbfd76" class="" dir="auto">機能比較の対象の対象となるのは、ツクールVXAceとMZが対象となる。</p><h1 id="224900b9-7613-453b-8928-6f36ebfa8fdc" class="" dir="auto">目次</h1><nav id="1cb9da7d-49f6-80b7-b25d-e2176b39aff8" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#562c5dfe-b47f-41f2-9796-5028a302e97d">ツクールシリーズとの比較</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#224900b9-7613-453b-8928-6f36ebfa8fdc">目次</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#a30c9ad7-341e-45b4-a48f-1f99d6befda3">Sheet 1: <em>主人公</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#995ab20e-ee35-4ab6-95af-42d62d13bb60">Sheet 2: <em>職業</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#bdd7a6d0-003a-441d-841d-ce7c1104baa1">Sheet 3: <em>スキル</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2ed0da82-c6c9-4f2b-aa6c-40786c16ec83">Sheet 4: <em>アイテム</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#714b6695-715b-4f8d-94ea-321e476136b8">Sheet 5: <em>武器防具</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d8f94719-5b21-4daf-bd37-b1fc39cab866">Sheet 6: <em>敵キャラ</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d07a1fcb-9311-4e4a-a90e-4dfa7e9f3def">Sheet 7: <em>敵グループ</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ec0c54f7-bac8-4a50-8c7d-c9aade2f21ba">Sheet 8: <em>状態</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ca3d4b02-9dd5-4bd2-bb2b-9fbe188b56cd">Sheet 9: <em>アニメーション</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#52e469bc-17a8-41f0-9a68-4460b5e124ab">Sheet 10: <em>システム</em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6e49170b-04ae-4d36-a89d-7c8079342a11">Sheet 11: <em>イベントコマンド</em></a></div></nav><hr id="1cb9da7d-49f6-80c6-9137-d55bf0ecff1b" dir="auto"/><p id="1cb9da7d-49f6-808d-9334-d854e2004827" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8050-8298-f565b0bdf7fb" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-806f-8e99-eb96b40f6886" class="" dir="auto">
+</p><hr id="cbafd564-e5f8-43f3-9306-beaa3ccbda55" dir="auto"/><h1 id="a30c9ad7-341e-45b4-a48f-1f99d6befda3" class="" dir="auto">Sheet 1: <em>主人公</em></h1><table id="db1d869d-b341-4746-a143-2bee516e1c8b" class="simple-table" dir="ltr"><tbody><tr id="af7b5822-7870-4e51-a3f3-24f0a4493482" dir="ltr"><td id="=]u;" class="">主人公</td><td id="gJh`" class=""></td><td id="iNm`" class=""></td><td id="=}W{" class=""></td></tr><tr id="46fedfcb-0cec-42f0-8337-c54d0efa6ad0" dir="ltr"><td id="=]u;" class=""></td><td id="gJh`" class="">ツクールVXAce</td><td id="iNm`" class="">ツクールMZ</td><td id="=}W{" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="55f61364-9a47-449f-a047-d35eeb3e968d" dir="ltr"><td id="=]u;" class="">キャラ名</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">標準</td></tr><tr id="3a6b127e-7116-4342-8b8f-2f6ee7b1e8e8" dir="ltr"><td id="=]u;" class="">二つ名</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">肩書き<br/>(職業システム使用時はなし)</td></tr><tr id="6f802c76-c27c-453c-bb7d-dec7f0678f33" dir="ltr"><td id="=]u;" class="">職業</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">転職システムで使用</td></tr><tr id="ff441c63-6437-4002-a5fa-f6d238c6c3b5" dir="ltr"><td id="=]u;" class="">初期レベル</td><td id="gJh`" class="">1～99</td><td id="iNm`" class="">1～99</td><td id="=}W{" class="">1～999999<br/>(999までを推奨)</td></tr><tr id="9abdcd7d-c677-4357-bc09-30b1d40a1493" dir="ltr"><td id="=]u;" class="">最高レベル</td><td id="gJh`" class="">1～99</td><td id="iNm`" class="">1～99</td><td id="=}W{" class="">1～999999<br/>(999までを推奨)</td></tr><tr id="cad9becb-17af-40f2-96a7-1ff215658973" dir="ltr"><td id="=]u;" class="">キャラ説明</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">標準</td></tr><tr id="9a5d04b6-cc65-4b22-87e2-69ebe456e8d9" dir="ltr"><td id="=]u;" class="">顔画像</td><td id="gJh`" class="">固定</td><td id="iNm`" class="">固定</td><td id="=}W{" class="">動的</td></tr><tr id="832b721c-d759-41fd-8a94-1f7131a83bbf" dir="ltr"><td id="=]u;" class="">立ち絵</td><td id="gJh`" class="">なし</td><td id="iNm`" class="">なし</td><td id="=}W{" class="">ステータス画面で表示</td></tr><tr id="8d6cfd09-dc50-4fb1-9ad8-5092c018e6ef" dir="ltr"><td id="=]u;" class="">能力値</td><td id="gJh`" class="">職業で設定<br/>(曲線)</td><td id="iNm`" class="">職業で設定<br/>(曲線)</td><td id="=}W{" class="">基本値+成長値×(Lv-1)</td></tr><tr id="093bd617-856b-4880-a35d-826690b70491" dir="ltr"><td id="=]u;" class="">初期装備</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">標準</td></tr><tr id="b3861b42-89c9-4135-ac89-9927d88468df" dir="ltr"><td id="=]u;" class="">経験値</td><td id="gJh`" class="">職業で設定かつ曲線</td><td id="iNm`" class="">職業で設定かつ曲線</td><td id="=}W{" class="">2次方程式</td></tr><tr id="68ecd92b-929a-4347-b79b-d168bb5d021b" dir="ltr"><td id="=]u;" class="">装備タイプ</td><td id="gJh`" class="">無制限</td><td id="iNm`" class="">無制限</td><td id="=}W{" class="">10</td></tr><tr id="47d28d47-12be-4d0c-932f-8fac3755fbfb" dir="ltr"><td id="=]u;" class="">装備固定</td><td id="gJh`" class="">詳細</td><td id="iNm`" class="">詳細</td><td id="=}W{" class="">全ての装備</td></tr><tr id="a48ebadc-e158-4ae3-8e65-50fe272893b0" dir="ltr"><td id="=]u;" class="">二刀流</td><td id="gJh`" class="">標準</td><td id="iNm`" class="">標準</td><td id="=}W{" class="">パッシブで設定<br/>(3～8刀流も可)</td></tr><tr id="514b2800-6d07-4f5e-af79-9c54ad0d1588" dir="ltr"><td id="=]u;" class="">両手武器の二刀流</td><td id="gJh`" class="">両手武器も2個で固定</td><td id="iNm`" class="">両手武器も2個で固定</td><td id="=}W{" class="">両手武器は1個or2個以上で選択可</td></tr><tr id="24781326-266e-4723-b874-696113488eab" dir="ltr"><td id="=]u;" class="">自動戦闘</td><td id="gJh`" class="">補助技は使わない</td><td id="iNm`" class="">補助技は使わない</td><td id="=}W{" class="">作戦型AIで攻撃/回復/補助技を使用</td></tr><tr id="4cbc29f0-6dbb-433b-9c6b-28cb05f8e0b3" dir="ltr"><td id="=]u;" class="">極意強化</td><td id="gJh`" class="">なし</td><td id="iNm`" class="">なし</td><td id="=}W{" class="">主人公と職業で指定かつ10個</td></tr><tr id="379d4015-bd2c-4f90-adb7-f477f574f30e" dir="ltr"><td id="=]u;" class="">習得スキル</td><td id="gJh`" class="">職業で指定かつ無制限</td><td id="iNm`" class="">職業で指定かつ無制限</td><td id="=}W{" class="">主人公と職業で指定かつ50個</td></tr><tr id="767729f3-b2a1-48d1-9daa-495557bd3e0b" dir="ltr"><td id="=]u;" class="">パッシブスキル</td><td id="gJh`" class="">なし</td><td id="iNm`" class="">なし</td><td id="=}W{" class="">主人公と職業で指定かつ20個</td></tr><tr id="d88f2773-78f9-4808-8674-e38aebcc8a7c" dir="ltr"><td id="=]u;" class="">属性耐性</td><td id="gJh`" class="">無制限<br/>(属性吸収不可)</td><td id="iNm`" class="">無制限<br/>(属性吸収不可)</td><td id="=}W{" class="">10000<br/>(属性吸収可)</td></tr><tr id="13c8d642-838f-4299-b371-e46502f3023f" dir="ltr"><td id="=]u;" class="">状態耐性</td><td id="gJh`" class="">無制限</td><td id="iNm`" class="">無制限</td><td id="=}W{" class="">属性耐性と共用</td></tr></tbody></table><p id="1cb9da7d-49f6-803a-8a6a-f4535894ef7f" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-8098-bdb8-d085d419d520" dir="auto"/><p id="1cb9da7d-49f6-8013-85af-c86f443ca8b9" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-801e-855b-fefb02f895ad" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-801b-ad29-ece546cfe378" class="" dir="auto">
+</p><hr id="8a7d3ce7-98fe-4b8c-ba80-20c419d8712f" dir="auto"/><h1 id="995ab20e-ee35-4ab6-95af-42d62d13bb60" class="" dir="auto">Sheet 2: <em>職業</em></h1><table id="d2cdf37e-f5d5-4ac6-b708-7899493425ba" class="simple-table" dir="ltr"><tbody><tr id="0dbe46f4-350f-4f24-81f0-9ca0586f5535" dir="ltr"><td id="=jlN" class="">職業</td><td id="NaZD" class=""></td><td id="P{XL" class=""></td><td id="l:j^" class=""></td></tr><tr id="d95bfc5d-ef28-48be-a43f-930d0a56e48f" dir="ltr"><td id="=jlN" class=""></td><td id="NaZD" class="">ツクールVXAce</td><td id="P{XL" class="">ツクールMZ</td><td id="l:j^" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="688b89d1-86a1-4735-beda-890149060473" dir="ltr"><td id="=jlN" class="">経験値</td><td id="NaZD" class="">曲線</td><td id="P{XL" class="">曲線</td><td id="l:j^" class="">主人公で設定かつ2次方程式</td></tr><tr id="80da2100-6208-4990-93fa-2c127d5a9776" dir="ltr"><td id="=jlN" class="">能力値</td><td id="NaZD" class="">曲線</td><td id="P{XL" class="">曲線</td><td id="l:j^" class="">主人公の能力値に加算、または乗算</td></tr><tr id="33ab2580-7423-4e00-b133-8d485db3a45e" dir="ltr"><td id="=jlN" class="">装備タイプ</td><td id="NaZD" class="">無制限</td><td id="P{XL" class="">無制限</td><td id="l:j^" class="">8</td></tr><tr id="d422c4a3-569c-47a7-8325-c4f24a55101b" dir="ltr"><td id="=jlN" class="">装備固定</td><td id="NaZD" class="">詳細</td><td id="P{XL" class="">詳細</td><td id="l:j^" class="">主人公で設定かつ全ての装備</td></tr><tr id="ba35e5c1-c0cf-4ecb-a83a-06ea874a282b" dir="ltr"><td id="=jlN" class="">二刀流</td><td id="NaZD" class="">標準</td><td id="P{XL" class="">標準</td><td id="l:j^" class="">パッシブで設定<br/>(3～8刀流も可)</td></tr><tr id="69675469-c27f-4a48-a0d5-5af7f9efbcfe" dir="ltr"><td id="=jlN" class="">戦闘コマンド</td><td id="NaZD" class="">スキルタイプ追加</td><td id="P{XL" class="">スキルタイプ追加</td><td id="l:j^" class="">詳細かつ4</td></tr><tr id="c138d682-fc39-4d3a-acc0-6967e19addef" dir="ltr"><td id="=jlN" class="">転職条件職業</td><td id="NaZD" class="">なし</td><td id="P{XL" class="">なし</td><td id="l:j^" class="">5</td></tr><tr id="794005d7-d262-4276-92e7-bb7f065dddda" dir="ltr"><td id="=jlN" class="">職業レベル</td><td id="NaZD" class="">なし</td><td id="P{XL" class="">なし</td><td id="l:j^" class="">標準</td></tr><tr id="ebc6b05c-18c3-4339-8826-dbedac270454" dir="ltr"><td id="=jlN" class="">職業経験値</td><td id="NaZD" class="">なし</td><td id="P{XL" class="">なし</td><td id="l:j^" class="">標準</td></tr><tr id="2bb3b0e9-a357-4e53-96be-bd9db31d4c09" dir="ltr"><td id="=jlN" class="">習得スキル</td><td id="NaZD" class="">職業で指定かつ無制限</td><td id="P{XL" class="">職業で指定かつ無制限</td><td id="l:j^" class="">主人公と職業で指定かつ各50まで</td></tr><tr id="99acee82-8c32-4abd-a686-d0d780de5c10" dir="ltr"><td id="=jlN" class="">パッシブスキル</td><td id="NaZD" class="">なし</td><td id="P{XL" class="">なし</td><td id="l:j^" class="">主人公と職業で指定かつ各20まで</td></tr></tbody></table><p id="1cb9da7d-49f6-807b-8723-fbc78bcbff3f" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-801b-923a-eb000bc6735f" dir="auto"/><p id="1cb9da7d-49f6-80c8-828c-d93090d520b3" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80a9-934f-e2e9ad26fcce" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8078-a2ec-ede2d0a31832" class="" dir="auto">
+</p><hr id="e54a7029-242e-4111-bf8f-4f3c181b24ac" dir="auto"/><h1 id="bdd7a6d0-003a-441d-841d-ce7c1104baa1" class="" dir="auto">Sheet 3: <em>スキル</em></h1><table id="2320c8c2-e1c3-4b93-ba1a-dd2aa0faae0c" class="simple-table" dir="ltr"><tbody><tr id="234899a2-ca66-439f-9eb4-30f0b3bbd221" dir="ltr"><td id="vnnF" class="">スキル</td><td id="_C[b" class=""></td><td id="nfRT" class=""></td><td id="xEL&gt;" class=""></td></tr><tr id="a80c832d-de2b-458e-a577-6ac012ef8d13" dir="ltr"><td id="vnnF" class=""></td><td id="_C[b" class="">ツクールVXAce</td><td id="nfRT" class="">ツクールMZ</td><td id="xEL&gt;" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="bee5de44-25cb-4ada-8ae9-6ec59f2bc273" dir="ltr"><td id="vnnF" class="">スキルアイコン</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">標準</td></tr><tr id="844847e7-26f6-422c-9725-27ad64cd53d3" dir="ltr"><td id="vnnF" class="">スキル説明</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">標準</td></tr><tr id="24c98aae-abb4-4ecb-ac38-ff37c22c5042" dir="ltr"><td id="vnnF" class="">スキルタイプ</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">標準</td></tr><tr id="0aa06115-04f9-4728-aa85-422570e950ee" dir="ltr"><td id="vnnF" class="">消費MP/TP</td><td id="_C[b" class="">MP/TP</td><td id="nfRT" class="">MP/TP</td><td id="xEL&gt;" class="">HP/MP/TP/所持金/変数<br/>(詳細に設定可)<br/>(消費量代入可)</td></tr><tr id="b5c16ff7-641d-4ebd-939e-5d1765f742e9" dir="ltr"><td id="vnnF" class="">アイテム消費</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="8629a6e7-eb69-4a99-b08d-8ed797f7e8db" dir="ltr"><td id="vnnF" class="">スキル使用条件</td><td id="_C[b" class="">スキルタイプ封印で使用不可</td><td id="nfRT" class="">スキルタイプ封印で使用不可</td><td id="xEL&gt;" class="">スキル使用条件</td></tr><tr id="bc732554-cab7-4fcf-a085-4b93bd2a7a39" dir="ltr"><td id="vnnF" class="">ランダム対象</td><td id="_C[b" class="">1発目から対象固定</td><td id="nfRT" class="">1発目から対象固定</td><td id="xEL&gt;" class="">1発目から対象変動</td></tr><tr id="04ae299f-052a-48fa-8b53-5ca9dff39962" dir="ltr"><td id="vnnF" class="">自分以外味方単体</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="0f4f2a7b-75b1-42ff-8169-3c52ab45cd17" dir="ltr"><td id="vnnF" class="">自分以外味方全体</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="d03a34ed-423d-410b-9f22-55acacffcd2e" dir="ltr"><td id="vnnF" class="">敵味方全体</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="3e3c951d-923f-434a-ab14-19cbf5b3706c" dir="ltr"><td id="vnnF" class="">敵味方ランダム</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="60e349c1-a3b3-45f3-8b24-79b2d63fb1ab" dir="ltr"><td id="vnnF" class="">自分以外敵味方全体</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="cc958215-78ac-4f8e-923d-434ced8c46f5" dir="ltr"><td id="vnnF" class="">自分含む敵全体</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="bdd8ed8e-5b4c-4313-b72e-dc9719b28766" dir="ltr"><td id="vnnF" class="">スキル対象全体化</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="083ce63d-5890-4b61-9d32-9255ceb9899e" dir="ltr"><td id="vnnF" class="">対象の単体/全体切り替え</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="058867fb-82c8-4efc-a312-3edeb68671a5" dir="ltr"><td id="vnnF" class="">武器の影響</td><td id="_C[b" class="">命中タイプ:物理攻撃</td><td id="nfRT" class="">命中タイプ:物理攻撃</td><td id="xEL&gt;" class="">標準</td></tr><tr id="a61b074f-f6a5-41b0-b809-f6763313c317" dir="ltr"><td id="vnnF" class="">速度補正</td><td id="_C[b" class="">-2000～2000</td><td id="nfRT" class="">-2000～2000</td><td id="xEL&gt;" class="">優先度</td></tr><tr id="c7e82c0e-8df2-4841-aa91-ced99f3e557c" dir="ltr"><td id="vnnF" class="">成功率</td><td id="_C[b" class="">0～100<br/>(命中率に乗算)</td><td id="nfRT" class="">0～100<br/>(命中率に乗算)</td><td id="xEL&gt;" class="">0～999999<br/>(命中率依存は-1に指定)</td></tr><tr id="3e09c27f-1e3c-4198-8945-04402b13e187" dir="ltr"><td id="vnnF" class="">成功率補正値</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">乗算かつ命中依存のみ</td></tr><tr id="24504e42-4526-499a-9f4d-e65fd7047a9f" dir="ltr"><td id="vnnF" class="">成功必須状態</td><td id="_C[b" class="">蘇生のみ</td><td id="nfRT" class="">蘇生のみ</td><td id="xEL&gt;" class="">蘇生＆異常回復</td></tr><tr id="c4969444-dc52-4801-976f-bfcdd99b1375" dir="ltr"><td id="vnnF" class="">連続回数</td><td id="_C[b" class="">1～9</td><td id="nfRT" class="">1～9</td><td id="xEL&gt;" class="">1～10<br/>(武器の数だけ乗算)</td></tr><tr id="953e7800-c031-492c-ae00-3d8bdf2c6e33" dir="ltr"><td id="vnnF" class="">スキル追加発動</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">乗算</td></tr><tr id="796468af-5748-4768-b31b-54159b9d26c4" dir="ltr"><td id="vnnF" class="">得TP</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">標準</td></tr><tr id="2fa24cf3-f2b2-4b11-98be-a94f87ac889c" dir="ltr"><td id="vnnF" class="">命中タイプ:必中</td><td id="_C[b" class="">身代わり不可</td><td id="nfRT" class="">身代わり不可</td><td id="xEL&gt;" class="">身代わり可</td></tr><tr id="00eebe3a-057e-4c4f-9df7-46a426d91d56" dir="ltr"><td id="vnnF" class="">命中タイプ:物理</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">回避＆反射考慮有無選択可</td></tr><tr id="6f979135-1143-43b6-9453-67c87206bddd" dir="ltr"><td id="vnnF" class="">命中タイプ:魔法</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">回避＆反射考慮有無選択可</td></tr><tr id="e3ad5581-3f36-4f57-b5fe-e8254048b985" dir="ltr"><td id="vnnF" class="">属性耐性無視</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="51bc34c9-2f47-4276-a3f9-4b6c38ff3d69" dir="ltr"><td id="vnnF" class="">状態耐性無視</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="090b23e2-de52-4205-8120-9b5ce4903315" dir="ltr"><td id="vnnF" class="">アニメーション</td><td id="_C[b" class="">1</td><td id="nfRT" class="">1</td><td id="xEL&gt;" class="">3<br/>(発動時に発動側と対象側も1個ある)</td></tr><tr id="3f35d2e6-97c2-4f90-bb55-a8de7116b606" dir="ltr"><td id="vnnF" class="">スキル</td><td id="_C[b" class=""></td><td id="nfRT" class=""></td><td id="xEL&gt;" class=""></td></tr><tr id="5418b8bc-f9ea-456a-9ec3-f5e4588c3d1f" dir="ltr"><td id="vnnF" class=""></td><td id="_C[b" class="">ツクールVXAce</td><td id="nfRT" class="">ツクールMZ</td><td id="xEL&gt;" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="9751af10-864d-4fb7-915f-5a796c4ab285" dir="ltr"><td id="vnnF" class="">防御状態無視</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="1965d5c1-2ab0-4783-93de-f61a2fba3be3" dir="ltr"><td id="vnnF" class="">身代わり無視</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="e6895853-cc1d-4d6e-b4e7-270a5299cdda" dir="ltr"><td id="vnnF" class="">使用時メッセージ</td><td id="_C[b" class="">2</td><td id="nfRT" class="">2</td><td id="xEL&gt;" class="">1</td></tr><tr id="714bd84e-37ef-4328-a038-8b668ea36086" dir="ltr"><td id="vnnF" class="">無効メッセージ</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="c7eb31c0-0194-4151-9457-4f7c7d0112c0" dir="ltr"><td id="vnnF" class="">武器タイプ</td><td id="_C[b" class="">2</td><td id="nfRT" class="">2</td><td id="xEL&gt;" class="">1<br/>(武器なし＆無装備あり)</td></tr><tr id="32b1435d-5fb4-4368-8623-4cc3a42f10ea" dir="ltr"><td id="vnnF" class="">ダメージ対象</td><td id="_C[b" class="">HP/MP</td><td id="nfRT" class="">HP/MP</td><td id="xEL&gt;" class="">HP/MP/TP</td></tr><tr id="80786b68-9429-40e5-8e96-31b8ae3354a3" dir="ltr"><td id="vnnF" class="">HP/MP同時効果</td><td id="_C[b" class="">HP/MPと同時</td><td id="nfRT" class="">HP/MPと同時</td><td id="xEL&gt;" class="">HP/MP/TPと同時</td></tr><tr id="7b74b5db-70f6-44fd-800a-6394b6c7be00" dir="ltr"><td id="vnnF" class="">HP/MP最大値超え回復</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="40ddc61a-fb52-4b20-9a50-5346fb19f494" dir="ltr"><td id="vnnF" class="">属性</td><td id="_C[b" class="">1</td><td id="nfRT" class="">1</td><td id="xEL&gt;" class="">20</td></tr><tr id="7c683550-b847-4405-918d-fc12669c1ec0" dir="ltr"><td id="vnnF" class="">ランダム属性</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="d3e37f33-c7aa-45da-b3bf-b99f47a6eb50" dir="ltr"><td id="vnnF" class="">ダメージ計算式</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">効果量自由計算式</td></tr><tr id="dea7bdc9-6ea6-4da4-993d-27039b8e6363" dir="ltr"><td id="vnnF" class="">ダメージ量上限</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="4b35e117-00f8-4979-af82-6f9679a8dd99" dir="ltr"><td id="vnnF" class="">会心</td><td id="_C[b" class="">あり/なしから選択</td><td id="nfRT" class="">あり/なしから選択</td><td id="xEL&gt;" class="">0～999999</td></tr><tr id="1a07f82a-f376-48aa-ab47-8bdadf969889" dir="ltr"><td id="vnnF" class="">スキル特攻</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">スキル特攻条件</td></tr><tr id="91b518ee-c55c-4465-8864-592edba5dd47" dir="ltr"><td id="vnnF" class="">使用時発動側行動消去</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="cda855a3-0f4a-44b0-b03a-6d47efba19a8" dir="ltr"><td id="vnnF" class="">反動</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">ﾀﾞﾒｰｼﾞ(吸収も可)/<br/>ｾﾙﾌ状態付与/解除</td></tr><tr id="c4b34d6f-1ddd-49e9-8eaa-a3ef01c6a0fd" dir="ltr"><td id="vnnF" class="">クールタイム</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="9fea20ef-ff13-4c03-b41f-3ff8bcec9fe1" dir="ltr"><td id="vnnF" class="">予約スキル</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="990ef944-f0e9-476f-8683-6d32ffa9df07" dir="ltr"><td id="vnnF" class="">盗む</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="da10d0b2-978d-4519-84c3-6c4863842013" dir="ltr"><td id="vnnF" class="">みやぶる</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="38c4d1b1-70a4-4a69-bf3e-48be8e2749b1" dir="ltr"><td id="vnnF" class="">ものまね</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="e33b7b18-38d6-48cb-ab08-cf7262d4b6bf" dir="ltr"><td id="vnnF" class="">召喚獣</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="60106f11-cc26-45fb-b64c-f91958c702f7" dir="ltr"><td id="vnnF" class="">戦闘フィールド変化</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="4ec9f01a-3678-4907-9390-12680711b6b9" dir="ltr"><td id="vnnF" class="">獲得経験値と金額の操作</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="b5683511-771e-448e-a631-a7db0459ca7e" dir="ltr"><td id="vnnF" class="">捕獲/リリース</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="db88c921-5f1c-49f2-a41f-fddc3dd07c9e" dir="ltr"><td id="vnnF" class="">食べる</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="bffabc35-95b3-4906-9ed8-1a9e2c14d8ae" dir="ltr"><td id="vnnF" class="">アイテム変化</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="25e1477c-5300-478b-8ff0-6c9963b67fd2" dir="ltr"><td id="vnnF" class="">威嚇</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="e52565cf-be0f-4c17-bbc7-cdcc16d67d24" dir="ltr"><td id="vnnF" class="">敵スキル習得</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="6a5c79e5-71b8-4e05-85a8-9be1b6fd7610" dir="ltr"><td id="vnnF" class="">仲間を呼ぶ</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="21c45146-1d79-488c-a6c4-e87d9b5fda55" dir="ltr"><td id="vnnF" class="">スキル</td><td id="_C[b" class=""></td><td id="nfRT" class=""></td><td id="xEL&gt;" class=""></td></tr><tr id="f8d90971-3b47-4656-b007-b8d897e4c16d" dir="ltr"><td id="vnnF" class=""></td><td id="_C[b" class="">ツクールVXAce</td><td id="nfRT" class="">ツクールMZ</td><td id="xEL&gt;" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="e3c03f37-0bc9-4e05-a5ad-2f372a448a11" dir="ltr"><td id="vnnF" class="">他の敵キャラに変身</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="8493446a-5e5e-4319-810b-7c9f68ce4536" dir="ltr"><td id="vnnF" class="">敵が金を奪う</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="fb5d3d18-37df-49e4-b5b3-4b063757534c" dir="ltr"><td id="vnnF" class="">状態付与</td><td id="_C[b" class="">無制限</td><td id="nfRT" class="">無制限</td><td id="xEL&gt;" class="">無制限</td></tr><tr id="dfd732e4-2cd7-4b4a-855f-16c552d4eec4" dir="ltr"><td id="vnnF" class="">状態のターン数変更</td><td id="_C[b" class="">強化/弱体のみ</td><td id="nfRT" class="">強化/弱体のみ</td><td id="xEL&gt;" class="">詳細</td></tr><tr id="1741ec1d-3f3e-4982-8e0f-140681e158f1" dir="ltr"><td id="vnnF" class="">状態解除</td><td id="_C[b" class="">無制限</td><td id="nfRT" class="">無制限</td><td id="xEL&gt;" class="">無制限</td></tr><tr id="b65a23b0-167e-447d-ad4e-82ae555acd51" dir="ltr"><td id="vnnF" class="">能力強化/弱体</td><td id="_C[b" class="">±2段階</td><td id="nfRT" class="">±2段階</td><td id="xEL&gt;" class="">付与ステ状態で設定<br/>(±2段階可)</td></tr><tr id="977d772e-0213-462c-bcb2-040e97c55d46" dir="ltr"><td id="vnnF" class="">強化/弱体の解除</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">特殊解除</td></tr><tr id="7c221396-6216-48fe-83bb-058d5d64d11e" dir="ltr"><td id="vnnF" class="">スキル追撃</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="8329dbe5-940c-42e9-b84b-a70f6e6a4987" dir="ltr"><td id="vnnF" class="">連携スキル</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="35d94282-78fa-49de-83fb-b18d785e10d9" dir="ltr"><td id="vnnF" class="">行動に対するジャマー</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="27648f35-6f96-43d4-b692-89f6bbe8f8eb" dir="ltr"><td id="vnnF" class="">敵を倒すと再行動</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="f4d55385-00f4-424a-8ea6-e76fdb91b160" dir="ltr"><td id="vnnF" class="">弱点を突くと再行動</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="1fd9da7d-49f6-8072-b274-e8cf9befbc4f" dir="ltr"><td id="vnnF" class="">会心時再行動</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="1fd9da7d-49f6-8078-a9e1-e09693ce1019" dir="ltr"><td id="vnnF" class="">カットイン</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="fc563968-b4a2-446d-852a-44533a5e8b0e" dir="ltr"><td id="vnnF" class="">逃げる(対象者消去型)</td><td id="_C[b" class="">標準</td><td id="nfRT" class="">標準</td><td id="xEL&gt;" class="">なし</td></tr><tr id="aee50372-d366-4117-8754-3eb3394cf9d1" dir="ltr"><td id="vnnF" class="">逃げる(戦闘終了型)</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="e572a53f-d34d-452d-9f97-36dac19e78a4" dir="ltr"><td id="vnnF" class="">能力値成長</td><td id="_C[b" class="">1～1000</td><td id="nfRT" class="">1～1000</td><td id="xEL&gt;" class="">なし</td></tr><tr id="71ebba30-c009-4fb7-9973-63b1c3f0a744" dir="ltr"><td id="vnnF" class="">スキル習得</td><td id="_C[b" class="">無制限</td><td id="nfRT" class="">無制限</td><td id="xEL&gt;" class="">なし</td></tr><tr id="68a29c7a-a3db-4f11-8211-4248e3a4e719" dir="ltr"><td id="vnnF" class="">コモンイベント</td><td id="_C[b" class="">1</td><td id="nfRT" class="">1</td><td id="xEL&gt;" class="">発動前+発動後+αで合計3</td></tr><tr id="87e9d1bf-cb87-4767-a201-56365babff80" dir="ltr"><td id="vnnF" class="">テレポート</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="d48e17a3-7ed3-4d82-9326-e6c450fa278c" dir="ltr"><td id="vnnF" class="">エスケープ</td><td id="_C[b" class="">なし</td><td id="nfRT" class="">なし</td><td id="xEL&gt;" class="">標準</td></tr><tr id="3416b393-023b-4ff2-8cd4-35f9d6b7a2b3" dir="ltr"><td id="vnnF" class="">エンカウント率変化</td><td id="_C[b" class="">ｽﾃｰﾄで設定かつ半減/無効のみ</td><td id="nfRT" class="">ｽﾃｰﾄで設定かつ半減/無効のみ</td><td id="xEL&gt;" class="">詳細</td></tr></tbody></table><p id="1cb9da7d-49f6-8095-828e-fbdd850fd945" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-80d9-a328-d261ab70bf52" dir="auto"/><p id="1cb9da7d-49f6-80a5-8e80-ed8a715b2a93" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8081-89cf-d487122894ce" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80d2-85aa-f3538cac7cbd" class="" dir="auto">
+</p><hr id="f07e1770-4e2c-47e4-8382-b2035ebdc039" dir="auto"/><h1 id="2ed0da82-c6c9-4f2b-aa6c-40786c16ec83" class="" dir="auto">Sheet 4: <em>アイテム</em></h1><table id="5828473b-0cc0-4754-8281-7031abfc8ffb" class="simple-table" dir="ltr"><tbody><tr id="79a0a9f5-f06c-4be3-a61f-15b7a2bdf178" dir="ltr"><td id="]Tkj" class="">アイテム</td><td id="YKcb" class=""></td><td id="c[GJ" class=""></td><td id="DAF~" class=""></td></tr><tr id="421181e0-1b6e-4e9a-b3d2-afc418ee1b98" dir="ltr"><td id="]Tkj" class=""></td><td id="YKcb" class="">ツクールVXAce</td><td id="c[GJ" class="">ツクールMZ</td><td id="DAF~" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="098426ae-fc28-489b-b0b6-3173d599717a" dir="ltr"><td id="]Tkj" class="">アイテムアイコン</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">標準</td></tr><tr id="539b5858-3c95-45db-9244-ec84a72b245e" dir="ltr"><td id="]Tkj" class="">アイテムタイプ</td><td id="YKcb" class="">大事なものも可</td><td id="c[GJ" class="">大事なものも可</td><td id="DAF~" class="">大事なものも可</td></tr><tr id="ce09dddc-f9a5-4e05-8371-eb4b39baf3ed" dir="ltr"><td id="]Tkj" class="">価格</td><td id="YKcb" class="">売却時は半額</td><td id="c[GJ" class="">売却時は半額</td><td id="DAF~" class="">売却時も指定可</td></tr><tr id="050ae825-2dda-4b97-b1ab-00c92548ee53" dir="ltr"><td id="]Tkj" class="">消耗時変化</td><td id="YKcb" class="">消滅</td><td id="c[GJ" class="">消滅</td><td id="DAF~" class="">消滅か変化するか選択可</td></tr><tr id="97fd5790-df01-456a-8c6c-068051aa358c" dir="ltr"><td id="]Tkj" class="">効果範囲</td><td id="YKcb" class="">敵か味方か選択可</td><td id="c[GJ" class="">敵か味方か選択可</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="0abe37a8-2c27-44a6-bb11-4c4125ad930a" dir="ltr"><td id="]Tkj" class="">スキル発動</td><td id="YKcb" class="">なし</td><td id="c[GJ" class="">なし</td><td id="DAF~" class="">標準</td></tr><tr id="11d38208-c9ed-4ea6-bf5f-0bdd5e7c93b7" dir="ltr"><td id="]Tkj" class="">アイテム破壊</td><td id="YKcb" class="">なし</td><td id="c[GJ" class="">なし</td><td id="DAF~" class="">標準</td></tr><tr id="26dd909b-3394-4937-ba40-971f707cc806" dir="ltr"><td id="]Tkj" class="">速度補正</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="e9133a03-3c2b-4b9a-bf83-7f94c1fbefd4" dir="ltr"><td id="]Tkj" class="">成功率</td><td id="YKcb" class="">0～100</td><td id="c[GJ" class="">0～100</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="3dd825cb-613d-4790-afc8-587483e02328" dir="ltr"><td id="]Tkj" class="">成功必須状態</td><td id="YKcb" class="">蘇生のみ</td><td id="c[GJ" class="">蘇生のみ</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="16cf35f6-0afc-4ad8-b43c-e29a0ee620c5" dir="ltr"><td id="]Tkj" class="">連続回数</td><td id="YKcb" class="">1～9</td><td id="c[GJ" class="">1～9</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="61f2a2a4-ac39-45d7-bf13-0ec8e807c285" dir="ltr"><td id="]Tkj" class="">得TP</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="6e1e271e-c68c-4630-b459-cd7b995584b4" dir="ltr"><td id="]Tkj" class="">命中タイプ:必中</td><td id="YKcb" class="">身代わり不可</td><td id="c[GJ" class="">身代わり不可</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="a533a4d2-d8ff-4088-aadd-4071973d2d42" dir="ltr"><td id="]Tkj" class="">命中タイプ:物理</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="75d745fb-b98b-4fe3-8a88-8d47bd30bcd2" dir="ltr"><td id="]Tkj" class="">命中タイプ:魔法</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="c49a6cad-7cb7-418c-9fe0-3a5f37b24bac" dir="ltr"><td id="]Tkj" class="">アニメーション</td><td id="YKcb" class="">1</td><td id="c[GJ" class="">1</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="f577bb33-879b-4a66-8406-75d976c0a72b" dir="ltr"><td id="]Tkj" class="">ダメージ種別</td><td id="YKcb" class="">ダメージ＆回復</td><td id="c[GJ" class="">ダメージ＆回復</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="49565543-00b6-4251-a05e-9892c96131fb" dir="ltr"><td id="]Tkj" class="">HP/MP同時効果</td><td id="YKcb" class="">HP/MPと同時</td><td id="c[GJ" class="">HP/MP/TPと同時</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="7316bb24-b346-412f-8044-8c0c582e236e" dir="ltr"><td id="]Tkj" class="">属性</td><td id="YKcb" class="">1</td><td id="c[GJ" class="">1</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="c66ba880-06dc-47e9-be34-81bd0e800b5d" dir="ltr"><td id="]Tkj" class="">計算式</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="7eff9628-5c85-45bd-90d8-19afb2cdfc03" dir="ltr"><td id="]Tkj" class="">会心</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="df8dab99-ca1f-4760-b7ff-8b16a2ae273b" dir="ltr"><td id="]Tkj" class="">状態付与</td><td id="YKcb" class="">無制限</td><td id="c[GJ" class="">無制限</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="69fe6663-b23d-4935-905a-0a89e3d87658" dir="ltr"><td id="]Tkj" class="">状態解除</td><td id="YKcb" class="">無制限</td><td id="c[GJ" class="">無制限</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="9ae0a348-7db8-43f7-a76a-bc6b0d0fc165" dir="ltr"><td id="]Tkj" class="">能力強化/弱体</td><td id="YKcb" class="">±2段階</td><td id="c[GJ" class="">±2段階</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="48a87605-5086-45ef-8b73-78a0cecf0e87" dir="ltr"><td id="]Tkj" class="">強化/弱体の解除</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="995932e4-eadf-4005-a736-7427d6e432b7" dir="ltr"><td id="]Tkj" class="">逃げる</td><td id="YKcb" class="">標準</td><td id="c[GJ" class="">標準</td><td id="DAF~" class="">発動するスキル側で設定</td></tr><tr id="4bf96830-77e9-4314-98b2-7e696b6a813d" dir="ltr"><td id="]Tkj" class="">能力値成長</td><td id="YKcb" class="">1～1000かつ能力値の数は無制限</td><td id="c[GJ" class="">1～1000かつ能力値の数は無制限</td><td id="DAF~" class="">無制限かつ能力値の数は1種類のみ</td></tr><tr id="b63c76e1-6999-462b-93a3-512b034fdad3" dir="ltr"><td id="]Tkj" class="">スキル習得</td><td id="YKcb" class="">無制限</td><td id="c[GJ" class="">無制限</td><td id="DAF~" class="">1</td></tr><tr id="a795ff19-8b18-408c-b9a8-2524541caa2f" dir="ltr"><td id="]Tkj" class="">コモンイベント</td><td id="YKcb" class="">1</td><td id="c[GJ" class="">1</td><td id="DAF~" class="">1</td></tr></tbody></table><p id="1cb9da7d-49f6-804a-b5c7-faff0187feab" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-8041-8f2a-efe2087b3f6a" dir="auto"/><p id="1cb9da7d-49f6-80b4-85c3-dc7a469175e5" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-800f-8714-e9ff4d477345" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80b3-9f47-cdfdb4763cc7" class="" dir="auto">
+</p><hr id="f9eba1f4-a129-4bdb-abd3-e4b3b42c804f" dir="auto"/><h1 id="714b6695-715b-4f8d-94ea-321e476136b8" class="" dir="auto">Sheet 5: <em>武器防具</em></h1><table id="779a2e54-cd37-48a4-a63e-d50e70c17b6c" class="simple-table" dir="ltr"><tbody><tr id="be58fbd3-ec84-4aa8-a1f9-ec0ec4522c0a" dir="ltr"><td id="Hes}" class="">武器防具</td><td id="e=Wq" class=""></td><td id="Ux&lt;w" class=""></td><td id="kMPM" class=""></td></tr><tr id="c33291c7-3659-48b1-9acc-d28b20f8d91f" dir="ltr"><td id="Hes}" class=""></td><td id="e=Wq" class="">ツクールVXAce</td><td id="Ux&lt;w" class="">ツクールMZ</td><td id="kMPM" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="c0196e3e-8c5a-4354-aa0a-b9d52dfc62e2" dir="ltr"><td id="Hes}" class="">装備可能箇所</td><td id="e=Wq" class="">1</td><td id="Ux&lt;w" class="">1</td><td id="kMPM" class="">無制限</td></tr><tr id="5f3083c9-1c40-4076-8efb-b7f7b5641658" dir="ltr"><td id="Hes}" class="">武器防具タイプ</td><td id="e=Wq" class="">1</td><td id="Ux&lt;w" class="">1</td><td id="kMPM" class="">1</td></tr><tr id="b83f2a53-e8e8-44a7-a115-5faf8c85bebd" dir="ltr"><td id="Hes}" class="">価格</td><td id="e=Wq" class="">売却時は半額</td><td id="Ux&lt;w" class="">売却時は半額</td><td id="kMPM" class="">売却時も指定可</td></tr><tr id="b9bacea7-6116-4a95-b198-c2fdecbec4d6" dir="ltr"><td id="Hes}" class="">武器アニメ</td><td id="e=Wq" class="">1</td><td id="Ux&lt;w" class="">1</td><td id="kMPM" class="">1</td></tr><tr id="5a0c78e1-a5b9-4486-8180-35b82f9420c5" dir="ltr"><td id="Hes}" class="">能力値変化量</td><td id="e=Wq" class="">-500～500<br/>(HPMPは-5000～5000)</td><td id="Ux&lt;w" class="">-999～999<br/>(HPMPは-9999～9999)</td><td id="kMPM" class="">無制限</td></tr><tr id="2b7e86b7-6333-45d2-afbc-cdbd318561e1" dir="ltr"><td id="Hes}" class="">自身能力値依存能力変化</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="762f74b9-556c-4969-b22c-c4a7ce892052" dir="ltr"><td id="Hes}" class="">物理/魔法与ダメージ</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="9eed0e14-7ed2-43ac-8a19-c0590c385b6b" dir="ltr"><td id="Hes}" class="">スキル無効率</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="df387efe-bcc2-4862-81ee-6e86903c8015" dir="ltr"><td id="Hes}" class="">属性威力増加</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="6d4de3cf-ca78-4a78-97d0-6b5fedc9a2d9" dir="ltr"><td id="Hes}" class="">属性有効度</td><td id="e=Wq" class="">無制限<br/>(属性吸収不可)</td><td id="Ux&lt;w" class="">無制限<br/>(属性吸収不可)</td><td id="kMPM" class="">10000<br/>(属性吸収可)</td></tr><tr id="19031b4c-0f4e-4e49-bef9-fa1a960f6be8" dir="ltr"><td id="Hes}" class="">弱体有効度</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">弱体状態防御率[±%]</td></tr><tr id="7299bd72-2214-422f-bc27-a879fa1f528b" dir="ltr"><td id="Hes}" class="">状態有効度</td><td id="e=Wq" class="">無制限</td><td id="Ux&lt;w" class="">無制限</td><td id="kMPM" class="">属性耐性と共用</td></tr><tr id="a96dc4bb-0607-4b6d-84d8-7a9516b8ef0a" dir="ltr"><td id="Hes}" class="">状態無効</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="8eea3e72-6be9-4f6a-a63e-1b6e53769619" dir="ltr"><td id="Hes}" class="">能力値割合変化</td><td id="e=Wq" class="">0～1000</td><td id="Ux&lt;w" class="">0～1000<br/>(少数点第一位も可)</td><td id="kMPM" class="">無制限</td></tr><tr id="e17f1361-673d-4c98-8165-a5976a0e06f9" dir="ltr"><td id="Hes}" class="">会心回避率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">クリティカル無効率</td></tr><tr id="1cf3da29-160e-4437-baa2-d09f6ddeec91" dir="ltr"><td id="Hes}" class="">魔法回避率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="9d2808a5-f285-432d-8c3e-f82a69d9524e" dir="ltr"><td id="Hes}" class="">魔法反射率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="95ee11fa-7a5d-4611-8bee-53b3a438f2b6" dir="ltr"><td id="Hes}" class="">反撃率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="39158f06-b3eb-4a34-8ed7-a554cdb6c5f7" dir="ltr"><td id="Hes}" class="">HPMP自動回復</td><td id="e=Wq" class="">HP/MP/TP</td><td id="Ux&lt;w" class="">HP/MP/TP</td><td id="kMPM" class="">HP/MP</td></tr><tr id="c0491709-11a9-438a-a385-fdf19fe8870a" dir="ltr"><td id="Hes}" class="">HPMP自動回復属性</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="bc9d6b81-a430-4f15-93e1-23e963b8001b" dir="ltr"><td id="Hes}" class="">狙われ率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="49e9f4ee-7498-4860-8ed5-0477621845f1" dir="ltr"><td id="Hes}" class="">防御効果率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="b3129c04-60cb-45be-88b3-83b74fe7bccb" dir="ltr"><td id="Hes}" class="">回復効果率</td><td id="e=Wq" class="">対象側の受回復量に依存</td><td id="Ux&lt;w" class="">対象側の受回復量に依存</td><td id="kMPM" class="">発動側の与回復量に依存</td></tr><tr id="c496ed63-e4f8-44bd-a560-bae989a20fba" dir="ltr"><td id="Hes}" class="">アイテム効果率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="4a55e259-e5e0-40d1-9941-94b82bb4edbc" dir="ltr"><td id="Hes}" class="">MP消費率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="5a458fb2-3089-4c72-b219-114e23b3fe57" dir="ltr"><td id="Hes}" class="">MP消費率属性</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="69f47d30-3939-4adc-9430-00312ecebd91" dir="ltr"><td id="Hes}" class="">TPチャージ率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="63315e41-fa86-4c1b-aa9a-8e76abda9aae" dir="ltr"><td id="Hes}" class="">物理/魔法受ダメージ率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="6600c32d-2040-4956-8833-8f402ecdb7e3" dir="ltr"><td id="Hes}" class="">床ダメージ率</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="1892d597-bb8e-4083-9a13-7a7481020d05" dir="ltr"><td id="Hes}" class="">武器防具</td><td id="e=Wq" class=""></td><td id="Ux&lt;w" class=""></td><td id="kMPM" class=""></td></tr><tr id="d35947d3-a6f9-4172-9db2-113911ae6507" dir="ltr"><td id="Hes}" class=""></td><td id="e=Wq" class="">ツクールVXAce</td><td id="Ux&lt;w" class="">ツクールMZ</td><td id="kMPM" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="31187e87-26af-4885-bc6c-1e7e7a325c39" dir="ltr"><td id="Hes}" class="">攻撃時属性</td><td id="e=Wq" class="">無制限</td><td id="Ux&lt;w" class="">無制限</td><td id="kMPM" class="">20</td></tr><tr id="8de0fa62-ca69-4d2b-9c23-9da66da808cb" dir="ltr"><td id="Hes}" class="">攻撃時ステート</td><td id="e=Wq" class="">無制限</td><td id="Ux&lt;w" class="">無制限</td><td id="kMPM" class="">無制限</td></tr><tr id="e4562920-ceb3-4e16-9880-6865cee0537b" dir="ltr"><td id="Hes}" class="">攻撃速度補正</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="bd5cd9da-aace-42dc-9a4d-60a545e8f663" dir="ltr"><td id="Hes}" class="">攻撃追加回数</td><td id="e=Wq" class="">1～9</td><td id="Ux&lt;w" class="">1～9</td><td id="kMPM" class="">無制限</td></tr><tr id="dd03dae5-0501-45c3-852b-925650c99235" dir="ltr"><td id="Hes}" class="">武器依存回避率無視</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="637dea1b-cc75-4969-9bc8-7d3699b8974f" dir="ltr"><td id="Hes}" class="">武器依存スキル無効無視</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="d6eb551d-ce30-4643-9659-6628e46d8648" dir="ltr"><td id="Hes}" class="">武器依存HP吸収率</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="36dcbd8f-cea0-42f5-a298-da7cec34ee6f" dir="ltr"><td id="Hes}" class="">武器依存MP吸収率</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="7d8b498b-d3e1-431e-9a8f-56ef90a6a714" dir="ltr"><td id="Hes}" class="">武器依存スキル発動</td><td id="e=Wq" class="">なし</td><td id="Ux&lt;w" class="">なし</td><td id="kMPM" class="">標準</td></tr><tr id="a2f628cc-4ad2-4d58-85db-3be9949cc67c" dir="ltr"><td id="Hes}" class="">スキルタイプ追加</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">戦闘コマンドの変更/<br/>ｽｷﾙﾀｸﾞ</td></tr><tr id="9a862a95-61c1-46be-a56e-46e102e88364" dir="ltr"><td id="Hes}" class="">スキルタイプ封印</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">ｽｷﾙﾀｸﾞ</td></tr><tr id="0ab4017f-44c4-4daa-9505-645736937a30" dir="ltr"><td id="Hes}" class="">スキル追加</td><td id="e=Wq" class="">無制限</td><td id="Ux&lt;w" class="">無制限</td><td id="kMPM" class="">5<br/>(パッシブは5)</td></tr><tr id="d3b39074-4d96-4c48-98bc-56116947f1ba" dir="ltr"><td id="Hes}" class="">スキル封印</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">ｽｷﾙﾀｸﾞ</td></tr><tr id="2ce39018-7fd0-4e7d-a419-56ab67e108dd" dir="ltr"><td id="Hes}" class="">武器防具タイプ装備</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="218200cd-b801-427c-b1f4-973a73f3f3b6" dir="ltr"><td id="Hes}" class="">装備固定</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">その装備品のみ</td></tr><tr id="e217dfd2-3284-4cc8-9bca-e4342bb6a742" dir="ltr"><td id="Hes}" class="">装備封印</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">装備時専有箇所</td></tr><tr id="f91c9246-ae1d-4e7c-89cc-120b0d98344b" dir="ltr"><td id="Hes}" class="">二刀流</td><td id="e=Wq" class="">盾は装備不可</td><td id="Ux&lt;w" class="">盾は装備不可</td><td id="kMPM" class="">盾を両手に装備可</td></tr><tr id="3b91eb13-54d1-4933-95c5-f8c04ef68f0d" dir="ltr"><td id="Hes}" class="">行動回数増加</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">標準</td></tr><tr id="fc4e3b88-59e4-4c33-83a1-0d7799eb430a" dir="ltr"><td id="Hes}" class="">自動戦闘</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="501e3659-6a2c-4096-b14e-7f63fbd3ee57" dir="ltr"><td id="Hes}" class="">防御状態</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="c0475e37-d22e-4b07-9318-7a61c46bb6fd" dir="ltr"><td id="Hes}" class="">身代わり状態</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="691e8334-7732-4045-aa3a-409a7672e8ea" dir="ltr"><td id="Hes}" class="">TP持ち越し</td><td id="e=Wq" class="">標準</td><td id="Ux&lt;w" class="">標準</td><td id="kMPM" class="">なし</td></tr><tr id="7587157f-1146-4dc6-9065-ce565f9c31e9" dir="ltr"><td id="Hes}" class="">エンカウント率</td><td id="e=Wq" class="">半減/無効から選択</td><td id="Ux&lt;w" class="">半減/無効から選択</td><td id="kMPM" class="">詳細</td></tr><tr id="ea13a313-8168-4f53-8a59-357dad8208e2" dir="ltr"><td id="Hes}" class="">不意打ち減少率</td><td id="e=Wq" class="">無効のみ</td><td id="Ux&lt;w" class="">無効のみ</td><td id="kMPM" class="">詳細</td></tr><tr id="54635018-0895-48c2-82e2-9b2afc251c2d" dir="ltr"><td id="Hes}" class="">先制攻撃増加率</td><td id="e=Wq" class="">先制攻撃率UPのみ</td><td id="Ux&lt;w" class="">先制攻撃率UPのみ</td><td id="kMPM" class="">詳細</td></tr><tr id="a7091dc5-6fc8-4d44-bc80-ac22cb01024b" dir="ltr"><td id="Hes}" class="">獲得経験値増加率</td><td id="e=Wq" class="">一人に適用</td><td id="Ux&lt;w" class="">一人に適用</td><td id="kMPM" class="">全員に適用</td></tr><tr id="b461a333-ce6d-489c-a6cc-de89008558da" dir="ltr"><td id="Hes}" class="">獲得金額増加率</td><td id="e=Wq" class="">2倍のみ</td><td id="Ux&lt;w" class="">2倍のみ</td><td id="kMPM" class="">詳細</td></tr><tr id="27f15767-84b1-49ba-9dce-5813ac884bd4" dir="ltr"><td id="Hes}" class="">アイテム入手率</td><td id="e=Wq" class="">2倍のみ</td><td id="Ux&lt;w" class="">2倍のみ</td><td id="kMPM" class="">詳細</td></tr></tbody></table><p id="1cb9da7d-49f6-80ea-9072-cddbc6774390" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-80e3-bf0f-cb13a1f56462" dir="auto"/><p id="1cb9da7d-49f6-8023-aad3-dc15f1f37a46" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80f2-9445-f66495946938" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-803c-82a6-f1b9e7429a17" class="" dir="auto">
+</p><hr id="dcde3999-de2f-4260-9c59-22a245547cb0" dir="auto"/><h1 id="d8f94719-5b21-4daf-bd37-b1fc39cab866" class="" dir="auto">Sheet 6: <em>敵キャラ</em></h1><table id="2f12d2a0-235d-4f91-a488-5ed933b32b7f" class="simple-table" dir="ltr"><tbody><tr id="33fd764a-03be-44bb-aa40-29e9d894157b" dir="ltr"><td id="c|\s" class="">敵キャラ</td><td id="HIxK" class=""></td><td id="X]Wx" class=""></td><td id="GM:B" class=""></td></tr><tr id="02808c99-f035-4d90-bb2e-75cd868da14c" dir="ltr"><td id="c|\s" class=""></td><td id="HIxK" class="">ツクールVXAce</td><td id="X]Wx" class="">ツクールMZ</td><td id="GM:B" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="f5be847a-821b-402d-88be-073f12a4bc34" dir="ltr"><td id="c|\s" class="">画像の色指定</td><td id="HIxK" class="">色相</td><td id="X]Wx" class="">色相</td><td id="GM:B" class="">色相/彩度/RGBの度合い</td></tr><tr id="81df53df-be02-4bd9-b8a9-b6be27ef02ce" dir="ltr"><td id="c|\s" class="">画像の透明度</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="74329fc2-7655-4276-b7c0-3f1710d60fb4" dir="ltr"><td id="c|\s" class="">画像のぼかし</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="e1a0e19d-3133-4121-a7d2-b62ccf8db736" dir="ltr"><td id="c|\s" class="">画像の左右反転</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="1c2482bf-d7f1-4d7a-b504-203531cccf69" dir="ltr"><td id="c|\s" class="">画像拡大率</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="6f62af89-eda5-4606-bdff-ea2b7cb572e6" dir="ltr"><td id="c|\s" class="">追加Yシフト量</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="69d53276-ca74-4e1e-8ff6-7a36fd701ef5" dir="ltr"><td id="c|\s" class="">撃破エフェクト</td><td id="HIxK" class="">標準</td><td id="X]Wx" class="">標準</td><td id="GM:B" class="">詳細</td></tr><tr id="a38122e3-3581-4d81-8484-8a123dea9ca6" dir="ltr"><td id="c|\s" class="">武器アニメ</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="2de388a9-2ce2-4484-8a38-6127d670cdab" dir="ltr"><td id="c|\s" class="">行動回数</td><td id="HIxK" class="">無制限</td><td id="X]Wx" class="">無制限</td><td id="GM:B" class="">1～10<br/>(確率で+1可)</td></tr><tr id="34baa839-a8f4-4ad2-8033-a681cdb4cda0" dir="ltr"><td id="c|\s" class="">メタルボディ</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="9f42b55d-33bb-4475-81ee-35af8d47b460" dir="ltr"><td id="c|\s" class="">MP消費率</td><td id="HIxK" class="">詳細</td><td id="X]Wx" class="">詳細</td><td id="GM:B" class="">MP∞のみ</td></tr><tr id="7e7f7b38-7179-4e86-a4fb-e78d00dd6c3f" dir="ltr"><td id="c|\s" class="">スキル反射</td><td id="HIxK" class="">魔法反射のみかつ確率は自由</td><td id="X]Wx" class="">魔法反射のみかつ確率は自由</td><td id="GM:B" class="">物理/魔法反射で指定かつ100％</td></tr><tr id="d6c59523-c3d3-4ae2-8991-964a0ec2212a" dir="ltr"><td id="c|\s" class="">変身</td><td id="HIxK" class="">敵グループのイベントで変身</td><td id="X]Wx" class="">敵グループのイベントで変身</td><td id="GM:B" class="">残りHPによって変身</td></tr><tr id="0003bdb6-b647-41fa-877e-6229e43265a5" dir="ltr"><td id="c|\s" class="">属性耐性</td><td id="HIxK" class="">無制限<br/>(属性吸収不可)</td><td id="X]Wx" class="">無制限<br/>(属性吸収不可)</td><td id="GM:B" class="">10000<br/>(属性吸収可)</td></tr><tr id="f0df1a3e-43e9-474c-9129-c48b4b4d81de" dir="ltr"><td id="c|\s" class="">状態耐性</td><td id="HIxK" class="">無制限</td><td id="X]Wx" class="">無制限</td><td id="GM:B" class="">属性耐性と共用</td></tr><tr id="2bb6758a-cdd3-480b-879a-2985997770c0" dir="ltr"><td id="c|\s" class="">戦闘開始時状態付与</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">3</td></tr><tr id="2e266f15-bbdb-451f-8a6a-5d94bf5f4ab3" dir="ltr"><td id="c|\s" class="">攻撃時属性</td><td id="HIxK" class="">無制限</td><td id="X]Wx" class="">無制限</td><td id="GM:B" class="">20</td></tr><tr id="c7f49ed1-4f16-4781-b1ee-8cc28d350f32" dir="ltr"><td id="c|\s" class="">パッシブスキル</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">4</td></tr><tr id="d2a71afa-7083-4679-96b7-a31af21ad24d" dir="ltr"><td id="c|\s" class="">敵レベル</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="42711d78-a10c-40d7-a4be-833daad77614" dir="ltr"><td id="c|\s" class="">先制攻撃率増加値</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="bb095321-67f9-4c4a-8a4e-fa7d1dbe3a8f" dir="ltr"><td id="c|\s" class="">能力値</td><td id="HIxK" class="">1～999<br/>(HPは999999/MPは9999)</td><td id="X]Wx" class="">1～999<br/>(HPは999999/MPは9999)</td><td id="GM:B" class="">無制限</td></tr><tr id="6daeaa4a-0e67-46b2-b96d-9afec38d7bba" dir="ltr"><td id="c|\s" class="">レベルによる能力値変動</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="88b49602-23a1-4cbf-b3ac-a1699f370f56" dir="ltr"><td id="c|\s" class="">会心回避率</td><td id="HIxK" class="">標準</td><td id="X]Wx" class="">標準</td><td id="GM:B" class="">クリティカル無効率</td></tr><tr id="1a10cf3c-8e10-4538-9ebb-c22931519630" dir="ltr"><td id="c|\s" class="">スキル無効率</td><td id="HIxK" class="">なし</td><td id="X]Wx" class="">なし</td><td id="GM:B" class="">標準</td></tr><tr id="346e221f-bd86-44ff-8998-55e8e03be96c" dir="ltr"><td id="c|\s" class="">魔法回避率</td><td id="HIxK" class="">標準</td><td id="X]Wx" class="">標準</td><td id="GM:B" class="">なし</td></tr><tr id="12c10bc0-fd71-4d0d-876e-8d913276051d" dir="ltr"><td id="c|\s" class="">反撃率</td><td id="HIxK" class="">標準</td><td id="X]Wx" class="">標準</td><td id="GM:B" class="">なし</td></tr><tr id="bb3a4019-96ca-4ae3-99fe-88050111609b" dir="ltr"><td id="c|\s" class="">HPMP自動回復</td><td id="HIxK" class="">HP/MP/TP</td><td id="X]Wx" class="">HP/MP/TP</td><td id="GM:B" class="">なし</td></tr><tr id="6fd33d08-d39c-4008-ac9a-4680f4389538" dir="ltr"><td id="c|\s" class="">物理/魔法受ダメージ率</td><td id="HIxK" class="">標準</td><td id="X]Wx" class="">標準</td><td id="GM:B" class="">なし</td></tr><tr id="50e98074-5a47-4314-9d58-c18b21e56dc0" dir="ltr"><td id="c|\s" class="">攻撃時ステート</td><td id="HIxK" class="">無制限</td><td id="X]Wx" class="">無制限</td><td id="GM:B" class="">なし</td></tr><tr id="22984b3d-d72f-4b0e-9567-853e62b83b3b" dir="ltr"><td id="c|\s" class="">アイテムドロップ率</td><td id="HIxK" class="">3<br/>(確率は1/1000)</td><td id="X]Wx" class="">3<br/>(確率は1/1000)</td><td id="GM:B" class="">3<br/>(確率は1/2000)</td></tr><tr id="ab80b7e5-63d7-42bd-8b94-64af48273637" dir="ltr"><td id="c|\s" class="">行動パターン</td><td id="HIxK" class="">標準かつ∞個</td><td id="X]Wx" class="">標準かつ∞個</td><td id="GM:B" class="">詳細かつ10個まで<br/>(複数のデータ使用で<br/>20個以上も可)</td></tr></tbody></table><p id="1cb9da7d-49f6-80d8-b3db-c1ffc63c42de" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-8016-a662-c60c698f5db9" dir="auto"/><p id="1cb9da7d-49f6-80ab-bec4-d070abcbdb4c" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-801b-b559-fe9737723930" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-808d-a0b6-f54ece79d4ea" class="" dir="auto">
+</p><hr id="8e5c1033-3ad6-46cc-8faf-e551c16ad431" dir="auto"/><h1 id="d07a1fcb-9311-4e4a-a90e-4dfa7e9f3def" class="" dir="auto">Sheet 7: <em>敵グループ</em></h1><table id="e60fa9af-bdf6-4b47-930c-06894f923c28" class="simple-table" dir="ltr"><tbody><tr id="b4e5ce6a-4be5-42eb-bd7c-8003c603c4ed" dir="ltr"><td id="u;I^" class="">敵グループ</td><td id="outV" class=""></td><td id="Ljsp" class=""></td><td id="do@]" class=""></td></tr><tr id="009949ff-8855-4b06-b139-6cf9ec25157c" dir="ltr"><td id="u;I^" class=""></td><td id="outV" class="">ツクールVXAce</td><td id="Ljsp" class="">ツクールMZ</td><td id="do@]" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="3d9f0b83-4772-4c17-8c49-d4d4f27ad83c" dir="ltr"><td id="u;I^" class="">敵キャラの最大数</td><td id="outV" class="">8</td><td id="Ljsp" class="">8</td><td id="do@]" class="">10<br/>(確率で指定可)</td></tr><tr id="f2c6171a-7d38-4052-a439-d1b298a98d92" dir="ltr"><td id="u;I^" class="">ランダム出現</td><td id="outV" class="">なし</td><td id="Ljsp" class="">なし</td><td id="do@]" class="">通常敵16種類+レア14種類</td></tr><tr id="c7fe6aa1-fd4d-4b29-ba49-fcaa1a6382e0" dir="ltr"><td id="u;I^" class="">出現位置</td><td id="outV" class="">自由</td><td id="Ljsp" class="">自由</td><td id="do@]" class="">キャラクター座標設定1</td></tr><tr id="b430b5fd-11f5-4e7b-817a-3ad3378cf286" dir="ltr"><td id="u;I^" class="">勝利/敗北条件</td><td id="outV" class="">なし</td><td id="Ljsp" class="">なし</td><td id="do@]" class="">標準</td></tr><tr id="8965410d-fe66-4cb8-96ed-93eba8fcfdbb" dir="ltr"><td id="u;I^" class="">逃走成功率</td><td id="outV" class="">50％<br/>(敏捷性に影響)</td><td id="Ljsp" class="">50％<br/>(敏捷性に影響)</td><td id="do@]" class="">詳細<br/>(レベルに影響)</td></tr><tr id="c262bab4-67f2-46b9-89c1-c1910a721464" dir="ltr"><td id="u;I^" class="">敵グループ連戦</td><td id="outV" class="">なし</td><td id="Ljsp" class="">なし</td><td id="do@]" class="">標準</td></tr><tr id="8e6c500c-4e79-469e-a162-4a13488621c7" dir="ltr"><td id="u;I^" class="">バトルイベント</td><td id="outV" class="">99ページ</td><td id="Ljsp" class="">99ページ</td><td id="do@]" class="">戦闘開始/ターン開始/ターン終了/戦闘終了/行動開始/行動終了/戦闘不能</td></tr><tr id="b4985bd8-ab8e-4616-abef-3971ee68fa14" dir="ltr"><td id="u;I^" class="">戦闘テスト</td><td id="outV" class="">標準</td><td id="Ljsp" class="">標準</td><td id="do@]" class="">なし<br/>(デバッグコマンドにあり)</td></tr></tbody></table><p id="1cb9da7d-49f6-8063-8a78-d7377a31d14c" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-80a3-8aaf-dc1408bfd309" dir="auto"/><p id="1cb9da7d-49f6-8041-9dcf-c440e384bd39" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8019-a952-da0abfab4049" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80b9-831d-de946a9a0f46" class="" dir="auto">
+</p><hr id="45767943-e61b-4ecb-b405-aaf459a66781" dir="auto"/><h1 id="ec0c54f7-bac8-4a50-8c7d-c9aade2f21ba" class="" dir="auto">Sheet 8: <em>状態</em></h1><table id="8412334c-69df-4143-84c9-c2e7ab9ce083" class="simple-table" dir="ltr"><tbody><tr id="28e03e5a-d616-4849-a4dc-04394c29353b" dir="ltr"><td id="pocq" class="">状態</td><td id="[rVV" class=""></td><td id="ps~q" class=""></td><td id="F{&lt;G" class=""></td></tr><tr id="8b3ead91-5216-4cb7-abce-a58a17a55538" dir="ltr"><td id="pocq" class=""></td><td id="[rVV" class="">ツクールVXAce</td><td id="ps~q" class="">ツクールMZ</td><td id="F{&lt;G" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="c8216d55-7079-43b5-bb5a-a168af66229f" dir="ltr"><td id="pocq" class="">状態アイコン</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="84708c3a-53ae-4a30-9adb-e04d51d2a3cf" dir="ltr"><td id="pocq" class="">行動制約</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">確率で設定可</td></tr><tr id="fbd12623-4ce9-4ae0-8f5f-978955c49f88" dir="ltr"><td id="pocq" class="">表示優先度</td><td id="[rVV" class="">0～100で指定かつ表示数は2個<br/>状態ロール表示なし</td><td id="ps~q" class="">0～100で指定かつ表示数は2個<br/>状態ロール表示なし</td><td id="F{&lt;G" class="">並び順で指定かつ表示数は0～10個<br/>状態ロール表示あり</td></tr><tr id="29c863f5-c33a-4a6d-85be-a1c2ed8dad4b" dir="ltr"><td id="pocq" class="">効果優先度</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="eafa2a32-a7d2-443d-96ff-661c8fd65f04" dir="ltr"><td id="pocq" class="">持続ターン(有限)</td><td id="[rVV" class="">1～9999</td><td id="ps~q" class="">1～9999</td><td id="F{&lt;G" class="">1~10</td></tr><tr id="70293f8d-2a44-46c0-b084-6149487c294f" dir="ltr"><td id="pocq" class="">状態持続ターン数増減</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="5ff8436f-63f3-47b4-8a8a-62f9cb96cdfe" dir="ltr"><td id="pocq" class="">状態ターン自由計算式</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="c7afc07e-7311-437b-ba35-7b520b80664e" dir="ltr"><td id="pocq" class="">ターン計算方式</td><td id="[rVV" class="">上書き</td><td id="ps~q" class="">上書き</td><td id="F{&lt;G" class="">上書き/加算</td></tr><tr id="7e02b414-b027-49f7-8816-8efb5fbf9a38" dir="ltr"><td id="pocq" class="">終了タイミング</td><td id="[rVV" class="">行動/ターン終了時</td><td id="ps~q" class="">行動/ターン終了時</td><td id="F{&lt;G" class="">行動開始時/行動/ターン終了/攻撃時</td></tr><tr id="8bfaff30-740d-40bf-a21f-1bcf43b8bd97" dir="ltr"><td id="pocq" class="">戦闘終了時に解除</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">種別<br/>(戦or移動中)</td></tr><tr id="e1522cde-31ab-4923-8051-075c7b1c4720" dir="ltr"><td id="pocq" class="">行動制限時に解除</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">なし</td></tr><tr id="df471870-fe19-47f1-bb45-9d4be4f68e09" dir="ltr"><td id="pocq" class="">ダメージで解除</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">物理と魔法で別々</td></tr><tr id="730d3e38-3522-49d1-a0d5-511dd9c047e7" dir="ltr"><td id="pocq" class="">回避で解除</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">100％のみ</td></tr><tr id="d8831770-3cfd-4ba1-9813-59712dca597d" dir="ltr"><td id="pocq" class="">状態付与時メッセージ</td><td id="[rVV" class="">味方と敵で別々</td><td id="ps~q" class="">味方と敵で別々</td><td id="F{&lt;G" class="">味方と敵で同一</td></tr><tr id="95866d46-71ea-4082-b22e-263164e7bba2" dir="ltr"><td id="pocq" class="">状態持続時メッセージ</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">行動制限/スキル制限時のみ</td></tr><tr id="fb01bcb8-1e12-4362-b7cd-09232bed4f80" dir="ltr"><td id="pocq" class="">状態解除時メッセージ</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="ea2cbfe8-70fe-441b-9942-4834ccfd8a1d" dir="ltr"><td id="pocq" class="">戦闘不能</td><td id="[rVV" class="">0番の状態のみ</td><td id="ps~q" class="">0番の状態のみ</td><td id="F{&lt;G" class="">詳細かつ即死状態も可</td></tr><tr id="bdb0d716-31fd-4e1c-8621-a0943977e611" dir="ltr"><td id="pocq" class="">状態種別</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">異常/強化/弱体</td></tr><tr id="8db143c5-d8a8-4b00-8513-8f181501aa55" dir="ltr"><td id="pocq" class="">これ以外の全状態解除</td><td id="[rVV" class="">0番の状態のみ</td><td id="ps~q" class="">0番の状態のみ</td><td id="F{&lt;G" class="">詳細</td></tr><tr id="0299ea3d-f185-4ea2-92dc-3d7cd544c4cd" dir="ltr"><td id="pocq" class="">戦闘不能時残留</td><td id="[rVV" class="">戦闘不能時は全状態を消去</td><td id="ps~q" class="">戦闘不能時は全状態を消去</td><td id="F{&lt;G" class="">戦闘不能時に消去/残留を設定可</td></tr><tr id="7b93571a-7b65-4797-b9ba-380b505ec8d2" dir="ltr"><td id="pocq" class="">能力値の割合</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="f52adbba-a4a4-4cb0-a502-b57203416c11" dir="ltr"><td id="pocq" class="">命中率</td><td id="[rVV" class="">加算</td><td id="ps~q" class="">加算</td><td id="F{&lt;G" class="">乗算</td></tr><tr id="8881572c-9a61-447e-bc04-5a621def96ba" dir="ltr"><td id="pocq" class="">行動順最速</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">優先度</td></tr><tr id="1970172f-d61e-4d09-8014-ad7fb39d7ee6" dir="ltr"><td id="pocq" class="">反撃率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">詳細</td></tr><tr id="1280f107-7389-46e5-a29d-f418f8c603c2" dir="ltr"><td id="pocq" class="">スキル反射</td><td id="[rVV" class="">魔法反射のみかつ確率は自由</td><td id="ps~q" class="">魔法反射のみかつ確率は自由</td><td id="F{&lt;G" class="">詳細かつ100％</td></tr><tr id="42ecae27-4e1d-4934-a698-7279ba5363b5" dir="ltr"><td id="pocq" class="">無敵</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="d1b6d9e1-171b-4f3d-b183-ac139b4812c6" dir="ltr"><td id="pocq" class="">回避係数</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="bd7fbbcc-eb03-4125-af1b-596dbb8cd877" dir="ltr"><td id="pocq" class="">物理/魔法与ダメージ率</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="bc71ff9a-7ab4-4ab8-85e3-ae6bc69dff53" dir="ltr"><td id="pocq" class="">属性威力増加</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="00e3c8fa-0beb-4e57-bf89-166f4cc5624d" dir="ltr"><td id="pocq" class="">状態</td><td id="[rVV" class=""></td><td id="ps~q" class=""></td><td id="F{&lt;G" class=""></td></tr><tr id="7bbc3e3b-482d-40d9-aed6-7a596d6354e1" dir="ltr"><td id="pocq" class=""></td><td id="[rVV" class="">ツクールVXAce</td><td id="ps~q" class="">ツクールMZ</td><td id="F{&lt;G" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="7441f53b-58e5-4086-b86b-f41bbe61c757" dir="ltr"><td id="pocq" class="">複数状態耐性</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">異常/強化/弱体耐性を乗算</td></tr><tr id="4fad2851-a623-40f1-bd8a-80686e50eae3" dir="ltr"><td id="pocq" class="">状態付与率自由計算式</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="80f96067-2367-4100-a7b3-cc3dc9ed205c" dir="ltr"><td id="pocq" class="">他の状態耐性を参照</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">属性耐性で参照</td></tr><tr id="53416e42-f0c4-45af-9b8f-2c6a7da4365e" dir="ltr"><td id="pocq" class="">重複時変化</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">無制限</td></tr><tr id="9c387928-00a2-4ef6-a031-363de2b45477" dir="ltr"><td id="pocq" class="">状態解除時付与状態</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="e429eed3-efd3-4594-bbbf-414e4f49aa12" dir="ltr"><td id="pocq" class="">同時付与状態</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="b3064395-91f4-479e-835d-5d387e9e3455" dir="ltr"><td id="pocq" class="">付与先状態ID共有</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="4c957316-434a-4eef-b40e-1f58c12a8b5d" dir="ltr"><td id="pocq" class="">属性/状態耐性</td><td id="[rVV" class="">無制限</td><td id="ps~q" class="">無制限</td><td id="F{&lt;G" class="">属性耐性と共用かつ10000個</td></tr><tr id="1fd9da7d-49f6-8079-b95f-f3ac42c61580" dir="ltr"><td id="pocq" class="">状態効果量</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="37e5babe-70df-4c31-b9f2-7639638b09fa" dir="ltr"><td id="pocq" class="">弱体有効度</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">弱体状態防御率[±%]</td></tr><tr id="c2b9c682-7df5-4445-842d-00299a227d79" dir="ltr"><td id="pocq" class="">状態無効</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">なし</td></tr><tr id="32fc9a10-71a9-4696-8c61-f013dad2f636" dir="ltr"><td id="pocq" class="">不死身</td><td id="[rVV" class="">味方と敵とステートで設定可</td><td id="ps~q" class="">味方と敵とステートで設定可</td><td id="F{&lt;G" class="">状態IDの1番</td></tr><tr id="c19d9bd4-72f1-46bc-8836-c99344329bb3" dir="ltr"><td id="pocq" class="">会心回避率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">クリティカル無効率</td></tr><tr id="df4e17a5-7fbd-4293-a2ce-59a4e79aacfc" dir="ltr"><td id="pocq" class="">スキル無効率</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="6b0a2614-dd78-4e64-be73-a2361103b57f" dir="ltr"><td id="pocq" class="">魔法回避率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">回避係数で設定</td></tr><tr id="b8826e94-f138-443f-99ed-63d4ae0d8c29" dir="ltr"><td id="pocq" class="">HPMP自動回復</td><td id="[rVV" class="">HP/MP/TP</td><td id="ps~q" class="">HP/MP/TP</td><td id="F{&lt;G" class="">HP/MP</td></tr><tr id="b94c08db-b42e-41b0-af2a-dee9804c622f" dir="ltr"><td id="pocq" class="">HPMP自動回復属性</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="59d5a1c0-0fdf-4a48-9ac7-e1712a3230bd" dir="ltr"><td id="pocq" class="">被弾時HPMP増減</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="7d0b0df5-673e-4be7-a17c-19ec4a4f4e36" dir="ltr"><td id="pocq" class="">HP自動回復で戦闘不能</td><td id="[rVV" class="">禁止/許可から選択可</td><td id="ps~q" class="">禁止/許可から選択可</td><td id="F{&lt;G" class="">禁止/許可から選択可</td></tr><tr id="64aaeffd-dc3a-4d0a-b220-a768be1101c4" dir="ltr"><td id="pocq" class="">戦闘不能時蘇生</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="4c09f045-bd75-4d16-875e-a5d24a0e7efc" dir="ltr"><td id="pocq" class="">狙われ率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="72b9dc5a-1e75-4c6a-926b-6ae850d10328" dir="ltr"><td id="pocq" class="">防御効果率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">全ダメージ耐性</td></tr><tr id="f258e803-4efb-4d8f-9d83-df9f2833e2cc" dir="ltr"><td id="pocq" class="">回復効果率</td><td id="[rVV" class="">対象側の受回復量に依存</td><td id="ps~q" class="">対象側の受回復量に依存</td><td id="F{&lt;G" class="">発動側の与回復量に依存</td></tr><tr id="941c37a0-ad9d-469c-afde-0f27c13f8f6b" dir="ltr"><td id="pocq" class="">アイテム効果率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="6f83fa08-981c-4057-8b26-2ba73abc9876" dir="ltr"><td id="pocq" class="">MP消費率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="7828cbd4-c07e-43a5-8932-2a65abdbabe2" dir="ltr"><td id="pocq" class="">TPチャージ率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="0ac5c279-dad7-4d93-9819-f2678ae04efa" dir="ltr"><td id="pocq" class="">物理/魔法受ダメージ率</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">標準</td></tr><tr id="3ee6bdbe-d48c-4400-8bb9-6bebf32226f5" dir="ltr"><td id="pocq" class="">リバースダメージ</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="9fc4787c-8c8c-499b-b8e9-050760e3bafc" dir="ltr"><td id="pocq" class="">行動制限キャンセル率</td><td id="[rVV" class="">なし</td><td id="ps~q" class="">なし</td><td id="F{&lt;G" class="">標準</td></tr><tr id="aabd83da-d7de-4878-9a70-75cf2bd54a30" dir="ltr"><td id="pocq" class="">攻撃時属性</td><td id="[rVV" class="">無制限</td><td id="ps~q" class="">無制限</td><td id="F{&lt;G" class="">20</td></tr><tr id="92ae25bb-afb1-4144-85c4-1232fca30101" dir="ltr"><td id="pocq" class="">攻撃時ステート</td><td id="[rVV" class="">無制限</td><td id="ps~q" class="">無制限</td><td id="F{&lt;G" class="">なし</td></tr><tr id="f0e67f17-bd12-49c7-990a-ad1d77b6a4d9" dir="ltr"><td id="pocq" class="">攻撃速度補正</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">なし</td></tr><tr id="1da033b5-cd4c-4a71-bf96-6007c1218de5" dir="ltr"><td id="pocq" class="">攻撃追加回数</td><td id="[rVV" class="">1～9</td><td id="ps~q" class="">1～9</td><td id="F{&lt;G" class="">無制限</td></tr><tr id="0ceb1471-0ae8-4779-81ed-daf66ed2d3a3" dir="ltr"><td id="pocq" class="">スキルタイプ追加</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">ｽｷﾙﾀｸﾞ</td></tr><tr id="2b8617f3-d1d6-42db-b398-501904c3bbc8" dir="ltr"><td id="pocq" class="">スキルタイプ封印</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">ｽｷﾙﾀｸﾞ</td></tr><tr id="2d2890ba-4a77-49ec-b6e9-f9550bf0a7a7" dir="ltr"><td id="pocq" class="">スキル追加</td><td id="[rVV" class="">無制限</td><td id="ps~q" class="">無制限</td><td id="F{&lt;G" class="">なし</td></tr><tr id="562e07b2-b226-4bc0-8a46-8d677c8befd7" dir="ltr"><td id="pocq" class="">スキル封印</td><td id="[rVV" class="">標準</td><td id="ps~q" class="">標準</td><td id="F{&lt;G" class="">ｽｷﾙﾀｸﾞ</td></tr></tbody></table><p id="1cb9da7d-49f6-8044-aac2-ec84ebd7127f" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-806b-a36e-cad781c8c25a" dir="auto"/><p id="1cb9da7d-49f6-80b1-9452-f34d7bdc333e" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80da-90c5-cdf8cf5aba02" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-80da-a19e-fe2b1bdb896b" class="" dir="auto">
+</p><hr id="1d846eb3-0b83-48e5-a74e-c44ffc8b6ebb" dir="auto"/><h1 id="ca3d4b02-9dd5-4bd2-bb2b-9fbe188b56cd" class="" dir="auto">Sheet 9: <em>アニメーション</em></h1><table id="2d62d04d-15cd-4ba4-a1e6-250d3e6cc68e" class="simple-table" dir="ltr"><tbody><tr id="1b739ecc-9485-4161-bf6b-66348a2beb80" dir="ltr"><td id="I]az" class="">アニメーション</td><td id="=d&gt;K" class=""></td><td id="XQ~U" class=""></td><td id="@vN]" class=""></td></tr><tr id="ad82d298-c9d2-437f-82ba-5a3f19194703" dir="ltr"><td id="I]az" class=""></td><td id="=d&gt;K" class="">ツクールVXAce</td><td id="XQ~U" class="">ツクールMZ</td><td id="@vN]" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="2f3989db-ddc3-47a3-980c-7e2b0fbad81a" dir="ltr"><td id="I]az" class="">画像設定数</td><td id="=d&gt;K" class="">2</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">1<br/>(連続表示あり)</td></tr><tr id="ec60982d-d48e-43c7-acc3-d009d8e5ae6d" dir="ltr"><td id="I]az" class="">画像の色指定</td><td id="=d&gt;K" class="">色相</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">色相/彩度/RGBの度合い</td></tr><tr id="b41b6f20-e2cf-4d8a-9446-b50bfef89c64" dir="ltr"><td id="I]az" class="">横分割数</td><td id="=d&gt;K" class="">5</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">詳細</td></tr><tr id="4d0d4a31-24d7-4cb0-8bdd-ee135acfbc33" dir="ltr"><td id="I]az" class="">縦分割数</td><td id="=d&gt;K" class="">画像の縦サイズに依存</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">詳細</td></tr><tr id="e7a924e2-afcc-433c-bc81-ab1a05beab7d" dir="ltr"><td id="I]az" class="">1パターンのウェイト</td><td id="=d&gt;K" class="">4</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">詳細</td></tr><tr id="0b4a7332-6095-4531-92a6-c0c02b64b0ec" dir="ltr"><td id="I]az" class="">拡大率</td><td id="=d&gt;K" class="">横と縦で同じ</td><td id="XQ~U" class="">横と縦で同じ</td><td id="@vN]" class="">横と縦で別々で指定可</td></tr><tr id="5f0ecf6a-f374-4dc9-a836-ada6386d9a36" dir="ltr"><td id="I]az" class="">角度</td><td id="=d&gt;K" class="">標準</td><td id="XQ~U" class="">標準</td><td id="@vN]" class="">標準</td></tr><tr id="1cb9da7d-49f6-80bf-8df5-c9d79ff7eab4" dir="ltr"><td id="I]az" class="">3D回転</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">標準</td><td id="@vN]" class="">なし</td></tr><tr id="6c5e5c56-b42f-45fc-84fd-84ed55846585" dir="ltr"><td id="I]az" class="">不透明度</td><td id="=d&gt;K" class="">標準</td><td id="XQ~U" class="">EffecSeerで設定</td><td id="@vN]" class="">標準</td></tr><tr id="790c8a74-19a3-4dd1-a4a6-a5cf444a7577" dir="ltr"><td id="I]az" class="">背面表示</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">標準</td></tr><tr id="b76aa8be-ad82-4e66-a594-5fe0510947bd" dir="ltr"><td id="I]az" class="">基準位置</td><td id="=d&gt;K" class="">標準</td><td id="XQ~U" class="">標準</td><td id="@vN]" class="">標準</td></tr><tr id="3c6b69db-716f-46be-a6ca-fc444c7d2690" dir="ltr"><td id="I]az" class="">始点位置</td><td id="=d&gt;K" class="">対象位置</td><td id="XQ~U" class="">対象位置</td><td id="@vN]" class="">発動/対象/画面中心</td></tr><tr id="0bfe759c-8450-458a-af0e-7c8a4c1b1b23" dir="ltr"><td id="I]az" class="">終点位置</td><td id="=d&gt;K" class="">始点位置と変わらず</td><td id="XQ~U" class="">始点位置と変わらず</td><td id="@vN]" class="">発動/対象/画面中心</td></tr><tr id="2166b335-186f-4c9e-8115-cbffb503594f" dir="ltr"><td id="I]az" class="">曲線移動</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">標準</td></tr><tr id="19b52294-833e-40e6-901c-d42425be03c6" dir="ltr"><td id="I]az" class="">表示位置ズレ</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">標準かつX/Y座標での指定も可</td></tr><tr id="9922b6ce-b047-4e07-80bb-472bda6c8747" dir="ltr"><td id="I]az" class="">自身対象時非表示</td><td id="=d&gt;K" class="">常に表示</td><td id="XQ~U" class="">常に表示</td><td id="@vN]" class="">表示/非表示から選択可</td></tr><tr id="70c5adf8-3b32-40e8-9465-c9c9972bfc9a" dir="ltr"><td id="I]az" class="">効果音</td><td id="=d&gt;K" class="">無制限</td><td id="XQ~U" class="">無制限</td><td id="@vN]" class="">4</td></tr><tr id="ada851f6-30d9-481f-a90e-4fddf4ff4086" dir="ltr"><td id="I]az" class="">フラッシュ</td><td id="=d&gt;K" class="">無制限</td><td id="XQ~U" class="">無制限</td><td id="@vN]" class="">1</td></tr><tr id="ad8b8d14-9139-4a2c-b4de-d4deba405f9b" dir="ltr"><td id="I]az" class="">終了後再生アニメ</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">標準</td></tr><tr id="94be929a-769e-4450-bebf-e47e87092c78" dir="ltr"><td id="I]az" class="">コモンで処理</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">標準</td></tr><tr id="9f1693eb-64b0-44b6-af58-a6f896cdac50" dir="ltr"><td id="I]az" class="">背景振動</td><td id="=d&gt;K" class="">なし</td><td id="XQ~U" class="">なし</td><td id="@vN]" class="">1</td></tr><tr id="2342cecd-4bff-4d83-897c-c3124a1ccaa0" dir="ltr"><td id="I]az" class="">同時再生数</td><td id="=d&gt;K" class="">1</td><td id="XQ~U" class="">1</td><td id="@vN]" class="">初回5+ループ10</td></tr></tbody></table><p id="1cb9da7d-49f6-80cf-8aa1-f6ac17589941" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-80be-972b-e501a6f65d19" dir="auto"/><p id="1cb9da7d-49f6-80eb-9b0f-f6058c3b1d96" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8082-8c59-ffa5fdcfefd2" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8004-840a-cc61a6b1a328" class="" dir="auto">
+</p><hr id="530a6d3b-efd2-40aa-939b-ebcc0849b6b8" dir="auto"/><h1 id="52e469bc-17a8-41f0-9a68-4460b5e124ab" class="" dir="auto">Sheet 10: <em>システム</em></h1><table id="9c64d9c9-368b-42e9-b176-9454ba95eb3a" class="simple-table" dir="ltr"><tbody><tr id="df891c6e-6e55-4cba-8168-ecd93326a4da" dir="ltr"><td id="XyjZ" class="">システム</td><td id="uy~{" class=""></td><td id="vC=S" class=""></td><td id="WpvT" class=""></td></tr><tr id="8ca27fd4-cf5a-4b2d-aeeb-dfc894a92a28" dir="ltr"><td id="XyjZ" class=""></td><td id="uy~{" class="">ツクールVXAce</td><td id="vC=S" class="">ツクールMZ</td><td id="WpvT" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="2d3daee6-5935-4d99-89fa-ff0ab6708b85" dir="ltr"><td id="XyjZ" class="">画面サイズ</td><td id="uy~{" class="">544x416</td><td id="vC=S" class="">816x624<br/>(0~9999の範囲で自由変更可)</td><td id="WpvT" class="">320x240～1280x960,1280x720<br/>(有料版は1920x1440まで)</td></tr><tr id="1cb9da7d-49f6-80ec-a633-f7b0c38ec564" dir="ltr"><td id="XyjZ" class="">画面の拡大率</td><td id="uy~{" class="">1<br/>(変更不可)</td><td id="vC=S" class="">1～4</td><td id="WpvT" class="">1<br/>(320x240の画面の場合は2)<br/>(有料版は1～3に変更可)</td></tr><tr id="d810afbc-c1d4-4df0-a05d-282764a30dc8" dir="ltr"><td id="XyjZ" class="">マップの最大サイズ</td><td id="uy~{" class="">500x500</td><td id="vC=S" class="">256x256</td><td id="WpvT" class="">1024x1024</td></tr><tr id="08a2ddf9-a790-4ac5-a469-0c09f3839b5b" dir="ltr"><td id="XyjZ" class="">マップチップのサイズ</td><td id="uy~{" class="">32</td><td id="vC=S" class="">16,24,32,48</td><td id="WpvT" class="">16,32,40,48</td></tr><tr id="3d0d13ca-764e-48d4-b0b5-afc7c5d92451" dir="ltr"><td id="XyjZ" class="">画像ファイルの形式</td><td id="uy~{" class="">jpg,png</td><td id="vC=S" class="">png</td><td id="WpvT" class="">bmp,jpg,png</td></tr><tr id="e8e13f2d-de5e-4c78-83b7-f4b8a0a6b7e4" dir="ltr"><td id="XyjZ" class="">使用を推奨する形式</td><td id="uy~{" class="">png</td><td id="vC=S" class=""></td><td id="WpvT" class="">png</td></tr><tr id="c4a16cd0-c135-41bc-83e5-ccef75c17400" dir="ltr"><td id="XyjZ" class="">音声ファイルの形式</td><td id="uy~{" class="">mid,mp3,ogg,wav,wma</td><td id="vC=S" class="">ogg</td><td id="WpvT" class="">mid,mp3,ogg,wav</td></tr><tr id="ea5dde49-3b31-4d91-a742-05804bf60cf9" dir="ltr"><td id="XyjZ" class="">使用を推奨する形式</td><td id="uy~{" class="">mid,ogg</td><td id="vC=S" class=""></td><td id="WpvT" class="">mid,ogg</td></tr><tr id="494c9c0d-4666-4d28-8512-166afdb34ad1" dir="ltr"><td id="XyjZ" class="">動画ファイルの形式</td><td id="uy~{" class="">ogv</td><td id="vC=S" class="">webm＆mp4</td><td id="WpvT" class="">avi,mp4,mpg,ogv</td></tr><tr id="5c700f7e-712c-4526-9d4e-a33167236357" dir="ltr"><td id="XyjZ" class="">使用を推奨する形式</td><td id="uy~{" class=""></td><td id="vC=S" class=""></td><td id="WpvT" class="">ogv</td></tr><tr id="77ea3fbe-e6a5-4953-8017-d07f4e8c582e" dir="ltr"><td id="XyjZ" class="">スクリプト</td><td id="uy~{" class="">RGSS3</td><td id="vC=S" class="">Java</td><td id="WpvT" class="">なし</td></tr><tr id="b51c0100-7514-4c25-82e0-158bd03c8959" dir="ltr"><td id="XyjZ" class="">ボタン数</td><td id="uy~{" class="">A/B/C/X/Y/Z/L/R</td><td id="vC=S" class="">A/B/X/Y/L/R</td><td id="WpvT" class="">A/B/X/Y/L1/R1/L2/R2</td></tr><tr id="cfe88243-1519-4d46-86d5-00e89a1e2009" dir="ltr"><td id="XyjZ" class="">マウス/タッチ操作</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">マウス/タッチ</td><td id="WpvT" class="">マウス/タッチ</td></tr><tr id="6a7b7656-08ba-4171-8ea6-002d72949bc9" dir="ltr"><td id="XyjZ" class="">出力プラットフォーム</td><td id="uy~{" class="">Win</td><td id="vC=S" class="">Win/Mac/Android/IOS/ブラウザ</td><td id="WpvT" class="">Win/Android/IOS/ブラウザ</td></tr><tr id="6dcb3c79-c330-4093-b61a-5db88ed800e7" dir="ltr"><td id="XyjZ" class="">システム言語</td><td id="uy~{" class="">日本語のみ</td><td id="vC=S" class="">日本語のみ</td><td id="WpvT" class="">日/英/西欧/簡中/繁中/韓</td></tr><tr id="c6a5be92-35d5-4771-8b89-00b1b714fd5f" dir="ltr"><td id="XyjZ" class="">ローディング画面表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">標準</td></tr><tr id="76764cf7-0164-4d7c-a47f-fa2ab4b8935d" dir="ltr"><td id="XyjZ" class="">起動時ロゴ表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">標準</td></tr><tr id="21690d36-bd96-4002-b50b-1cbe31bc8779" dir="ltr"><td id="XyjZ" class="">起動時デモシーン</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="6f1244ac-b2c7-4341-a6db-5a65040f63c2" dir="ltr"><td id="XyjZ" class="">1フォルダの最大ゲーム数</td><td id="uy~{" class="">1</td><td id="vC=S" class="">1</td><td id="WpvT" class="">62</td></tr><tr id="b1be4138-31c7-484f-817b-62d10c9a46c0" dir="ltr"><td id="XyjZ" class="">タイトル遠景のレイヤー数</td><td id="uy~{" class="">2</td><td id="vC=S" class="">2</td><td id="WpvT" class="">2</td></tr><tr id="9c115014-2a3f-4ecb-822f-1632c8b96bbd" dir="ltr"><td id="XyjZ" class="">タイトル画面のマップ化</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="5684aaf8-0e82-4c9b-bb3b-4289cf40d0af" dir="ltr"><td id="XyjZ" class="">メインタイトルの表示</td><td id="uy~{" class="">テキスト</td><td id="vC=S" class="">テキスト</td><td id="WpvT" class="">テキスト/画像</td></tr><tr id="cfb539fa-d29b-4416-b3e3-1b3a5579df2d" dir="ltr"><td id="XyjZ" class="">サブタイトルの表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">テキスト/画像</td></tr><tr id="532883b9-a72f-4530-ad8a-63edece018f7" dir="ltr"><td id="XyjZ" class="">バージョンの表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="372f4182-82fc-486d-9aa3-ff475a001991" dir="ltr"><td id="XyjZ" class="">コマンドの表示形式</td><td id="uy~{" class="">テキスト</td><td id="vC=S" class="">テキスト</td><td id="WpvT" class="">テキスト/画像</td></tr><tr id="30a0b42e-121c-4445-bb94-2f50959518b4" dir="ltr"><td id="XyjZ" class="">タイトルコマンドの位置</td><td id="uy~{" class="">変更不可</td><td id="vC=S" class="">変更不可</td><td id="WpvT" class="">変更可</td></tr><tr id="48424478-e58e-4277-b982-878fa013750b" dir="ltr"><td id="XyjZ" class="">ゲームオーバー挙動変更</td><td id="uy~{" class="">変更不可</td><td id="vC=S" class="">変更不可</td><td id="WpvT" class="">変更可</td></tr><tr id="e71d2154-dca1-4d2d-a7b0-a54f26731aeb" dir="ltr"><td id="XyjZ" class="">ピクセル移動</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準<br/>(α版)</td></tr><tr id="116d27af-ee3d-4527-b11b-ab713debff09" dir="ltr"><td id="XyjZ" class="">ダッシュ</td><td id="uy~{" class="">標準</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">標準</td></tr><tr id="f70622c4-3a24-4a70-8446-d6f52e4045b3" dir="ltr"><td id="XyjZ" class="">文章スキップ</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="0792bfc5-0adf-4244-a73d-fe2622444bdd" dir="ltr"><td id="XyjZ" class="">システム</td><td id="uy~{" class=""></td><td id="vC=S" class=""></td><td id="WpvT" class=""></td></tr><tr id="a0b8875b-3239-4be6-a143-50cec5763e88" dir="ltr"><td id="XyjZ" class=""></td><td id="uy~{" class="">ツクールVXAce</td><td id="vC=S" class="">ツクールMZ</td><td id="WpvT" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="079c4a20-5bf4-429c-849e-c2473c526bc2" dir="ltr"><td id="XyjZ" class="">乗り物</td><td id="uy~{" class="">標準</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">標準</td></tr><tr id="d7d4eee5-090e-4d95-a4f7-f559c568b100" dir="ltr"><td id="XyjZ" class="">地名表示</td><td id="uy~{" class="">マップ移動直後のみ</td><td id="vC=S" class="">マップ移動直後のみ</td><td id="WpvT" class="">常時</td></tr><tr id="63d7f47d-80be-438d-ba12-1f4dd4136efd" dir="ltr"><td id="XyjZ" class="">視界制限</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="5703f46d-58b2-4439-9403-3a42b3ecb3aa" dir="ltr"><td id="XyjZ" class="">ミニマップ表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="c57f02ef-c85b-40c5-afd6-297eaaf140f8" dir="ltr"><td id="XyjZ" class="">ランダムエンカウント</td><td id="uy~{" class="">無制限</td><td id="vC=S" class="">無制限</td><td id="WpvT" class="">10</td></tr><tr id="1466009d-e31c-4400-9d5a-dcc43df8de1a" dir="ltr"><td id="XyjZ" class="">エンカウントの範囲</td><td id="uy~{" class="">リージョンごとに柔軟に設定</td><td id="vC=S" class="">リージョンごとに柔軟に設定</td><td id="WpvT" class="">イベントごとに設定かつ四角形</td></tr><tr id="9d92178c-9c72-4618-acbb-b45fb1082f81" dir="ltr"><td id="XyjZ" class="">メッセージの顔グラ表示</td><td id="uy~{" class="">左に顔グラ</td><td id="vC=S" class="">左に顔グラ</td><td id="WpvT" class="">右下やウィンドウの右上に立ち絵、又は顔グラウィンドウ付きで顔グラ<br/>(不透明度やメッセージウィンドウと<br/>どちらを奥に表示するか、表示の際のアニメーションにかける時間も設定可能)</td></tr><tr id="1cb9da7d-49f6-807d-afe2-e682d672bf2c" dir="ltr"><td id="XyjZ" class="">ﾒｯｾｰｼﾞｳｨﾝﾄﾞｳの表示位置</td><td id="uy~{" class="">上、下、中央から設定可</td><td id="vC=S" class="">上、下、中央から設定可</td><td id="WpvT" class="">ノベル風表示、<br/>RPG風表示、<br/>上、下、中央から設定可</td></tr><tr id="092b3e72-0d04-400c-8123-8928500ba736" dir="ltr"><td id="XyjZ" class="">タイマーの扱い</td><td id="uy~{" class="">常時進行</td><td id="vC=S" class="">常時進行</td><td id="WpvT" class="">メニュー/戦闘時は一時停止</td></tr><tr id="494c3b56-b401-4185-9614-ea8496277dac" dir="ltr"><td id="XyjZ" class="">変数交換ショップ</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="1b3fb5d9-9e61-412d-83e9-5aedf3ddbf33" dir="ltr"><td id="XyjZ" class="">アイテム交換ショップ</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="a92879dc-90e5-43ae-be23-82dd77345327" dir="ltr"><td id="XyjZ" class="">簡易スタッフロール</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="0e13ccb8-f006-46cf-a940-65d6515d3384" dir="ltr"><td id="XyjZ" class="">戦闘BGMの変更対象</td><td id="uy~{" class="">全ての戦闘</td><td id="vC=S" class="">全ての戦闘</td><td id="WpvT" class="">ｴﾝｶｳﾝﾄの戦闘のみ<br/>(ｲﾍﾞﾝﾄ戦は個別に設定)</td></tr><tr id="43b8bcea-6f4c-40cb-ba6c-9e01ee4b156f" dir="ltr"><td id="XyjZ" class="">勝利BGMの変更対象</td><td id="uy~{" class="">全ての戦闘</td><td id="vC=S" class="">全ての戦闘</td><td id="WpvT" class="">ｴﾝｶｳﾝﾄの戦闘のみ<br/>(ｲﾍﾞﾝﾄ戦は個別に設定)</td></tr><tr id="15a08e71-2e37-4080-9355-8210771a6f95" dir="ltr"><td id="XyjZ" class="">戦闘/勝利BGMの演奏禁止</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="0898ce76-fc52-4b2b-a8c5-2c3724f882db" dir="ltr"><td id="XyjZ" class="">戦闘画面の形式</td><td id="uy~{" class="">フロントビュー</td><td id="vC=S" class="">フロント/<br/>サイドビュー</td><td id="WpvT" class="">フロント/<br/>サイドビュー</td></tr><tr id="e7e2c0ab-fbed-4da1-84c9-1ec0b8535ba2" dir="ltr"><td id="XyjZ" class="">サイドビュー時左右反転</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="7af47b09-b6b4-4603-a207-e964c7c08828" dir="ltr"><td id="XyjZ" class="">戦闘システムの形式</td><td id="uy~{" class="">ターン制</td><td id="vC=S" class="">ターン制/<br/>TPB制(ｽﾄｯﾌﾟ/ｱｸﾃｨﾌﾞ)</td><td id="WpvT" class="">ターン制/<br/>TPB制(ｽﾄｯﾌﾟ)(ATB)</td></tr><tr id="7f412aa6-0d5f-40dd-b9c2-fda3e42a940f" dir="ltr"><td id="XyjZ" class="">QTE</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="cc21d68c-8da0-4291-aa78-404bc78217d0" dir="ltr"><td id="XyjZ" class="">戦闘ウィンドウの変更</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="e2cf2aa2-bafe-475b-887b-d86dc2dbcc34" dir="ltr"><td id="XyjZ" class="">戦闘背景の指定方法</td><td id="uy~{" class="">マップごとに設定</td><td id="vC=S" class="">マップごとに設定</td><td id="WpvT" class="">イベントごとに設定</td></tr><tr id="fa542a78-9678-478a-94be-2b9cd256fec7" dir="ltr"><td id="XyjZ" class="">戦闘背景のレイヤー数</td><td id="uy~{" class="">2</td><td id="vC=S" class="">2</td><td id="WpvT" class="">2</td></tr><tr id="29284a67-beb9-49c4-af58-34e3d52eea9d" dir="ltr"><td id="XyjZ" class="">戦闘背景の色相変更</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="f2f13a5e-5f1e-4b73-a4cc-5a8a05ff96a2" dir="ltr"><td id="XyjZ" class="">マップ画面を戦闘背景</td><td id="uy~{" class="">背景未指定でVX風背景</td><td id="vC=S" class="">背景未指定でマップのスクショ</td><td id="WpvT" class="">VX風戦闘背景/<br/>マップのスクショ</td></tr><tr id="750d9bf1-6351-4f62-87fa-cf6b9c60a2cd" dir="ltr"><td id="XyjZ" class="">戦闘コマンド</td><td id="uy~{" class="">スキルタイプのみ</td><td id="vC=S" class="">スキルタイプのみ</td><td id="WpvT" class="">詳細</td></tr><tr id="94380b6a-4d04-436d-82a4-9f2770ba5751" dir="ltr"><td id="XyjZ" class="">戦闘コマンド選択変更</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="b239f9a6-67f6-48c5-a43c-e25c60bfc686" dir="ltr"><td id="XyjZ" class="">戦闘ログ確認</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="cd705620-ca8e-49ce-acb6-49c5fff6161e" dir="ltr"><td id="XyjZ" class="">戦闘開始時演出</td><td id="uy~{" class="">ﾄﾗﾝｼﾞｼｮﾝ使用/<br/>変更不可</td><td id="vC=S" class="">ﾄﾗﾝｼﾞｼｮﾝ不使用/<br/>変更不可</td><td id="WpvT" class="">ﾄﾗﾝｼﾞｼｮﾝ使用/不使用/<br/>変更可</td></tr><tr id="29c8fbcc-d077-4807-a224-26b629d48efd" dir="ltr"><td id="XyjZ" class="">敵登場演出</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="69de6af0-46f6-4058-96de-dcbc059d0fb7" dir="ltr"><td id="XyjZ" class="">ﾀﾞﾒｰｼﾞﾎﾟｯﾌﾟｱｯﾌﾟ表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">詳細</td></tr><tr id="cb7e6904-9073-4d3f-acef-db4ab79e5ce9" dir="ltr"><td id="XyjZ" class="">システム</td><td id="uy~{" class=""></td><td id="vC=S" class=""></td><td id="WpvT" class=""></td></tr><tr id="31ef7e5d-8a76-43b4-82ce-a2157d04dd68" dir="ltr"><td id="XyjZ" class=""></td><td id="uy~{" class="">ツクールVXAce</td><td id="vC=S" class="">ツクールMZ</td><td id="WpvT" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="8203f1ad-721e-46c0-8f83-dea8a1c8711a" dir="ltr"><td id="XyjZ" class="">ﾀﾞﾒｰｼﾞｴﾌｪｸﾄ</td><td id="uy~{" class="">点滅</td><td id="vC=S" class="">点滅</td><td id="WpvT" class="">詳細</td></tr><tr id="57231de2-d8a1-438c-9212-2f76ce8700d2" dir="ltr"><td id="XyjZ" class="">ｸﾘﾃｨｶﾙ時のﾀﾞﾒｰｼﾞ</td><td id="uy~{" class="">通常ダメージ×3</td><td id="vC=S" class="">通常ダメージ×3</td><td id="WpvT" class="">詳細</td></tr><tr id="ae87c4a4-d215-4e19-8659-186f772876b6" dir="ltr"><td id="XyjZ" class="">属性相性表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="80f76331-ca1a-4d2f-ba04-6f924c3693de" dir="ltr"><td id="XyjZ" class="">TP消費技の使用</td><td id="uy~{" class="">味方と敵</td><td id="vC=S" class="">味方と敵</td><td id="WpvT" class="">味方と敵</td></tr><tr id="42698e93-ed43-4755-b24d-961dca6d28ed" dir="ltr"><td id="XyjZ" class="">床ダメージ</td><td id="uy~{" class="">標準</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">詳細</td></tr><tr id="80211c43-6834-4ff0-8d86-7f9c636ee1ff" dir="ltr"><td id="XyjZ" class="">レベル依存HP/MP再生</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="8f2430ea-9481-4f9e-a90c-e75521b39116" dir="ltr"><td id="XyjZ" class="">反射時ダメージ変動</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="2a5b4a07-cbc8-4430-96c4-0bb405871ba3" dir="ltr"><td id="XyjZ" class="">身代わりHP条件</td><td id="uy~{" class="">残りHP25％以下</td><td id="vC=S" class="">残りHP25％以下</td><td id="WpvT" class="">詳細</td></tr><tr id="c1b8ef3a-9178-4082-b1aa-cab42c194ae5" dir="ltr"><td id="XyjZ" class="">身代わり時ﾀﾞﾒｰｼﾞ減少</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="73740547-2d03-4201-8fc3-2bd88f209db4" dir="ltr"><td id="XyjZ" class="">パッシブスキル</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="0d0ea415-3685-4389-b0e6-25a7b5d68ed0" dir="ltr"><td id="XyjZ" class="">ポイント制装備システム</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="f5813dca-1ae7-4ece-b820-ba8762d20d4a" dir="ltr"><td id="XyjZ" class="">スキル選択制</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="f6998d51-5dc8-48e0-8e8f-0a1351e8a98a" dir="ltr"><td id="XyjZ" class="">作戦型AI</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="42cd98e6-55a4-415b-b2e2-3b1d80ad7e47" dir="ltr"><td id="XyjZ" class="">リーダーの戦闘不能で敗北</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="70185e3f-212a-42b9-9aa9-f31eeae0cbb7" dir="ltr"><td id="XyjZ" class="">戦闘後HPMP回復</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="7b18ced7-a672-4bcf-bd98-4493a7684064" dir="ltr"><td id="XyjZ" class="">アイテム最大数</td><td id="uy~{" class="">99</td><td id="vC=S" class="">99</td><td id="WpvT" class="">無制限かつ個別に設定可</td></tr><tr id="d2d8af3d-bdfd-48eb-9431-a13e91605fa8" dir="ltr"><td id="XyjZ" class="">戦闘時武器防具使用</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="da30aca5-231d-4595-b715-ceb5a9c71091" dir="ltr"><td id="XyjZ" class="">アイテム個別制</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="88d3a933-9058-4936-b704-b9441278672f" dir="ltr"><td id="XyjZ" class="">アイテム引継ぎ</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="68c17fdf-f07b-43a8-b976-1ae2d2455df9" dir="ltr"><td id="XyjZ" class="">最大戦闘参加人数</td><td id="uy~{" class="">4</td><td id="vC=S" class="">4</td><td id="WpvT" class="">1～10</td></tr><tr id="c4efc5d7-976e-4086-9b44-4a7225863d8c" dir="ltr"><td id="XyjZ" class="">控え</td><td id="uy~{" class="">標準</td><td id="vC=S" class="">標準</td><td id="WpvT" class="">標準</td></tr><tr id="33c65f7c-072d-4e87-bb89-859767d68598" dir="ltr"><td id="XyjZ" class="">パーティリーダー変更禁止</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="27d00508-5ceb-4913-b790-78b583a1bea8" dir="ltr"><td id="XyjZ" class="">主人公の能力値設定方法</td><td id="uy~{" class="">職業で設定</td><td id="vC=S" class="">職業で設定</td><td id="WpvT" class="">主人公で設定かつ職業で乗算</td></tr><tr id="2791d51f-4183-4ff2-9708-5c68d6876c4b" dir="ltr"><td id="XyjZ" class="">通常能力値の数</td><td id="uy~{" class="">6</td><td id="vC=S" class="">6</td><td id="WpvT" class="">5</td></tr><tr id="fd903dfb-2f6d-4249-9d3f-89868ee59c96" dir="ltr"><td id="XyjZ" class="">カスタム能力値の数</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">5</td></tr><tr id="f8f98e58-115f-46b8-86e6-8acfe4e8443a" dir="ltr"><td id="XyjZ" class="">最大能力値</td><td id="uy~{" class="">999<br/>(HP/MPは9999)</td><td id="vC=S" class="">999<br/>(HP/MPは9999)</td><td id="WpvT" class="">詳細</td></tr><tr id="bb83ebae-29a9-40ff-b7b9-bd27d7ba1ca1" dir="ltr"><td id="XyjZ" class="">獲得経験値/金額補正</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="f2d89303-b63e-4294-9920-dde5f964d35a" dir="ltr"><td id="XyjZ" class="">装備可能欄数</td><td id="uy~{" class="">5<br/>(1部位1個)</td><td id="vC=S" class="">無制限<br/>(1部位1個)</td><td id="WpvT" class="">1～15</td></tr><tr id="f0f6500f-3567-4e3b-95ad-d54496ed383b" dir="ltr"><td id="XyjZ" class="">自動装備</td><td id="uy~{" class="">能力値のみ考慮</td><td id="vC=S" class="">能力値のみ考慮</td><td id="WpvT" class="">能力値/耐性を考慮</td></tr><tr id="c59706ce-9398-4023-916b-43207f4ac2b0" dir="ltr"><td id="XyjZ" class="">システム</td><td id="uy~{" class=""></td><td id="vC=S" class=""></td><td id="WpvT" class=""></td></tr><tr id="42a83989-6bae-48a3-bd0b-181fa56b58e1" dir="ltr"><td id="XyjZ" class=""></td><td id="uy~{" class="">ツクールVXAce</td><td id="vC=S" class="">ツクールMZ</td><td id="WpvT" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="10cabb64-1c36-469e-9a48-4aea90744ff3" dir="ltr"><td id="XyjZ" class="">二刀流時のダメージ</td><td id="uy~{" class="">攻撃回数1回のみ</td><td id="vC=S" class="">攻撃回数1回のみ</td><td id="WpvT" class="">攻撃回数2回目以降は詳細</td></tr><tr id="5a4fe52f-3473-4350-b2eb-075a481c3838" dir="ltr"><td id="XyjZ" class="">命中/回避自由計算式</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="e6b4607d-bb8c-42ef-9f94-46be75460906" dir="ltr"><td id="XyjZ" class="">会心率自由計算式</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="6f9b607e-41f0-4915-8edf-ee47617491e5" dir="ltr"><td id="XyjZ" class="">属性数</td><td id="uy~{" class="">99</td><td id="vC=S" class="">99</td><td id="WpvT" class="">10000</td></tr><tr id="37d4ef2c-c25e-4234-b92a-43e75070cf92" dir="ltr"><td id="XyjZ" class="">状態数</td><td id="uy~{" class="">99</td><td id="vC=S" class="">99</td><td id="WpvT" class="">10000<br/>(耐性は属性と共用)</td></tr><tr id="a698375b-7136-4225-9fd6-a97e86363a10" dir="ltr"><td id="XyjZ" class="">複数属性耐性</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">物理/魔法属性耐性と乗算</td></tr><tr id="d9896ae6-06b5-4c61-a1f7-8d7132ef577a" dir="ltr"><td id="XyjZ" class="">複数状態耐性</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">異常/強化/弱体耐性と乗算</td></tr><tr id="281c2ea4-e50c-4fa9-9318-6ccbbadca83d" dir="ltr"><td id="XyjZ" class="">属性耐性上限/下限</td><td id="uy~{" class="">上限は100/下限は-900</td><td id="vC=S" class="">上限は100/下限は-900</td><td id="WpvT" class="">上限は200/下限は-400</td></tr><tr id="009a9184-2b47-4ef4-8548-4f926e708237" dir="ltr"><td id="XyjZ" class="">ステータス画面耐性表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="05ab34d0-5105-4d19-a81e-d00f5ef962a3" dir="ltr"><td id="XyjZ" class="">戦闘難易度</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="2ffb8cb3-d31b-4178-a170-1832b4ec0f41" dir="ltr"><td id="XyjZ" class="">名前入力のNGワード</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="d2fa7c54-77ae-4975-9ebc-a12a62c1da0e" dir="ltr"><td id="XyjZ" class="">ｽﾃｰﾀｽ画面の耐性表示</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="48be7884-e8ab-4e18-927b-39bd17a45196" dir="ltr"><td id="XyjZ" class="">移動時の全回復コマンド</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="dfff7f23-fa12-40c4-8470-3eca32d790ac" dir="ltr"><td id="XyjZ" class="">テレポート</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="0fe787d4-7a88-4bbf-b881-254e1435dac5" dir="ltr"><td id="XyjZ" class="">あらすじ画面</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="8e97e623-5767-4346-bbf9-3b028e4143bb" dir="ltr"><td id="XyjZ" class="">ヘルプブック</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="e8d66e0a-b80d-497a-928d-216a7405a6f1" dir="ltr"><td id="XyjZ" class="">エネミー図鑑</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="2b84b838-143e-4e7a-809c-a1efed86b266" dir="ltr"><td id="XyjZ" class="">アイテム図鑑</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="2331fafa-55c9-4e32-a547-465346cdb718" dir="ltr"><td id="XyjZ" class="">アイテム合成</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="1493eeb3-0771-4cac-96d1-13728a2c9db9" dir="ltr"><td id="XyjZ" class="">クエスト</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="04c7d31e-bd4f-4e10-b34d-e366edb267aa" dir="ltr"><td id="XyjZ" class="">実績</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="579746cc-4e5c-4a6e-82ba-620700c99c6b" dir="ltr"><td id="XyjZ" class="">オプション</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">標準<br/>(キー設定は不可)</td><td id="WpvT" class="">標準<br/>(キー設定も可)</td></tr><tr id="48aa9f0e-35c0-4f96-bd05-3d81483e8a40" dir="ltr"><td id="XyjZ" class="">セーブデータ数</td><td id="uy~{" class="">16</td><td id="vC=S" class="">19<br/>(オートセーブあり)</td><td id="WpvT" class="">3～998<br/>(2ゲーム以上の場合は1ゲーム3～99)<br/>(オートセーブあり)</td></tr><tr id="6336f63e-3b24-4fec-a7c4-3048584a82f5" dir="ltr"><td id="XyjZ" class="">セーブ画面情報表示</td><td id="uy~{" class="">簡易</td><td id="vC=S" class="">簡易</td><td id="WpvT" class="">詳細</td></tr><tr id="590df763-f9d2-4617-8024-36e1272c25ac" dir="ltr"><td id="XyjZ" class="">中断セーブ</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="14f75208-c4c8-4491-a48b-78e2a5a2858a" dir="ltr"><td id="XyjZ" class="">権利表記</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr><tr id="40548ca8-7dfc-4156-ba57-ddd0f26c8a98" dir="ltr"><td id="XyjZ" class="">独自メニューコマンド</td><td id="uy~{" class="">なし</td><td id="vC=S" class="">なし</td><td id="WpvT" class="">標準</td></tr></tbody></table><p id="1cb9da7d-49f6-80c3-8ce1-f0748db76f3f" class="" dir="auto">
+</p><hr id="1cb9da7d-49f6-809b-880c-fbac87eb14e2" dir="auto"/><p id="1cb9da7d-49f6-80d4-acf2-c5046aab315d" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8038-a136-fbe57b84ba8d" class="" dir="auto">
+</p><p id="1cb9da7d-49f6-8064-becc-fac4243bfa93" class="" dir="auto">
+</p><hr id="20b6c919-a540-4d81-bef2-2d2e13bb71db" dir="auto"/><h1 id="6e49170b-04ae-4d36-a89d-7c8079342a11" class="" dir="auto">Sheet 11: <em>イベントコマンド</em></h1><table id="ae7522c3-ad99-4fd7-92cf-9e1dc6cd5162" class="simple-table" dir="ltr"><tbody><tr id="90e9fced-02e1-4acc-91d0-b9db61a16a82" dir="ltr"><td id="O}jd" class="">イベントコマンド</td><td id="V{Uq" class=""></td><td id="y@[B" class=""></td><td id="&gt;|=O" class=""></td></tr><tr id="d7cb6fc1-0555-4e83-8ed8-7a95e3f0d486" dir="ltr"><td id="O}jd" class=""></td><td id="V{Uq" class="">ツクールVXAce</td><td id="y@[B" class="">ツクールMZ</td><td id="&gt;|=O" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="22122dd5-e54d-4092-8482-9070dde48637" dir="ltr"><td id="O}jd" class="">文章の表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="8e980bba-c550-499e-9632-a67b73f4b2d6" dir="ltr"><td id="O}jd" class="">背景</td><td id="V{Uq" class="">通常/暗/透明</td><td id="y@[B" class="">通常/暗/透明</td><td id="&gt;|=O" class="">通常/暗/透明</td></tr><tr id="a3d9a09a-7243-4f36-af0f-02207f5d625e" dir="ltr"><td id="O}jd" class="">表示位置</td><td id="V{Uq" class="">変更可</td><td id="y@[B" class="">変更可</td><td id="&gt;|=O" class="">変更可</td></tr><tr id="de4d532e-89a0-4e15-b7aa-e70ff7756754" dir="ltr"><td id="O}jd" class="">選択肢の数</td><td id="V{Uq" class="">4</td><td id="y@[B" class="">6</td><td id="&gt;|=O" class="">10</td></tr><tr id="508120a8-7d9a-40d2-9dc8-6edfdd2ac276" dir="ltr"><td id="O}jd" class="">数値入力</td><td id="V{Uq" class="">8ケタかつマイナスは不可</td><td id="y@[B" class="">8ケタかつマイナスは不可</td><td id="&gt;|=O" class="">9ケタかつマイナスも可</td></tr><tr id="1c7e6413-966a-4cc3-84d0-152437f182c2" dir="ltr"><td id="O}jd" class="">アイテム選択</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○アイテム選択コモン</td></tr><tr id="2aff11d7-5612-4c97-abe6-6942e01a4145" dir="ltr"><td id="O}jd" class="">文章のスクロール表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○文章のスクロール表示</td></tr><tr id="e62f3cbd-098b-42b4-bee7-0d8bb995b690" dir="ltr"><td id="O}jd" class="">スイッチの操作</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="4c0c914b-d9a6-4dc6-b246-3845f7bed132" dir="ltr"><td id="O}jd" class="">変数の操作</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">詳細</td></tr><tr id="abb1b96a-cf61-4aaa-b490-a9065e970e5d" dir="ltr"><td id="O}jd" class="">セルフスイッチの操作</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="356ca9ad-c9e9-4a31-8f77-9c22a419725a" dir="ltr"><td id="O}jd" class="">セルフ変数の操作</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="65cf6d4d-05d3-4ef5-a4fa-0739bef86b1f" dir="ltr"><td id="O}jd" class="">タイマーの操作</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○タイマー操作</td></tr><tr id="e1bdfc6d-5aa4-45e9-81f7-379b2a24094d" dir="ltr"><td id="O}jd" class="">条件分岐</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">詳細</td></tr><tr id="1129e366-b1ff-42fc-a11e-a352ee41a319" dir="ltr"><td id="O}jd" class="">ループ</td><td id="V{Uq" class="">回数付きは不可</td><td id="y@[B" class="">回数付きは不可</td><td id="&gt;|=O" class="">回数付きも可</td></tr><tr id="6c206d56-672b-4dbc-9313-5eb86c3987f2" dir="ltr"><td id="O}jd" class="">ループの中断</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="39cbf94e-6e77-43a1-a860-6b4684a4d65c" dir="ltr"><td id="O}jd" class="">イベント処理の中断</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="a441a11c-07a3-4b7b-b7b9-7813075e2c07" dir="ltr"><td id="O}jd" class="">コモンイベント</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">詳細</td></tr><tr id="bb744af4-37af-4180-95d7-7eeeb1d7f6f4" dir="ltr"><td id="O}jd" class="">ラベル</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="4ee66c6e-41d3-44fe-a8ae-6e03fe4403ab" dir="ltr"><td id="O}jd" class="">ラベルジャンプ</td><td id="V{Uq" class="">制御文字は不可</td><td id="y@[B" class="">制御文字は不可</td><td id="&gt;|=O" class="">制御文字も可</td></tr><tr id="948d9ecf-be0a-4f64-97e6-c880a030ab7f" dir="ltr"><td id="O}jd" class="">注釈</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">文章の表示</td></tr><tr id="1b73bf34-dda8-496b-9f1b-3035121cf246" dir="ltr"><td id="O}jd" class="">所持金の増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○お金の増減</td></tr><tr id="c98c3c82-98f3-4075-97d4-022770744dfe" dir="ltr"><td id="O}jd" class="">アイテムの増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○アイテム1～3増減</td></tr><tr id="b508c4ed-96c3-4d2e-9c6f-bc509e188ba6" dir="ltr"><td id="O}jd" class="">武器の増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○アイテム1～3増減</td></tr><tr id="02194716-7084-489b-8735-e3f7c79aa865" dir="ltr"><td id="O}jd" class="">防具の増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○アイテム1～3増減</td></tr><tr id="07ce347e-7ae7-403a-8057-13ebc7fadeee" dir="ltr"><td id="O}jd" class="">メンバーの入れ替え</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○メンバーの増減</td></tr><tr id="d87d79dc-9d33-45a4-9f48-ca7938b360dd" dir="ltr"><td id="O}jd" class="">HPの増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○回復・ダメージ処理/<br/>[戦闘用]HP/MP/TP増減</td></tr><tr id="976db89c-a612-4504-9dc9-fa4f0e0365ec" dir="ltr"><td id="O}jd" class="">MPの増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○回復・ダメージ処理/<br/>[戦闘用]HP/MP/TP増減</td></tr><tr id="fccf7ff0-db0f-4804-b84b-082d35ff7cef" dir="ltr"><td id="O}jd" class="">TPの増減</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]HP/MP/TP増減</td></tr><tr id="ce977c61-aa3b-4c4b-b388-07106ceefe8a" dir="ltr"><td id="O}jd" class="">ステートの変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○状態異常変化<br/>[戦闘用]状態異常変化</td></tr><tr id="e87ae1f4-8e26-4caf-b720-f244bb93f9cf" dir="ltr"><td id="O}jd" class="">全回復</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○回復・ダメージ処理</td></tr><tr id="a630be9f-6fa4-4ca5-b792-f0898de1ffcd" dir="ltr"><td id="O}jd" class="">イベントコマンド</td><td id="V{Uq" class=""></td><td id="y@[B" class=""></td><td id="&gt;|=O" class=""></td></tr><tr id="a2fe21eb-5626-4b0f-a210-e3b15b88f117" dir="ltr"><td id="O}jd" class=""></td><td id="V{Uq" class="">ツクールVXAce</td><td id="y@[B" class="">ツクールMZ</td><td id="&gt;|=O" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="4c1dd6fc-4e55-4f9e-87c0-d5b589c1711e" dir="ltr"><td id="O}jd" class="">経験値の増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○経験値・Lv増減</td></tr><tr id="f126574f-434c-49c2-aeb6-393860843351" dir="ltr"><td id="O}jd" class="">レベルの増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○経験値・Lv増減</td></tr><tr id="614f114e-cc55-44e5-8c2d-15897e343a00" dir="ltr"><td id="O}jd" class="">能力値の増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○能力値増減</td></tr><tr id="9db136ec-06a1-4027-8039-6250810b0976" dir="ltr"><td id="O}jd" class="">スキルの増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○スキル増減</td></tr><tr id="b0861bdc-80d0-445d-a73a-b22e2431006b" dir="ltr"><td id="O}jd" class="">装備の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○装備武器/防具の変更</td></tr><tr id="71b93016-1c1f-42b8-b827-068c6e41b7d5" dir="ltr"><td id="O}jd" class="">名前の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○主人公情報の変更</td></tr><tr id="556a54fa-72f0-4457-a845-b8b5870c4522" dir="ltr"><td id="O}jd" class="">職業の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○職業画面</td></tr><tr id="952df7fb-06eb-402e-bb60-859d3db9a8ad" dir="ltr"><td id="O}jd" class="">二つ名の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○主人公情報の変更</td></tr><tr id="11662f61-a055-4c71-9bbd-49bc65e76851" dir="ltr"><td id="O}jd" class="">プロフィールの変更</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○主人公情報の変更</td></tr><tr id="06cd8da5-1eaa-4eb4-8c76-c74351dc9ef4" dir="ltr"><td id="O}jd" class="">場所移動</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="ce40abca-0307-40f5-af5f-affdb6cb3c30" dir="ltr"><td id="O}jd" class="">乗り物の位置設定</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○ｴｽｹｰﾌﾟ乗り物座標設定</td></tr><tr id="912d94ee-12d6-4ff1-a3b0-85c527315e09" dir="ltr"><td id="O}jd" class="">イベントの位置設定</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">場所移動</td></tr><tr id="d1ad5891-c5f1-47c1-8f94-e3ed5f7f5246" dir="ltr"><td id="O}jd" class="">マップのスクロール</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="deb17cec-604b-4647-913e-f5b38b7e008e" dir="ltr"><td id="O}jd" class="">移動ルートの設定</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="b6ff672b-6d0f-471d-a459-6a450c8529ca" dir="ltr"><td id="O}jd" class="">乗り物の乗降</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="bfe9a2df-12e3-41a6-a967-dc8992ab9ade" dir="ltr"><td id="O}jd" class="">透明状態の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">パーティ画像</td></tr><tr id="5f0659b5-0a2a-4a99-80dc-d604c71b1dac" dir="ltr"><td id="O}jd" class="">隊列歩行の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">パーティ画像</td></tr><tr id="11fb0665-6a23-479b-b034-6aa256679cbe" dir="ltr"><td id="O}jd" class="">隊列メンバーの集合</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">パーティ画像</td></tr><tr id="98165172-f7f3-424f-b460-dfd48ddec109" dir="ltr"><td id="O}jd" class="">アニメーションの表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○戦闘ｱﾆﾒﾏｯﾌﾟEvID表示</td></tr><tr id="53637394-d605-4a78-8224-99cf4117ccce" dir="ltr"><td id="O}jd" class="">フキダシの表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○吹き出し表示味方用<br/>○吹き出し表示Ev用</td></tr><tr id="74ad4cdb-1144-42ee-9583-f7f0ed3f0889" dir="ltr"><td id="O}jd" class="">イベントの一時消去</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="f68f8ecc-16eb-41e0-8083-20d7ec83b740" dir="ltr"><td id="O}jd" class="">画面のフェードアウト</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○マップの暗転処理</td></tr><tr id="be72f7d3-2ead-42ed-91bc-f670a0d116fe" dir="ltr"><td id="O}jd" class="">画面のフェードイン</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○マップの暗転処理</td></tr><tr id="4ae66d91-30e1-4c9d-b098-3d20b4efeb0f" dir="ltr"><td id="O}jd" class="">画面の色調変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="3b8d0d2e-fb20-4ab2-9ea1-4f679e226d7d" dir="ltr"><td id="O}jd" class="">画面のフラッシュ</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="1a92dfa0-239d-4550-ac55-3d7626c391f0" dir="ltr"><td id="O}jd" class="">画面のシェイク</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="875f402d-e845-4418-b90e-5c7f6a405137" dir="ltr"><td id="O}jd" class="">ウェイト</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="55d5ed4f-f294-40e3-9bc5-1bce3c00a79d" dir="ltr"><td id="O}jd" class="">イベントコマンド</td><td id="V{Uq" class=""></td><td id="y@[B" class=""></td><td id="&gt;|=O" class=""></td></tr><tr id="c2f32fe2-17ec-4f34-b7dc-63d5333647b6" dir="ltr"><td id="O}jd" class=""></td><td id="V{Uq" class="">ツクールVXAce</td><td id="y@[B" class="">ツクールMZ</td><td id="&gt;|=O" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="24351e0b-4aad-471c-addb-6d314d746eb8" dir="ltr"><td id="O}jd" class="">ピクチャの表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">詳細<br/>(ウィンドウや文字列も可)</td></tr><tr id="59503107-2dcb-451a-9d04-264381cdd305" dir="ltr"><td id="O}jd" class="">ピクチャの移動</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">詳細</td></tr><tr id="1033e73e-0e18-4f84-a5c4-055f477058a6" dir="ltr"><td id="O}jd" class="">ピクチャの回転</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">ピクチャ</td></tr><tr id="096ee3e4-b889-450c-a21a-897c9ff99ed8" dir="ltr"><td id="O}jd" class="">ピクチャの色調変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">ピクチャ</td></tr><tr id="d8980cea-c2d4-4e74-9832-63bfbadc7fc9" dir="ltr"><td id="O}jd" class="">ピクチャの消去</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="7960ae87-b997-4452-af17-c41c234d0f3d" dir="ltr"><td id="O}jd" class="">天候の設定</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○天候エフェクト</td></tr><tr id="8c7d8d0d-c65e-4781-9fd3-0e570e24e9fd" dir="ltr"><td id="O}jd" class="">BGMの演奏</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="a80c4fc6-e912-4c24-804f-13e38b02e098" dir="ltr"><td id="O}jd" class="">BGMのフェードアウト</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="50311b1c-2f94-42fb-a7f7-807db311d8e6" dir="ltr"><td id="O}jd" class="">BGMの保存</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○BGMモード再生</td></tr><tr id="a75358a8-d917-46bf-b1d4-205abd96f7cb" dir="ltr"><td id="O}jd" class="">BGMの再開</td><td id="V{Uq" class="">oggのみ途中再生可</td><td id="y@[B" class="">途中再生可</td><td id="&gt;|=O" class="">○BGMモード再生</td></tr><tr id="36ce0392-6169-44eb-afab-a1e221d9a426" dir="ltr"><td id="O}jd" class="">BGSの演奏</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="28508f83-9bdd-4e63-930b-10c3abda33b2" dir="ltr"><td id="O}jd" class="">BGSのフェードアウト</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="1f418bee-e5a6-4a63-b3f6-d28a2986a6a9" dir="ltr"><td id="O}jd" class="">MEの演奏</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="a4a3de3f-c685-4eb3-bc27-ba61c9b4b7c6" dir="ltr"><td id="O}jd" class="">SEの演奏</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="36db1a39-056d-469a-a2ae-70b30c08d0c5" dir="ltr"><td id="O}jd" class="">SEの停止</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="f1c88f48-6016-4564-ac81-e10a3a368616" dir="ltr"><td id="O}jd" class="">バトルの処理</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○バトルの発生</td></tr><tr id="5b11cf18-59f8-4e86-a49f-3925b55bb469" dir="ltr"><td id="O}jd" class="">ショップの処理</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○[3]お店処理 実行</td></tr><tr id="0dccc96c-76f3-4907-92b3-89cfec3a6a83" dir="ltr"><td id="O}jd" class="">価格の指定</td><td id="V{Uq" class="">商品ごと個別かつ固定値</td><td id="y@[B" class="">商品ごと個別かつ固定値</td><td id="&gt;|=O" class="">全ての商品かつ割合</td></tr><tr id="2f285871-2b27-40b8-a73f-ef9affc6de8e" dir="ltr"><td id="O}jd" class="">名前入力の処理</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○名前入力画面</td></tr><tr id="79ab622b-bb49-4305-a2e4-6422e6a38346" dir="ltr"><td id="O}jd" class="">メニュー画面を開く</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○各種メニュー呼出</td></tr><tr id="3b85b923-d06c-451a-94b3-4092e47e3f01" dir="ltr"><td id="O}jd" class="">セーブ画面を開く</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○各種メニュー呼出</td></tr><tr id="4081e9f3-d5a3-42ff-b988-15efcdee200c" dir="ltr"><td id="O}jd" class="">ロード時のイベント続行</td><td id="V{Uq" class="">イベントの途中から</td><td id="y@[B" class="">イベントの途中から</td><td id="&gt;|=O" class="">イベントは処理中断</td></tr><tr id="7e20eb2d-4232-45a8-acd0-e1d5e3f319d7" dir="ltr"><td id="O}jd" class="">ゲームオーバー</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○ゲームオーバー</td></tr><tr id="70994aa7-6e87-4407-b6db-c84ae0b40527" dir="ltr"><td id="O}jd" class="">タイトル画面に戻す</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">標準</td></tr><tr id="f3c03ede-254c-4efe-9a89-fa91425d5709" dir="ltr"><td id="O}jd" class="">戦闘BGMの変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○システム操作</td></tr><tr id="5b6a60ba-907a-4dbb-a0e8-8c308770cd84" dir="ltr"><td id="O}jd" class="">戦闘終了MEの変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○システム操作</td></tr><tr id="e946894b-b5ef-437e-9914-a59d6dd1b2a2" dir="ltr"><td id="O}jd" class="">乗り物BGMの変更</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="b2bcb9b2-d6d1-42a9-82e6-0ad3c0044dc9" dir="ltr"><td id="O}jd" class="">イベントコマンド</td><td id="V{Uq" class=""></td><td id="y@[B" class=""></td><td id="&gt;|=O" class=""></td></tr><tr id="781ac958-5ed7-479f-9aea-7bc88edda07d" dir="ltr"><td id="O}jd" class=""></td><td id="V{Uq" class="">ツクールVXAce</td><td id="y@[B" class="">ツクールMZ</td><td id="&gt;|=O" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="73c51b61-94f5-48b7-80cd-779cea45f963" dir="ltr"><td id="O}jd" class="">セーブ禁止の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○システム操作</td></tr><tr id="e53a1f41-2f33-4cf3-adf2-167417f97a59" dir="ltr"><td id="O}jd" class="">メニュー禁止の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○システム操作</td></tr><tr id="3c3838a4-b6bf-4790-bbb2-4ea20a9cd7fd" dir="ltr"><td id="O}jd" class="">エンカウント禁止の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="af51349f-3adb-49c1-b391-dd6cd364aa0f" dir="ltr"><td id="O}jd" class="">並び替え禁止の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○主人公入れ替え禁止設定1</td></tr><tr id="e17b6b3c-6ca8-44b2-b510-1a9738250cf3" dir="ltr"><td id="O}jd" class="">ウィンドウカラーの変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="8cb6d02f-48e8-431d-a5e5-c2d55b4ca23a" dir="ltr"><td id="O}jd" class="">ｱｸﾀｰのｸﾞﾗﾌｨｯｸ変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○主人公ﾏｯﾌﾟ歩行画像変更<br/>○主人公ﾊﾞﾄﾙ歩行画像変更<br/>○主人公顔画像変更<br/>○主人公立ち絵画像変更<br/>○主人公ｶｯﾄｲﾝ画像変更</td></tr><tr id="9ff78935-f56e-4537-92ff-d7127a887e76" dir="ltr"><td id="O}jd" class="">乗り物のｸﾞﾗﾌｨｯｸ変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="b3090fff-371f-4970-9973-eb6f4319dde7" dir="ltr"><td id="O}jd" class="">ムービー</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">ピクチャ</td></tr><tr id="bddb7dc5-d99b-4e16-a403-e9a3a27a0a9c" dir="ltr"><td id="O}jd" class="">マップ名表示の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○システム操作</td></tr><tr id="402cb372-6218-4aaf-bce6-711e4c226d50" dir="ltr"><td id="O}jd" class="">タイルセットの変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">チップ処理</td></tr><tr id="1ad90ce3-ede4-468d-b9b1-098b7d745663" dir="ltr"><td id="O}jd" class="">戦闘背景の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">○戦闘背景設定</td></tr><tr id="cc6d1a24-5910-4c23-b16d-523b5e5b9107" dir="ltr"><td id="O}jd" class="">遠景の変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">システム変数66番を変数操作</td></tr><tr id="39391abb-5ab2-4b08-b062-a1e4c75ac5fd" dir="ltr"><td id="O}jd" class="">フォグの変更</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">システム変数61番を変数操作</td></tr><tr id="6e04ae4f-2a6e-439a-a67b-80fa21b81992" dir="ltr"><td id="O}jd" class="">指定位置の情報取得</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">変数操作+</td></tr><tr id="908e7b45-b01e-4d88-84cc-16f0da3b16a0" dir="ltr"><td id="O}jd" class="">敵キャラのHP増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]HP/MP/TP増減</td></tr><tr id="7d7b72f2-2d21-4b93-ad2e-46f05ea422ca" dir="ltr"><td id="O}jd" class="">敵キャラのMP増減</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]HP/MP/TP増減</td></tr><tr id="09921a6f-eca1-46bc-be77-d620bcef954d" dir="ltr"><td id="O}jd" class="">敵キャラのTP増減</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]HP/MP/TP増減</td></tr><tr id="dc32e294-8cd4-471d-9e6d-51796eeff60c" dir="ltr"><td id="O}jd" class="">敵キャラのステート変更</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]状態異常変化</td></tr><tr id="5528c5d3-3862-4349-828a-6054986753ef" dir="ltr"><td id="O}jd" class="">敵キャラの全回復</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="5938ecff-5387-4c9b-afa3-ee10713d6594" dir="ltr"><td id="O}jd" class="">敵キャラの出現</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]敵キャラの追加</td></tr><tr id="e9f0b97e-ef97-47ee-88fe-a95025aa1c9b" dir="ltr"><td id="O}jd" class="">敵キャラの変身</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]敵キャラの追加</td></tr><tr id="7b1823b0-633a-4f43-9cdd-2e6bd66806cc" dir="ltr"><td id="O}jd" class="">戦闘アニメーションの表示</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]戦闘アニメーション表示</td></tr><tr id="df3567b1-bc51-400a-8476-7c6f3ead4b95" dir="ltr"><td id="O}jd" class="">戦闘行動の強制</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]戦闘行動の強制</td></tr><tr id="7164dfa4-7d99-4eb9-8c2c-52929bc20fdd" dir="ltr"><td id="O}jd" class="">バトルの中断</td><td id="V{Uq" class="">標準</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">[戦闘用]戦闘中断</td></tr><tr id="0a0b3ee0-358d-4d2f-8c4b-1d32b4b27e64" dir="ltr"><td id="O}jd" class="">スクリプト</td><td id="V{Uq" class="">RGSS3</td><td id="y@[B" class="">Java</td><td id="&gt;|=O" class="">なし</td></tr><tr id="3c0ae594-f422-4be5-9008-75944a25363e" dir="ltr"><td id="O}jd" class="">プラグインコマンド</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">標準</td><td id="&gt;|=O" class="">なし</td></tr><tr id="89944822-b237-44ae-a3ca-56f20981f43e" dir="ltr"><td id="O}jd" class="">イベントコマンド</td><td id="V{Uq" class=""></td><td id="y@[B" class=""></td><td id="&gt;|=O" class=""></td></tr><tr id="deb14f10-0241-48e5-bb7f-662c60a7dfdc" dir="ltr"><td id="O}jd" class=""></td><td id="V{Uq" class="">ツクールVXAce</td><td id="y@[B" class="">ツクールMZ</td><td id="&gt;|=O" class="">ウディタ<br/>(無料高RPGシスMr.H)</td></tr><tr id="50e088ce-fbec-49da-af29-6fe3a94ff9fd" dir="ltr"><td id="O}jd" class="">戦闘フィールド変化</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="d8c222b8-2dc8-4b56-8473-05fd6f039b54" dir="ltr"><td id="O}jd" class="">戦闘コマンドの変更</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="92544df6-9035-42d2-8392-3d8008b1b9a5" dir="ltr"><td id="O}jd" class="">戦闘コマンドの判定</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="4ddd956a-0bb6-4acf-bfdf-c4056cd66373" dir="ltr"><td id="O}jd" class="">主人公情報更新</td><td id="V{Uq" class="">能力値のみ常時更新</td><td id="y@[B" class="">能力値のみ常時更新</td><td id="&gt;|=O" class="">手動で全部更新</td></tr><tr id="91b024ff-b9de-4bc3-9a35-62b04571454f" dir="ltr"><td id="O}jd" class="">主人公装備変更許可設定</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="d5c1e361-e3ad-45e7-9bce-f0ca345b01e6" dir="ltr"><td id="O}jd" class="">職業転職許可設定</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="8156fc99-f07d-45c0-829b-388d3c5f4ae4" dir="ltr"><td id="O}jd" class="">ノベル風メッセージ</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="a839710c-4a87-482c-ac5d-8d6a0a188fc2" dir="ltr"><td id="O}jd" class="">巻き戻し可能メッセージ</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="e199e415-a94c-4ba3-ab61-9cbf33e16fd4" dir="ltr"><td id="O}jd" class="">アイテム個数記憶</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="a64b731d-2a8c-4a9f-9592-7e4318d5c63d" dir="ltr"><td id="O}jd" class="">銀行/アイテム倉庫</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="1e91d646-0b7c-4444-8cae-88642a1c13ce" dir="ltr"><td id="O}jd" class="">視界制限</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="a7dd491b-799c-4802-8c1f-0738b4f90843" dir="ltr"><td id="O}jd" class="">クイック通知</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="7870a0e0-e03a-4dc8-a87b-13c2f81659bc" dir="ltr"><td id="O}jd" class="">ランダムダンジョン</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="ce928223-5ce4-43e5-8884-e50063f13e9f" dir="ltr"><td id="O}jd" class="">中断セーブの書込</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="7df8d67f-c326-41ac-870c-aa27989cc53a" dir="ltr"><td id="O}jd" class="">セーブデータ操作</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="4d8dad49-0eac-463c-b180-36f0a7ea440e" dir="ltr"><td id="O}jd" class="">簡易スタッフロール</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="c669131f-084b-4172-a2f9-08d52ce9222e" dir="ltr"><td id="O}jd" class="">強くてニューゲーム</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="bc51e13e-b058-4ee0-9494-24730dec654f" dir="ltr"><td id="O}jd" class="">周回時アイテム引継ぎ</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="154fe394-f0ff-4140-827e-f6d284ba739c" dir="ltr"><td id="O}jd" class="">サウンドテスト</td><td id="V{Uq" class="">なし</td><td id="y@[B" class="">なし</td><td id="&gt;|=O" class="">標準</td></tr><tr id="ebc0c8d9-5ec5-429f-b8db-016d5ac860a0" dir="ltr"><td id="O}jd" class="">タイトル画面の実行</td><td id="V{Uq" class="">自動的に実行</td><td id="y@[B" class="">自動的に実行</td><td id="&gt;|=O" class="">手動で呼び出す必要あり</td></tr></tbody></table><p id="1cb9da7d-49f6-80a0-ab4c-f1e09067853f" class="" dir="auto">
+</p><hr id="148c30ad-8fc3-44ca-a323-af4a4cb224f9" dir="auto"/><p id="9ee93e9b-8cd6-4a5d-88b7-316eaa9322ba" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

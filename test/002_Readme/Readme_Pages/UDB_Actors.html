@@ -1,0 +1,865 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>UDB_Actors</title><meta name="data-notion-page-icon" content="🎚️"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8E%9A%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure,
+aside,
+details {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="1c59da7d-49f6-800f-9177-fd65a54c9ab9" class="page sans" data-notion-page-icon="🎚️"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🎚️"></span></div><h1 class="page-title" dir="auto">UDB_Actors</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><h1 id="1c59da7d-49f6-818a-a017-c2442c1d585a" class="" dir="auto">目次</h1><nav id="1c59da7d-49f6-819b-ad3a-c4b9caca2299" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-818a-a017-c2442c1d585a">目次</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1c59da7d-49f6-81db-987a-ea7c2b59a57d">■主人公/敵キャラ/召喚獣関連設定🦁♥🐍</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81de-ae20-e073dbc7fd75">●主人公設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8122-912c-d8ddfeec7b47">●職業設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-815c-8d22-d5c6b14e2736">●汎用初期ｽﾃｰﾀｽ1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8175-8a89-d0cd244fa4c5">●汎用戦闘コマンドリスト</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-810f-8c0c-e735d0150c3e">●習得極意強化/スキル/パッシブ</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8175-bd19-db75af60287d">●ﾃﾞﾌｫﾙﾄ行動AI</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81c9-b598-e6908b6b689a">●汎用ジャマー設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8133-9d7a-d2cec64f0ce4">●歩行画像設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8169-9ad2-fcfe289fa4e0">●顔画像設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8183-9c3b-c5150f265a78">●敵ｷｬﾗ設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81b4-925a-cd7e682bbf54">●敵ｸﾞﾙｰﾌﾟ設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-819b-8302-c744d53cbf17">●敵ｸﾞﾙｰﾌﾟ連戦設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-811a-90d5-e0a6becabe28">●キャラクター座標設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-8138-9d5a-fd780a43e249">●ﾗﾝﾀﾞﾑｴﾝｶｳﾝﾄ設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81a5-b7bc-f518793fdae5">●敵キャラ分類</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81a2-aaab-d9938f116e70">●敵ドロップアイテム設定1</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81fa-b2c7-e1ec6c5e9159">●敵キャラ画像設定</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c59da7d-49f6-81bb-b6dd-d09e50068ba9">●召喚獣設定1</a></div></nav><hr id="1c59da7d-49f6-81f5-8f2f-f1f72e0d9627" dir="auto"/><p id="1c59da7d-49f6-8109-9029-c2705af7b899" class="" dir="auto">
+</p><p id="1c59da7d-49f6-818f-9b4f-e8432e18fb9d" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81c8-aa15-e1b8361906bc" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-813d-be6c-f096600340e8" dir="auto"/><h1 id="1c59da7d-49f6-81db-987a-ea7c2b59a57d" class="" dir="auto">■主人公/敵キャラ/召喚獣関連設定🦁♥🐍</h1><p id="1c59da7d-49f6-815d-afbc-df74786a0ec2" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-812e-ac0a-e2754190a625" dir="auto"/><p id="1c59da7d-49f6-8199-bcd5-ff27d7116868" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81cb-8019-c25e43f32fba" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81e4-99d1-c2a228c0d88d" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c1-9803-f00e87de447b" dir="auto"/><h2 id="1c59da7d-49f6-81de-ae20-e073dbc7fd75" class="" dir="auto">●主人公設定1</h2><p id="1c59da7d-49f6-81d8-b200-f5ad469ae7ba" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-816b-af36-d355f72f3ee8" dir="auto"/><ul id="1c59da7d-49f6-81c7-9f8b-db015ae94197" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ユーザーDBの0番「主人公設定1」で主人公のステータスを設定するように変更しました。<br/>これにより、バージョンアップによる主人公のステータスの変更に対応しました。<br/>なお、ロード毎に主人公のステータスは更新されます。<br/>(変更があった場合は現在のHP、MP、レベルや経験値は維持されその他のパラメーターは変更されます。)<br/>また、イベントで覚えたスキルやパッシブはステータスを更新しても保持されます。<blockquote id="1c59da7d-49f6-81dd-8c3d-ec7080241711" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><strong>※なお、可変DBの0番「×主人公ｽﾃｰﾀｽ保存」を設定してもゲーム開始時にユーザーDB0番の値が代入されるため、意味はありません。</strong></blockquote></li></ul><ul id="1c59da7d-49f6-81c9-8964-dab83b5e899c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ステータスの更新に対応しているコモンイベントは以下の通りです。<ul id="1c59da7d-49f6-812f-b94b-e3d602a5b6be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公情報の変更」</li></ul><ul id="1c59da7d-49f6-8197-ba02-cfb217be2738" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公ﾏｯﾌﾟ歩行画像変更」</li></ul><ul id="1c59da7d-49f6-818e-828e-d429d2b4a5cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公ﾊﾞﾄﾙ歩行画像変更」</li></ul><ul id="1c59da7d-49f6-81f1-8932-fa832c11d245" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公顔画像変更」</li></ul><ul id="1c59da7d-49f6-818a-ad35-fccd1f7d72be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公立ち絵画像変更」</li></ul><ul id="1c59da7d-49f6-8122-b8b4-e94be9f948b5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○能力値増減」</li></ul><ul id="1c59da7d-49f6-811d-8be6-ed04598767ba" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○経験値・Lv増減」</li></ul><ul id="1c59da7d-49f6-814c-86d1-e39724cfa619" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○極意強化増減」</li></ul><ul id="1c59da7d-49f6-819a-8689-e8a5559a0045" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○使用スキル増減」</li></ul><ul id="1c59da7d-49f6-81b9-9e80-f83c0c8f759e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○パッシブスキル増減」</li></ul><ul id="1c59da7d-49f6-81ef-8f60-e6e69c14caab" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○スキル直接セット」</li></ul><ul id="1c59da7d-49f6-8188-839d-f14aa2034978" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○装備アイテム1の変更」</li></ul><ul id="1c59da7d-49f6-8101-acc7-e7772b7123e8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○装備アイテム2の変更」</li></ul><ul id="1c59da7d-49f6-814b-ae1a-eb8d915894c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○装備アイテム3の変更」</li></ul><ul id="1c59da7d-49f6-814e-a799-cc92a98ae7c0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公装備全部外す」</li></ul><ul id="1c59da7d-49f6-81b6-8722-ff3d7ffa2b62" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○主人公装備変更許可設定」</li></ul></li></ul><ul id="1c59da7d-49f6-818c-b38c-d445bfa97f7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ステータスの更新に対応していないコモンイベントは以下の通りです。<br/>コモンイベント「[変更可]主人公変更分適用」に、イベント中の下記の操作を入れてください。<ul id="1c59da7d-49f6-8150-983d-d49d3269d6c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">コモンイベント「○戦闘コマンドの変更」</li></ul></li></ul><ul id="1c59da7d-49f6-8121-8cf5-d67c77e81877" class="bulleted-list" dir="auto"><li style="list-style-type:disc">デフォルトの経験値獲得システムの場合、次のレベルの必要経験値の計算方法は以下の通りです。A値、B値、C値が大きいほど、必要経験値が増えます。ただし、Lv×Lvにおいて、Lvの上限は100で、100×100=10000です。(A値とB値とC値を高くしすぎた時、Lv100～999で累計経験値をインフレさせないためLv999の累計経験値の上限が2億になるよう、そのように調整させていただきました。<ul id="1c59da7d-49f6-818d-8c89-f91dcf62f983" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「Lv×Lv×A値+Lv×B値+C値」</li></ul><ul id="1c59da7d-49f6-817d-9e64-c31431357ca9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル1→2の場合、A値=5、B値=8、C値=2<ul id="1c59da7d-49f6-8145-b8eb-c8c2fe328e31" class="bulleted-list" dir="auto"><li style="list-style-type:square">「1×1×5+1×8+2」=「5+8+2」=「15」</li></ul></li></ul><ul id="1c59da7d-49f6-81cc-8e28-cb1296a24c50" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル49→50の場合、A値=5、B値=8、C値=2<ul id="1c59da7d-49f6-818c-9e61-d32780a526b2" class="bulleted-list" dir="auto"><li style="list-style-type:square">「49×49×5+49×8+2」=「12005+392+2」=「12399」</li></ul></li></ul><ul id="1c59da7d-49f6-8109-8c19-ed80ec158a36" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル101→102の場合、A値=5、B値=8、C値=2<ul id="1c59da7d-49f6-819e-a273-c53d81424f99" class="bulleted-list" dir="auto"><li style="list-style-type:square">「100×100×5+101×8+2」=「50000+808+2」=「50810」</li></ul></li></ul><ul id="1c59da7d-49f6-818b-a78e-e47543cdd5ef" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル500→501の場合、A値=5、B値=8、C値=2<ul id="1c59da7d-49f6-81a5-9a8e-fee224efee40" class="bulleted-list" dir="auto"><li style="list-style-type:square">「100×100×5+500×8+2」=「50000+4000+2」=「54002」</li></ul></li></ul><ul id="1c59da7d-49f6-816e-a6da-d92e5b1c95d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル998→999の場合、A値=5、B値=8、C値=2<ul id="1c59da7d-49f6-8193-bec6-e51ae10a539d" class="bulleted-list" dir="auto"><li style="list-style-type:square">「100×100×5+999×8+2」=「50000+7992+2」=「57994」</li></ul></li></ul><ul id="1c59da7d-49f6-81ab-b050-f3773da82b6d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:レベル998→999の場合、A値=20、B値=25、C値=100<ul id="1c59da7d-49f6-8154-b280-e9ad2d22c743" class="bulleted-list" dir="auto"><li style="list-style-type:square">「100×100×20+999×25+100」=「200000+24975+100」=「225075」</li></ul></li></ul><ul id="1c59da7d-49f6-81ba-b60a-fa68c3eb24f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">レベル999の時点での累計経験値、A値=20、B値=25、C値=100<ul id="1c59da7d-49f6-81fe-9458-fb75add32939" class="bulleted-list" dir="auto"><li style="list-style-type:square">「198929325」</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81ba-8b61-ccd79a00e314" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「歩行画像[バトル用]」で使用する画像の規格は以下の通りです。1モーションあたり、3コマにしてください。<br/>320x240の画面サイズを基準に、1コマ縦横32ピクセルの画像を推奨します。<table id="1c59da7d-49f6-8140-b2fb-ee5e7b420aeb" class="simple-table" dir="ltr"><tbody><tr id="1c59da7d-49f6-8199-b203-e56ce621ccc9" dir="ltr"><td id="ggzK" class="block-color-blue_background" style="width:180px">モーション</td><td id="vfEY" class="block-color-blue_background" style="width:180px"></td><td id="rHG|" class="block-color-blue_background" style="width:180px"></td></tr><tr id="1c59da7d-49f6-81b4-86ef-d3650aebfd90" dir="ltr"><td id="ggzK" class="" style="width:180px">待機</td><td id="vfEY" class="" style="width:180px">突き</td><td id="rHG|" class="" style="width:180px">逃走</td></tr><tr id="1c59da7d-49f6-817c-aecf-d4ea67eef8c1" dir="ltr"><td id="ggzK" class="" style="width:180px">移動</td><td id="vfEY" class="" style="width:180px">振り</td><td id="rHG|" class="" style="width:180px">勝利</td></tr><tr id="1c59da7d-49f6-81fb-9149-de44a796d6e4" dir="ltr"><td id="ggzK" class="" style="width:180px">詠唱</td><td id="vfEY" class="" style="width:180px">撃ち</td><td id="rHG|" class="" style="width:180px">ピンチ</td></tr><tr id="1c59da7d-49f6-8182-8903-c04939bc407e" dir="ltr"><td id="ggzK" class="" style="width:180px">防御</td><td id="vfEY" class="" style="width:180px">汎用発動</td><td id="rHG|" class="" style="width:180px">状態異常</td></tr><tr id="1c59da7d-49f6-8114-a8c5-ea71dc19ab2b" dir="ltr"><td id="ggzK" class="" style="width:180px">ダメージ</td><td id="vfEY" class="" style="width:180px">魔法発動</td><td id="rHG|" class="" style="width:180px">睡眠</td></tr><tr id="1c59da7d-49f6-8172-ab53-debb4ce229c8" dir="ltr"><td id="ggzK" class="" style="width:180px">回避</td><td id="vfEY" class="" style="width:180px">アイテム使用</td><td id="rHG|" class="" style="width:180px">戦闘不能</td></tr></tbody></table></li></ul><p id="1c59da7d-49f6-81bf-8ee6-dfe325945d59" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b4-ac39-ee3fffa0d88e" dir="auto"/><ul id="1c59da7d-49f6-81ba-8b53-c530e80cdad0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">キャラ名/肩書き/キャラ説明<ul id="1c59da7d-49f6-81f9-ae91-c7f219ee1fb1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">キャラクターの基本的な情報を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-812b-b1f4-f25aa76a9cca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">歩行（顔）画像[ﾏｯﾌﾟ（ﾊﾞﾄﾙ）（ﾊﾞﾄﾙ用拡大背景）用]/立ち絵[ｽﾃｰﾀｽ/カットイン用]<ul id="1c59da7d-49f6-8157-8c40-edf7a8c4cc47" class="bulleted-list" dir="auto"><li style="list-style-type:circle">グラフィックを各種UDB、SDBからデータIDで指定します。<br/>カットイン用の立ち絵が設定されていない場合はステータス用の立ち絵をカットインに使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-8138-810a-d8756defff10" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期ｽﾃｰﾀｽ番号<ul id="1c59da7d-49f6-816a-a121-efd16c4bb613" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「汎用初期ｽﾃｰﾀｽ」から能力値を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="2279da7d-49f6-808f-8c97-ca97de4b7190" class="bulleted-list" dir="auto"><li style="list-style-type:disc">レベル参照ID<ul id="3579da7d-49f6-8000-b691-d999672fda8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">0以上<ul id="2279da7d-49f6-805c-8b12-d1f1cc43f063" class="bulleted-list" dir="auto"><li style="list-style-type:square">他の主人公とレベルを同期します。</li></ul></li></ul><ul id="3579da7d-49f6-8044-aa3b-cc8b1069a7aa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">&lt;個別&gt;<ul id="3579da7d-49f6-80c3-83eb-c2896833cc72" class="bulleted-list" dir="auto"><li style="list-style-type:square">他の主人公とレベルを同期しません。</li></ul></li></ul><ul id="3579da7d-49f6-80fc-82bb-d5e95345b3a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">&lt;ｼﾅﾘｵごとに変化&gt;<ul id="3579da7d-49f6-8097-9f39-dbb9d55c8821" class="bulleted-list" dir="auto"><li style="list-style-type:square">シナリオごとに同期する主人公IDを変更します。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81b2-b50f-c544b4769d76" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期Lv/限界Lv/限界Lvを指定する？<ul id="1c59da7d-49f6-8189-85c0-f7c57daa7617" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lvの設定を行います。<br/>コモンイベント側でLv上限を設定するか、UDB側でLv上限を設定するかを設定します。<br/>コモンイベント側で設定する場合、コモンイベント「[変更可]主人公限界ﾚﾍﾞﾙ更新」で設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-817b-b5f0-ccfa813ea8ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">基本装備ポイント/[成長]装備ポイント増加<ul id="1c59da7d-49f6-8183-ba9d-edb048619fe5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">装備重量制で、装備するためのポイントについての設定を行います。<blockquote id="1c59da7d-49f6-8108-a188-d2edd15c52f2" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">装備重量制のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8176-8853-d24c2ba401d7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">基本極意強化値/[成長]極意強化値増加/１Lv<ul id="1c59da7d-49f6-81e6-a064-d0b4b354ddf3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">極意によるスキル習得に使用するためのポイントについての設定を行います。</li></ul></li></ul><ul id="1c59da7d-49f6-81ab-af76-e85c326d7384" class="bulleted-list" dir="auto"><li style="list-style-type:disc">基本最大スキル選択値/[成長]スキル選択値増加/1Lv<ul id="1c59da7d-49f6-8160-b303-e6818a209539" class="bulleted-list" dir="auto"><li style="list-style-type:circle">スキル選択制を採用する際、選び取ることのできるスキルのコストを許す数を設定します。<blockquote id="1c59da7d-49f6-81f0-b9e5-ebca337bb13f" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">スキル選択制のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8156-8873-ecbb6096d1ae" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大アイテム所持数<ul id="1c59da7d-49f6-81ab-9c1a-e69cd319102c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">持てるアイテムの最大数を設定します。<blockquote id="1c59da7d-49f6-8129-95ea-f07916829719" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">アイテム個別制のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="2919da7d-49f6-80cc-9b10-db7bf208ade2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大ｽｷﾙ選択数<ul id="2919da7d-49f6-8045-b935-e7ed6771eef6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">スキル選択制を採用する際、選び取ることのできるスキルのスロット数を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8162-868f-dc7d0980cfff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">装備欄1～15初期装備<ul id="1c59da7d-49f6-81eb-88a0-dbf7599c6e0c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ゲーム開始時点で装備している装備品を指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-817f-b649-dc8eee0cf858" class="bulleted-list" dir="auto"><li style="list-style-type:disc">装備可能タイプ1～10<ul id="1c59da7d-49f6-8195-8ab8-c9f4af7af98d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">装備可能なアイテムの種別を指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81c2-abfa-d1d7585ae395" class="bulleted-list" dir="auto"><li style="list-style-type:disc">装備条件ﾀｸﾞ<ul id="1c59da7d-49f6-810e-9a00-d69acb806719" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当タグが設定された装備の装備可能判定を変動させます。<br/>改行で複数のタグを設定できます。<br/>無料高機能RPGシステムMr.Hでは、「汎用条件設定1」と「条件ﾀｸﾞ設定1」で使用されます。</li></ul></li></ul><ul id="1c59da7d-49f6-81ae-979d-c72280384290" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘コマンド<ul id="1c59da7d-49f6-815d-a71b-e84a024507b6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘中に使用できるコマンドの一覧をデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-816c-ac44-cf4715d99dc0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">習得極意強化（スキル/パッシブ）<ul id="1c59da7d-49f6-815a-833d-d5f898adddea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">習得する極意、スキル、パッシブの一覧を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-818e-81cd-d290c638524d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ジャマー設定<ul id="1c59da7d-49f6-81af-a6ce-e6c2eda010b3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「汎用ジャマー設定1」からジャマーの有無を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-81f2-8772-ee6ed8070587" class="bulleted-list" dir="auto"><li style="list-style-type:disc">必要経験値ABC<ul id="1c59da7d-49f6-8170-b18b-fe1cc4b7d1ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle">必要経験値を設定します・<br/>AにはLvの2乗が、BにはLvがかけられます。<br/>Cは固定値です。</li></ul></li></ul><ul id="1c59da7d-49f6-8152-8d0b-c9b1ab88d045" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期所属職業<ul id="1c59da7d-49f6-81f2-bdd0-dbbf7cc3694e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デフォルトで所属している職業を指定します。</li></ul></li></ul><ul id="2c89da7d-49f6-801e-a37c-ec5cb9c624f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期職業ﾚﾍﾞﾙ<ul id="2c89da7d-49f6-8026-992a-cf52f0c3778a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ゲーム開始時に職業レベルを設定します。<br/>「(職業ID:職業Lv)」の文字列で設定します。<br/>「,」で複数の職業レベルを設定できます。<ul id="2c89da7d-49f6-8051-baaf-ca4b745c931f" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「0:1,7:2」<ul id="2c89da7d-49f6-800f-9c58-de242631fabd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">その主人公はゲーム開始時の時点で0番の職業レベルが1、7番の職業レベルが2になります。</li></ul></li></ul><ul id="3579da7d-49f6-8027-8e84-de5add8a3ddd" class="bulleted-list" dir="auto"><li style="list-style-type:square">「DataName:」を先頭に入れた場合は以下を入力します<ul id="3579da7d-49f6-80e9-a6fe-de72b7d45d38" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「(職業名):(職業レベル),…」<br/>「,」で複数設定できます。</li></ul></li></ul></li></ul></li></ul><ul id="2c89da7d-49f6-80bc-841f-d41510e1e438" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クラスチェンジ可能カテゴリ<ul id="2c89da7d-49f6-8017-9415-f223a6e86f53" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その主人公が転職可能な職業をその属性のみに限定します。<br/>空欄で全ての職業に転職できます。</li></ul></li></ul><ul id="2c89da7d-49f6-80fc-b63f-df92bb4d54cd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クラスロックカテゴリ<ul id="2c89da7d-49f6-80b6-a0e1-c9c6c830d90b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ゲーム開始時にその属性の職業をロックします。<br/>ロックされた属性の職業は職業を変更したり、職業レベルを変更する事はできません。<br/>改行で複数の職業の属性をロックできます。</li></ul></li></ul><ul id="1c59da7d-49f6-8183-8cfa-ca97c6b902be" class="bulleted-list" dir="auto"><li style="list-style-type:disc">転職禁止職業<ul id="1c59da7d-49f6-814c-aec2-d43c8e52e2fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その主人公は設定された職業に転職できません。<br/>職業IDで設定します、「,」で区切って複数の職業を設定します。<ul id="1c59da7d-49f6-8145-aff5-d1cf7bb0edfc" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「5,7,8」<ul id="1c59da7d-49f6-8117-8177-caae14afae95" class="bulleted-list" dir="auto"><li style="list-style-type:disc">その主人公は5、7、8番の職業に転職できなくなる</li></ul></li></ul><ul id="3579da7d-49f6-805c-ae37-eec82af36a53" class="bulleted-list" dir="auto"><li style="list-style-type:square">「DataName:」を先頭に入れた場合は以下を入力します<ul id="3579da7d-49f6-80c6-a919-ec56290fcd15" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「(職業名),…」<br/>「,」で複数設定できます。</li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81ff-af8d-c93570ca1d92" class="bulleted-list" dir="auto"><li style="list-style-type:disc">AIで自動行動する？<ul id="1c59da7d-49f6-81b4-bfb7-dba1c016a695" class="bulleted-list" dir="auto"><li style="list-style-type:circle">手動で行動するか、設定されたデフォルトAIで行動するか、<br/>作戦型AI(習得したスキルの中から自動で選択)に基づいて行動するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8199-ba6a-d543aa0b86ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">対応デフォルトAI<ul id="1c59da7d-49f6-8161-b985-e99954d10045" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「ﾃﾞﾌｫﾙﾄ行動AI」からデフォルトAIの行動内容を設定します。<br/>その参照IDです。<blockquote id="1c59da7d-49f6-816b-975a-ef7963c3f2ee" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">「AIで自動行動する？」が「[1]AIで自動行動[ﾃﾞﾌｫﾙﾄAI]」の時のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81f5-9673-ea3656af3b43" class="bulleted-list" dir="auto"><li style="list-style-type:disc">デフォルトAIデータ数<ul id="1c59da7d-49f6-812f-bdf0-f099443d8e60" class="bulleted-list" dir="auto"><li style="list-style-type:circle">対応ﾃﾞﾌｫﾙﾄAIからいくつ分のデータを使用するかを設定します。<br/>0以下の場合は1個となります。<blockquote id="1c59da7d-49f6-813d-8ad3-eeace17fe378" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">「AIで自動行動する？」が「[1]AIで自動行動[ﾃﾞﾌｫﾙﾄAI]」の時のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-813d-8bfb-e5713e5431ff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ローテーションAIループ数<ul id="1c59da7d-49f6-81f5-a289-c1a7343c3ad4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デフォルトAIのローテーション条件のループ数を設定します。<br/>0以下の場合は使用しません。<blockquote id="1c59da7d-49f6-8126-ae17-dfecd86ee674" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">「AIで自動行動する？」が「[1]AIで自動行動[ﾃﾞﾌｫﾙﾄAI]」の時のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8109-ba72-ea3ec6c87191" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変更禁止設定1<ul id="1c59da7d-49f6-81b8-94a3-e70cdec3757b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">装備変更を禁止するか、作戦変更を禁止するか、職業変更を禁止するかを設定します。<br/>主に、一時的に仲間になるキャラ用に設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8140-84aa-cbb31b26374b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">周回時ステータス初期化する？<ul id="1c59da7d-49f6-8116-b36a-d4661def02e1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">強くてニューゲーム時にステータスを初期化するか設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-811b-a505-fe9eb99f5c35" class="bulleted-list" dir="auto"><li style="list-style-type:disc">一時的な味方？<ul id="1c59da7d-49f6-81ec-8e67-f5ed792a6790" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デバッグコマンドのレベルアップの対象から除外し、メニューでHPやMP等を非表示にするかを設定します。<br/>主に、一時的に仲間になるキャラ用に設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-818c-abf5-f1c6a52be45b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8159-8d25-e2d65637091c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-81d8-9627-cd21491dffba" class="bulleted-list" dir="auto"><li style="list-style-type:disc">●●時台詞（入店/退店/購入/売却/購入キャンセル/売却キャンセル）<ul id="1c59da7d-49f6-81cc-bc7a-dbec08803300" class="bulleted-list" dir="auto"><li style="list-style-type:circle">主人公をお店の店員にしたときに表示される台詞を指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8146-b902-e1014f5ad73c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">対象選択時台詞<ul id="1c59da7d-49f6-8195-8c3c-e0dcd75a7396" class="bulleted-list" dir="auto"><li style="list-style-type:circle">対象にカーソルを合わせたとき、表示される台詞を指定します</li></ul></li></ul><p id="1c59da7d-49f6-811c-bd46-deaf9fde6512" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8149-9ecd-e1be36cc5c07" dir="auto"/><p id="1c59da7d-49f6-81cf-ad84-d86ec7e1e08e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81f6-98ac-c43f1ba0a6be" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81f0-8a4d-f9fe6ba1facd" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8169-aaa8-d86fa4af642a" dir="auto"/><h2 id="1c59da7d-49f6-8122-912c-d8ddfeec7b47" class="" dir="auto">●職業設定1</h2><p id="1c59da7d-49f6-81a7-a686-d690380f1638" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b2-b73e-ef1dc67c962b" dir="auto"/><ul id="1c59da7d-49f6-81a6-b91e-cbbf7e21c6fa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">職業名<ul id="1c59da7d-49f6-8145-a9b1-febf9c96943e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業の名前です。</li></ul></li></ul><ul id="1c59da7d-49f6-813e-b1e1-d85a4a7fa784" class="bulleted-list" dir="auto"><li style="list-style-type:disc">職業名[短]<ul id="1c59da7d-49f6-8142-b9b0-edd368440021" class="bulleted-list" dir="auto"><li style="list-style-type:circle">メニュー画面でキャラの肩書きの代わりに表示される文字列です。</li></ul></li></ul><ul id="1c59da7d-49f6-8142-a1a5-dccdb4e80b22" class="bulleted-list" dir="auto"><li style="list-style-type:disc">説明文<ul id="1c59da7d-49f6-81a5-8a90-ea5dde41bc9e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「転職画面」や「職業レベルアップ画面」で表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-81ce-93ca-c7c1834c1b1c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大職業レベル<ul id="1c59da7d-49f6-81ba-b1b8-cc8dab995b8e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業のレベル上限です。</li></ul></li></ul><ul id="1c59da7d-49f6-8190-aecb-d9f32a577e7c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大HP増減[%]～敏捷性増減[%]、ｶｽﾀﾑ能力値1増減[%]～ｶｽﾀﾑ能力値5増減[%]<ul id="1c59da7d-49f6-814e-8cfe-c77ed031c340" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無職の時の能力値に乗算されます。</li></ul></li></ul><ul id="1c59da7d-49f6-81f9-a09b-deb1f0a93186" class="bulleted-list" dir="auto"><li style="list-style-type:disc">命中率増減[%]～ｸﾘﾃｨｶﾙ増減[%]<ul id="1c59da7d-49f6-812b-914f-d46c080b34d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無職の時の能力値に加算されます。</li></ul></li></ul><ul id="1c59da7d-49f6-811d-bba0-f41c67f7a57f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｽｷﾙﾀｸﾞ<ul id="1c59da7d-49f6-8126-a8e2-d7fad4be9ab9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当タグが設定されたスキルの発動や命中、ダメージを変動させます。<br/>改行で複数のタグを設定できます。<br/>無料高機能RPGシステムMr.Hでは、「汎用条件設定1」と「条件ﾀｸﾞ設定1」で使用されます。</li></ul></li></ul><ul id="2919da7d-49f6-809e-8a38-ed07199e3ba0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大HP増減[1Lv成長]～ｶｽﾀﾑ能力値5増減[1Lv成長]<ul id="2919da7d-49f6-808f-89b2-ea1a7ed3631d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業レベルに応じて無職の時の能力値に加算されます。<br/>上昇量は<br/>「(設定値÷100)×(現在の職業Lv-職業Lvの下限)」<br/>です。</li></ul></li></ul><ul id="2919da7d-49f6-8016-b49b-d15efc3b11cb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">職業についてなくても補正<ul id="2919da7d-49f6-8080-8b5e-d907e91bcfb0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">職業についていない状態でも、その職業レベルに応じて能力値を補正するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81b9-94df-dfe9bfb8f4e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">装備可能タイプ1～8<ul id="1c59da7d-49f6-8103-b96f-e534e6718400" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業が装備できる物を指定するものです。</li></ul></li></ul><ul id="1c59da7d-49f6-81c9-bec2-e594297f1a05" class="bulleted-list" dir="auto"><li style="list-style-type:disc">装備条件ﾀｸﾞ<ul id="1c59da7d-49f6-81c9-97ef-dc93bceca768" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のタグが設定された武器/防具の装備可能判定を変動します。<br/>改行で複数のタグを設定できます。<br/>無料高機能RPGシステムMr.Hでは、「汎用条件設定1」と「条件ﾀｸﾞ設定1」で使用されます。</li></ul></li></ul><ul id="1c59da7d-49f6-8122-aa16-e10ffeadf61c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大アイテム所持数増加<ul id="1c59da7d-49f6-81b8-9a49-c068f5cd00d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">アイテムを持てる数を増やします。<blockquote id="1c59da7d-49f6-8137-9e1c-d4f09acc38b2" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">アイテム個別制のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-812a-b5e7-c60ffc19fee0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘コマンド<ul id="1c59da7d-49f6-819d-958c-e628a0f38555" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘中に追加するコマンドの一覧をデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-813f-b89a-fc1c0f7c49d3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">習得極意強化（スキル/パッシブ）<ul id="1c59da7d-49f6-813c-a696-de41cb366694" class="bulleted-list" dir="auto"><li style="list-style-type:circle">習得する極意、スキル、パッシブの一覧を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8190-bade-cced97a03f13" class="bulleted-list" dir="auto"><li style="list-style-type:disc">専用極意強化/スキル/パッシブ継承<ul id="1c59da7d-49f6-819e-8857-de0bcffebad4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当の職業専用のスキル/パッシブをその職業で使用できます。<br/>ただし、習得レベルが「2001」以上のスキル/パッシブは継承できません。<ul id="1c59da7d-49f6-813e-983d-e5808f94d7b0" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「ウォリアー」の「専用スキル継承」に「1,2」を入れると<br/>「ウォリアー」に転職した際に「ファイター」「モンク」の専用スキルが使用できる。</li></ul><ul id="3579da7d-49f6-8087-81a8-ee809b2d6ca1" class="bulleted-list" dir="auto"><li style="list-style-type:square">「DataName:」を先頭に入れた場合は以下を入力します<ul id="3579da7d-49f6-8042-ace2-fee87b8b12b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「(職業名),…」<br/>「,」で複数設定できます。</li></ul></li></ul></li></ul></li></ul><ul id="3329da7d-49f6-805c-97ec-c933a6dbe681" class="bulleted-list" dir="auto"><li style="list-style-type:disc">スキル習得レベル参照職業<ul id="3329da7d-49f6-80d0-9f21-e4967afeb39d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">極意強化/スキル/パッシブの習得レベルに関して、他の職業のレベルも参照します。<br/>「DataName:」を先頭に入れた場合は職業のデータ名で、そうでない場合は職業IDで設定します。<br/>「,」で複数設定できます。</li></ul></li></ul><ul id="35c9da7d-49f6-8034-a4ac-e9a0caac235d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">他職業Lv条件ｽｷﾙ<ul id="35c9da7d-49f6-80d7-9812-cb483386eef3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">他の職業のLvに応じて、スキル/パッシブを追加で習得させます。<br/>「DataName:」を先頭に入れた場合はデータ名で、そうでない場合はデータIDで設定します。<br/>「,」で複数設定できます。<br/>以下の形式で入力します。<ul id="35c9da7d-49f6-803d-bb60-e1c4b00e886d" class="bulleted-list" dir="auto"><li style="list-style-type:square">(スキル種別):(習得スキルリスト):(職業ID);(職業Lv):(職業ID);(職業Lv)<ul id="35c9da7d-49f6-805b-b542-fb2fd3e4da37" class="bulleted-list" dir="auto"><li style="list-style-type:disc">(スキル種別)の部分に以下の文字列を入れます<ul id="35c9da7d-49f6-80c9-9c90-d04ff4d3c331" class="bulleted-list" dir="auto"><li style="list-style-type:circle">使用スキル<ul id="35c9da7d-49f6-80a9-9d07-c83f75cab9e8" class="bulleted-list" dir="auto"><li style="list-style-type:square">使用スキルを追加で覚えます。</li></ul></li></ul><ul id="35c9da7d-49f6-8080-89ef-c724f0bb6811" class="bulleted-list" dir="auto"><li style="list-style-type:circle">パッシブ<ul id="35c9da7d-49f6-809c-b901-da5c5da79dfc" class="bulleted-list" dir="auto"><li style="list-style-type:square">パッシブを追加で覚えます。</li></ul></li></ul></li></ul><ul id="35c9da7d-49f6-801e-9af5-def2cc34cf65" class="bulleted-list" dir="auto"><li style="list-style-type:disc">(習得スキルリスト)の部分に以下を入れます<ul id="35c9da7d-49f6-80db-8bcb-e57b0c22bcb4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">(スキル種別)の部分に使用スキルを入れた場合は<br/>(習得使用スキルリストID)を入れる</li></ul><ul id="35c9da7d-49f6-8034-9a06-f546f212db8d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">(スキル種別)の部分にパッシブを入れた場合は<br/>(習得パッシブリストID)を入れる</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-813a-b0b1-ec322800b391" class="bulleted-list" dir="auto"><li style="list-style-type:disc">必要職業ID1～5、必要職業Lv1～5<ul id="1c59da7d-49f6-8163-bdeb-edbda86203f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「必要職業IDX」が「必要職業レベルX」以上の時に転職条件を満たします。<br/>転職条件を満たさない時は転職できません。</li></ul></li></ul><ul id="2c89da7d-49f6-8085-b10b-deffd2679d5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">転職禁止フラグ<ul id="2c89da7d-49f6-8033-951a-df105477d8fa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業はポイント制において、ポイントの振り分けを可能にしつつ、転職のみができなくなります。</li></ul></li></ul><ul id="2c89da7d-49f6-80d9-9f66-c3caaa49b247" class="bulleted-list" dir="auto"><li style="list-style-type:disc">クラスカテゴリ<ul id="2c89da7d-49f6-800c-9220-f5fd87050368" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その職業の属性を設定します。<br/>改行は使用できず、1つの属性しか設定できません。<br/>属性を設定すると、クラスチェンジ可能カテゴリを持ってない主人公はその職業に転職できません。<br/>また、同じ属性の他の職業のレベルの合計が制限されます。<br/>また、ロックされた属性はその職業のレベルを変更できません。</li></ul></li></ul><ul id="2cf9da7d-49f6-8063-b3d4-e816eae92d51" class="bulleted-list" dir="auto"><li style="list-style-type:disc">サブ職業フラグ<ul id="2cf9da7d-49f6-800b-80e8-ced14360a80e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">メイン<ul id="2cf9da7d-49f6-8082-bfec-dd4d60b30232" class="bulleted-list" dir="auto"><li style="list-style-type:square">無制限でポイントに割り振る事ができます。</li></ul></li></ul><ul id="2cf9da7d-49f6-80f2-a556-f3137308700d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">サブ<ul id="2cf9da7d-49f6-80f7-8f1b-fa4556357fe1" class="bulleted-list" dir="auto"><li style="list-style-type:square">そのクラスカテゴリ内のメイン職業にポイントを割り振ってないとポイントを割り振る事ができません<ul id="2cf9da7d-49f6-8077-8d93-f8e92363c388" class="bulleted-list" dir="auto"><li style="list-style-type:disc">例:ファイターがメイン職業でキャスターがサブ職業の場合<ul id="2cf9da7d-49f6-8077-9259-efa413f79ff6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ファイターにポイントを割り振ってないとキャスターにポイントを割り振れない<br/>ファイターにポイントを割り振ってるとキャスターにポイントを割り振る事ができる</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8197-ac0a-fd6004bc06c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">転職可能主人公<ul id="1c59da7d-49f6-8146-98a1-f1202701ed9a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当の職業はその主人公しか転職できません。<ul id="1c59da7d-49f6-8155-918e-e41405336557" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「ブレイバー」のこの文字列項目に「0」を入れるとその職業はIDが「0」の主人公しか転職できなくなる。</li></ul><ul id="3579da7d-49f6-80be-84ad-d9c0248969ae" class="bulleted-list" dir="auto"><li style="list-style-type:square">「DataName:」を先頭に入れた場合は以下を入力します<ul id="3579da7d-49f6-8003-b265-ee210a8f701f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「(主人公名),…」<br/>「,」で複数設定できます。</li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8105-a76e-f1d4de999593" class="bulleted-list" dir="auto"><li style="list-style-type:disc">職業必要経験値、職業経験値増加[固定値]、職業経験値増加[割合]<ul id="1c59da7d-49f6-81d2-8021-db6d8d08b3d7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">必要職業経験値を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81dd-88b6-d3e57d8946b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最初から転職可能か<ul id="1c59da7d-49f6-811e-9596-fab18ea8b7f6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ゲーム開始時から転職できるかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8105-97a0-e3c940aaa146" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8172-9bb2-eef1bf5a5831" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><p id="1c59da7d-49f6-81e7-ae7d-c7e92f8baa85" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814a-9c23-e508bca4d190" dir="auto"/><p id="1c59da7d-49f6-8109-b12d-e763d8d49641" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81e3-a8d1-c3ea55a44975" class="" dir="auto">
+</p><p id="1c59da7d-49f6-812a-973f-c6add2bcab84" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8134-9e43-f7505f36c90a" dir="auto"/><h2 id="1c59da7d-49f6-815c-8d22-d5c6b14e2736" class="" dir="auto">●汎用初期ｽﾃｰﾀｽ1</h2><p id="1c59da7d-49f6-81fd-8549-e9d0b414edfd" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b2-8181-d87ea8e33208" dir="auto"/><ul id="1c59da7d-49f6-8105-9784-c05ec395aff9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">名前<ul id="1c59da7d-49f6-8110-a1ad-e29332b3f190" class="bulleted-list" dir="auto"><li style="list-style-type:circle">データ名です。</li></ul></li></ul><ul id="1c59da7d-49f6-81f1-a8e4-e9d985e3a674" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-81f0-82ce-d356b5615ad2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-8125-88c9-d6977ae6ca24" class="bulleted-list" dir="auto"><li style="list-style-type:disc">盗む/難易無効/ﾒﾀﾙ/MP∞<ul id="1c59da7d-49f6-814f-a7dd-d3a66e830db5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">盗むスキルを無効化するか、難易度による補正を無効化するか、メタルボディにするか、MPを消費させなくするかを設定します。<ul id="1c59da7d-49f6-8103-b8b4-f8d1579d86bc" class="bulleted-list" dir="auto"><li style="list-style-type:square">メタルボディにした場合、受けるダメージ量は「1 + スキルや武器のメタル系追加ダメージ量」となります。ただし、クリティカルを受けた時は「通常のダメージ量 + スキルや武器のメタル系追加ダメージ量」となります。</li></ul><blockquote id="1c59da7d-49f6-810e-bd86-e31039316f9d" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8106-b96c-d6d63e112180" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最初からスキル反射するか<ul id="1c59da7d-49f6-81d6-ae04-e9447df4ed6e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">常に、物理系や魔法系のスキルを反射するかを設定します。<blockquote id="1c59da7d-49f6-8141-8e21-fd247a03b307" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-819a-9891-ed10c9824ad8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">属性耐性1～4<ul id="1c59da7d-49f6-810e-b768-c23167eaf554" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「属性耐性設定」からキャラの属性耐性を設定します。<br/>その参照IDです。<br/>複数設定した場合は加算されます。</li></ul></li></ul><ul id="1c59da7d-49f6-8108-bae1-ed4d965f61f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘開始時状態付与1～3<ul id="1c59da7d-49f6-81ea-8486-d3a0e336fbe6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘開始時、その状態を付与します。<br/>ただし、以下の状態を付与しようとするとエラーメッセージを表示します！<ul id="1c59da7d-49f6-8144-b5da-c5695a071660" class="bulleted-list" dir="auto"><li style="list-style-type:square">状態ID「0」の状態(状態IDの0番は戦闘不能としてみなされるため)</li></ul><ul id="1c59da7d-49f6-8110-ae68-ff0fa606e78f" class="bulleted-list" dir="auto"><li style="list-style-type:square">「戦闘不能として・・・」が「1」以上に設定されている状態</li></ul><blockquote id="1c59da7d-49f6-814d-a308-d2cd936a3e20" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8195-ac49-d8047b69ab91" class="bulleted-list" dir="auto"><li style="list-style-type:disc">武器依存時攻撃属性<ul id="1c59da7d-49f6-8176-9539-d74285a10e22" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「属性リスト設定1」から敵キャラの攻撃時の属性を設定します。<br/>その参照IDです。<blockquote id="1c59da7d-49f6-81e4-b098-ee8de9f41441" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8190-8f8f-df40777555da" class="bulleted-list" dir="auto"><li style="list-style-type:disc">パッシブスキル1～4<ul id="1c59da7d-49f6-8115-a357-f7103b01be4c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵キャラもパッシブスキルを使用できるようにします。<blockquote id="1c59da7d-49f6-8127-885a-fd02a294c3f1" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81c1-9b54-dd9960abef8e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lvマイナス時補正<ul id="1c59da7d-49f6-818a-9742-ee219ffc4b2e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵や召喚獣のレベルが「-1」以下の場合、レベルに加算します。<blockquote id="1c59da7d-49f6-8179-a47b-c963d0175b56" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラおよび召喚獣のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-818d-a453-d956d2a15e2a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lv振れ幅<ul id="1c59da7d-49f6-8190-9637-e6d7bf20b231" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵や召喚獣のレベルを変動させます。<blockquote id="1c59da7d-49f6-8127-b978-fdc228a974e7" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラおよび召喚獣のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81c0-8629-e861380f4f0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最小、最大Lv<ul id="1c59da7d-49f6-8174-a1d3-cf83ac6970ed" class="bulleted-list" dir="auto"><li style="list-style-type:circle">レベル下限、レベル上限を設定します。<blockquote id="1c59da7d-49f6-81c5-9434-d2b80d0d22cb" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラおよび召喚獣のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-817c-9307-ec9e220967b1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">先制攻撃率増加値<ul id="1c59da7d-49f6-81fd-bcb0-c78851c07b35" class="bulleted-list" dir="auto"><li style="list-style-type:circle">高いほど不意打ちの発生率が高くなり、逃走確率も減少します。<br/>敵キャラの平均レベルの計算時、その初期ステータスが設定された敵キャラのレベルに加算します。<blockquote id="1c59da7d-49f6-8150-90e7-e3daaa8f9e5b" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-8191-a03d-d164b8b5ee08" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最大HP～ｸﾘﾃｨｶﾙ率、ｶｽﾀﾑ能力値1～5/1Lv成長値<ul id="1c59da7d-49f6-812c-a5aa-d2ccf39ce477" class="bulleted-list" dir="auto"><li style="list-style-type:circle">1Lv上昇あたりの該当ステータスの増加量です。</li></ul></li></ul><ul id="1c59da7d-49f6-8187-bdc2-fd229ef59545" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期最大HP～クリティカル率、ｶｽﾀﾑ能力値1～ｶｽﾀﾑ能力値5<ul id="1c59da7d-49f6-81d9-ae36-d2c31c33e9ea" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当ステータスの初期値です。</li></ul></li></ul><ul id="1c59da7d-49f6-81ed-864c-f07103ea2c1f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">与回復量増加率[±％]<ul id="1c59da7d-49f6-8105-9253-d7a94b623917" class="bulleted-list" dir="auto"><li style="list-style-type:circle">高いほど、回復スキルの効果量が上昇します。</li></ul></li></ul><ul id="1c59da7d-49f6-8141-be76-d94054af69c8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アイテム効果増加率[±％]<ul id="1c59da7d-49f6-8181-a762-ce112b310539" class="bulleted-list" dir="auto"><li style="list-style-type:circle">高いほど、回復アイテムの効果量が上昇します。</li></ul></li></ul><ul id="1c59da7d-49f6-81a9-b5fe-d6696e4a453f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">TPチャージ増加率[±％]<ul id="1c59da7d-49f6-81fc-a8cc-d7aed60845c2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">高いほど、戦闘中のTPの増加量が上昇します。<blockquote id="1c59da7d-49f6-81e4-8aa0-f04ae8db6f5a" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">主人公のみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81ff-9123-d0a52c8a1883" class="bulleted-list" dir="auto"><li style="list-style-type:disc">スキル無効率[±％]<ul id="1c59da7d-49f6-81a8-8d27-ff670352707c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">高いほど、物理攻撃を無効化する確率が上昇します。<br/>命中判定とは別で行われます。<blockquote id="1c59da7d-49f6-8131-b135-c2a09c130902" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">主人公および敵キャラのみ有効な項目です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81b2-afa4-e1234529c62a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ｽｷﾙﾀｸﾞ<ul id="1c59da7d-49f6-81eb-8822-ebfa8e8366d3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当タグが設定されたスキルの発動や命中、ダメージを変動させます。<br/>改行で複数のタグを設定できます。<br/>無料高機能RPGシステムMr.Hでは、「汎用条件設定1」と「条件ﾀｸﾞ設定1」で使用されます。</li></ul></li></ul><ul id="2b89da7d-49f6-8047-a09f-f6d3be821775" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵HP自動全快ﾀｰﾝ間隔/敵HP自動全快阻止値基本/敵HP自動全快阻止値成長/敵HP自動全快ｱﾆﾒ<ul id="2b89da7d-49f6-8040-ad68-d44b2b4a007a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HP自動全回復に関しての設定を行います。<br/>設定されたターン間隔ごとにHPが全回復します。<br/>その際、蓄積ダメージがHP自動全回復阻止値に達した場合、HPの全回復に失敗します。<br/>蓄積ダメージは、普通にダメージを受けた時に蓄積されます。<br/>なお、HP自動全回復の判定の後に蓄積ダメージが初期化されます。<blockquote id="2b89da7d-49f6-8003-9bfa-f6b535af81ce" class="block-color-yellow" data-notion-highlight="yellow" dir="auto">敵キャラのみ有効な項目です。</blockquote></li></ul></li></ul><ul id="2b89da7d-49f6-8048-9fc9-dbc07e17476c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵ｼｰﾙﾄﾞ破壊時付与状態/敵ｼｰﾙﾄﾞ値基本/敵ｼｰﾙﾄﾞ値成長/敵ｼｰﾙﾄﾞ破壊値挙動/敵ｼｰﾙﾄﾞ破壊ｱﾆﾒ<ul id="2b89da7d-49f6-80a1-85be-e528f34329cf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">シールド破壊の挙動に関しての設定を行います。<br/>相手が弱点を突くかクリティカルを出した時のみ、受けたダメージ量の分だけシールド破壊値が上昇します。<br/>シールド破壊値がシールド値に達した場合、設定された状態が付与され、その際にシールド破壊値が0になります。<br/>シールド破壊値の上昇量を1にするかを選択できます<blockquote id="2b89da7d-49f6-80c6-943d-dc8be10782ae" class="block-color-yellow" data-notion-highlight="yellow" dir="auto">敵キャラのみ有効な項目です。</blockquote></li></ul></li></ul><p id="1c59da7d-49f6-81aa-9447-e8a00f8e5ab9" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-819a-ae47-e572bf317b1b" dir="auto"/><p id="1c59da7d-49f6-815e-8781-c83ba481bd5b" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a4-b8c2-c8cd171f28c9" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8195-a8e5-ddb936c988f7" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-816c-8d2e-f479d0d125d5" dir="auto"/><h2 id="1c59da7d-49f6-8175-8a89-d0cd244fa4c5" class="" dir="auto">●汎用戦闘コマンドリスト</h2><p id="1c59da7d-49f6-81bd-8165-c89180c9e15c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b5-adf4-df7d664959d0" dir="auto"/><ul id="1c59da7d-49f6-81c0-9ce8-f56446f56d73" class="bulleted-list" dir="auto"><li style="list-style-type:disc">無料高機能RPGシステムMr.Hでは、主人公や職業が使用できる戦闘コマンドのリストをここで指定します。</li></ul><p id="1c59da7d-49f6-81f4-88b8-e37cd3123afc" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8196-8a36-e6017aefb581" dir="auto"/><p id="1c59da7d-49f6-8112-8cab-fba2dee00c85" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81d5-9035-d0c8729ee72f" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8147-99b0-dcb954846551" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81fd-b9ff-eb59d77888a7" dir="auto"/><h2 id="1c59da7d-49f6-810f-8c0c-e735d0150c3e" class="" dir="auto">●習得極意強化/スキル/パッシブ</h2><p id="1c59da7d-49f6-8111-9703-cfc4aa13addc" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81f0-8f68-f0c1a89de642" dir="auto"/><ul id="1c59da7d-49f6-813a-82e7-c025ea3000c7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">&lt;能力&gt;覚えるレベル<ul id="1c59da7d-49f6-8128-9c0e-c5548a0ab47d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その極意強化/スキル/パッシブを覚えるレベルです。<ul id="1c59da7d-49f6-81f3-b849-c6e01df293d3" class="bulleted-list" dir="auto"><li style="list-style-type:square">1～999<ul id="1c59da7d-49f6-8170-b2a4-e88965562313" class="bulleted-list" dir="auto"><li style="list-style-type:disc">そのレベルに達した時に「覚える極意強化/スキル/パッシブ」で指定した極意強化/スキル/パッシブが全職業共通で使用可能になります。<ul id="1c59da7d-49f6-8112-9242-c3360d834dc5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:覚えるレベルが3の場合、その職業のレベルが3に達した場合、「二段斬り」が全職業で使用可能になる。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8174-b532-e13770194ac8" class="bulleted-list" dir="auto"><li style="list-style-type:square">1001～1999<ul id="1c59da7d-49f6-814b-928f-ed269d3be66c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「そのレベル-1000」に達した時に「覚える極意強化/スキル/パッシブ」で指定した極意強化/スキル/パッシブがその職業のみで使用可能になります。<br/>ただし、専用極意強化/スキル/パッシブの継承の対象になります。<ul id="1c59da7d-49f6-81e0-bf74-e4e669374bbc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:覚えるレベルが1005の場合、その職業のレベルが5に達した場合、「ギガファイア」がその職業限定で使用可能になる。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-814d-9c29-c840301f59c1" class="bulleted-list" dir="auto"><li style="list-style-type:square">2001～2999<ul id="1c59da7d-49f6-81e6-8fb0-e092b5ed7f1e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「そのレベル-2000」に達した時に「覚える極意強化/スキル/パッシブ」で指定した極意強化/スキル/パッシブがその職業のみで使用可能になります。<br/>また、専用極意強化/スキル/パッシブの継承の対象になりません。<ul id="1c59da7d-49f6-811b-b074-fe1bdd96613e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">例:覚えるレベルが2005の場合、その職業のレベルが5に達した場合、「ギガファイア」がその職業限定で使用可能になる。</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8141-ad73-f99bf90302cf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">覚える極意強化/スキル/パッシブ<ul id="1c59da7d-49f6-81e3-9478-ddd185a130b1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「覚えるレベル」に達した時にその極意強化/スキル/パッシブを習得します。</li></ul></li></ul><p id="1c59da7d-49f6-81f9-898e-f2a68ada2509" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8157-a761-ed489a30c256" dir="auto"/><p id="1c59da7d-49f6-81c8-ba20-c27454d65b67" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81c5-bfd4-e184f1156323" class="" dir="auto">
+</p><p id="1c59da7d-49f6-810d-9b3b-ff64889e9815" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81aa-bf17-f3e96fbc20b9" dir="auto"/><h2 id="1c59da7d-49f6-8175-bd19-db75af60287d" class="" dir="auto">●ﾃﾞﾌｫﾙﾄ行動AI</h2><p id="1c59da7d-49f6-8112-8ac0-e08b1abbaba3" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-817e-a2a6-cedebd26328a" dir="auto"/><ul id="1c59da7d-49f6-8108-9d38-e0212ed8a53c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">味方/敵/召喚獣のAIを詳細に設定できます。<br/>複数の条件を指定できます。<br/>1ターン経過で3ターンごと、HPが50％以下でダークスフィアを使用するといった設定も可能です。<br/>また、行動の仕様がツクールと同じ仕様になり、条件を満たしている中で、優先度の最大が10の場合10、9、8、7、6が候補となり、5以下は選ばれません。<br/>10は(1/3)、9は(4/15)、8は(1/5)、7は(2/15)、6は(1/15)の確率で選ばれます。<br/>なお、デフォルトでは1個の条件でしか指定できません。</li></ul><ul id="1c59da7d-49f6-81e1-87d2-e7e9d143912a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">コモン「X[戦]AI条件変数判定」で詳細に行動条件を設定できます。<br/>行動条件は通常変数で指定し、設定した通常変数を行動条件に指定してください。</li></ul><p id="1c59da7d-49f6-8139-ae6e-e529edd82c44" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81ca-a78c-cb4035e9bf57" dir="auto"/><ul id="1c59da7d-49f6-81d0-8671-e1769ee62b37" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動内容<ul id="1c59da7d-49f6-81f4-af23-ee206d58475f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-3]行動リストから除外<ul id="1c59da7d-49f6-81f7-8334-ff978f6b4ce6" class="bulleted-list" dir="auto"><li style="list-style-type:square">行動リストから除外します。</li></ul></li></ul><ul id="1c59da7d-49f6-81f4-9065-fd35bf8735ce" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-2]逃げる<ul id="1c59da7d-49f6-8182-a40a-c79049e0ef7b" class="bulleted-list" dir="auto"><li style="list-style-type:square">逃走します。</li></ul></li></ul><ul id="1c59da7d-49f6-81b8-b31a-f0a279c9cdc3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-1]何もしない<ul id="1c59da7d-49f6-8135-9532-dcb556b1aaab" class="bulleted-list" dir="auto"><li style="list-style-type:square">何もしません。</li></ul></li></ul><ul id="1c59da7d-49f6-818a-a1bc-da23f113dfd1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">0以上<ul id="1c59da7d-49f6-816f-9863-d7766ed34688" class="bulleted-list" dir="auto"><li style="list-style-type:square">スキルを使用します。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-816e-8980-e3c23699dd5f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動優先度<ul id="1c59da7d-49f6-810d-adf0-e18047309f1c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その行動の優先度です。</li></ul></li></ul><ul id="1c59da7d-49f6-81e3-b404-d54f3c086c53" class="bulleted-list" dir="auto"><li style="list-style-type:disc">HP条件<ul id="1c59da7d-49f6-817f-b8bc-ed8c97baba29" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[10～90]敵1人HP10～90%以下<ul id="1c59da7d-49f6-81a1-9724-dc094be4fd61" class="bulleted-list" dir="auto"><li style="list-style-type:square">敵一人のHPの残り％がそれ以下の時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-8130-addf-e6c4daf87503" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[110～190]敵全体HP10～90%以下<ul id="1c59da7d-49f6-8110-a5d7-d79bf3ace291" class="bulleted-list" dir="auto"><li style="list-style-type:square">敵全体のHPの残り％がそれ以下の時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-810b-a6d9-e7e48dcf1793" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-10～-90]味方1人HP10～90%以下<ul id="1c59da7d-49f6-81f9-930f-c23dd74aea6c" class="bulleted-list" dir="auto"><li style="list-style-type:square">味方一人のHPの残り％がそれ以下の時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-8190-8ad7-dc48b64e17cd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-110～-190]味方全体HP10～90%以下<ul id="1c59da7d-49f6-813d-ae79-e4ebb019ed0b" class="bulleted-list" dir="auto"><li style="list-style-type:square">味方全体のHPの残り％がそれ以下の時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-8177-ab19-ca45295430de" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-210～-290]自分HP10～90%以下<ul id="1c59da7d-49f6-811e-b202-d1fccc6aca13" class="bulleted-list" dir="auto"><li style="list-style-type:square">自分のHPの残り％がそれ以下の時に条件を満たします。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8110-b08d-db3a5c95198f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">MP条件<ul id="1c59da7d-49f6-819d-b872-c125b36116a7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">MPの残り％が下回ってる時に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-8181-bda5-d3174ff86055" class="bulleted-list" dir="auto"><li style="list-style-type:disc">複数回行動条件<ul id="1c59da7d-49f6-8139-85bf-ca7a4280ec75" class="bulleted-list" dir="auto"><li style="list-style-type:circle">複数回行動する敵/召喚獣において1ターン中何回目の行動であるかを指定します。<ul id="1c59da7d-49f6-8135-ad87-fdcb1683551e" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「2」と入れると、2回目の行動の時に条件を満たす</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8159-b92e-ce964f652f82" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ターン条件<ul id="1c59da7d-49f6-813f-b048-c09c5e4b1fbe" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「設定値%100000」のターン数以降「設定値/100000」の間隔で条件を満たします。<ul id="1c59da7d-49f6-818a-b3f2-e3754a75da8e" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「500003」と入力すると、3、8、13ターン目に条件を満たす</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81d9-be2f-e1d707faedf8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ﾛｰﾃｰｼｮﾝ条件<ul id="1c59da7d-49f6-81cd-98d6-dab9774e0926" class="bulleted-list" dir="auto"><li style="list-style-type:circle">イメージとしては、ファイア→アイス→サンダー→ファイアと周期的に決まった行動をするイメージです。</li></ul></li></ul><ul id="1c59da7d-49f6-816d-be40-ffb82a8f87f7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">状態条件<ul id="1c59da7d-49f6-81b6-8c56-d59ee2bb596f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その状態にかかってる時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-81e1-aa09-d1743b0fbfe5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">通常変数条件<ul id="1c59da7d-49f6-8136-b99e-d0af15d8a922" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その通常変数が1以上の時に条件を満たします。</li></ul></li></ul><ul id="1c59da7d-49f6-81f1-985a-f891e784c694" class="bulleted-list" dir="auto"><li style="list-style-type:disc">使用対象[1人対象時]<ul id="1c59da7d-49f6-81c0-8de0-dc103a572df8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[0]ランダム<ul id="1c59da7d-49f6-81f0-8579-dfd3e179ba0a" class="bulleted-list" dir="auto"><li style="list-style-type:square">ランダムな対象に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-8148-a8d5-f19d8c99a9f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[-1]自分自身<ul id="1c59da7d-49f6-818e-9c9d-e17bfe0d5f03" class="bulleted-list" dir="auto"><li style="list-style-type:square">自分自身に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-8153-820b-f4aa1ffa8b92" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HP残り%最低、最大の対象<ul id="1c59da7d-49f6-81ec-b07e-c4b75bb33245" class="bulleted-list" dir="auto"><li style="list-style-type:square">HPの残り％が最低、最大の対象に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-818d-b793-ec5679a77a08" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HPの値が最低、最大の対象<ul id="1c59da7d-49f6-811d-bbd1-fafd0ad2321e" class="bulleted-list" dir="auto"><li style="list-style-type:square">現在HPが最低、最大の対象に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-81f2-b0ed-ef4f233966bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">最大HPが最低、最大の対象<ul id="1c59da7d-49f6-8148-ab39-ee5f4341e8ce" class="bulleted-list" dir="auto"><li style="list-style-type:square">最大HPが最低、最大の対象に使用します。</li></ul></li></ul><ul id="1c59da7d-49f6-81e8-9bd6-edfd599b80f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[7]戦闘不能者<ul id="1c59da7d-49f6-812a-9783-e7838b1f8af2" class="bulleted-list" dir="auto"><li style="list-style-type:square">戦闘不能者を対象に使用します。<br/>有効な対象がいない場合はランダムな対象に使用します。<br/>ただし、敵グループの戦闘不能者を対象にするとエラーを発生させます。</li></ul></li></ul><ul id="1c59da7d-49f6-81a8-a729-ff1b00baa129" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[8]状態異常罹患者<ul id="1c59da7d-49f6-81aa-b432-d9b4d2345b8a" class="bulleted-list" dir="auto"><li style="list-style-type:square">状態異常にかかってる対象に使用します。<br/>有効な対象がいない場合はランダムな対象に使用します。</li></ul></li></ul></li></ul><p id="1c59da7d-49f6-81e4-91c4-e4e59d45e5f7" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81cd-a2e2-da4bd74d096c" dir="auto"/><p id="1c59da7d-49f6-81a9-ae40-f01758673805" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a8-a245-d494e444b25a" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8139-8fc8-ca3bd6fc292e" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8128-ac61-c5bcd99f13a7" dir="auto"/><h2 id="1c59da7d-49f6-81c9-b598-e6908b6b689a" class="" dir="auto">●汎用ジャマー設定1</h2><p id="1c59da7d-49f6-81f3-9a0b-cb74a9183267" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81e3-ad9d-da5f9c0832d7" dir="auto"/><ul id="1c59da7d-49f6-8102-8350-c540b4e8534d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">名前<ul id="1c59da7d-49f6-81a8-b5e6-f68d51ac2353" class="bulleted-list" dir="auto"><li style="list-style-type:circle">データ名です。</li></ul></li></ul><ul id="1c59da7d-49f6-819c-98b0-f29d1d754ad4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-8186-8e37-da63bfb9d2b0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-81aa-9143-e944b8964c98" class="bulleted-list" dir="auto"><li style="list-style-type:disc">味方が攻撃スキル/状態条件/発動率<ul id="1c59da7d-49f6-81ae-8427-c0e71889719c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの味方が攻撃スキルを使用時、割り込み行動を行います。<br/>敵に使用するスキルの場合、攻撃を受けた敵がスキルの対象となります。<ul id="1c59da7d-49f6-8133-bcbd-c4cd1ce6f356" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:攻撃を受けた敵に追撃など</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81b9-b4f2-d5b52ce693f3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵が攻撃スキル/状態条件/発動率<ul id="1c59da7d-49f6-81d9-9bd2-d79ab9d09200" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの敵が攻撃スキルを使用時、割り込み行動を行います。<br/>敵に使用するスキルの場合、攻撃してきた敵がスキルの対象となります。<ul id="1c59da7d-49f6-8110-928c-c11c1e2ad648" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:攻撃してきた敵に反撃など</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-818e-8735-db76d46f0ef5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">味方が回復スキル/状態条件/発動率<ul id="1c59da7d-49f6-81a1-86ae-f501518c5852" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの味方が回復スキルを使用時、割り込み行動を行います。<br/>味方に使用するスキルの場合、回復した味方が対象となります。<ul id="1c59da7d-49f6-8126-83f6-f69c51f32442" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:回復した味方を強化など</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8125-8bcf-efdcc5b48c12" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵が回復スキル/状態条件/発動率<ul id="1c59da7d-49f6-8136-8f6f-c0da477ba554" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの敵が回復スキルを使用時、割り込み行動を行います。<br/>敵に使用するスキルの場合、回復した敵がスキルの対象となります。<ul id="1c59da7d-49f6-8142-bf2a-e42163282b88" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:回復した敵を攻撃など</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8121-bea1-c1ee40780598" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵が強化スキル/状態条件/発動率<ul id="1c59da7d-49f6-8190-902c-f0d25803f764" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの敵が強化スキルを使用時、割り込み行動を行います。<br/>敵に使用するスキルの場合、バフで強化した敵がスキルの対象となります。<ul id="1c59da7d-49f6-8172-bde4-ed5a8a91615b" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:敵がバフをかけたらディスペルでバフを打ち消すなど</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81c0-adee-de0281c86ed8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵が弱体スキル/状態条件/発動率<ul id="1c59da7d-49f6-81de-87a4-c9546ade2a43" class="bulleted-list" dir="auto"><li style="list-style-type:circle">該当のキャラの敵が弱体スキルを使用時、割り込み行動を行います。<br/>敵に使用するスキルの場合、デバフをかけてきた敵がスキルの対象となります。<ul id="1c59da7d-49f6-81e5-8e7e-ceee203ec23c" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:敵に状態異常やデバフをかけられたら状態異常やデバフを打ち消すなど</li></ul></li></ul></li></ul><p id="1c59da7d-49f6-8142-8033-e50ffb5613bd" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8166-8cc1-c8e12e3a3ac4" dir="auto"/><p id="1c59da7d-49f6-81cf-8c4d-e9df9a453095" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8153-b41b-daf5a589d32a" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8192-be1e-f6798d6278e5" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8109-89e8-dba13d911669" dir="auto"/><h2 id="1c59da7d-49f6-8133-9d7a-d2cec64f0ce4" class="" dir="auto">●歩行画像設定</h2><p id="1c59da7d-49f6-8113-adba-f3f75bfb5535" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8112-bbe7-d3ef2a8b64be" dir="auto"/><ul id="1c59da7d-49f6-818d-9492-fa25f37fa968" class="bulleted-list" dir="auto"><li style="list-style-type:disc">味方の歩行画像および足跡画像はここで指定します。</li></ul><p id="1c59da7d-49f6-8164-a5f3-d70d67a8b44f" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8141-b050-f02533e7d78e" dir="auto"/><p id="1c59da7d-49f6-8162-abec-d61b3b0af9dc" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81e6-9e25-e298dc1ee6df" class="" dir="auto">
+</p><p id="1c59da7d-49f6-816d-870f-ca0771c61d2d" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-819b-8ec9-ea80be5a5f19" dir="auto"/><h2 id="1c59da7d-49f6-8169-9ad2-fcfe289fa4e0" class="" dir="auto">●顔画像設定</h2><p id="1c59da7d-49f6-819f-844a-f027106a7a67" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8182-aeaf-f45e02c53c9b" dir="auto"/><ul id="1c59da7d-49f6-8193-9229-c9827986f1a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">通常時顔画像<ul id="1c59da7d-49f6-811b-b5f0-c778eeb0a18d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">状態異常にかかっておらずHPが26％以上の時に表示する顔画像です。</li></ul></li></ul><ul id="1c59da7d-49f6-8143-a699-e0c56fcdb305" class="bulleted-list" dir="auto"><li style="list-style-type:disc">異常時顔画像<ul id="1c59da7d-49f6-8126-b24e-c21f9f24b3d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">状態異常時に表示する顔画像です。</li></ul></li></ul><ul id="1c59da7d-49f6-810c-93b0-ef7098ee7ac1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ピンチ時顔画像<ul id="1c59da7d-49f6-8176-ade5-c58ff6bc2480" class="bulleted-list" dir="auto"><li style="list-style-type:circle">状態異常にかかっておらずHPが25％以下の時に表示する顔画像です。</li></ul></li></ul><ul id="1c59da7d-49f6-81b4-bc7f-ff33384b74ce" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘不能時顔画像<ul id="1c59da7d-49f6-814b-abd0-f2c7e8b4a7cb" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘不能時に表示する顔画像です。</li></ul></li></ul><p id="1c59da7d-49f6-81d5-b3a3-cb5a822361e8" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8185-bbfe-dc5ca4bf26fd" dir="auto"/><p id="1c59da7d-49f6-81c2-a26e-f3f08ea605b7" class="" dir="auto">
+</p><p id="1c59da7d-49f6-810c-b6c9-d94895c0e4b2" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8130-acfd-f562b6cdb796" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81a3-a999-d4e2a21680a7" dir="auto"/><h2 id="1c59da7d-49f6-8183-9c3b-c5150f265a78" class="" dir="auto">●敵ｷｬﾗ設定1</h2><p id="1c59da7d-49f6-81e7-a9a3-e3bc63f90d9b" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81ce-9a93-d7a02e8701dc" dir="auto"/><ul id="1c59da7d-49f6-8193-932c-c3a31019bab6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵キャラ名<ul id="1c59da7d-49f6-819d-af90-dcea3438eb0e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラのデータベースでの表示名です。</li></ul></li></ul><ul id="1c59da7d-49f6-8154-9a9d-d9b267a81b46" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵キャラ表示名<ul id="1c59da7d-49f6-819c-baef-e7d056410e9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘画面やエネミー図鑑にてその文字列が敵キャラの名前として表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-81d0-b0ed-d9a4a522c461" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵キャラ図鑑表示名<ul id="1c59da7d-49f6-8172-ac46-e5351a61e85c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">エネミー図鑑にて、その文字列が敵キャラの名前として表示されます。<br/>エネミー図鑑では「敵キャラ表示名」より優先されます。</li></ul></li></ul><ul id="1c59da7d-49f6-8126-913c-ce3bde596072" class="bulleted-list" dir="auto"><li style="list-style-type:disc">キャラ名装飾文字無効<ul id="1c59da7d-49f6-81b9-883c-d88cdb82f780" class="bulleted-list" dir="auto"><li style="list-style-type:circle">判別ワードとレベルの表示を無効化します。</li></ul></li></ul><ul id="1c59da7d-49f6-815c-a21b-c44fb3d9c446" class="bulleted-list" dir="auto"><li style="list-style-type:disc">図鑑ID、ｸｴｽﾄ討伐対象共有<ul id="1c59da7d-49f6-81b6-b694-d10ef48198ad" class="bulleted-list" dir="auto"><li style="list-style-type:circle">図鑑登録やクエストの対象を指定した敵キャラIDに変更します。</li></ul></li></ul><ul id="1c59da7d-49f6-817c-9f9e-f105d78df0aa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">図鑑説明文<ul id="1c59da7d-49f6-81ba-b9bf-c3b2743048db" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「敵キャラ図鑑」の説明文に表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-81eb-a1de-e8709d82bb14" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵画像番号<ul id="1c59da7d-49f6-8195-a0b9-e73681a5441e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">グラフィックをUDB「敵キャラ画像設定」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8110-b71d-da8b9521ab40" class="bulleted-list" dir="auto"><li style="list-style-type:disc">分類<ul id="1c59da7d-49f6-8166-82a2-d1528658b941" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラの図鑑での分類です。<br/>UDB「敵キャラ分類」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8102-be32-ceb6b7b84457" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵タイプ<ul id="1c59da7d-49f6-81cc-ac2f-d466e1e8d926" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラのゲージの長さです。</li></ul></li></ul><ul id="1c59da7d-49f6-819c-92b3-e54eb3cf5c09" class="bulleted-list" dir="auto"><li style="list-style-type:disc">撃破エフェクト<ul id="1c59da7d-49f6-811b-8d8b-d521fdc26587" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラの撃破エフェクトです。</li></ul></li></ul><ul id="1c59da7d-49f6-81c4-896e-fb23a08f9e20" class="bulleted-list" dir="auto"><li style="list-style-type:disc">武器アニメーション<ul id="1c59da7d-49f6-815b-a226-e9a790e5ed85" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラの武器攻撃時のアニメーションです。<br/>UDB「戦闘アニメセット設定」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-816b-8d71-f83ff3167071" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動回数<ul id="1c59da7d-49f6-8103-84a0-f6cb6dbb0624" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラの行動回数です。</li></ul></li></ul><ul id="1c59da7d-49f6-8176-b32f-f488a578693b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動回数増加率<ul id="1c59da7d-49f6-8147-b946-f1531e9d501f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">値は「(追加で確率判定を行う回数×1000)+(確定で増加する回数×100)+(行動回数が1回増加する確率)」で指定してください。<ul id="2979da7d-49f6-8066-804c-d1231d16a710" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「3250」と指定すると確率で行動回数が最低で2回、最大で6回増加する</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8109-8020-f85f9579d7db" class="bulleted-list" dir="auto"><li style="list-style-type:disc">対応デフォルトAI<ul id="1c59da7d-49f6-816c-bffa-ff3c22982b75" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「ﾃﾞﾌｫﾙﾄ行動AI」からデフォルトAIの行動内容を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-8135-af38-e8228599f1dc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">デフォルトAIデータ数<ul id="1c59da7d-49f6-81f5-a9b5-c6abc085d810" class="bulleted-list" dir="auto"><li style="list-style-type:circle">対応ﾃﾞﾌｫﾙﾄAIからいくつ分のデータを使用するかを設定します。<br/>0以下の場合は1個となります。</li></ul></li></ul><ul id="1c59da7d-49f6-8176-a023-cb6d58a63493" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ローテーションAIループ数<ul id="1c59da7d-49f6-81b2-a371-da95608c5909" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デフォルトAIのローテーション条件のループ数を設定します。<br/>0以下の場合は使用しません。</li></ul></li></ul><ul id="1c59da7d-49f6-8149-a3d0-e1288094041c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ジャマー設定<ul id="1c59da7d-49f6-810d-8e9b-dd9526e3a775" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「汎用ジャマー設定1」からジャマーの有無を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-814e-ac48-d956f15e06ea" class="bulleted-list" dir="auto"><li style="list-style-type:disc">みやぶる判定<ul id="1c59da7d-49f6-81ba-bf82-e8da48f94e55" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HPや耐性を調べる事ができるかできないかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-813c-abff-c853622b10ac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-81a8-9287-cf15e7291e27" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-816c-b9e6-f6d1470c807b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期ｽﾃｰﾀｽ番号<ul id="1c59da7d-49f6-81fa-9838-fb19a62c4a8a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「汎用初期ｽﾃｰﾀｽ」から能力値を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-81b9-9561-c6d7517ccb0e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lv<ul id="1c59da7d-49f6-81d3-a692-f0b208f9d255" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lvの設定を行います。<br/>「-1」以下を設定すると、主人公のレベルと同じになります。</li></ul></li></ul><ul id="1c59da7d-49f6-81b2-a60e-faa6433498e0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">獲得戦利品Lv補正禁止<ul id="1c59da7d-49f6-81f0-aa00-dcae118fa188" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「ｼﾅﾘｵ設定2」の[ｼｽﾃﾑ]獲得戦利品Lv補正の影響を受けるか否かを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-817d-a9f9-e7829a02027a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">獲得経験値、(1Lv成長値A/B)<ul id="1c59da7d-49f6-81db-9eec-c9f0520809b7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">獲得経験値の設定をします。<br/>最終的な数値は以下の通りです<ul id="3709da7d-49f6-8021-9d3a-e45b5821ae33" class="bulleted-list" dir="auto"><li style="list-style-type:square"><mark class="highlight-red" data-notion-highlight="red"><strong>1Lv成長値A×(Lv-1)×(Lv-1)</strong></mark>+<mark class="highlight-yellow" data-notion-highlight="yellow"><strong>1Lv成長値B×(Lv-1)</strong></mark>+<mark class="highlight-teal" data-notion-highlight="teal"><strong>基本値</strong></mark></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81e7-a7cc-f93f10a44c5d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">獲得金額、(1Lv成長値A/B)<ul id="1c59da7d-49f6-8161-aee4-d455958fb49b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">獲得金額の設定をします。<br/>最終的な数値は以下の通りです<ul id="3709da7d-49f6-80fd-8ac1-dfbb07dc64e7" class="bulleted-list" dir="auto"><li style="list-style-type:square"><mark class="highlight-red" data-notion-highlight="red"><strong>1Lv成長値A×(Lv-1)×(Lv-1)</strong></mark>+<mark class="highlight-yellow" data-notion-highlight="yellow"><strong>1Lv成長値B×(Lv-1)</strong></mark>+<mark class="highlight-teal" data-notion-highlight="teal"><strong>基本値</strong></mark></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8178-944b-d9d7b1f99cde" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ドロップアイテム<ul id="1c59da7d-49f6-8122-aa6d-c1c552d9afe8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「敵ドロップアイテム設定1」からドロップアイテムを設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-81af-a343-cf84fd8ffa40" class="bulleted-list" dir="auto"><li style="list-style-type:disc">捕獲ｽｷﾙ、捕獲率補正[％]<ul id="1c59da7d-49f6-81e7-80be-c9d7458b4428" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「捕獲率補正」の確率で捕獲します。<br/>捕獲すると、捕獲を行ったキャラがスキルを覚え、捕獲されたキャラは戦闘から消滅します。<br/>捕獲されたキャラからは経験値や金額、ドロップアイテムは得られず、<br/>また、図鑑にも登録されずクエストの討伐数にもカウントされません。<br/>「捕獲率補正」は1/100基準で指定します。<br/>「捕獲ｽｷﾙ」が設定されてない場合は捕まえる事ができません。</li></ul></li></ul><ul id="1c59da7d-49f6-81ce-8de6-db88c344ca7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">食べるｽｷﾙ、食べる率補正[％]<ul id="1c59da7d-49f6-815a-8d3c-c7ac5e771d07" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「食べる率補正」の確率で相手を食べます。<br/>食べると、食べるを行ったキャラがスキルを覚え、食べられたキャラは戦闘から消滅します。<br/>食べられたキャラからは経験値や金額、ドロップアイテムは得られず、<br/>また、図鑑にも登録されずクエストの討伐数にもカウントされません。<br/>「食べる率補正」は1/100基準で指定します。<br/>「食べるｽｷﾙ」が設定されてない場合は食べる事ができません。</li></ul></li></ul><ul id="1c59da7d-49f6-81a6-b5f0-c1e231a07616" class="bulleted-list" dir="auto"><li style="list-style-type:disc">威嚇有効度[％]<ul id="1c59da7d-49f6-81dd-89ba-ed79dd071f34" class="bulleted-list" dir="auto"><li style="list-style-type:circle">威嚇スキルの有効度です。<br/>高いほど逃げやすくなります。<br/>敵のレベルが高いほど威嚇が効きにくくなります。</li></ul></li></ul><ul id="1c59da7d-49f6-819c-b9c4-ca630e38f8b9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変身条件、A値<ul id="1c59da7d-49f6-815e-a7a1-fe8296c32765" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HPが[A値]%以下<ul id="1c59da7d-49f6-814b-a03c-fdce52b53560" class="bulleted-list" dir="auto"><li style="list-style-type:square">HPがA値％以下の時に変身します。</li></ul></li></ul><ul id="1c59da7d-49f6-81b9-801a-c7ea6a9288c5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[A値]ターン開始時<ul id="1c59da7d-49f6-8123-9ee9-e252ee48864f" class="bulleted-list" dir="auto"><li style="list-style-type:square">A値ターン開始時に変身します。</li></ul></li></ul><ul id="1c59da7d-49f6-8132-8e23-c1409d091c08" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[A値]ターン終了<ul id="1c59da7d-49f6-8182-8456-e874b7284816" class="bulleted-list" dir="auto"><li style="list-style-type:square">A値ターン終了時に変身します。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-81af-aa2f-e28908d97afb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変身キャラ<ul id="1c59da7d-49f6-81f9-85aa-e53a3af4d2c6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">変身先の敵キャラです。</li></ul></li></ul><ul id="1c59da7d-49f6-81c3-8655-fff13728e7ed" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変身オプション<ul id="1c59da7d-49f6-81e9-9160-d3c7badf4218" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HP・MP全快<ul id="1c59da7d-49f6-81aa-b955-c8b17ef04f01" class="bulleted-list" dir="auto"><li style="list-style-type:square">変身時にHPとMPを全回復します。</li></ul></li></ul><ul id="1c59da7d-49f6-8171-a56d-ed93f8e97178" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HP・MPの値そのまま<ul id="1c59da7d-49f6-8195-9302-d335f693d644" class="bulleted-list" dir="auto"><li style="list-style-type:square">変身時にHPとMPを変動しません。</li></ul></li></ul><ul id="1c59da7d-49f6-81b2-b0f8-ef4ff1397426" class="bulleted-list" dir="auto"><li style="list-style-type:circle">HP・MPの％そのまま<ul id="1c59da7d-49f6-812b-ba1b-f2529c5795d6" class="bulleted-list" dir="auto"><li style="list-style-type:square">変身時にHPとMPの残り％を変動しません。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8153-a241-fdba004e70f5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">変身時Ev呼出[-1:ﾅｼ]<ul id="1c59da7d-49f6-81c8-8404-fc372ae8b061" class="bulleted-list" dir="auto"><li style="list-style-type:circle">変身時に呼び出されるイベント番号です。</li></ul></li></ul><ul id="1c59da7d-49f6-8100-95a6-f39b108bba10" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵キャラ立ち絵/XX台詞<ul id="1c59da7d-49f6-81e0-9e40-c3c281f18cd2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵キャラをお店の店員にした際の台詞や立ち絵を設定します。</li></ul></li></ul><p id="1c59da7d-49f6-810b-9fbe-d8cbad967a28" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81a2-a488-c5cc40428a2d" dir="auto"/><p id="1c59da7d-49f6-81ec-bd5e-e528c0f4b5cf" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81cb-89c0-d043b327e67d" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81d9-b4fc-fd8ef704fd46" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-811c-a71a-e4a0c3c0c9fa" dir="auto"/><h2 id="1c59da7d-49f6-81b4-925a-cd7e682bbf54" class="" dir="auto">●敵ｸﾞﾙｰﾌﾟ設定1</h2><p id="1c59da7d-49f6-81e5-8dd6-ffa6c47f3471" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81be-a074-cc036160afd2" dir="auto"/><ul id="1c59da7d-49f6-812d-90bf-e6a6058801d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵1～10、敵1～10出現率[1/10000]<ul id="1c59da7d-49f6-81b3-99a2-de97cc8adaf3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「敵1～10出現率[1/10000]」の確率で、そのIDの敵キャラか、ランダムなIDの敵キャラを出現させます。<br/>「敵1～10出現率[1/10000]」は1/10000の確率で設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81a6-ac8d-d2876969dcac" class="bulleted-list" dir="auto"><li style="list-style-type:disc">フォーメーション<ul id="1c59da7d-49f6-81e8-b6b1-d300af26d88c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デフォルトの位置を使用するか、敵グループの表示位置を変えます。</li></ul></li></ul><ul id="1c59da7d-49f6-81f2-b78c-e424084f2b7d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵レベル外部指定[0:ﾅｼ]<ul id="2ff9da7d-49f6-8071-8ee2-f7228d467bee" class="bulleted-list" dir="auto"><li style="list-style-type:circle">-1以下<ul id="1c59da7d-49f6-8102-b7de-ca861ff10cea" class="bulleted-list" dir="auto"><li style="list-style-type:square">その敵グループの敵キャラのレベルをその設定値に変更します。</li></ul></li></ul><ul id="2ff9da7d-49f6-80ca-88fb-de3c3e30b561" class="bulleted-list" dir="auto"><li style="list-style-type:circle">2000000～2009999<ul id="2ff9da7d-49f6-807c-8b57-d5919965c79f" class="bulleted-list" dir="auto"><li style="list-style-type:square">その敵グループの敵キャラのレベルをその変数番号の値に変更します。<br/>「2000050」と指定した場合は、通常変数の50番の値を参照します。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8117-ae5c-f72330b82deb" class="bulleted-list" dir="auto"><li style="list-style-type:disc">勝利条件<ul id="1c59da7d-49f6-813d-b616-d3b3b4625386" class="bulleted-list" dir="auto"><li style="list-style-type:circle">処理条件に関して、敵を全滅させるか、指定した位置の敵キャラを倒すかを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81c5-a1ce-eb56de86f488" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ターン経過での勝敗判定、勝敗条件ターン数<ul id="1c59da7d-49f6-8186-9114-c79b095d461b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ターン経過の勝敗判定について設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-815a-8a65-c31fa1f8ec02" class="bulleted-list" dir="auto"><li style="list-style-type:disc">逃走成功率[%]、敵レベルに影響するか<ul id="1c59da7d-49f6-8196-af01-d41e0935fbfc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">逃走成功率について設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8161-823d-ddefd3b35be1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">職業経験値獲得上限Lv、獲得職業経験値<ul id="1c59da7d-49f6-81be-9f9d-d3066c288d50" class="bulleted-list" dir="auto"><li style="list-style-type:circle">主人公のレベルが「職業経験値獲得上限Lv」以下の場合、「獲得職業経験値」分の職業経験値が入手できます。<blockquote id="1c59da7d-49f6-81c2-ae8a-f9cbae73e64d" class="block-color-yellow" data-notion-highlight="yellow" dir="auto"><mark class="highlight-yellow" data-notion-highlight="yellow">職業システムが職業経験値制以外の場合はこの項目は無効です。</mark></blockquote></li></ul></li></ul><ul id="1c59da7d-49f6-81dd-8fa1-c1f273aa9c5c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘/ターン/一行動開始/終了/キャラ戦闘不能時イベント<ul id="1c59da7d-49f6-81f8-80e6-ecf31f7359d1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">バトルイベントについて設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81f1-aead-cfcec87e82e6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">連戦するか<ul id="1c59da7d-49f6-8119-8a51-e70082b2a3fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">別の敵グループと連戦するかを設定します。<br/>UDB「敵グループ連戦設定」からデータIDで指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81f9-aa8b-d98f0208da3c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-816a-a483-dd2167500b7b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="1c59da7d-49f6-819c-9bba-e0a347400d81" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[ランダム]通常敵1～16/レア敵1～14、通常敵1～16/レア敵1～14出現率<ul id="1c59da7d-49f6-81b5-9791-f276aeab192d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ランダムで出現する敵キャラについての設定をします。</li></ul></li></ul><p id="1c59da7d-49f6-810c-86d4-e8f6336f90f8" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-810c-b5b4-f460583390fa" dir="auto"/><p id="1c59da7d-49f6-81bf-ae54-ee7cae9edbba" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81d3-b2b3-fb4921483733" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81ef-bf86-f26dc55a13a0" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81e9-91bd-d7cbc286561d" dir="auto"/><h2 id="1c59da7d-49f6-819b-8302-c744d53cbf17" class="" dir="auto">●敵ｸﾞﾙｰﾌﾟ連戦設定</h2><p id="1c59da7d-49f6-819c-b423-e325252ed854" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-813f-8ffc-d62bb0dc02fe" dir="auto"/><ul id="1c59da7d-49f6-8180-a5c2-f72b5510e52a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">連戦条件、A値1～5<ul id="1c59da7d-49f6-8196-be04-e2f02b3862bc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[0]判定中断<ul id="1c59da7d-49f6-81b1-b685-e21d4478f0f9" class="bulleted-list" dir="auto"><li style="list-style-type:square">判定を中断します。連戦を実行しません。</li></ul></li></ul><ul id="1c59da7d-49f6-8115-a4ba-c19951ea8283" class="bulleted-list" dir="auto"><li style="list-style-type:circle">[1]A値％<ul id="1c59da7d-49f6-8177-ae54-d878d17cdd2a" class="bulleted-list" dir="auto"><li style="list-style-type:square">A値％の確率で連戦を実行します。</li></ul></li></ul><ul id="1c59da7d-49f6-81c5-b8e6-f54dd07619bd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連戦回数、現在ターン数がA値以上、A値以下、融合変数A値と同じ<ul id="1c59da7d-49f6-8174-a64a-faa279565d47" class="bulleted-list" dir="auto"><li style="list-style-type:square">連戦回数、現在ターン数がA値以上、A値以下、「A値％100000＋A値÷100000×n」の場合に連戦を実行します。</li></ul></li></ul><ul id="1c59da7d-49f6-81f7-8775-cfe8b3ae11f4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">通常変数A値が1値以上、0値以下と同じ<ul id="1c59da7d-49f6-813e-9075-df98694e8174" class="bulleted-list" dir="auto"><li style="list-style-type:square">通常変数A値が1値以上、0値以下の場合に連戦を実行します。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8114-bd14-dde9348324e7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵グループ1～5<ul id="1c59da7d-49f6-81b2-b258-cb237381efe8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連戦対象の敵グループです。</li></ul></li></ul><ul id="1c59da7d-49f6-8137-8359-ceaec418b4ca" class="bulleted-list" dir="auto"><li style="list-style-type:disc">連戦呼出前、連戦呼出後のコモンID1～5<ul id="1c59da7d-49f6-81b5-8cd0-f5fce9936bcc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連戦呼出前、呼出後に実行するコモンイベントです。</li></ul></li></ul><ul id="1c59da7d-49f6-816e-8ce9-d8187cbbc513" class="bulleted-list" dir="auto"><li style="list-style-type:disc">連戦終了時のコモンID<ul id="1c59da7d-49f6-8193-942d-c71ae16b715c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">連戦終了時に実行するコモンイベントです。</li></ul></li></ul><p id="1c59da7d-49f6-8163-87d0-e13165cb60eb" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8117-8c2d-c0c9f7409049" dir="auto"/><p id="1c59da7d-49f6-81f8-8c24-c7c5204dd8cc" class="" dir="auto">
+</p><p id="1c59da7d-49f6-817a-bffc-e785fb558336" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8146-b147-dcd134ece4b5" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81c5-bbbf-f6b208d9cc13" dir="auto"/><h2 id="1c59da7d-49f6-811a-90d5-e0a6becabe28" class="" dir="auto">●キャラクター座標設定1</h2><p id="1c59da7d-49f6-81c6-a7d5-d74147303f98" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8145-bb65-c39afda72ace" dir="auto"/><ul id="1c59da7d-49f6-81f8-8047-e8f5c7458a3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">メニュー/戦闘時の味方/戦闘時の敵の位置を設定します。<br/>0～19までのIDはシステム側で使用されます。<br/>20以降のIDは自由に使用可能です。</li></ul><p id="3499da7d-49f6-8087-bbd8-d62f9069df29" class="" dir="auto">
+</p><hr id="3499da7d-49f6-805c-bd98-e3a91d384440" dir="auto"/><ul id="3499da7d-49f6-8067-afbc-c8eb7ee80068" class="bulleted-list" dir="auto"><li style="list-style-type:disc">敵味方1～10X/Y<ul id="3499da7d-49f6-80c4-b344-f9999fe38101" class="bulleted-list" dir="auto"><li style="list-style-type:circle">キャラクターの座標を設定します。</li></ul></li></ul><ul id="3499da7d-49f6-8010-aea4-cf66798d9fdc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[味方欄FV戦]敵座標上ｼﾌﾄ<ul id="3499da7d-49f6-80bf-b675-e0b6d56d21bf" class="bulleted-list" dir="auto"><li style="list-style-type:circle">フロントビュー戦闘で、敵の描画座標を上にシフトする量です。<br/>戦闘ウィンドウの描画座標でのみ有効です。</li></ul></li></ul><ul id="3499da7d-49f6-8063-8f77-e74db2e8065b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">[味方欄SV戦]敵座標上ｼﾌﾄ<ul id="3499da7d-49f6-80d5-bc38-e48862bab28b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">サイドビュー戦闘で、敵の描画座標を上にシフトする量です。<br/>戦闘ウィンドウの描画座標でのみ有効です。</li></ul></li></ul><p id="1c59da7d-49f6-818e-abde-e871f0520595" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-811c-bf12-ce974d532313" dir="auto"/><p id="1c59da7d-49f6-813d-910c-e5d090ef2d7e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8164-822d-c8722c00592e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8154-bcd0-d80e3125cb1d" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8162-8766-c256b7ba8905" dir="auto"/><h2 id="1c59da7d-49f6-8138-9d5a-fd780a43e249" class="" dir="auto">●ﾗﾝﾀﾞﾑｴﾝｶｳﾝﾄ設定</h2><p id="1c59da7d-49f6-813e-becb-d44159f20fac" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814f-adc0-e658ae16d43d" dir="auto"/><ul id="1c59da7d-49f6-8116-8ee7-d0c44322b610" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ランダムエンカウントで出現する敵を設定します。</li></ul><p id="1c59da7d-49f6-817c-b7ad-eeea33743a22" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81de-bbca-d9a536af30a3" dir="auto"/><p id="1c59da7d-49f6-8194-ac7f-c19f9f22a2e4" class="" dir="auto">
+</p><p id="1c59da7d-49f6-8112-ba0b-ff571e553a0e" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a4-8047-d996b565e868" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81ed-a389-effc30e13bc2" dir="auto"/><h2 id="1c59da7d-49f6-81a5-b7bc-f518793fdae5" class="" dir="auto">●敵キャラ分類</h2><p id="1c59da7d-49f6-811c-ac44-db219edd2639" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81d2-8b96-d062fa1d7bd7" dir="auto"/><ul id="1c59da7d-49f6-819a-bb83-edb529192b23" class="bulleted-list" dir="auto"><li style="list-style-type:disc">図鑑での敵キャラのカテゴリ名はここで設定します。</li></ul><p id="1c59da7d-49f6-8114-9c3a-cc68251dadb5" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81b3-a1ea-c4cc4ab1c0bf" dir="auto"/><p id="1c59da7d-49f6-81ba-b0c6-cfcb03a8a750" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81b1-9dec-d3a2077a4f40" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81c0-af9e-dc85cf780aec" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81ee-b7db-f9ef59853614" dir="auto"/><h2 id="1c59da7d-49f6-81a2-aaab-d9938f116e70" class="" dir="auto">●敵ドロップアイテム設定1</h2><p id="1c59da7d-49f6-812a-a943-cef46c404829" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-812d-9689-dd6d6cd60e0c" dir="auto"/><ul id="1c59da7d-49f6-81e1-bf3a-db521828a1e2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">名前<ul id="1c59da7d-49f6-8102-8b71-e3a96d279525" class="bulleted-list" dir="auto"><li style="list-style-type:circle">データ名です。</li></ul></li></ul><ul id="1c59da7d-49f6-810b-aaa5-e9e164c019f6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-810c-8fec-fa603718de8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><ul id="37f9da7d-49f6-80d3-a14d-fc724ff918d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アイテム変化リスト1<ul id="37f9da7d-49f6-80ab-813d-d5f64b502c95" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵がアイテム変化スキルを受けた時に変化するアイテムとその確率を文字列で設定します。<br/>空欄の場合、アイテム変化種別/アイテム変化アイテム1～3/アイテム変化率[％]の項目を参照します。<br/>「DataName:」を文字列の先頭に入れるとデータIDではなくデータ名で設定します。<br/>「,」や改行で複数設定できます。<br/>「(データ名):(ドロップ率(％)),…」という書き方で設定します。<ul id="37f9da7d-49f6-80b1-a378-ce93239d2894" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37f9da7d-49f6-80ea-b061-e6d09a42dc0c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「DataName:(改行)エーテル:50,ポーション:100」と設定した場合<ul id="37f9da7d-49f6-800b-b2b5-c5a614ce4968" class="bulleted-list" dir="auto"><li style="list-style-type:circle">瀕死状態の場合、50％の確率でエーテルに、エーテルに変化しなかった場合は100％の確率でポーションに変化します。</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="37f9da7d-49f6-80c6-b391-d8ba144b247d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">盗むアイテムリスト1<ul id="37f9da7d-49f6-8068-9ce3-cfd5566be0b2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵が盗むスキルを受けた時に入手するアイテムとその確率を文字列で設定します。<br/>空欄の場合、盗めるアイテムとその確率はドロップアイテムと同じになります。<br/>「DataName:」を文字列の先頭に入れるとデータIDではなくデータ名で設定します。<br/>「,」や改行で複数設定できます。<br/>「(データ名):(ドロップ率(1/2000)),…」という書き方で設定します。<ul id="37f9da7d-49f6-804f-9d0b-f9baff7e22a2" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37f9da7d-49f6-8058-b5db-c33bad0f4ad1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「DataName:(改行)ポーション:1200,エーテル:600」と設定した場合<ul id="37f9da7d-49f6-8017-aea6-f3dcc03e227e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">60％の確率でポーションを、30％の確率でエーテルを盗めます。</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="37f9da7d-49f6-804b-b792-e5e83eff1e3f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ドロップアイテムリスト1<ul id="37f9da7d-49f6-8086-8921-c8c945176fb5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵を倒した時に入手するアイテムとその確率を文字列で設定します。<br/>空欄の場合、ドロップアイテム種別1～3/入手アイテム1～3_1～3/入手率1～3[1/2000]の項目を参照します。<br/>「DataName:」を文字列の先頭に入れるとデータIDではなくデータ名で設定します。<br/>「,」や改行で複数設定できます。<br/>「(データ名):(ドロップ率(1/2000)),…」という書き方で設定します。<ul id="37f9da7d-49f6-807a-848d-faa5d4dabac4" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:<ul id="37f9da7d-49f6-800d-805c-e03d91931666" class="bulleted-list" dir="auto"><li style="list-style-type:disc">「DataName:(改行)ポーション:600,エーテル:300」と設定した場合<ul id="37f9da7d-49f6-80c3-8ae3-c9b89ead471f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">30％の確率でポーションを、15％の確率でエーテルを落とします。</li></ul></li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8147-adf2-cbda97da0779" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ドロップアイテム種別1～3、入手アイテム1～3_1～3<ul id="1c59da7d-49f6-814d-a6a5-dd971c8dea33" class="bulleted-list" dir="auto"><li style="list-style-type:circle">指定したアイテム1～3を落とします。</li></ul></li></ul><ul id="1c59da7d-49f6-8100-a918-c404144d4c4f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">入手率1～3[1/2000]<ul id="1c59da7d-49f6-8198-a5b6-e9c764460c0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ドロップ率は1/2000の確率で指定してください。<ul id="1c59da7d-49f6-81cb-a639-e0c771c4c0cb" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「入手率1～3[1/2000]」を「125」と指定すると6.25％の確率で落とす。</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8197-b882-c9238a81c897" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アイテム変化種別、アイテム変化アイテム1～3<ul id="1c59da7d-49f6-8167-8b24-d0228ad46574" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵がアイテム変化スキルを受けた時、指定したアイテム1～3に変化します。</li></ul></li></ul><ul id="1c59da7d-49f6-8102-92c9-ed38994938bf" class="bulleted-list" dir="auto"><li style="list-style-type:disc">アイテム変化率[％]<ul id="1c59da7d-49f6-81e2-b983-f2efaed66da1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">敵がアイテム変化スキルを受けた時の変化率を指定します。<br/>HPが低いほどアイテム変化が成功しやすくなります。<br/>「100」と指定した場合、HP全快で成功率は10％となります。</li></ul></li></ul><p id="1c59da7d-49f6-81f5-aef4-cffab525ad3c" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81bb-824d-d6be47c35616" dir="auto"/><p id="1c59da7d-49f6-8167-89aa-ecbc3034343f" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81d9-87e6-f122856b7595" class="" dir="auto">
+</p><p id="1c59da7d-49f6-818a-8b13-e9937319d582" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814a-846c-f231d2631f31" dir="auto"/><h2 id="1c59da7d-49f6-81fa-b2c7-e1ec6c5e9159" class="" dir="auto">●敵キャラ画像設定</h2><p id="1c59da7d-49f6-81b0-b764-e3401640a32a" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-810a-8f57-e7f44f726e55" dir="auto"/><ul id="1c59da7d-49f6-8153-a656-d2a04c1b4249" class="bulleted-list" dir="auto"><li style="list-style-type:disc">名前<ul id="1c59da7d-49f6-81d4-9706-e4665b08ddf8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">データ名です。</li></ul></li></ul><ul id="1c59da7d-49f6-81a6-9569-e8bf7201823b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像ファイル<ul id="1c59da7d-49f6-814c-ba50-e5d822c10cd3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「_MV」「_MZ」が末尾にない<ul id="1c59da7d-49f6-817f-96fe-f836e8d155a5" class="bulleted-list" dir="auto"><li style="list-style-type:square">サイドビュー戦闘でも通常の敵画像として表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-8104-98db-fa9a4f4c2681" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「CharaChip」(参照先変更可)フォルダが参照されている<ul id="1c59da7d-49f6-81c2-9090-f9fef677cf78" class="bulleted-list" dir="auto"><li style="list-style-type:square">サイドビュー戦闘時は4/8方向規格の歩行画像として扱われます。<br/>ただし、フロントビューの場合は通常の敵画像として表示されます。</li></ul></li></ul><ul id="1c59da7d-49f6-810a-83ff-db3c9f91edd5" class="bulleted-list" dir="auto"><li style="list-style-type:circle">「_MV」「_MZ」が末尾にある<ul id="1c59da7d-49f6-8186-9b81-f30e1f0b0d33" class="bulleted-list" dir="auto"><li style="list-style-type:square">サイドビュー戦闘時はMV規格の歩行画像として扱われます。<br/>ただし、フロントビューの場合は通常の敵画像として表示されます。</li></ul></li></ul></li></ul><ul id="3499da7d-49f6-801d-bbb5-f20cd854d6d0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">異常時画像<ul id="3499da7d-49f6-80fd-8227-d0b3aa17935f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">状態異常時に表示する顔画像です。<br/>顔画像の表示でのみ有効です。</li></ul></li></ul><ul id="3499da7d-49f6-8077-8ff1-fbf6935c1535" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ピンチ時画像<ul id="3499da7d-49f6-80b7-bc78-f86dfa50dcf7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">状態異常にかかっておらずHPが25％以下の時に表示する顔画像です。<br/>顔画像の表示でのみ有効です。</li></ul></li></ul><ul id="3499da7d-49f6-804f-b359-ee7581366a39" class="bulleted-list" dir="auto"><li style="list-style-type:disc">戦闘不能時画像<ul id="3499da7d-49f6-8097-b031-f26d1fbc420b" class="bulleted-list" dir="auto"><li style="list-style-type:circle">戦闘不能時に表示する顔画像です。<br/>顔画像の表示でのみ有効です。</li></ul></li></ul><ul id="1c59da7d-49f6-819c-95f2-ca55db1ed628" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像拡大率<ul id="1c59da7d-49f6-81fc-85dd-dd02533cf4a4" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の拡大率です。</li></ul></li></ul><ul id="1c59da7d-49f6-818b-b81c-fb9025486499" class="bulleted-list" dir="auto"><li style="list-style-type:disc">画像横拡大率反転<ul id="1c59da7d-49f6-815f-8593-d2d91d1d0afc" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像を横に反転させます。</li></ul></li></ul><ul id="1c59da7d-49f6-819e-a9b4-e716f574f64b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">不透明度-255-0<ul id="1c59da7d-49f6-8163-94a7-c5369a163180" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の不透明度を変更します。</li></ul></li></ul><ul id="1c59da7d-49f6-816c-b8cc-eb9d680fbaaa" class="bulleted-list" dir="auto"><li style="list-style-type:disc">追加Yシフト量<ul id="1c59da7d-49f6-815a-b65d-ce3b7cc3542a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のY座標をシフトさせます。</li></ul></li></ul><ul id="1c59da7d-49f6-8114-b4af-f9fbb284eac2" class="bulleted-list" dir="auto"><li style="list-style-type:disc">カラー補正R/G/B±100<ul id="1c59da7d-49f6-8151-b578-e07aa6128219" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像のRGBの度合いを変更します。<br/>RGB全てを「100」にしても真っ白になりません。</li></ul></li></ul><ul id="1c59da7d-49f6-81d8-8333-c8862429d659" class="bulleted-list" dir="auto"><li style="list-style-type:disc">色相0-360<ul id="1c59da7d-49f6-816a-8410-d644ca2cf7f9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の色相を変更します。</li></ul></li></ul><ul id="1c59da7d-49f6-8173-ad55-d9ce2a570b3b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">彩度±255<ul id="1c59da7d-49f6-8129-ac7b-db1ba2ea67f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の彩度を変更します。<br/>「-255」でモノクロになります。</li></ul></li></ul><ul id="1c59da7d-49f6-813c-898a-e2ab5d2e0b1d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">明度±255<ul id="1c59da7d-49f6-812d-8d3c-ca0094f59ca3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の明度を変更します。<br/>「-255」で黒に「255」で真っ白になります。</li></ul></li></ul><ul id="1c59da7d-49f6-81af-8d16-f521c3520f40" class="bulleted-list" dir="auto"><li style="list-style-type:disc">モノトーン<ul id="1c59da7d-49f6-8144-b381-ca558bee0a40" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像を特定の色一色にします。<br/>色相が「0」で赤一色になります。</li></ul></li></ul><ul id="1c59da7d-49f6-810a-b1e8-c96818a77af6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">階調反転<ul id="1c59da7d-49f6-8174-957d-cefb78566b7f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像の色を反転させます。</li></ul></li></ul><ul id="1c59da7d-49f6-81db-a261-d242b4ee3f41" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ぼかし<ul id="1c59da7d-49f6-8151-b54e-fae033dab74f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">画像をぼかします。</li></ul></li></ul><ul id="1c59da7d-49f6-81c5-be0e-e778eaa3195f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">上下浮遊/拡大縮小<ul id="1c59da7d-49f6-810f-8718-c7c5bbd0655f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">非選択時、上下浮遊するか、選択時、拡大縮小するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-81cd-9a04-cdc366bf1cde" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ATBX/Y座標補正値<ul id="1c59da7d-49f6-8128-8c55-c48ac5724252" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ATBバーの表示位置をシフトします。</li></ul></li></ul><p id="1c59da7d-49f6-81b5-a5d1-ff5a48543555" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-814e-964a-fb339bea18a8" dir="auto"/><p id="1c59da7d-49f6-812f-b6e4-fed9f289eb85" class="" dir="auto">
+</p><p id="1c59da7d-49f6-81a0-abff-fe09bc4fa427" class="" dir="auto">
+</p><p id="1c59da7d-49f6-819c-89fd-c49ef3f1f610" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-81cf-85d3-d71708080e06" dir="auto"/><h2 id="1c59da7d-49f6-81bb-b6dd-d09e50068ba9" class="" dir="auto">●召喚獣設定1</h2><p id="1c59da7d-49f6-8106-9e8e-c5daedf84ce8" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-816a-ac8f-ddd839f21154" dir="auto"/><ul id="1c59da7d-49f6-8129-9d98-d7f369faf247" class="bulleted-list" dir="auto"><li style="list-style-type:disc">召喚獣の名前<ul id="1c59da7d-49f6-8199-84cf-cf1ded852d72" class="bulleted-list" dir="auto"><li style="list-style-type:circle">召喚獣の名前です。<ul id="1c59da7d-49f6-8131-a7e8-ce923f152884" class="bulleted-list" dir="auto"><li style="list-style-type:square">「%1」を含める<ul id="1c59da7d-49f6-8130-8221-f191f6e026b3" class="bulleted-list" dir="auto"><li style="list-style-type:disc">召喚獣の発動者の名前に置き換えます。</li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-810a-9e89-c02c8172604e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">確認時表示枠色<ul id="1c59da7d-49f6-8110-b5d8-d3da276f40c8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その召喚獣の確認時の表示枠の色です。</li></ul></li></ul><ul id="1c59da7d-49f6-81b9-895f-f04d036f8500" class="bulleted-list" dir="auto"><li style="list-style-type:disc">重複するか<ul id="1c59da7d-49f6-8123-ae54-df6b472db2be" class="bulleted-list" dir="auto"><li style="list-style-type:circle">重複して呼び出せるかを指定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8133-b67e-c946089cb235" class="bulleted-list" dir="auto"><li style="list-style-type:disc">味方か敵か<ul id="1c59da7d-49f6-813c-bfbf-c1c4c6fe7bf0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その召喚獣が敵か味方かを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-818c-83be-c40a2d615672" class="bulleted-list" dir="auto"><li style="list-style-type:disc">発動者の行動制限確認<ul id="1c59da7d-49f6-8189-8da4-e68f29405a45" class="bulleted-list" dir="auto"><li style="list-style-type:circle">発動者が行動不能でも行動するかを設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8161-9f5d-de0b39b5350b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">誰に発生させるか<ul id="1c59da7d-49f6-81a0-ad11-ebb62e950e9f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">召喚獣の対象を設定します。</li></ul></li></ul><ul id="1c59da7d-49f6-8161-808b-e473697b0498" class="bulleted-list" dir="auto"><li style="list-style-type:disc">初期ｽﾃｰﾀｽ番号<ul id="1c59da7d-49f6-8162-87c2-cb6789569c8c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「汎用初期ｽﾃｰﾀｽ」から能力値を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-81d6-a7a1-f272a67606a4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Lv[-1:発動者と同じ]<ul id="1c59da7d-49f6-8142-b40b-c0569d5badf1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Lvの設定を行います。<br/>「-1」以下を設定すると、主人公のレベルと同じになります。</li></ul></li></ul><ul id="1c59da7d-49f6-8129-91ef-fd3b63dce7a8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動回数<ul id="1c59da7d-49f6-810a-9119-df6c4511e4d0" class="bulleted-list" dir="auto"><li style="list-style-type:circle">その敵キャラの行動回数です。</li></ul></li></ul><ul id="1c59da7d-49f6-8113-b3c6-d30d94877892" class="bulleted-list" dir="auto"><li style="list-style-type:disc">行動回数増加率<ul id="1c59da7d-49f6-8195-92a0-e1d45e64d2fd" class="bulleted-list" dir="auto"><li style="list-style-type:circle">値は「(追加で確率判定を行う回数×1000)+(確定で増加する回数×100)+(行動回数が1回増加する確率)」で指定してください。<ul id="2979da7d-49f6-807c-ac5a-d03e485fca30" class="bulleted-list" dir="auto"><li style="list-style-type:square">例:「3250」と指定すると確率で行動回数が最低で2回、最大で6回増加する</li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-8178-a687-d4e93f62d4fc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">対応デフォルトAI<ul id="1c59da7d-49f6-81a6-956e-e9d888822f35" class="bulleted-list" dir="auto"><li style="list-style-type:circle">無料高機能RPGシステムMr.Hでは、「ﾃﾞﾌｫﾙﾄ行動AI」からデフォルトAIの行動内容を設定します。<br/>その参照IDです。</li></ul></li></ul><ul id="1c59da7d-49f6-8172-957e-de3e541888a5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">デフォルトAIデータ数<ul id="1c59da7d-49f6-81aa-a340-c6e445902075" class="bulleted-list" dir="auto"><li style="list-style-type:circle">対応ﾃﾞﾌｫﾙﾄAIからいくつ分のデータを使用するかを設定します。<br/>0以下の場合は1個となります。</li></ul></li></ul><ul id="1c59da7d-49f6-8127-9657-e24692901905" class="bulleted-list" dir="auto"><li style="list-style-type:disc">ローテーションAIループ数<ul id="1c59da7d-49f6-812c-b9fc-e867a6c4cb2c" class="bulleted-list" dir="auto"><li style="list-style-type:circle">デフォルトAIのローテーション条件のループ数を設定します。<br/>0以下の場合は使用しません。</li></ul></li></ul><ul id="1c59da7d-49f6-8165-926a-d675c1cd8402" class="bulleted-list" dir="auto"><li style="list-style-type:disc">最短ターン数[0以下:∞]、最大ターン数<ul id="1c59da7d-49f6-81f8-97f6-e849c3270ffa" class="bulleted-list" dir="auto"><li style="list-style-type:circle">ターン数について設定します。<br/>「最短ターン数[0以下:∞]」を0以下にするとターン数は無限となります。</li></ul></li></ul><ul id="1c59da7d-49f6-814d-ad4f-d5f76f868fc9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">発生時のメッセージ～消滅時のメッセージ<ul id="1c59da7d-49f6-819b-88bd-d1b649a3ae0a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">発生時、重複時、消滅時のメッセージです。<ul id="1c59da7d-49f6-8172-b358-ff8bc16ea4da" class="bulleted-list" dir="auto"><li style="list-style-type:square">「%1」を含める<ul id="1c59da7d-49f6-8125-8c19-f1e13c62e308" class="bulleted-list" dir="auto"><li style="list-style-type:disc">召喚獣の発動者の名前に置き換えます。</li></ul></li></ul><ul id="1c59da7d-49f6-8141-973a-e9c4356fa086" class="bulleted-list" dir="auto"><li style="list-style-type:square">「%2」を含める<ul id="1c59da7d-49f6-817b-be72-fdfa1beed3b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">召喚獣の名前に置き換えます。</li></ul></li></ul></li></ul></li></ul><ul id="1c59da7d-49f6-815c-974b-fbf10317b3a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">タグ:カスタム<ul id="1c59da7d-49f6-81f7-9086-ec6c04793e24" class="bulleted-list" dir="auto"><li style="list-style-type:circle">上級者向けの設定をするための機能です。<br/>カスタムタグについては別紙を参照ください。</li></ul></li></ul><p id="1c59da7d-49f6-81de-b2ae-e580c9592744" class="" dir="auto">
+</p><hr id="1c59da7d-49f6-8192-9a83-c213063fce60" dir="auto"/><p id="1c59da7d-49f6-81dd-a43a-c9248054683f" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
